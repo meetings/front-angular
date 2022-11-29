@@ -1,0 +1,35 @@
+<page-wrapper ng-model="show">
+  <form name="signInCountryForm" class="">
+    <div class="text-wrapper text-starter">
+      <p>
+        We didn't recognize your number.
+      </p>
+      <p>
+        Please check the phone number below and add the country code if it's missing.<br>
+        <strong ng-bind="show.formattedPhone.internationalFormat"></strong>
+      </p>
+    </div>
+
+    <div class="mtn-inputgroup signingroup row">
+      <div class="columns small-12 edit-area">
+        <mtn-float-label for="area"></mtn-float-label>
+        <select name="area"
+                id="area"
+                placeholder="Country code"
+                ng-model="show.countryCode"
+                ng-class="{labelmode:!show.countryCode}"
+                ng-change="show.validatePhone()"
+                ng-options="values.displayName for values in show.countryCodes">
+          <option value="" class="placeholder" selected>Country code</option>
+        </select>
+      </div>
+    </div>
+
+    <button ng-click="show.submitPhone()"
+            ng-disabled="!show.formattedPhone.valid || show.btnWorking">
+      Sign up or Login
+      <span class="spinner"
+            ng-if="show.btnWorking == 'pinRequest'"></span>
+    </button>
+  </form>
+</page-wrapper>

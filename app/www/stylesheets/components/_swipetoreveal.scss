@@ -1,0 +1,35 @@
+.swipe-wrapper {
+  position: relative;
+}
+
+.swipe-drawer {
+  position: relative;
+  -webkit-backface-visibility:hidden;
+  -ms-touch-action: none;
+
+  &.static {
+    $transition: transform ease 0.25s, opacity ease-in .25s;
+    @include vendor-prefix-transition($transition);
+  }
+}
+
+.swipe-actions {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  width: rem-calc(100px);
+}
+
+.swipe-remove-btn {
+  color:$swipe-remove-btn-color;
+  background: $swipe-remove-btn-bg;
+  text-align: center;
+  @include vendor-prefix-attr(display, box);
+  @include vendor-prefix(box-orient, vertical);
+  @include vendor-prefix(box-pack, center);
+}
+
+.material-comments .swipe-remove-btn{
+  border-top:1em solid $body-background;
+  height:100%;
+}

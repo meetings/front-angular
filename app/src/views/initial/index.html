@@ -1,0 +1,8 @@
+<!--
+  Wrapper for multi page app with angular routing
+  In single page app ng-app has to be the same in every view and controller is injected in routeProvider
+-->
+<div ng-app="signInApp"
+     ng-view=""
+     class="spa-page spa-page-forward steroids-wrapper"
+     ng-class="{ 'is-animated': !disableViewAnimation }"></div>

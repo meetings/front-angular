@@ -1,0 +1,70 @@
+<div ng-model="signIn"
+     ng-if="signIn.feelGoodImageIsVisible"
+     mtn-disable-scroll
+     class="feelgood-wrapper">
+
+  <div class="feelgood">
+    <img ng-src="project/logo.png"
+         class="feelgood-img"
+         alt="">
+  </div>
+
+  <div class="feelgood-btn-wrapper">
+    <button ng-click="signIn.hideFeelGoodImage()">
+      Get started
+    </button>
+
+    <mtn-a class="button video"
+           href="nonexistinglinkswipetomeet://"
+           alt-href="http://mtn.gs/stmvideo"
+           target="_blank">
+           Watch our video
+    </mtn-a>
+  </div>
+</div>
+
+<page-wrapper ng-model="signIn" ng-show="!signIn.feelGoodImageIsVisible && !signIn.signedIn">
+  <form name="signInPhoneForm" class="">
+    <div class="text-wrapper text-starter text-hilighted">
+      <h1>Welcome!</h1>
+      <p>
+        Type your phone number in international format to receive a secure access code.
+      </p>
+    </div>
+    <div class="mtn-inputgroup signingroup row">
+      <div class="columns small-12 edit-area">
+        <mtn-float-label for="phone">
+        </mtn-float-label>
+        <input type="tel"
+               id="phone"
+               name="phone"
+               placeholder="Mobile phone number"
+               ng-model="signIn.phone"
+               mtn-blur-on-event="blurInput"
+               required
+               autocapitalize="none">
+      </div>
+    </div>
+
+    <button ng-click="signIn.checkPhone(signIn.phone)"
+            ng-disabled="!signIn.phone || signIn.btnWorking">
+      Sign up or Login
+      <span class="spinner"
+            ng-if="signIn.btnWorking == 'pinRequest'"></span>
+    </button>
+
+    <div class="text-wrapper tip text-hilighted">
+      <p>Phone number will only be used for secure login and to send you scheduling notifications.</p>
+    </div>
+    <div ng-if="signIn.isDeveloperMenuVisible">
+      {{ signIn.formattedPhone.e164 }} <br>
+      {{ signIn.formattedPhone.countryId }} <br>
+      {{ signIn.formattedPhone.countryName }} <br>
+      {{ signIn.formattedPhone.valid }} <br>
+      {{ signIn.formattedPhone.localFormat }} <br>
+    </div>
+  </form>
+
+  <div ng-include="'/views/initial/_development.html'"
+       ng-if="signIn.isDeveloperMenuVisible"></div>
+</page-wrapper>

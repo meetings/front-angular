@@ -1,0 +1,35 @@
+<div class="text-wrapper">
+  <p>Enter the teleconference number given by your chosen operator.</p>
+</div>
+
+<div class="row edit-area">
+  <div class="columns small-12">
+
+    <mtn-float-label for="teleconf_number">
+    </mtn-float-label>
+    <input type="tel"
+           id="teleconf_number"
+           placeholder="Phone number"
+           ng-model="show.meeting.online_conferencing_data.teleconf_number"
+           mtn-blur-on-event="blurInput">
+
+  </div>
+</div>
+
+<div class="row edit-area edit-multipart-form">
+  <div class="columns small-12">
+
+    <mtn-float-label for="teleconf_pin">
+    </mtn-float-label>
+    <input type="tel"
+           id="teleconf_pin"
+           placeholder="PIN (optional)"
+           ng-model="show.meeting.online_conferencing_data.teleconf_pin"
+           mtn-blur-on-event="blurInput">
+
+  </div>
+</div>
+
+<div class="text-wrapper text-note">
+  <p>NOTE: If you know your PIN code you can preset it here to allow participants to join without having to type the PIN when making the call</p>
+</div>

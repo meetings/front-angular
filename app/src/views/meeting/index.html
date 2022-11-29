@@ -1,0 +1,9 @@
+<!--
+  Wrapper for multi page app
+  In single page app ng-app has to be the same in every view and controller is injected in routeProvider
+-->
+<div ng-app="meetingApp"
+     ng-controller="MeetingIndexCtrl as index"
+     ng-include="'_timeline.html'"
+     class="steroids-wrapper">
+</div>

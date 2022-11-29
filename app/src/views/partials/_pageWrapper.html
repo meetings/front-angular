@@ -1,0 +1,35 @@
+<mtn-error ng-model="pageWrapper.ngModel.error"
+           mtn-button-click="pageWrapper.ngModel.handleError()"></mtn-error>
+
+<mtn-confirm ng-model="pageWrapper.ngModel.confirmDialog"
+             ng-show="pageWrapper.ngModel.confirmDialog"></mtn-confirm>
+
+<mtn-spinner ng-show="pageWrapper.ngModel.loading"
+             has-delay="pageWrapper.delayedSpinner"></mtn-spinner>
+
+<div class="notification-popup"
+     ng-if="pageWrapper.notification && pageWrapper.showNotification(pageWrapper.notification)">
+
+  <i class="icon icon-remove"
+     ng-click="pageWrapper.dismissNotification()"></i>
+
+  <div class="notification-text"
+       ng-click="pageWrapper.openNotification(pageWrapper.notification.additionalData.nid)">
+    {{ pageWrapper.notification.message }}
+  </div>
+</div>
+
+
+<div class="no-internet" ng-if="!pageWrapper.connected && pageWrapper.deviceUtils.platform() != 'web'">
+  No Internet Connection
+</div>
+
+<div class="page-wrapper-container pull-to-refresh-slider"
+     ng-class="{ 'ios': pageWrapper.isIos }"
+     mtn-inner-scroll
+     mtn-pull-to-refresh="{{ pageWrapper.mtnPullToRefreshEnabled }}"
+     mtn-pull-to-refresh-callback="pageWrapper.mtnPullToRefreshCallback()">
+  <div ng-transclude
+       class="page-wrapper-scroller">
+  </div>
+</div>

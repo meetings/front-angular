@@ -1,0 +1,22 @@
+<page-wrapper ng-model="index">
+
+
+<div class="mtnList">
+
+  <div class="mtnList-item mtnList-toggle">
+    <mtn-checkbox ng-model="index.using24hTime"
+                  name="timeFormat"
+                  mtn-click="index.toggle24hValue()"
+                  mtn-swipe-left="index.toggle24hValue('12h')"
+                  mtn-swipe-right="index.toggle24hValue('24h')"
+                  mtn-show-spinner="index.saving == 'timeDisplay'">
+      24h time format
+    </mtn-checkbox>
+  </div>
+  <div class="text-help text-help-short text-starter">
+    <p>Example: {{ index.timeFormatExample }}</p>
+  </div>
+
+</div>
+
+</page-wrapper>

@@ -1,0 +1,124 @@
+.notifications{
+  margin-bottom:rem-calc(15px);
+}
+.notification{
+  width:100%;
+  height:rem-calc(84px);
+  padding:rem-calc(14px) rem-calc(25px) rem-calc(14px) rem-calc(25px);
+  font-size:$notification--font-size;
+  font-weight: 300;
+  min-height: rem-calc(44px);
+
+  background: $notification-bg url($arrow-right) (100% - (100% * 15 / 320)) 50% no-repeat;
+  background: $notification-bg url($arrow-right) calc(100% - 15px) 50% no-repeat;
+  color: $mtnList-text;
+
+  overflow:hidden;
+  word-wrap:break-word;
+}
+.notification + .notification{
+  margin-top:rem-calc(1px);
+}
+.notification-new{
+  background-color: $notification-new-bg;
+}
+$icon-width:rem-calc(20px);
+
+.notification{
+  .icon{
+    color:$notification-icon;
+    width: $icon-width;
+    margin-right: -$icon-width;
+    text-align: center;
+    float:left;
+    margin-top:18px;
+    margin-left:-10px;
+    font-size:$notificatio--icon--font-size;
+    &.icon-color-success{
+      color:$notification-icon-color-success;
+    }
+    &.icon-color-warning{
+      color:$notification-icon-color-warning;
+    }
+    &.icon-color-error{
+      color:$notification-icon-color-error;
+    }
+    &.icon-color-normal{
+      color:$notification-icon-color-normal;
+    }
+
+    &.right {
+      float:right;
+      margin-right:-10px;
+    }
+  }
+
+  .notification-text,
+  .notification-time{
+    display:inline-block;
+    margin-left:($icon-width + rem-calc(7px));
+  }
+
+  .notification-text{
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    line-height:16px;
+  }
+  .notification-time{
+    font-size: $notification-time--font-size;
+  }
+}
+
+// Notification popup
+.notification-popup {
+  background: $notification-popup-bg;
+
+  position: absolute;
+  z-index: 1000;
+  top: 0px;
+  left: 0px;
+  width:100%;
+  min-height: 44px;
+  .icon {
+    color:$notification-icon;
+    width: $icon-width;
+    text-align: right;
+    padding-top:10px;
+    padding-bottom: 10px;
+    padding-right:14px;
+    width:44px;
+    float:right;
+    font-size:$notificatio--icon--font-size;
+  }
+  .notification-text {
+    padding:10px 14px;
+    font-size:$notification-popup--font-size;
+    font-weight: normal;
+    color: $notification-popup-text-color;
+  }
+}
+
+//Web, Android with no native-tabbar
+.notification-popup {
+  top: 44px;
+}
+
+// Android has an extra native-tabbar (44px) sometimes, move below it
+.build-platform-android .native-tabbar-visible  .notification-popup{
+  top: 88px;
+}
+
+.custom-html-notification{
+  padding:14px;
+  //Supported elements:
+  //h1,h2,h3,h4
+  //p
+  //a
+  //strong
+  h2{
+    font-size:1.6875rem;
+  }
+}

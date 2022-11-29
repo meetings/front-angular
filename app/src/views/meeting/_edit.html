@@ -1,0 +1,22 @@
+<page-wrapper ng-model="show">
+
+<div class="edit-container">
+
+  <div ng-include="'/views/meeting/_edit-title.html'"
+       ng-if=" show.editing == 'title' ">
+  </div>
+
+  <div ng-include="'/views/meeting/_edit-date.html'"
+       ng-if=" show.editing == 'date' ">
+  </div>
+
+  <div ng-include="'/views/meeting/_edit-location.html'"
+       ng-if=" show.editing == 'location' ">
+  </div>
+
+  <div ng-include="'/views/meeting/_edit-communicationtool.html'"
+       ng-if=" show.editing == 'communicationtool' ">
+  </div>
+</div>
+
+</page-wrapper>

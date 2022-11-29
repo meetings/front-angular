@@ -1,0 +1,115 @@
+<page-wrapper ng-model="index">
+
+<div ng-switch="index.wizardState">
+  <div ng-switch-when="selectTemplate">
+    <div class="ringButtonArea scheduleMeeting">
+      <button ng-click="index.startNewScheduling()">
+        <div class="ring1">
+          <div class="ring2">
+            <i class="icon icon-meetings"></i>
+            <span>Schedule meeting</span>
+          </div>
+        </div>
+      </button>
+    </div>
+
+    <div ng-if="index.matchmakers"
+         class="mtnList-header informative">Schedule using a template: </div>
+    <div class="mtnList">
+
+      <div class="mtnList-item mtnList-nav"
+           ng-repeat="matchmaker in index.matchmakers"
+           ng-click="index.selectTemplate(matchmaker)">
+
+           {{ matchmaker.name }}
+      </div>
+    </div>
+  </div>
+  <!-- /selectTemplate -->
+
+  <div ng-switch-when="selectDuration">
+    <div class="wizard-option">
+      <div class="wizard-option-img wizard-option-img-duration"></div>
+      <h1><strong>How long</strong> will the meeting last?</h1>
+    </div>
+
+    <button ng-click="index.selectDuration(0, 2)">30 minutes</button>
+
+    <button ng-click="index.selectDuration(1, 0)">An hour</button>
+
+    <button ng-click="index.selectDuration(2, 0)">Two hours</button>
+
+    <button class="link"
+            ng-click="index.openDurationEdit()">Other</button>
+  </div>
+  <!-- /selectDuration -->
+
+  <div ng-switch-when="customDuration">
+    <span ng-include="'/views/scheduling/_edit-duration.html'"></span>
+  </div>
+
+  <div ng-switch-when="selectTime">
+    <div class="wizard-option">
+      <div class="wizard-option-img wizard-option-img-when"></div>
+      <h1><strong>When</strong> do you want to meet?</h1>
+    </div>
+
+    <button ng-click="index.selectTime([0,1,2,3,4], 9*60*60, 17*60*60)">Between 9-to-5</button>
+
+    <button ng-click="index.selectTime([0,1,2,3,4], 11*60*60, 13*60*60)">During lunch</button>
+
+    <button ng-click="index.selectTime([0,1,2,3,4], 17*60*60, 19*60*60)">In the evening</button>
+
+    <button class="link"
+            ng-click="index.openTimeEdit()">Other</button>
+  </div>
+  <!-- /selectTime -->
+
+  <div ng-switch-when="customTime">
+    <span ng-include="'/views/scheduling/_edit-time.html'"></span>
+  </div>
+
+  <div ng-switch-when="selectLocation">
+
+    <div class="wizard-option">
+      <div class="wizard-option-img wizard-option-img-where"></div>
+      <h1><strong>Where</strong> are you meeting?</h1>
+    </div>
+
+    <button ng-click="index.selectLocation('At my office')">At my office</button>
+
+    <button ng-click="index.selectLocation('Online')">Online or on the phone</button>
+
+    <button ng-click="index.selectLocation(null)">Undecided</button>
+
+    <button class="link"
+            ng-click="index.openLocationEdit()">Other</button>
+  </div>
+  <!-- /selectLocation -->
+
+  <div ng-switch-when="customLocation">
+    <span ng-include="'/views/scheduling/_edit-location.html'"></span>
+  </div>
+
+  <div ng-switch-when="selectParticipants">
+    <span ng-include="'/views/scheduling/_select-participants.html'"></span>
+  </div>
+
+  <div ng-switch-when="customTimespan">
+    <span ng-include="'/views/scheduling/_edit-date.html'"></span>
+  </div>
+
+  <div ng-switch-when="customSources">
+    <span ng-include="'/views/scheduling/_edit-sources.html'"></span>
+  </div>
+
+  <div ng-switch-when="review">
+    <span ng-include="'/views/scheduling/_review.html'"></span>
+  </div>
+
+  <div ng-switch-when="wizardDone">
+    <span ng-include="'/views/scheduling/_done.html'"></span>
+  </div>
+</div>
+
+</page-wrapper>

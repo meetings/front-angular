@@ -1,0 +1,165 @@
+.participants-header{
+  padding-left: 25px;
+  line-height: 22px;
+  font-size: $participants-header--font-size;
+  color:$participant-header;
+
+  background: $participants-header-bg;
+  line-height: rem-calc(22px);
+  @include vendor-prefix-attr(position, sticky);
+  top: 0;
+  z-index: $participants-header-zindex;
+}
+
+
+
+.participant{
+  background-color:$participants-bg;
+  padding: 15px 25px 0 25px;
+  min-height: (100px + 15px + 15px);
+  color:$participants-text-color;
+}
+
+.participant-avatar{
+  @include avatar(100);
+
+  .avatar-initials{
+    text-align: center;
+    display: block;
+  }
+}
+
+.participant-name,
+.participant-org,
+.participant-status,
+.participant-mode,
+.participant-scheduling-disabled-text{
+  display:block;
+  max-width: (100% - 100% * (60 / (320 - 25  - 30)));
+  max-width: calc(100% - 60px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.participant-name{
+  margin-top:30px;
+  line-height:rem-calc(20px);
+}
+.participant-org{
+  font-size: $participants-org--font-size;
+  line-height: 16px;
+}
+.participant-status{
+  font-size: $participant-status--font-size;
+}
+.participant-scheduling-disabled-text{
+  color: $medium-grey2;
+  font-size: $participant-status--font-size;
+}
+.participant-scheduling-disabled{
+  .participant-name,
+  .participant-org{
+    color: $medium-grey2;
+  }
+}
+.participant-mode{
+  font-size: $participant-mode--font-size;
+  color: $rsvp-yes;
+}
+
+.participant,
+.participant-status{
+  .rsvp-yes{color: $rsvp-yes;}
+  .rsvp-maybe{color: $rsvp-maybe;}
+  .rsvp-no{color: $rsvp-no;}
+}
+
+
+.participant-contacts{
+  clear:left;
+  display: block;
+  margin:0 -25px 0 -25px;
+}
+.participant-contact{
+  border-top:1px solid $participant-contact-border;
+  display: block;
+  min-height: 44px;
+  padding-left:25px;
+  padding-right: 5px;
+  &:first-of-type{
+    border-top:none;
+  }
+}
+.participant-contact-label,
+.participant-contact-data{
+  display: block;
+  width:(100% - 100% * (33)/(320 - 25 - 5));
+  width:calc(100% - 33px);
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  .participant-contact-mobile &{
+    width:(100% - 100% * (69)/(320 - 25 - 5));
+    width:calc(100% - 69px);
+  }
+}
+.participant-contact-label{
+  font-size:$participant-contact-label--font-size;
+  color:$participant-contact-label-color;
+  line-height: 20px;
+}
+.participant-contact-data{
+  padding-bottom:4px;
+}
+.participant-contact-buttons{
+  float:right;
+  display: block;
+  margin-top: (-36px - 4px);
+}
+.participant-contact-button{
+  color:$participant-contact-button-color;
+  display: inline-block;
+  width: 32px;
+  height:44px;
+  padding-top:(44px - 22px)*0.5;
+  text-align: center;
+  font-size:22px;
+}
+
+
+// Participant list spesific settings
+.participants {
+  margin-bottom: 7px;
+
+  .participant {
+    background: $participants-bg url($arrow-right) (100% - 100% * 15 / 320) 50% no-repeat;
+    background: $participants-bg url($arrow-right) calc(100% - 15px) 50% no-repeat;
+    padding: 10px 30px 10px 25px;
+    min-height: (60px + 10px * 2);
+    margin-bottom: 1px;
+  }
+  .participant-avatar {
+    margin-right: 11px;
+    @include avatar(60);
+  }
+
+  .participant-name{
+    margin-top:9px;
+  }
+  .participant-org{
+    font-size: $participants--participant-org--font-size;
+    line-height: 20px;
+  }
+}
+
+// Adding multiple participants
+
+.edit-area-tags{
+  min-height: 42px;
+}
+
+.participant-status{
+  line-height: 16px;
+}
+.mtnList .participant-status{
+  line-height: 12px;
+}

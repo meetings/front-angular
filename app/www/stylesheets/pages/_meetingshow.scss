@@ -1,0 +1,26 @@
+.meeting-container {
+  position: relative;
+  z-index: $meeting-container-zindex
+}
+
+.suggested-agenda-desc,
+.suggested-agenda{
+  font-weight: normal;
+}
+
+.suggested-agenda{
+  margin-top:1em;
+  font-style: italic;
+}
+
+.suggested-title{
+  font-weight: bold;
+}
+.suggested-location,
+.suggested-date{
+  font-weight: normal;
+}
+
+.decline-message{
+  margin-top:14px;
+}

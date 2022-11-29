@@ -1,0 +1,189 @@
+.meetme-preview {
+  border-top:1px solid #f5954f;
+  background-image: url("../images/theme3.jpg");
+  background-size: cover;
+  width: 100%;
+}
+
+
+.meetme-preview-ribbon{
+  position:absolute;
+  right:0;
+  background:transparent url('../images/preview-ribbon.png') top right no-repeat;
+  width: 73px;
+  height: 59px;
+}
+.meetme{
+  padding-bottom:14px;
+}
+
+.navibar{
+  margin-bottom:0;
+}
+.container-wrapper{
+  padding-top:10px;
+}
+
+.meetme-preview-page .pagecontent{
+  padding-top:0;
+}
+.meetme-preview-page .content-wrapper{
+  padding-top: 15px;
+  background:#f1f1f1;
+  padding-bottom:15px;
+  max-width: none;
+  div{
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+
+.title-area{
+  color:#5d5d5d;
+
+  margin-bottom:13px;
+  padding:15px 34px;
+
+  background:#fefdfd;
+  background:rgba(254,253,253,0.8);
+
+  overflow:hidden;
+}
+.name{
+  display: block;
+  font-size: 24px;
+}
+.title-row{
+  font-size: 16px;
+}
+.schedulers{
+  margin:0 17px;
+  border:1px solid #cccccc;
+  border:1px solid rgba(0,0,0,0.2);
+  background: #ffffff;
+  background: rgba(255,255,255,0.8);
+  border-radius:4px;
+  padding-bottom:3px;
+}
+
+.greeting-area{
+  padding:11px 9px 15px 9px;
+  min-height:115px;
+}
+.avatar-wrapper{
+  border-radius: 95px;
+  width: 95px;
+  height: 95px;
+  overflow: hidden;
+  position:absolute;
+}
+.greeting{
+  padding-top:12px;
+  padding-left:95px+14px;
+  overflow: hidden;
+}
+.scheduler{
+  border-top:1px solid #c4c4c4;
+  padding:18px 11px 11px;
+}
+.scheduler-icon{
+  margin-top:-5px;
+  margin-left:-40px;
+  position: absolute;
+  font-size: 1.6em;
+}
+.scheduler-title-area{
+  margin-left:42px;
+  font-size:16px;
+  padding-bottom:11px;
+}
+.scheduler-title{
+  display: block;
+  overflow:hidden;
+}
+
+.meetmePreviewUrl{
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+$previewWidth: 890px;
+@media (min-width: $previewWidth) {
+  .title-area-wrapper{
+    max-width: $previewWidth;
+    margin: 0 auto;
+  }
+  .schedulers{
+    position: relative;
+    max-width:500px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:60px;
+    min-height: 100px;
+    border-radius: 4px;
+
+    // color: white;
+    background: white;
+    background: rgba(255, 255, 255, 0.8);
+    @include vendor-prefix(box-shadow, 0px 0px 3px rgba(0, 0, 0, 0.5));
+  }
+  .schedulers:after{
+    content: '';
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    top: 25px;
+    left: -9px;
+    z-index: $schedulers-after-zindex;
+
+    @include vendor-prefix(transform, rotate(-45deg));
+
+    @include vendor-prefix(box-shadow, -2px -2px 2px -1px rgba(0, 0, 0, 0.4));
+
+    $background-image: linear-gradient(-45deg, transparent 53%, rgba(255,255,255,0.8) 53%, rgba(255,255,255,0.8));
+    @include vendor-prefix-attr(background-image, $background-image);
+  }
+  .avatar-wrapper{
+    width:140px;
+    height: 140px;
+    border:3px solid white;
+    margin-left:-190px;
+    margin-top:-30px;
+    background:#ffffff;
+    background:rgba(255,255,255,0.8);
+    @include vendor-prefix(box-shadow, 0px 0px 6px 1px rgba(0, 0, 0, 0.5));
+    img{
+      width:140px;
+      height:140px;
+    }
+  }
+  .greeting{
+    padding:0 0 0 20px;
+  }
+  .greeting-area{
+    padding-bottom:11px;
+    min-height:0;
+  }
+  .scheduler{
+    overflow:hidden;
+  }
+  .scheduler-title-area{
+    width:100%;
+    max-width:330px;
+    float:left;
+    margin-left: 52px;
+  }
+  .scheduler-title{
+    font-size:1.4em;
+  }
+  .scheduler-icon{
+    margin-top:0;
+    margin-left:-40px;
+  }
+  .scheduler-btn{
+    width:100%;
+    max-width:87px;
+    float:left;
+  }
+
+}

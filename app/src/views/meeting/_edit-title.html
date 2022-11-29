@@ -1,0 +1,39 @@
+<form class="row"
+      ng-class="{ 'mtnList' : show.deviceUtils.platform() != 'ios' }">
+
+  <div class="columns small-12 edit-area">
+
+    <mtn-float-label for="title">
+    </mtn-float-label>
+    <textarea id="title"
+              placeholder="Meeting title"
+              rows="4"
+              ng-model="show.meeting.title_value"
+              mtn-blur-on-event="blurInput"
+              mtn-move-cursor-to-end
+              mtn-autofocus>
+    </textarea>
+
+  </div>
+</form>
+
+<div ng-if="show.deviceUtils.platform() != 'ios'">
+  <button class="dual"
+          ng-click="show.confirmEdit()"
+          ng-disabled="show.loading">
+    Save
+  </button>
+
+  <button ng-click="show.cancelEdit()"
+          ng-disabled="show.loading"
+          class="dual secondary">
+    Cancel
+  </button>
+</div>
+
+<div class="text-wrapper">
+  <p>
+    Giving a descriptive title to the Meeting tells participants what it is about.<br>
+    Meeting title will also be used as the title for the calendar event.
+  </p>
+</div>

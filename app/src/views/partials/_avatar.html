@@ -1,0 +1,23 @@
+<!-- Remember to edit also scheduling service formatAvatarInitialsHtml -->
+<picture class="avatar {{ size }} {{avatarBgClassName}}"
+         ng-class="{
+            'avatar--organizer' : organizer,
+            'scheduling-disabled' : user.scheduling_disabled
+         }"
+         title="{{user.name}}">
+
+  <span class="avatar-initials">
+    <span ng-if="!user.image"
+          ng-bind="user.initials"></span>
+  </span>
+
+  <img ng-src="{{ user.image }}"
+       ng-if="user.image"
+       class="avatar-img"
+       alt="{{user.name}}"/>
+
+  <span class="avatar-rsvp-overlay {{ rsvpClass }}"
+        ng-if="showRsvp">
+  </span>
+
+</picture>

@@ -1,0 +1,34 @@
+<div class="breadcrumb"
+     ng-bind="show.meeting.title_value"></div>
+
+<form class="row"
+      ng-class="{ 'mtnList' : show.deviceUtils.platform() != 'ios' }">
+
+  <div class="columns small-12 edit-area">
+
+    <mtn-float-label for="location">
+    </mtn-float-label>
+    <input type="text"
+           id="location"
+           placeholder="Meeting location"
+           ng-model="show.meeting.location_value"
+           mtn-blur-on-event="blurInput"
+           mtn-autofocus
+           autocapitalize="sentences">
+
+  </div>
+</form>
+
+<div ng-if="show.deviceUtils.platform() != 'ios'">
+  <button class="dual"
+          ng-click="show.confirmEdit()"
+          ng-disabled="show.loading">
+    Save
+  </button>
+
+  <button ng-click="show.cancelEdit()"
+          ng-disabled="show.loading"
+          class="dual secondary">
+    Cancel
+  </button>
+</div>

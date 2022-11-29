@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="8092"/>
+    </dependencies>
+    <scenes>
+        <!--SwipeToMeet-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller title="SwipeToMeet" id="AgC-eL-Hgc" customClass="InterfaceController">
+                    <items>
+                        <table alignment="left" id="Feu-go-EOd">
+                            <items>
+                                <tableRow identifier="TimelineRow" id="O91-sO-m0T" customClass="TimelineRow">
+                                    <group key="rootItem" width="1" alignment="left" id="rkA-pF-b0u">
+                                        <items>
+                                            <group width="3" height="1" alignment="left" alpha="0.0" radius="3" id="Raa-NE-mx8" userLabel="GraphicGroup">
+                                                <color key="backgroundColor" red="0.40392157439999998" green="0.81176471709999998" blue="0.91372549530000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            </group>
+                                            <group width="1" alignment="left" verticalAlignment="center" id="0bW-fZ-f41" userLabel="LabelGroup">
+                                                <items>
+                                                    <label alignment="left" verticalAlignment="center" text="Untitled meeting" numberOfLines="2" id="l3f-6O-IbH"/>
+                                                </items>
+                                                <edgeInsets key="margins" left="3" right="0.0" top="0.0" bottom="0.0"/>
+                                            </group>
+                                        </items>
+                                        <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                    </group>
+                                    <connections>
+                                        <outlet property="meetingTitleLabel" destination="l3f-6O-IbH" id="kZ9-FS-GMK"/>
+                                    </connections>
+                                </tableRow>
+                                <tableRow identifier="TimelineRowHighlight" id="i8f-oW-Arh" userLabel="TimelineRow_hilight" customClass="TimelineRow">
+                                    <group key="rootItem" width="1" alignment="left" id="YMA-63-szx">
+                                        <items>
+                                            <group width="3" height="1" alignment="left" radius="3" id="r53-32-E7A" userLabel="GraphicGroup">
+                                                <color key="backgroundColor" red="0.40392157439999998" green="0.81176471709999998" blue="0.91372549530000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            </group>
+                                            <group width="1" alignment="left" verticalAlignment="center" id="ztE-ef-mQT" userLabel="LabelGroup">
+                                                <items>
+                                                    <label alignment="left" verticalAlignment="center" text="Untitled meeting" numberOfLines="2" id="4mF-Fl-b8U" userLabel="Meeting Title Label"/>
+                                                </items>
+                                                <edgeInsets key="margins" left="3" right="0.0" top="0.0" bottom="0.0"/>
+                                            </group>
+                                        </items>
+                                        <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                    </group>
+                                    <connections>
+                                        <outlet property="meetingTitleLabel" destination="4mF-Fl-b8U" id="dxY-Z6-dda"/>
+                                    </connections>
+                                </tableRow>
+                                <tableRow identifier="TimelineRowFailed" id="eQc-cj-39P" userLabel="TimelineRow_failed" customClass="TimelineRow">
+                                    <group key="rootItem" width="1" alignment="left" id="nFp-Rl-0pB">
+                                        <items>
+                                            <group width="3" height="1" alignment="left" radius="3" id="uuB-4K-FF8" userLabel="GraphicGroup">
+                                                <color key="backgroundColor" red="0.87450981140136719" green="0.45490196347236633" blue="0.45490196347236633" alpha="1" colorSpace="calibratedRGB"/>
+                                            </group>
+                                            <group width="1" alignment="left" verticalAlignment="center" id="lZs-Zf-CeO" userLabel="LabelGroup">
+                                                <items>
+                                                    <label alignment="left" verticalAlignment="center" text="Untitled meeting" numberOfLines="2" id="jtk-uz-xET" userLabel="Meeting Title Label"/>
+                                                </items>
+                                                <edgeInsets key="margins" left="3" right="0.0" top="0.0" bottom="0.0"/>
+                                            </group>
+                                        </items>
+                                        <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                    </group>
+                                    <connections>
+                                        <outlet property="meetingTitleLabel" destination="jtk-uz-xET" id="OmJ-Ua-AcT"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                        <group width="1" alignment="left" hidden="YES" layout="vertical" id="gC4-ve-5Ar" userLabel="Empty timeline">
+                            <items>
+                                <label alignment="left" text="Nothing here" id="KBz-dF-iT0">
+                                    <color key="textColor" red="0.40392157439999998" green="0.81176471709999998" blue="0.91372549530000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                </label>
+                                <label alignment="left" text="You have no active schedulings. Create one using your iPhone app." numberOfLines="7" id="n2v-WZ-9Ad">
+                                    <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                </label>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="emptyTimelineGroup" destination="gC4-ve-5Ar" id="QLK-je-km9"/>
+                        <outlet property="timelineTable" destination="Feu-go-EOd" id="nIb-5g-lyk"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="220" y="345"/>
+        </scene>
+        <!--SwipeToMeet-->
+        <scene sceneID="dG3-hx-pou">
+            <objects>
+                <controller identifier="SignInController" title="SwipeToMeet" hidesWhenLoading="NO" id="mvK-b5-atk" customClass="SignInController">
+                    <items>
+                        <label alignment="left" text="Please sign in" id="WlL-ah-sFS">
+                            <color key="textColor" red="0.40392157439999998" green="0.81176471709999998" blue="0.91372549530000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                        </label>
+                        <label alignment="left" text="Get started by opening SwipeToMeet app simultaneously in your Apple Watch and iPhone." numberOfLines="7" id="sxI-nK-hb0">
+                            <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                        </label>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="219" y="575"/>
+        </scene>
+        <!--ThanksController-->
+        <scene sceneID="mGZ-hn-uWa">
+            <objects>
+                <controller identifier="ThanksController" id="ljh-VQ-5Qi" customClass="ThanksController">
+                    <items>
+                        <label alignment="left" text="Title" numberOfLines="2" id="DC7-qE-g3U">
+                            <color key="textColor" red="0.40392157439999998" green="0.81176471709999998" blue="0.91372549530000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                        </label>
+                        <label alignment="left" text="Message" numberOfLines="10" id="9L4-es-f3v">
+                            <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                        </label>
+                        <button width="1" alignment="left" verticalAlignment="bottom" title="Okay" id="68R-wa-pCg">
+                            <connections>
+                                <action selector="didTapButton" destination="ljh-VQ-5Qi" id="gf0-L3-x7m"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="messageLabel" destination="9L4-es-f3v" id="ygU-cb-WFj"/>
+                        <outlet property="titleLabel" destination="DC7-qE-g3U" id="sd9-Rj-XxA"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="435" y="575"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" text="Alert Label" numberOfLines="6" id="IdU-wH-bcW"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="swipetomeet" id="JfB-70-Muf"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="220" y="803"/>
+        </scene>
+        <!--Close-->
+        <scene sceneID="chl-lx-o1M">
+            <objects>
+                <controller identifier="SuggestionController" title="Close" id="QAs-Vp-Mby" customClass="SuggestionController">
+                    <items>
+                        <group width="1" height="1" alignment="left" layout="vertical" id="uoa-uu-6IE" userLabel="OptionGroup">
+                            <items>
+                                <group width="1" alignment="left" layout="vertical" id="tC2-vg-YMe" userLabel="TimeGroup">
+                                    <items>
+                                        <label width="136" alignment="center" text="Is this time suitable?" textAlignment="center" numberOfLines="2" id="fQV-zF-Uql">
+                                            <color key="textColor" red="0.67450982332229614" green="0.67450982332229614" blue="0.67450982332229614" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="font" type="system" pointSize="12"/>
+                                        </label>
+                                        <group width="1" alignment="center" layout="vertical" id="Dh9-g2-8FT">
+                                            <items>
+                                                <label alignment="center" text="Thu, Oct 1" textAlignment="center" id="Bt8-ZG-F2A">
+                                                    <fontDescription key="font" type="system" pointSize="24"/>
+                                                </label>
+                                                <label alignment="center" text="11:00 PM - 12:00 PM" textAlignment="center" id="sis-pH-t4s">
+                                                    <fontDescription key="font" type="system" pointSize="13"/>
+                                                </label>
+                                            </items>
+                                        </group>
+                                    </items>
+                                    <edgeInsets key="margins" left="0.0" right="0.0" top="15" bottom="0.0"/>
+                                </group>
+                                <group width="1" alignment="center" verticalAlignment="bottom" id="P6h-LO-Oez" userLabel="AnswerGroup">
+                                    <items>
+                                        <group width="0.5" alignment="left" id="cYd-jv-RjO" userLabel="DeclinedGroup">
+                                            <items>
+                                                <group width="50" height="50" alignment="center" radius="25" id="UMF-JV-Pzt" userLabel="BackgroundGroup">
+                                                    <items>
+                                                        <button width="1" height="1" alignment="left" title="×" id="d4Z-51-4Nl">
+                                                            <color key="backgroundColor" red="0.94901960784313721" green="0.27843137254901962" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <fontDescription key="font" type="boldSystem" pointSize="50"/>
+                                                            <connections>
+                                                                <action selector="didTapNoButton" destination="QAs-Vp-Mby" id="eQV-VH-alb"/>
+                                                            </connections>
+                                                        </button>
+                                                    </items>
+                                                    <color key="backgroundColor" red="0.87450981139999995" green="0.45490196350000001" blue="0.45490196350000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                </group>
+                                            </items>
+                                        </group>
+                                        <group width="0.5" alignment="left" id="uNb-n1-TC8" userLabel="AcceptedGroup">
+                                            <items>
+                                                <group width="50" height="50" alignment="center" radius="25" id="sG2-zt-6QX" userLabel="BackgroundGroup">
+                                                    <items>
+                                                        <button width="1" height="1" alignment="left" title="✓" id="jfx-rF-dJ8">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="backgroundColor" red="0.4392156862745098" green="0.81960784313725488" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <fontDescription key="font" type="boldSystem" pointSize="44"/>
+                                                            <connections>
+                                                                <action selector="didTapYesButton" destination="QAs-Vp-Mby" id="kpf-R0-W0v"/>
+                                                            </connections>
+                                                        </button>
+                                                    </items>
+                                                    <color key="backgroundColor" red="0.54901963470000004" green="0.78431373829999995" blue="0.39215686919999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                </group>
+                                            </items>
+                                        </group>
+                                    </items>
+                                </group>
+                            </items>
+                        </group>
+                        <group width="1" height="1" alignment="left" hidden="YES" layout="vertical" id="QaH-Zg-vOw" userLabel="AnimationGroup">
+                            <items>
+                                <group width="1" alignment="center" verticalAlignment="center" id="jOB-Sk-IVa" userLabel="AcceptedGroup">
+                                    <items>
+                                        <group width="100" height="100" alignment="center" radius="50" id="sx2-aL-FGq" userLabel="BackgroundGroup">
+                                            <items>
+                                                <button width="1" alignment="center" title="✓" id="AJv-bw-QtW">
+                                                    <fontDescription key="font" type="boldSystem" pointSize="88"/>
+                                                </button>
+                                            </items>
+                                        </group>
+                                    </items>
+                                    <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                </group>
+                                <group width="1" alignment="center" verticalAlignment="center" hidden="YES" id="5Cd-DE-bMs" userLabel="DeclinedGroup">
+                                    <items>
+                                        <group width="100" height="100" alignment="center" radius="50" id="1cj-M4-flg" userLabel="BackgroundGroup">
+                                            <items>
+                                                <button width="1" height="1" alignment="center" verticalAlignment="center" title="×" id="bRE-Pc-3IO">
+                                                    <fontDescription key="font" type="boldSystem" pointSize="100"/>
+                                                </button>
+                                            </items>
+                                        </group>
+                                    </items>
+                                    <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                </group>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="acceptedGroup" destination="jOB-Sk-IVa" id="9ug-p4-vg1"/>
+                        <outlet property="animationGroup" destination="QaH-Zg-vOw" id="8XQ-Vl-2Wt"/>
+                        <outlet property="declinedGroup" destination="5Cd-DE-bMs" id="spH-iE-YPQ"/>
+                        <outlet property="optionGroup" destination="uoa-uu-6IE" id="ps3-c7-3JY"/>
+                        <outlet property="suggestionDateLabel" destination="Bt8-ZG-F2A" id="R8n-Tk-npB"/>
+                        <outlet property="suggestionTimeLabel" destination="sis-pH-t4s" id="WHI-Cs-9gB"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="657" y="345"/>
+        </scene>
+        <!--Meeting request-->
+        <scene sceneID="jCP-eN-Lf9">
+            <objects>
+                <controller identifier="LandingPageController" title="Meeting request" animationDuration="500" id="DSu-fM-guT" customClass="LandingPageController">
+                    <items>
+                        <group width="1" alignment="left" id="Yl0-ah-bHe" userLabel="MeetingGroup">
+                            <items>
+                                <group width="3" height="1" alignment="left" radius="3" id="Kwi-0p-t0W" userLabel="GraphicGroup">
+                                    <color key="backgroundColor" red="0.40392157439999998" green="0.81176471709999998" blue="0.91372549530000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </group>
+                                <group width="1" alignment="left" layout="vertical" id="wjc-Fj-DNW" userLabel="LabelGroup">
+                                    <items>
+                                        <label width="136" alignment="left" text="Untitled meeting" numberOfLines="4" id="UTY-Pv-dLO">
+                                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                        </label>
+                                        <label alignment="left" text="Location is undecided" numberOfLines="3" id="lkU-kd-g3z">
+                                            <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                        </label>
+                                    </items>
+                                    <edgeInsets key="margins" left="1" right="0.0" top="0.0" bottom="0.0"/>
+                                </group>
+                            </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="10" bottom="10"/>
+                        </group>
+                        <group width="1" height="38" alignment="left" verticalAlignment="bottom" id="VGq-cL-K0K" userLabel="DisabledGroup">
+                            <items>
+                                <label alignment="center" verticalAlignment="center" text="Please wait..." id="ODh-rC-Eme">
+                                    <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                </label>
+                            </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                        </group>
+                        <button width="1" alignment="left" verticalAlignment="bottom" hidden="YES" title="Answer" id="aVk-IT-iCV">
+                            <color key="backgroundColor" red="0.40392157435417175" green="0.81176471710205078" blue="0.91372549533843994" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="font" type="boldSystem" pointSize="15"/>
+                            <connections>
+                                <action selector="didTapAnswerButton" destination="DSu-fM-guT" id="t81-t0-4hj"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="answerButton" destination="aVk-IT-iCV" id="bJF-DM-FeJ"/>
+                        <outlet property="disabledLabelGroup" destination="VGq-cL-K0K" id="AEC-94-gbU"/>
+                        <outlet property="locationLabel" destination="lkU-kd-g3z" id="xGt-7y-BCw"/>
+                        <outlet property="titleLabel" destination="UTY-Pv-dLO" id="3xN-JJ-sFv"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="435" y="345"/>
+        </scene>
+        <!--TimeFoundController-->
+        <scene sceneID="Yug-TD-3y7">
+            <objects>
+                <controller identifier="TimeFoundController" animationDuration="500" id="ZW1-Bu-bTV" customClass="TimeFoundController">
+                    <items>
+                        <label alignment="center" text="Time found!" textAlignment="center" id="r2X-Vy-eIe"/>
+                        <label alignment="center" hidden="YES" text="Mon, Oct 5" textAlignment="center" id="84o-YS-OXW">
+                            <color key="textColor" red="0.40392157439999998" green="0.81176471709999998" blue="0.91372549530000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="font" type="system" pointSize="24"/>
+                        </label>
+                        <label alignment="center" hidden="YES" text="11:00 PM - 12:00 PM" textAlignment="center" id="80t-DQ-KtH">
+                            <color key="textColor" red="0.40392157439999998" green="0.81176471709999998" blue="0.91372549530000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="font" type="system" pointSize="13"/>
+                        </label>
+                        <button width="1" alignment="left" verticalAlignment="bottom" title="Awesome!" id="ExB-cj-Dfl">
+                            <connections>
+                                <action selector="didTapButton" destination="ZW1-Bu-bTV" id="APK-cx-sQv"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="dateLabel" destination="84o-YS-OXW" id="SF2-YW-hbV"/>
+                        <outlet property="timeLabel" destination="80t-DQ-KtH" id="i4F-KA-hlS"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="873" y="345"/>
+        </scene>
+        <!--Close-->
+        <scene sceneID="xah-fO-s6z">
+            <objects>
+                <controller identifier="AlertController" title="Close" animationDuration="500" id="J94-cd-aZi" customClass="AlertController">
+                    <items>
+                        <group width="1" alignment="left" id="PDq-n9-rZt">
+                            <items>
+                                <label alignment="left" verticalAlignment="center" text="Alert label" textAlignment="left" numberOfLines="2" id="IxC-Lb-d90">
+                                    <color key="textColor" red="0.40392157439999998" green="0.81176471709999998" blue="0.91372549530000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                </label>
+                            </items>
+                        </group>
+                        <label width="1" alignment="left" text="Alert message" textAlignment="left" numberOfLines="0" id="WrF-ah-mQ9">
+                            <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                        </label>
+                        <button width="1" alignment="left" verticalAlignment="bottom" title="Okay" id="23w-3R-MGb">
+                            <color key="backgroundColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="didTapButton" destination="J94-cd-aZi" id="teJ-Pg-zhO"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="messageLabel" destination="WrF-ah-mQ9" id="Y2g-Ls-N5L"/>
+                        <outlet property="titleLabel" destination="IxC-Lb-d90" id="hmj-c2-7PZ"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="873" y="575"/>
+        </scene>
+    </scenes>
+    <color key="tintColor" red="0.40392157435417175" green="0.81176471710205078" blue="0.91372549533843994" alpha="1" colorSpace="calibratedRGB"/>
+</document>

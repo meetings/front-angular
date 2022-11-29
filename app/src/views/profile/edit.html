@@ -1,0 +1,9 @@
+<!--
+  Wrapper for multi page app
+  In single page app ng-app has to be the same in every view and controller is injected in routeProvider
+-->
+<div ng-app="profileApp"
+     ng-controller="ProfileEditCtrl as edit"
+     ng-include="'_profile.html'"
+     class="steroids-wrapper">
+</div>

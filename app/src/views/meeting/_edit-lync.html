@@ -1,0 +1,78 @@
+<div class="radio-area">
+  <div class="radio-area-header">Select one the options below to activate Lync for this meeting.</div>
+  <ul class="radio-list">
+    <li>
+      <input type="radio"
+             id="lync_sip_radio"
+             class="ios7radio"
+             ng-model="show.meeting.online_conferencing_data.lync_mode"
+             value="sip">
+
+      <label for="lync_sip_radio"></label>
+
+      <label for="lync_sip_radio"
+             class="radio-list-label">
+        Use Lync address (SIP)
+      </label>
+    </li>
+
+    <li>
+      <input type="radio"
+             id="lync_copypaste_radio"
+             class="ios7radio"
+             ng-model="show.meeting.online_conferencing_data.lync_mode"
+             value="uri">
+
+      <label for="lync_copypaste_radio"></label>
+
+      <label for="lync_copypaste_radio"
+             class="radio-list-label">
+        Paste your Lync invitation
+      </label>
+
+    </li>
+  </ul>
+</div>
+<br>
+<div class="row edit-area"
+     ng-show="show.meeting.online_conferencing_data.lync_mode == 'sip'">
+  <div class="columns small-12">
+
+    <mtn-float-label for="lync_sip"
+                     ng-class="{ 'input-error': !show.communicationtool.lync_sip.$valid }">
+    </mtn-float-label>
+    <input type="text"
+           id="lync_sip"
+           name="lync_sip"
+           placeholder="Lync address (SIP)"
+           ng-model="show.meeting.online_conferencing_data.lync_sip"
+           mtn-blur-on-event="blurInput"
+           ng-pattern="/^(sip:)?[a-z0-9!#$%&'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*$/i">
+
+  </div>
+</div>
+
+<div class="edit-area"
+     ng-show="show.meeting.online_conferencing_data.lync_mode == 'uri'">
+
+  <mtn-float-label for="lync_copypaste">
+  </mtn-float-label>
+  <textarea id="lync_copypaste"
+            placeholder="Copy &amp; Paste your Lync invitation here."
+            rows="12"
+            ng-model="show.meeting.online_conferencing_data.lync_copypaste"
+            ui-tinymce="show.tinymceConf">
+  </textarea>
+
+  <!-- dummy button is used to get focus from tinymce because blur doesn't work -->
+  <button id="dummybutton"
+          style="opacity: 0;">
+  </button>
+
+</div>
+
+<div class="text-wrapper text-note">
+  <p>To get the invitation:</p>
+  <p>Office 365 user: Create a new meeting in the Web scheduler.</p>
+  <p>Desktop user: Press "New Lync Meeting" in your Outlook Calendar.</p>
+</div>

@@ -1,0 +1,71 @@
+<page-wrapper ng-model="index">
+
+<div ng-hide="index.isTrialExpired"
+     class="clearfix">
+
+  <div class="text-wrapper">
+    <p>Google Hangouts, Microsoft Lync and custom options are PRO features.</p>
+    <div class="pro_badge"><span><strong>Free</strong> 30 day trial</span></div>
+
+    <p>We offer you a <strong>free 30 day trial</strong> including all live communication tools and other great PRO features.</p>
+
+    <p>Benefits for upgrading:</p>
+    <ul>
+      <li>Unlimited meeting schedulers</li>
+      <li>Expanded live communication tools</li>
+      <li>Visual customization and branding</li>
+      <li>Unlimited meeting participants</li>
+      <li>Unlimited meeting materials</li>
+      <li>Backup to Dropbox</li>
+    </ul>
+
+    <p>Would you like to start your free trial now?</p>
+  </div>
+
+  <button class="dual"
+          ng-click="index.startTrial()">
+    Start trial
+  </button>
+
+  <button class="dual secondary"
+          ng-click="index.cancel()">
+    Cancel
+  </button>
+
+</div>
+
+<div ng-show="index.isTrialExpired"
+     class="clearfix">
+
+  <div class="text-wrapper">
+      <p>Google Hangouts, Microsoft Lync and custom options are PRO features.</p>
+      <div class="pro_badge"><span><br><strong>PRO</span></div>
+
+      <p>Benefits for upgrading:</p>
+      <ul>
+        <li>Unlimited meeting schedulers</li>
+        <li>Expanded live communication tools</li>
+        <li>Visual customization and branding</li>
+        <li>Unlimited meeting participants</li>
+        <li>Unlimited meeting materials</li>
+        <li>Backup to Dropbox</li>
+      </ul>
+
+      <p>You can manage your subscription on our website http://meetin.gs</p>
+
+      <p>Would you like to get a reminder about this to your email?</p>
+    </div>
+
+    <button class="dual"
+            ng-click="index.sendProFeaturesEmail()">
+      Remind me
+    </button>
+
+    <button class="dual secondary"
+            ng-click="index.cancel()">
+      Cancel
+    </button>
+
+</div>
+
+</page-wrapper>

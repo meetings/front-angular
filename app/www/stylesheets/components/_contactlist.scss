@@ -1,0 +1,58 @@
+.pickContact{
+  position: absolute;
+  right: 0;
+  width: 36px;
+  height: 44px;
+  padding-top:10px;
+}
+.pickContact i{
+  color: $pickContact-color;
+  border-radius: 100%;
+  border: 1px solid $pickContact-color;
+  width: 22px;
+  height: 22px;
+  font-size: 14px;
+  line-height: 22px;
+  text-align: center;
+}
+
+.contactlistItem{
+  background:$contactlistItemBg;
+  min-height:57px;
+  margin-bottom:1px;
+  padding-left:14px;
+  box-shadow: 14px 1px 0 0 $contactlistBg, 0px 1px 0 0 $contactlistItemBg;
+}
+.contactlistItem:last-child{
+  box-shadow: none;
+}
+
+.contactlistItem-label{
+  display: block;
+  padding-top: 5px;
+  line-height: 26px;
+  font-weight: bold;
+}
+
+.contactlistItem-type{
+  font-weight: bold;
+  color:$contactlistItem-type-color;
+}
+.contactlistItem-number{
+  font-weight: normal;
+  color:$contactlistItem-number-color;
+}
+
+.recentContactlistWrapper,
+.customContactForm{
+  .mtnList-header{
+    padding-left:14px;
+  }
+}
+
+.customContactForm{
+  margin-top:1em;
+}
+
+//--------------------------------------------------------------------------------------------------
+

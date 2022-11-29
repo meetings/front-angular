@@ -1,0 +1,14 @@
+<ul class="participant-list-container">
+
+  <li class="participant-list-item"
+      ng-repeat="participant in participants"
+      ng-class="{ 'disabled' : isDisabled(participant) }">
+
+    <mtn-avatar class="participant-list-item-avatar"
+                ng-model="participant"
+                rsvp-property-name="{{ rsvpPropertyName }}"
+                show-rsvp="showRsvp">
+    </mtn-avatar>
+
+  </li>
+</ul>

@@ -1,0 +1,76 @@
+<page-wrapper ng-model="index">
+<div class="mtnList">
+
+  <span class="mtnList-item mtnList-nav"
+        ng-click="index.openProfile()">
+    Profile
+  </span>
+
+  <span class="mtnList-item mtnList-nav"
+        ng-click="index.openRegionalSettings()">
+    Regional settings
+  </span>
+
+  <span class="mtnList-item mtnList-nav"
+        ng-click="index.openNotificationSettings()">
+    Notifications
+  </span>
+
+  <span class="mtnList-item mtnList-nav"
+        ng-click="index.openAccountSettings()">
+    Calendar integration
+  </span>
+
+  <span class="mtnList-item mtnList-nav"
+        ng-click="index.openCalendarSettings()">
+    Default calendars
+  </span>
+
+  <span class="mtnList-item mtnList-nav"
+        ng-if="index.openAppSettingsVisible"
+        ng-click="index.openAppSettings()">
+    Open app permissions
+  </span>
+</div>
+
+<div class="mtnList" ng-if="index.appConfig.appBrand != index.appConfig.appBrands.CMEET">
+  <mtn-a class="mtnList-item mtnList-nav "
+            href="{{ index.appConfig.supportLinks.support.url }}"
+            alt-href="{{ index.appConfig.supportLinks.support.alternativeUrl }}">
+    {{ index.appConfig.supportLinks.support.linkText }}
+  </mtn-a>
+
+  <mtn-a class="mtnList-item mtnList-nav settings-link"
+            href="{{ index.appConfig.supportLinks.facebook.url }}"
+            alt-href="{{ index.appConfig.supportLinks.facebook.alternativeUrl }}"
+            target="_blank">
+    {{ index.appConfig.supportLinks.facebook.linkText }}
+  </mtn-a>
+
+  <mtn-a class="mtnList-item mtnList-nav settings-link"
+            href="{{ index.appConfig.supportLinks.twitter.url }}"
+            alt-href="{{ index.appConfig.supportLinks.twitter.alternativeUrl }}"
+            target="_blank">
+    {{ index.appConfig.supportLinks.twitter.linkText }}
+  </mtn-a>
+
+</div>
+
+<button ng-click="index.signOut()" ng-if="index.deviceUtils.platform() != 'web'">
+    Sign out
+</button>
+
+<div class="mtnList"
+     ng-if="index.isDeveloperMenuVisible">
+
+  <div class="text-wrapper">
+    <h2>Developer (<span ng-bind="index.appEnvironment"></span>)</h2>
+  </div>
+
+  <span class="mtnList-item mtnList-nav"
+        ng-click="index.openStyleguide()">Styleguide</span>
+
+</div>
+
+<p class="appVersion">Version {{ index.appVersion }}</p>
+</page-wrapper>

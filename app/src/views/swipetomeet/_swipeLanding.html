@@ -1,0 +1,106 @@
+<page-wrapper ng-model="index">
+
+<div ng-show="!index.loading && !index.hasLeftScheduling" class="swipe-landing-wrapper">
+
+  <div class="meeting-theme"
+       ng-if="index.getBackgroundImageUrl(index.meeting) != ''"
+       ng-style="{backgroundImage:'url('+index.getBackgroundImageUrl(index.meeting)+')'}"></div>
+
+  <div class="swipe-calltoaction"
+       ng-hide="index.isReSwipe">
+    Please provide your availability for:
+  </div>
+  <div class="swipe-calltoaction"
+       ng-show="index.isReSwipe">
+    We need more input for:
+  </div>
+
+
+  <div class="swipe-meeting-details">
+
+    <div class="swipe-meeting-title"
+         ng-bind="index.meeting.title_value||'Untitled meeting'">
+    </div>
+
+    <div class="swipe-meeting-location">
+      <i class="icon icon-location"></i>
+      <span ng-bind="index.meeting.location_value||'Location is undecided'"
+            class="icon-sibling"></span>
+    </div>
+
+    <div class="swipe-meeting-details-block">
+      <div class="swipe-inviter-profile">
+
+        <mtn-avatar class="landing-avatar"
+                    ng-model="index.manager"
+                    organizer>
+        </mtn-avatar>
+
+        <div class="participant-details">
+          <span class="participant-name" ng-bind="index.manager.name"></span>
+
+          <span class="participant-org">
+            {{ index.manager.organization_title }}<span ng-show="index.manager.organization.length && index.manager.organization_title.length">,&#32;</span>{{ index.manager.organization }}
+          </span>
+
+          <span class="participant-mode">
+            Organizer
+          </span>
+        </div>
+
+      </div>
+    </div>
+<!-- mtnList-item-wrapper  -->
+    <div class="swipe-meeting-details-block swipe-participant-list"
+         ng-click="index.listClosed=!index.listClosed"
+         ng-class="{ 'swipe-participant-list-closed': (index.listClosed && index.participants.length>2) }">
+      <div ng-repeat="participant in index.participants"
+           class="swipe-participant-list-item">
+
+        <mtn-avatar class="landing-avatar"
+                    ng-model="participant">
+        </mtn-avatar>
+
+        <div class="participant-details">
+          <span class="participant-name" ng-bind="participant.name"></span>
+
+          <span class="participant-org">
+            {{ participant.organization_title }}<span ng-show="participant.organization.length && participant.organization_title.length">,&#32;</span>{{ participant.organization }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="swipe-meeting-details-block swipe-agenda"
+         ng-if="index.meeting.agenda_html"
+         ng-class="{ 'swipe-agenda-closed':index.listClosed }">
+         <h2>Agenda</h2>
+         <div ng-bind-html="index.meeting.agenda_html"></div>
+    </div>
+
+    <div class="swipe-meeting-details-block swipe-see-details"
+         ng-if="index.meeting.agenda_html || index.participants.length>2"
+         ng-click="index.listClosed=!index.listClosed">
+      <span ng-if="index.listClosed">
+        Show details
+      </span>
+      <span ng-if="!index.listClosed">
+        Hide details
+      </span>
+    </div>
+
+  </div>
+
+  <button ng-click="index.openSwipe()">Provide availability now</button>
+
+  <div ng-if="!index.isManager">
+    <button ng-disabled="index.btnWorking"
+            ng-click="index.leaveScheduling()"
+            class="link">
+      I'm not attending this meeting
+    </button>
+  </div>
+
+</div>
+
+</page-wrapper>

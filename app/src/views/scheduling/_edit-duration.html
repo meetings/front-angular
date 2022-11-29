@@ -1,0 +1,30 @@
+<page-wrapper ng-model="index">
+
+<div class="wizard-duration-other">
+
+  <div class="mtnList-header informative">Meeting duration</div>
+  <div class="mtnList-dual-wrapper">
+    <div class="mtnList-dual">
+      <select ng-model="index.s2m.durationHours"
+              ng-change="index.onDurationChange()"
+              ng-options="durationOption.name for durationOption in index.s2m.durationHourOptions"
+              mtn-blur-on-event="blurInput"
+              id="hours">
+      </select>
+      <label for="hours">{{index.s2m.durationHours.name}}</label>
+    </div>
+    <div class="mtnList-dual-between"></div>
+    <div class="mtnList-dual">
+      <select ng-model="index.s2m.durationMinutes"
+              ng-change="index.onDurationChange()"
+              ng-options="durationOption.name for durationOption in index.s2m.durationMinuteOptions"
+              mtn-blur-on-event="blurInput"
+              id="minutes">
+      </select>
+      <label for="minutes">{{index.s2m.durationMinutes.name}}</label>
+    </div>
+  </div>
+
+</div>
+
+</page-wrapper>

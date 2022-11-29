@@ -1,0 +1,359 @@
+.filter {
+  @include clearfix;
+  @include vendor-prefix-attr(position, sticky);
+  top: rem-calc(0px);
+  z-index: $filter-zindex;
+  background: rgba($filter-background, 0.96);
+  padding: rem-calc(5px);
+
+  .search-input {
+    width: 100%;
+    height: rem-calc(50px);
+    display: block;
+    box-sizing: border-box;
+  }
+}
+
+.notifications-empty{
+  padding-top:40px;
+}
+.notifications-empty,
+.timeline-empty {
+  text-align: center;
+}
+
+.squirrel {
+  width: 75%;
+}
+
+.bubble {
+  padding: rem-calc(20px);
+  margin: rem-calc(30px) rem-calc(20px);
+  background: $timeline-bubble-background;
+  border: 1px solid $timeline-bubble-border;
+  color: $timeline-item-primary;
+  text-align: center;
+  position: relative;
+
+  &:after {
+    background: $timeline-bubble-background;
+    border-right: 1px solid $timeline-bubble-border;
+    border-bottom: 1px solid $timeline-bubble-border;
+    width: rem-calc(20px);
+    height: rem-calc(20px);
+    position: absolute;
+    bottom: rem-calc(-11px);
+    left: 80%;
+    display: block;
+    @include vendor-prefix(transform, rotate(45deg) skewY(30deg) skewX(20deg));
+    content: '';
+  }
+}
+
+.timeline {
+  z-index: $timeline-zindex;
+  background: $timeline-background;
+}
+
+.timeline-tabs {
+  @include clearfix;
+  font-family: "Museo Sans", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  border-bottom: 1px solid $timeline-tab-border;
+  margin-bottom: rem-calc(10px);
+}
+
+.timeline-tab {
+  @include button(rem-calc(12px), $timeline-tab);
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  float: left;
+  width: 50%;
+  line-height: rem-calc(44px);
+  text-align: center;
+  background: $timeline-tab;
+  margin:0;
+  border-bottom: 1px solid $timeline-tab-bottom-border;
+  .timeline-tabs &{
+    border-bottom:0 none;
+  }
+  &.tab-selected {
+    background: $timeline-tab-selected;
+  }
+
+  &.full-width {
+    width: 100%;
+  }
+
+  &.sticky {
+      @include vendor-prefix-attr(position, sticky);
+      top: 0;
+      z-index: $timeline-tab-sticky-zindex;
+      border: none;
+  }
+}
+
+.timeline-list {
+  background: $timeline-background url('../images/timeline-bg.png') rem-calc(26px) rem-calc(0px) repeat-y;
+  border: none;
+
+}
+
+.timeline-list-header {
+  background: transparent;
+  border: none;
+  text-shadow: none;
+  color: $timeline-item-primary;
+  font-size: $timeline-list-header--font-size;
+  font-weight: normal;
+  text-transform: uppercase;
+  margin: 0;
+  margin-bottom: rem-calc(10px);
+  padding-left: rem-calc(15px);
+}
+
+.timeline-list-container {
+  background: transparent;
+  border: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  padding-bottom: rem-calc(8px);
+}
+
+.timeline-list-date {
+  background: $timeline-date-background;
+  padding: rem-calc(0px) rem-calc(16px) rem-calc(0px) rem-calc(25px);
+  font-size: $timeline-list-date--font-size;
+  color: $timeline-item-secondary;
+  line-height: rem-calc(22px);
+  @include clearfix;
+  @include vendor-prefix-attr(position, sticky);
+  top: rem-calc(0px);
+  z-index: $timeline-list-date-zindex;
+
+  &.filter-visible {
+    top: rem-calc(40px);
+  }
+
+  .day {
+    float: left;
+  }
+
+  .date {
+    float: right;
+  }
+}
+
+.timeline-list-item {
+  border: none;
+  border-top: rem-calc(1px) solid $timeline-item-border;
+  color: $timeline-item-primary;
+  margin-top: rem-calc(0px);
+  position: relative;
+  padding: 0;
+
+  &:first-child {
+    border-top: none;
+  }
+}
+
+.task {
+  background: $task;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.meeting-wrapper {
+  background: $timeline-item-background url($arrow-right) (100% - 100% * (14 / 320)) 50% no-repeat;
+  background: $timeline-item-background url($arrow-right) calc(100% - 14px) 50% no-repeat;
+  position: relative;
+  top: rem-calc(0px);
+  left: rem-calc(0px);
+  padding: rem-calc(11px) rem-calc(16px) rem-calc(8px) rem-calc(26px);
+}
+
+%status-subtitle {
+  @include truncate-text(calc(100% - 14px));
+  font-size: $timeline--status-subtitle--font-size;
+  margin-top: rem-calc(-9px);
+  margin-bottom: rem-calc(-6px);
+  line-height: 20px;
+  font-weight: normal;
+}
+
+.draft {
+  @extend %status-subtitle;
+  color: $timeline-meeting-draft;
+}
+
+.suggested {
+  @extend %status-subtitle;
+  color: $timeline-meeting-suggested;
+}
+
+.matchmaking, .invitation {
+  @extend %status-subtitle;
+  color: $timeline-meeting-matchmaking;
+}
+
+.timeline-list-title {
+  @include truncate-text(calc(100% - 14px));
+  font-size: $timeline-list-title--font-size;
+  margin-top: rem-calc(-6px);
+  margin-bottom: rem-calc(-1px);
+  line-height: rem-calc(28px);
+  font-weight: bold;
+}
+
+.timeline-list-location .online-location{
+  margin-right:5px;
+}
+
+.timeline-list-duration,
+.timeline-list-location {
+  @include truncate-text(calc(100% - 14px));
+  font-size: $timeline-list-duration--font-size;
+  color: $timeline-item-secondary;
+  margin-bottom: rem-calc(2px);
+  font-weight: bold;
+  line-height:14px;
+  .icon{
+    padding-right: 4px;
+  }
+}
+
+.suggestion-actions {
+  background: $timeline-item-background;
+  border-top: rem-calc(1px) solid $timeline-item-border;
+  padding-top: rem-calc(10px);
+}
+
+.infinite-scroll-wrapper {
+  height: rem-calc(24px);
+}
+
+.infinite-scroll.spinner {
+  width: rem-calc(18px);
+  height: rem-calc(18px);
+
+  left: (50% - 100% * (9 / 320));
+  left: calc(50% - #{rem-calc(9px)});
+  position: relative;
+  top: 0;
+  @include vendor-prefix-opacity(1);
+  @include vendor-prefix(transition-delay, 0s);
+
+}
+
+// Museo Sans has empty spacing over each letter.
+// It requires this kind of fix class in order to get it vertically aligned with any item on the same line.It
+.meeting-category-title {
+  top: rem-calc(1px);
+  position: relative;
+  display: inline-block;
+  font-weight:bold;
+}
+
+.timeline-header-icon {
+  $timeline-icon-container-size:20px;
+  $timeline-icon-size:$timeline-icon-container-size * (12/20);
+
+  color: $icon-color;
+  @include border-radius(100%);
+  font-weight: bold;
+  text-align: center;
+  margin-right: mtn-rem(2px);
+  width: mtn-rem($timeline-icon-container-size);
+  height: mtn-rem($timeline-icon-container-size);
+  display: inline-block;
+  border: mtn-rem(2px) solid $icon-color;
+  box-sizing: content-box;
+
+  font-size: $timeline-icon-size;
+  line-height: $timeline-icon-container-size;
+
+  &.today {
+    background: $icon-today;
+  }
+
+  &.schedule {
+    background: $icon-schedule;
+  }
+
+  &.this-week {
+    background: $icon-this-week;
+  }
+
+  &.next-week {
+    background: $icon-next-week;
+  }
+
+  &.future {
+    background: $icon-future;
+  }
+
+  &.past {
+    background: $icon-past;
+  }
+}
+
+.participant-summary{
+  .rsvp-yes{background-color: $rsvp-yes;}
+  .rsvp-maybe{background-color: $rsvp-maybe;}
+  .rsvp-no{background-color: $rsvp-no;}
+}
+
+.date-separator-newline{
+  visibility: visible;
+  display: inline;
+}
+.date-separator-comma{
+  visibility: hidden;
+  display: none;
+}
+
+.divider{
+  height:0.5em;
+  border-bottom:1px solid $body-font-color;
+  overflow:visible;
+  line-height: 1em;
+  text-align: center;
+  margin:8px 14px 24px;
+  span{
+    display:inline-block;
+    padding:0 5px;
+    background:$body-background
+    ;
+  }
+}
+
+
+
+.onlineDetails{
+  font-weight: normal;
+}
+.mtnList-nav div.onlineDetails{
+  margin-left:27px;
+}
+
+.meeting-theme{
+  min-height:108px;
+  height:108px;
+  height:20vh;
+  max-height: 800px;
+  background-color: white;
+  background-position: center 0%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+.meeting-wisdom p{
+  text-align: center;
+  font-style: italic;
+  color:$medium-grey2;
+}

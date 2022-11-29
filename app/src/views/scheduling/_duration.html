@@ -1,0 +1,19 @@
+<page-wrapper ng-model="index" class="page-background-white">
+
+<div>
+  <div class="wizard-option">
+    <div class="wizard-option-img wizard-option-img-duration"></div>
+    <h1><strong>How long</strong> will the meeting last?</h1>
+  </div>
+
+  <button ng-click="index.selectDuration(30)">30 minutes</button>
+
+  <button ng-click="index.selectDuration(60)">An hour</button>
+
+  <button ng-click="index.selectDuration(120)">Two hours</button>
+
+  <button class="link"
+          ng-click="index.openDurationEdit()">Other</button>
+</div>
+
+</page-wrapper>

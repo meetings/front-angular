@@ -1,0 +1,105 @@
+<page-wrapper ng-model="log" class="page-background-white">
+
+<div ng-bind-html="log.instruction" class="log-instruction"></div>
+
+<div class="log-user-state">
+  <div class="log-user-state--not-yet-answered">
+    Not yet answered
+  </div>
+
+  <div ng-repeat="item in log.userStates.invited"
+       class="user-state--user"
+       ng-click="log.openParticipant(item.participant_id)">
+
+    <mtn-avatar class="user-state__avatar"
+                ng-model="item.user">
+    </mtn-avatar>
+  </div>
+
+  <span class="log-user-state--empty"
+        ng-if="log.userStates.invited.length == 0">&ndash;</span>
+</div>
+
+<div class="log-user-state">
+  <div class="log-user-state--availability-needed">
+    Availability needed
+  </div>
+
+  <div ng-repeat="item in log.userStates.availability_needed"
+       class="user-state--user"
+       ng-click="log.openParticipant(item.participant_id)">
+
+    <mtn-avatar class="user-state__avatar"
+                ng-model="item.user">
+    </mtn-avatar>
+  </div>
+
+  <span class="log-user-state--empty"
+        ng-if="log.userStates.availability_needed.length == 0">&ndash;</span>
+</div>
+
+<div class="log-user-state">
+  <div class="log-user-state--common-time-found">
+    Common time found
+  </div>
+
+  <div ng-repeat="item in log.userStates.common_time_found"
+       class="user-state--user"
+       ng-click="log.openParticipant(item.participant_id)">
+
+    <mtn-avatar class="user-state__avatar"
+                ng-model="item.user">
+    </mtn-avatar>
+  </div>
+
+  <span class="log-user-state--empty"
+        ng-if="log.userStates.common_time_found.length == 0">&ndash;</span>
+</div>
+
+<div class="log-title">Scheduling progress</div>
+<div class="log-wrapper"
+     ng-class="{ full: log.fullLog }"
+     ng-click="log.toggleLogSize()">
+
+  <div class="log-table-wrapper">
+    <div class="log-table"
+         ng-class="{ longlist: log.eventLog.length > 6 }">
+
+      <div ng-repeat="item in log.eventLog"
+           class="log-row">
+
+        <div ng-model="item.timestamp"
+             ng-cloak
+             epoch-model
+             epoch-format="{{ log.dateHelper.formatTime }}"
+             class="log-row__timestamp">
+        </div>
+
+        <div ng-bind-html="item.formattedMsg"
+             class="log-row__data">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button ng-click="log.openSwipeToMeet()"
+        ng-if="log.showProvideAvailabilityButton">
+  Provide availability
+</button>
+
+<button ng-click="log.openMeeting()"
+        ng-if="log.showMeetingDetailsButton"
+        ng-class="{'secondary':log.showProvideAvailabilityButton}">
+  Meeting details
+</button>
+
+<button class="secondary"
+        ng-click="log.openDateEdit()">
+  Scheduling settings
+</button>
+
+<!-- <button class="link">Save settings as new template</button> -->
+
+
+</page-wrapper>

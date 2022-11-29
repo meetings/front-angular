@@ -1,0 +1,19 @@
+<page-wrapper ng-model="index" class="page-background-white">
+
+<div>
+  <div class="wizard-option">
+    <div class="wizard-option-img wizard-option-img-when"></div>
+    <h1><strong>When</strong> do you want to meet?</h1>
+  </div>
+
+  <button ng-click="index.selectTime([0,1,2,3,4], 9*60*60, 17*60*60)">Between 9-to-5</button>
+
+  <button ng-click="index.selectTime([0,1,2,3,4], 11*60*60, 13*60*60, 'Meeting with')">During lunch</button>
+
+  <button ng-click="index.selectTime([0,1,2,3,4], 17*60*60, 19*60*60, 'Meeting with')">In the evening</button>
+
+  <button class="link"
+          ng-click="index.openTimeEdit()">Other</button>
+</div>
+
+</page-wrapper>

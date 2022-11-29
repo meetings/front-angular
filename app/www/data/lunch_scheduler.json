@@ -1,0 +1,285 @@
+[
+  {
+    "is_scheduling_template": "1",
+    "available_timespans": [],
+    "background_theme": "12",
+    "buffer": 30,
+    "description": "Hello! I have made my calendar available to you. Please click on the button below to start scheduling the meeting.",
+    "duration": 60,
+    "event_data": {},
+    "last_active_epoch": 0,
+    "location": "",
+    "meeting_type": "2",
+    "name": "Lunch meeting",
+    "online_conferencing_data": {},
+    "online_conferencing_option": null,
+    "organizer_swiping_required": 1,
+    "planning_buffer": 1800,
+    "slots": [
+      {
+        "begin_second": 39600,
+        "end_second": 46800,
+        "weekday": 0
+      },
+      {
+        "begin_second": 39600,
+        "end_second": 46800,
+        "weekday": 1
+      },
+      {
+        "begin_second": 39600,
+        "end_second": 46800,
+        "weekday": 2
+      },
+      {
+        "begin_second": 39600,
+        "end_second": 46800,
+        "weekday": 3
+      },
+      {
+        "begin_second": 39600,
+        "end_second": 46800,
+        "weekday": 4
+      }
+    ]
+  },
+  {
+    "is_scheduling_template": "1",
+    "available_timespans": [],
+    "background_theme": "8",
+    "buffer": 30,
+    "description": "Hello! I have made my calendar available to you. Please click on the button below to start scheduling the meeting.",
+    "duration": 60,
+    "event_data": {},
+    "last_active_epoch": 0,
+    "location": "",
+    "meeting_type": "0",
+    "name": "Business meeting",
+    "online_conferencing_data": {},
+    "online_conferencing_option": null,
+    "organizer_swiping_required": 1,
+    "planning_buffer": 1800,
+    "slots": [
+      {
+        "begin_second": 28800,
+        "end_second": 57600,
+        "weekday": 0
+      },
+      {
+        "begin_second": 28800,
+        "end_second": 57600,
+        "weekday": 1
+      },
+      {
+        "begin_second": 28800,
+        "end_second": 57600,
+        "weekday": 2
+      },
+      {
+        "begin_second": 28800,
+        "end_second": 57600,
+        "weekday": 3
+      },
+      {
+        "begin_second": 28800,
+        "end_second": 57600,
+        "weekday": 4
+      }
+    ]
+  },
+  {
+    "is_scheduling_template": "1",
+    "available_timespans": [],
+    "background_theme": "4",
+    "buffer": 30,
+    "description": "Hello! I have made my calendar available to you. Please click on the button below to start scheduling the meeting.",
+    "duration": 90,
+    "event_data": {},
+    "last_active_epoch": 0,
+    "location": "",
+    "meeting_type": "7",
+    "name": "Brainstorming session",
+    "online_conferencing_data": {},
+    "online_conferencing_option": null,
+    "organizer_swiping_required": 1,
+    "planning_buffer": 1800,
+    "slots": [
+      {
+        "begin_second": 32400,
+        "end_second": 54000,
+        "weekday": 0
+      },
+      {
+        "begin_second": 32400,
+        "end_second": 54000,
+        "weekday": 1
+      },
+      {
+        "begin_second": 32400,
+        "end_second": 54000,
+        "weekday": 2
+      },
+      {
+        "begin_second": 32400,
+        "end_second": 54000,
+        "weekday": 3
+      },
+      {
+        "begin_second": 32400,
+        "end_second": 54000,
+        "weekday": 4
+      }
+    ]
+  },
+  {
+    "is_scheduling_template": "1",
+    "available_timespans": [],
+    "background_theme": "2",
+    "buffer": 30,
+    "description": "Hello! I have made my calendar available to you. Please click on the button below to start scheduling the meeting.",
+    "duration": 90,
+    "event_data": {},
+    "last_active_epoch": 0,
+    "location": "",
+    "meeting_type": "2",
+    "name": "Afterwork dinner",
+    "online_conferencing_data": {},
+    "online_conferencing_option": null,
+    "organizer_swiping_required": 1,
+    "planning_buffer": 1800,
+    "slots": [
+      {
+        "begin_second": 64800,
+        "end_second": 79200,
+        "weekday": 0
+      },
+      {
+        "begin_second": 64800,
+        "end_second": 79200,
+        "weekday": 1
+      },
+      {
+        "begin_second": 64800,
+        "end_second": 79200,
+        "weekday": 2
+      },
+      {
+        "begin_second": 64800,
+        "end_second": 79200,
+        "weekday": 3
+      },
+      {
+        "begin_second": 64800,
+        "end_second": 79200,
+        "weekday": 4
+      }
+    ]
+  },
+  {
+    "is_scheduling_template": "1",
+    "available_timespans": [],
+    "background_theme": "3",
+    "buffer": 30,
+    "description": "Hello! I have made my calendar available to you. Please click on the button below to start scheduling the meeting.",
+    "duration": 240,
+    "event_data": {},
+    "last_active_epoch": 0,
+    "location": "",
+    "meeting_type": "5",
+    "name": "Hobbynight",
+    "online_conferencing_data": {},
+    "online_conferencing_option": null,
+    "organizer_swiping_required": 1,
+    "planning_buffer": 1800,
+    "slots": [
+      {
+        "begin_second": 64800,
+        "end_second": 79200,
+        "weekday": 0
+      },
+      {
+        "begin_second": 64800,
+        "end_second": 79200,
+        "weekday": 1
+      },
+      {
+        "begin_second": 64800,
+        "end_second": 79200,
+        "weekday": 2
+      },
+      {
+        "begin_second": 64800,
+        "end_second": 79200,
+        "weekday": 3
+      },
+      {
+        "begin_second": 64800,
+        "end_second": 79200,
+        "weekday": 4
+      },
+      {
+        "begin_second": 64800,
+        "end_second": 79200,
+        "weekday": 5
+      },
+      {
+        "begin_second": 64800,
+        "end_second": 79200,
+        "weekday": 6
+      }
+    ]
+  },
+  {
+    "is_scheduling_template": "1",
+    "available_timespans": [],
+    "background_theme": "10",
+    "buffer": 30,
+    "description": "Hello! I have made my calendar available to you. Please click on the button below to start scheduling the meeting.",
+    "duration": 240,
+    "event_data": {},
+    "last_active_epoch": 0,
+    "location": "",
+    "meeting_type": "3",
+    "name": "Saturday night fever",
+    "online_conferencing_data": {},
+    "online_conferencing_option": null,
+    "organizer_swiping_required": 1,
+    "planning_buffer": 1800,
+    "slots": [
+      {
+        "begin_second": 72000,
+        "end_second": 86400,
+        "weekday": 5
+      }
+    ]
+  },
+  {
+    "is_scheduling_template": "1",
+    "available_timespans": [],
+    "background_theme": "6",
+    "buffer": 30,
+    "description": "Hello! I have made my calendar available to you. Please click on the button below to start scheduling the meeting.",
+    "duration": 90,
+    "event_data": {},
+    "last_active_epoch": 0,
+    "location": "",
+    "meeting_type": "2",
+    "name": "Weekend brunch",
+    "online_conferencing_data": {},
+    "online_conferencing_option": null,
+    "organizer_swiping_required": 1,
+    "planning_buffer": 1800,
+    "slots": [
+      {
+        "begin_second": 39600,
+        "end_second": 54000,
+        "weekday": 5
+      },
+      {
+        "begin_second": 39600,
+        "end_second": 54000,
+        "weekday": 6
+      }
+    ]
+  }
+]

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="gs.meetin.connector"
+    version="2.5.0">
+
+    <name>Meetin.gs Calendar connector plugin</name>
+
+    <description>Sync device calendar to meetin.gs back end</description>
+
+    <license>Apache 2.0</license>
+
+    <engines>
+      <engine name="cordova" version=">=3.4.0" />
+    </engines>
+
+    <js-module src="www/CalendarConnector.js" name="CalendarConnector">
+         <clobbers target="CalendarConnector" />
+     </js-module>
+
+    <!-- android -->
+    <platform name="android">
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="CalendarConnectorPlugin">
+                <param name="android-package" value="gs.meetin.connector.CalendarConnectorPlugin"/>
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.READ_CALENDAR" />
+            <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <receiver android:name="gs.meetin.connector.AutoStart">
+                <intent-filter>
+                    <action android:name="android.intent.action.BOOT_COMPLETED" />
+                    <action android:name="restartService" />
+                </intent-filter>
+            </receiver>
+
+            <service
+                android:name="gs.meetin.connector.ConnectorService"
+                android:enabled="true"
+                android:exported="false" >
+            </service>
+
+        </config-file>
+
+        <source-file src="src/android/gs/meetin/connector/AutoStart.java" target-dir="src/gs/meetin/connector" />
+        <source-file src="src/android/gs/meetin/connector/CalendarConnectorPlugin.java" target-dir="src/gs/meetin/connector" />
+        <source-file src="src/android/gs/meetin/connector/CalendarManager.java" target-dir="src/gs/meetin/connector" />
+        <source-file src="src/android/gs/meetin/connector/ConnectorService.java" target-dir="src/gs/meetin/connector" />
+        <source-file src="src/android/gs/meetin/connector/AppConfig.java" target-dir="src/gs/meetin/connector" />
+        <source-file src="src/android/gs/meetin/connector/SessionManager.java" target-dir="src/gs/meetin/connector" />
+        <source-file src="src/android/gs/meetin/connector/SuggestionManager.java" target-dir="src/gs/meetin/connector" />
+
+        <source-file src="src/android/gs/meetin/connector/adapters/SessionAdapter.java" target-dir="src/gs/meetin/connector/adapters" />
+
+        <source-file src="src/android/gs/meetin/connector/dto/ApiError.java" target-dir="src/gs/meetin/connector/dto" />
+        <source-file src="src/android/gs/meetin/connector/dto/Attendee.java" target-dir="src/gs/meetin/connector/dto" />
+        <source-file src="src/android/gs/meetin/connector/dto/CalendarSuggestion.java" target-dir="src/gs/meetin/connector/dto" />
+        <source-file src="src/android/gs/meetin/connector/dto/MtnResponse.java" target-dir="src/gs/meetin/connector/dto" />
+        <source-file src="src/android/gs/meetin/connector/dto/SourceContainer.java" target-dir="src/gs/meetin/connector/dto" />
+        <source-file src="src/android/gs/meetin/connector/dto/SuggestionBatch.java" target-dir="src/gs/meetin/connector/dto" />
+        <source-file src="src/android/gs/meetin/connector/dto/SuggestionSource.java" target-dir="src/gs/meetin/connector/dto" />
+
+        <source-file src="src/android/gs/meetin/connector/events/ErrorEvent.java" target-dir="src/gs/meetin/connector/events" />
+        <source-file src="src/android/gs/meetin/connector/events/Event.java" target-dir="src/gs/meetin/connector/events" />
+        <source-file src="src/android/gs/meetin/connector/events/SessionEvent.java" target-dir="src/gs/meetin/connector/events" />
+        <source-file src="src/android/gs/meetin/connector/events/SuggestionEvent.java" target-dir="src/gs/meetin/connector/events" />
+
+        <source-file src="src/android/gs/meetin/connector/services/SuggestionService.java" target-dir="src/gs/meetin/connector/services" />
+
+        <source-file src="src/android/gs/meetin/connector/utils/DateHelper.java" target-dir="src/gs/meetin/connector/utils" />
+        <source-file src="src/android/gs/meetin/connector/utils/Device.java" target-dir="src/gs/meetin/connector/utils" />
+
+        <source-file src="src/android/libs/gson-2.3.1.jar" target-dir="libs/" />
+        <source-file src="src/android/libs/joda-time-2.7.jar" target-dir="libs/" />
+        <source-file src="src/android/libs/eventbus-2.4.0.jar" target-dir="libs/" />
+        <source-file src="src/android/libs/retrofit-1.4.1.jar" target-dir="libs/" />
+
+    </platform>
+</plugin>

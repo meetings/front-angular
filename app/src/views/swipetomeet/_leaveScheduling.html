@@ -1,0 +1,31 @@
+<page-wrapper ng-model="index"class="page-background-white">
+
+<div ng-if="!index.loading">
+
+  <div class="page-icon"><i class="icon icon-error"></i></div>
+
+  <div class="text-wrapper">
+    <h2>You left the scheduling</h2>
+
+    <p>Your availability will be ignored for this scheduling but you are still part of the meeting.</p>
+
+    <p>You can access the meeting details to see the all the meeting related information such as materials and discussions.</p>
+  </div>
+
+  <button ng-click="index.openMeeting()">
+    See meeting details
+  </button>
+
+  <div class="text-wrapper">
+    <p>Not participating at all?</p>
+  </div>
+
+  <button ng-click="index.confirmLeaveMeeting()"
+          class="alert"
+          ng-disabled="index.btnWorking">
+    Leave meeting
+  </button>
+
+</div>
+
+</page-wrapper>

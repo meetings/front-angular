@@ -1,0 +1,52 @@
+<page-wrapper ng-model="index">
+
+<div class="participants">
+
+  <div class="breadcrumb"
+       ng-bind="index.breadcrumb.title"
+       ng-class="{ 'clickable' : index.breadcrumb.clickable }"></div>
+
+  <div class="mtnList">
+    <div ng-repeat="participant in index.participants"
+         class="mtnList-item-wrapper swipe-wrapper" ng-class="{ 'animate-remove' : index.selectedIndex == $index }">
+
+      <div class="swipe-actions swipe-remove-btn"
+           ng-show="index.removeParticipantAllowed(participant)"
+           id="remove"
+           ng-click="index.removeParticipant(participant)">
+        Remove
+      </div>
+
+      <div class="swipe-drawer participant rsvp_{{ participant.rsvp_status }}"
+           ng-click="index.openParticipant(participant.id)"
+           mtn-swipe-to-reveal="remove"
+           mtn-on-reveal-actions="index.setSelectedIndex($index)"
+           mtn-on-hide-actions="index.setSelectedIndex(null)"
+           mtn-swipe-to-reveal-enabled="index.removeParticipantEnabled(participant)">
+
+        <participant ng-model="participant"
+                     show-rsvp="{{ index.meeting.current_scheduling_id == 0 }}">
+        </participant>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div ng-show="index.sendInvitationsVisible">
+
+    <span class="button-helptext">Participants have not yet been invited</span>
+
+    <button ng-click="index.sendInvitations()"
+            ng-disabled="index.btnWorking">
+      Send invitations
+      <span ng-class="{ 'spinner' : index.btnWorking == 'sendInvitations' }"></span>
+
+    </button>
+
+  </div>
+
+</div>
+
+</page-wrapper>

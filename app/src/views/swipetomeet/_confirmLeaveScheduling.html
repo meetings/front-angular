@@ -1,0 +1,25 @@
+<page-wrapper ng-model="index" class="page-background-white">
+
+<div ng-if="!index.loading && index.hasLeftScheduling"
+     class="text-wrapper">
+  <div class="page-icon"><i class="icon icon-error"></i></div>
+  <p>You are no longer participating to this scheduling.<p>
+</div>
+
+<div ng-if="!index.loading && !index.hasLeftScheduling">
+  <div class="text-wrapper text-starter">
+    <div class="page-icon"><i class="icon icon-error"></i></div>
+    <p>We are sad to see you go. Could we invite someone else to attend instead of you?</p>
+  </div>
+  <button ng-click="index.buttonYes()"
+          class="dual rsvp-yes">
+    Sure
+  </button>
+
+  <button ng-click="index.buttonNo()"
+          class="dual rsvp-no">
+    No thanks
+  </button>
+</div>
+
+</page-wrapper>

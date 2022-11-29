@@ -1,0 +1,147 @@
+<div ng-if="option.begin_epoch == null && !option.optionalCardVisible" class="swipe-card-loading">
+  <div class="cardloading">Loading<span class="l1">.</span><span class="l2">.</span><span class="l3">.</span></div>
+</div>
+
+<div ng-if="option.optionalCardVisible" class="swipe-enough">
+
+  <div class="yes-stamp">Swipe more</div>
+  <div class="no-stamp">I'm done</div>
+
+  <p class="swipe-enough-1">That's enough for now.</p>
+  <p class="swipe-enough-2">Continue swiping <br> to schedule faster</p>
+  <p class="swipe-enough-3">Swipe left to stop <span>OR</span> right to continue.</p>
+
+  <div class="swipe-left"></div>
+  <div class="swipe-right"></div>
+
+</div>
+
+<div ng-if="!(option.begin_epoch == null || option.optionalCardVisible)">
+
+  <div class="yes-stamp">Accept</div>
+  <div class="no-stamp">Decline</div>
+
+  <div class="swipe-suggestion-day"
+       ng-model="option.begin_epoch"
+       epoch-model
+       epoch-format="{{ parent.dateHelper.formatDayDate }}"></div>
+
+  <div class="swipe-suggestion-time">
+    <span ng-model="option.begin_epoch"
+          epoch-model
+          epoch-format="{{ parent.dateHelper.formatTime }}"></span>
+    -
+    <span ng-model="option.end_epoch"
+          epoch-model
+          epoch-format="{{ parent.dateHelper.formatTime }}"></span>
+  </div>
+
+
+  <div class="swipe-suggestion-participants">
+
+    <participantlist participants="option.participants"
+                     rsvp-property-name="answer"
+                     ng-hide="option.participants.length > parent.participantMaxCountBeforeSummary">
+    </participantlist>
+
+    <participantsummary participants="option.participants"
+                        rsvp-property-name="answer"
+                        ng-show="option.participants.length > parent.participantMaxCountBeforeSummary"
+                        hide-zero-declined="true">
+    </participantsummary>
+
+  </div>
+
+  <div class="swipe-suggestion-calendar-container">
+
+    <div ng-if="!option.user_calendar_entries.connected">
+      Skip unavailable times: <br>
+      <a ng-click="parent.openCalendarConnect()"
+         class="swipe-connect-calendar-link">
+        Connect calendar
+      </a>
+    </div>
+    <table class="swipe-suggestion-calendar"
+           ng-if="option.user_calendar_entries.connected">
+      <tr>
+        <td class="ssc-time">
+          <div ng-show="option.previousCalendarEntry.begin_epoch">
+            <span ng-model="option.previousCalendarEntry.begin_epoch"
+                  epoch-model
+                  epoch-format="{{ parent.dateHelper.formatTime }}">
+            </span>
+
+            &dash;
+
+            <span ng-if="!parent.isCalendarEntryTooLong(option.previousCalendarEntry)"
+                  ng-model="option.previousCalendarEntry.end_epoch"
+                  epoch-model
+                  epoch-format="{{ parent.dateHelper.formatTime }}">
+            </span>
+
+            <span ng-if="parent.isCalendarEntryTooLong(option.previousCalendarEntry)">...</span>
+
+          </div>
+        </td>
+        <td class="ssc-event">
+          <div class="ssc-event-nowrap">
+            <span ng-bind="option.previousCalendarEntry.title"
+                  ng-show="option.previousCalendarEntry.title"></span>
+            <span ng-hide="option.previousCalendarEntry.title">-</span>
+          </div>
+        </td>
+      </tr>
+      <tr class="ssc-suggestion">
+        <td class="ssc-time">
+          <span>
+            <span ng-model="option.begin_epoch"
+                  epoch-model
+                  epoch-format="{{ parent.dateHelper.formatTime }}"></span>
+
+            &dash;
+
+            <span ng-model="option.end_epoch"
+                  epoch-model
+                  epoch-format="{{ parent.dateHelper.formatTime }}"></span>
+          </span>
+        </td>
+        <td class="ssc-event">
+          <div class="ssc-event-nowrap">
+            <span ng-bind="parent.meeting.title_value"
+                  ng-show="parent.meeting.title_value"></span>
+            <span ng-hide="parent.meeting.title_value">Untitled Meeting</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="ssc-time">
+          <div ng-show="option.nextCalendarEntry.begin_epoch">
+            <span ng-model="option.nextCalendarEntry.begin_epoch"
+                  epoch-model
+                  epoch-format="{{ parent.dateHelper.formatTime }}">
+            </span>
+
+            &dash;
+
+            <span ng-if="!parent.isCalendarEntryTooLong(option.nextCalendarEntry)"
+                  ng-model="option.nextCalendarEntry.end_epoch"
+                  epoch-model
+                  epoch-format="{{ parent.dateHelper.formatTime }}">
+            </span>
+
+            <span ng-if="parent.isCalendarEntryTooLong(option.nextCalendarEntry)">...</span>
+
+          </div>
+        </td>
+        <td class="ssc-event">
+          <div class="ssc-event-nowrap">
+            <span ng-bind="option.nextCalendarEntry.title"
+                  ng-show="option.nextCalendarEntry.title"></span>
+            <span ng-hide="option.nextCalendarEntry.title">-</span>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+  </div>
+</div>

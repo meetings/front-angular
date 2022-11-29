@@ -1,0 +1,1503 @@
+<link rel="stylesheet" href="/stylesheets/styleguide.css" />
+<page-wrapper ng-model="index">
+
+<div class="content">
+
+<div class="swipeInfoBlock">
+  <h2>Timezone</h2>
+  <div class="tz">
+    <div class="tz-my-label">On <strong>your</strong> timezone</div>
+    <div class="tz-my-day">Thu 21 Nov</div>
+    <div class="tz-my-time">9:00 am - 10:30 am</div>
+    <div class="tz-my-tz">+3:00 Helsinki (Europe)</div>
+
+    <div class="tz-their-label">On <strong>Teemu Arina</strong>'s timezone</div>
+    <div class="tz-their-day">Thu 21 Nov</div>
+    <div class="tz-their-time">8:00 am - 9:30 am</div>
+    <div class="tz-their-tz">+2:00 Stockholm (Europe)</div>
+  </div>
+</div>
+<div class="swipeInfoBlock">
+  <h2>Your day Thu 21 Nov</h2>
+  <div class="day">
+    <table>
+      <tr>
+        <td class="time">
+          <span class="allday">all day</span>
+        </td>
+        <td class="event">
+          <span class="title">Anniversary</span>
+        </td>
+      </tr>
+      <tr>
+        <td class="time">
+          <span class="ends-title">ends</span>
+          <span class="ends">6:50 am</span>
+        </td>
+        <td class="event">
+          <span class="title">Mother-in-law visits on Wednesday and Thursday</span>
+        </td>
+      </tr>
+      <tr>
+        <td class="time">
+          <span class="begin">7:00 am</span>
+          <span class="duration">30m</span>
+        </td>
+        <td class="event">
+          <span class="title">Drive kids to daycare</span>
+        </td>
+      </tr>
+      <tr>
+        <td class="time">
+          <span class="begin">8:00 am</span>
+          <span class="duration">15m</span>
+        </td>
+        <td class="event">
+          <span class="title">Daily Scrum</span>
+          <span class="location">Scrum war-room</span>
+        </td>
+      </tr>
+      <tr class="suggested-event">
+        <td class="time">
+          <span class="begin">9:00 am</span>
+          <span class="duration">1h 30m</span>
+        </td>
+        <td class="event">
+          <span class="title">Company board meeting</span>
+          <span class="location">Company office in Helsinki</span>
+        </td>
+      </tr>
+      <tr>
+        <td class="time">
+          <span class="begin">12:30 pm</span>
+          <span class="duration">2h</span>
+        </td>
+        <td class="event">
+          <span class="title">Meeting with the business club.</span>
+        </td>
+      </tr>
+      <tr>
+        <td class="time">
+          <span class="begin">4:00 pm</span>
+          <span class="duration">1d 20h 15m</span>
+        </td>
+        <td class="event">
+          <span class="title">Two days with friends and relatives.</span>
+        </td>
+      </tr>
+    </table>
+    <p class="calendars">Select calendars for scheduling (2 of 20).</p>
+  </div>
+</div>
+<div class="swipeInfoBlock">
+  <h2>Scheduling options</h2>
+  <div class="options">
+    <p class="label">Scheduling times between</p>
+    <p class="data">Thu 21 Nov - Fri 1 Dec</p>
+
+    <p class="label">On weekdays</p>
+    <p class="data">Mon, Tue, Thu, Fri</p>
+
+    <p class="label">Between</p>
+    <p class="data">8:00 am - 4:00 pm</p>
+  </div>
+</div>
+<div class="swipeInfoBlock">
+  <h2>Meeting details</h2>
+  <div class="mtnList">
+    <a class="mtnList-item mtnList-title">Company board meet</a>
+    <a class="mtnList-item"><i class="icon icon-location"></i><span class="icon-sibling">Fredrikinkatu 61 A 60, Helsinki</span></a>
+    <a class="mtnList-item"><i class="icon icon-skype"></i><span class="icon-sibling">Communication on Skype</span></a>
+    <div class="mtnList-item mtnList-nav">
+
+      <div class="participant-meeting">
+        <ul class="participant-list-container">
+          <li class="avatar participant-list-item">
+            <span class="avatar-initials">
+              <span ng-hide="participant.image" ng-bind="participant.initials" class="ng-binding ng-hide">AV</span>
+            </span>
+            <img class="avatar-img" src="https://dev.meetin.gs/networking_raw/image/0/3028/64/64/portrait.png">
+            <span class="avatar-rsvp-overlay rsvp-yes" ng-class="{'rsvp-yes' : participant.rsvp_status === 'yes','rsvp-maybe' : participant.rsvp_status === '','rsvp-maybe' : !participant.rsvp_status,'rsvp-no' : participant.rsvp_status === 'no'}">
+            </span>
+          </li>
+          <li class="avatar participant-list-item">
+            <span class="avatar-initials">
+              <span ng-hide="participant.image" ng-bind="participant.initials" class="ng-binding ng-hide">TA</span>
+            </span>
+            <img class="avatar-img" src="https://dev.meetin.gs/networking_raw/image/0/5091/64/64/portrait.png">
+            <span class="avatar-rsvp-overlay rsvp-yes" ng-class="{'rsvp-yes' : participant.rsvp_status === 'yes','rsvp-maybe' : participant.rsvp_status === '','rsvp-maybe' : !participant.rsvp_status,'rsvp-no' : participant.rsvp_status === 'no'}">
+            </span>
+          </li>
+          <li class="avatar participant-list-item">
+            <span class="avatar-initials">
+              <span ng-hide="participant.image" ng-bind="participant.initials" class="ng-binding ng-hide">DE</span>
+            </span>
+            <img class="avatar-img" src="https://dev.meetin.gs/networking_raw/image/0/4633/64/64/portrait.png">
+            <span class="avatar-rsvp-overlay rsvp-yes" ng-class="{'rsvp-yes' : participant.rsvp_status === 'yes','rsvp-maybe' : participant.rsvp_status === '','rsvp-maybe' : !participant.rsvp_status,'rsvp-no' : participant.rsvp_status === 'no'}">
+            </span>
+          </li>
+          <li class="avatar participant-list-item">
+            <span class="avatar-initials">
+              <span ng-hide="participant.image" ng-bind="participant.initials" class="ng-binding ng-hide">MD</span>
+            </span>
+            <img class="avatar-img" src="https://dev.meetin.gs/networking_raw/image/0/4986/64/64/portrait.png">
+            <span class="avatar-rsvp-overlay rsvp-maybe" ng-class="{'rsvp-yes' : participant.rsvp_status === 'yes','rsvp-maybe' : participant.rsvp_status === '','rsvp-maybe' : !participant.rsvp_status,'rsvp-no' : participant.rsvp_status === 'no'}">
+            </span>
+          </li>
+          <li class="avatar participant-list-item">
+            <span class="avatar-initials">TA</span>
+            <span class="avatar-rsvp-overlay rsvp-no" ng-class="{'rsvp-yes' : participant.rsvp_status === 'yes','rsvp-maybe' : participant.rsvp_status === '','rsvp-maybe' : !participant.rsvp_status,'rsvp-no' : participant.rsvp_status === 'no'}">
+            </span>
+          </li>
+          <li class="avatar participant-list-item">
+            <span class="avatar-initials">MM</span>
+            <span class="avatar-rsvp-overlay rsvp-no" ng-class="{'rsvp-yes' : participant.rsvp_status === 'yes','rsvp-maybe' : participant.rsvp_status === '','rsvp-maybe' : !participant.rsvp_status,'rsvp-no' : participant.rsvp_status === 'no'}">
+            </span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="mtnList">
+    <a class="mtnList-item mtnList-nav">
+      <span class="material-wrapper">
+        <i class="icon icon-material_editabledocument"></i>
+        <span class="icon-sibling material-title">Agenda</span>
+      </span>
+    </a>
+  </div>
+</div>
+
+
+
+<div>
+  <form name="signInPhoneForm">
+    <div class="columns small-12 edit-area">
+      <mtn-float-label for="phone">
+      </mtn-float-label>
+      <input type="tel"
+             id="phone"
+             name="phone"
+             placeholder="Mobile phone number"
+             ng-model="signIn.phone"
+             mtn-blur-on-event="blurInput"
+             required
+             autocapitalize="none">
+    </div>
+    <div class="columns small-12 edit-area">
+      <mtn-float-label for="area">
+      </mtn-float-label>
+      <select name="area"
+              id="area"
+              placeholder="Country code">
+        <option value="" class="placeholder" disabled selected>Country code</option>
+<option value="AF">Afghanistan (+93)</option>
+<option value="AX">Aland Islands (+358-18)</option>
+<option value="AL">Albania (+355)</option>
+<option value="DZ">Algeria (+213)</option>
+<option value="AS">American Samoa (+1-684)</option>
+<option value="AD">Andorra (+376)</option>
+<option value="AO">Angola (+244)</option>
+<option value="AI">Anguilla (+1-264)</option>
+<option value="AG">Antigua and Barbuda (+1-268)</option>
+<option value="AR">Argentina (+54)</option>
+<option value="AM">Armenia (+374)</option>
+<option value="AW">Aruba (+297)</option>
+<option value="AU">Australia (+61)</option>
+<option value="AT">Austria (+43)</option>
+<option value="AZ">Azerbaijan (+994)</option>
+<option value="BS">Bahamas (+1-242)</option>
+<option value="BH">Bahrain (+973)</option>
+<option value="BD">Bangladesh (+880)</option>
+<option value="BB">Barbados (+1-246)</option>
+<option value="BY">Belarus (+375)</option>
+<option value="BE">Belgium (+32)</option>
+<option value="BZ">Belize (+501)</option>
+<option value="BJ">Benin (+229)</option>
+<option value="BM">Bermuda (+1-441)</option>
+<option value="BT">Bhutan (+975)</option>
+<option value="BO">Bolivia (+591)</option>
+<option value="BQ">Bonaire, Saint Eustatius and Saba  (+599)</option>
+<option value="BA">Bosnia and Herzegovina (+387)</option>
+<option value="BW">Botswana (+267)</option>
+<option value="BR">Brazil (+55)</option>
+<option value="IO">British Indian Ocean Territory (+246)</option>
+<option value="VG">British Virgin Islands (+1-284)</option>
+<option value="BN">Brunei (+673)</option>
+<option value="BG">Bulgaria (+359)</option>
+<option value="BF">Burkina Faso (+226)</option>
+<option value="BI">Burundi (+257)</option>
+<option value="KH">Cambodia (+855)</option>
+<option value="CM">Cameroon (+237)</option>
+<option value="CA">Canada (+1)</option>
+<option value="CV">Cape Verde (+238)</option>
+<option value="KY">Cayman Islands (+1-345)</option>
+<option value="CF">Central African Republic (+236)</option>
+<option value="TD">Chad (+235)</option>
+<option value="CL">Chile (+56)</option>
+<option value="CN">China (+86)</option>
+<option value="CX">Christmas Island (+61)</option>
+<option value="CC">Cocos Islands (+61)</option>
+<option value="CO">Colombia (+57)</option>
+<option value="KM">Comoros (+269)</option>
+<option value="CK">Cook Islands (+682)</option>
+<option value="CR">Costa Rica (+506)</option>
+<option value="HR">Croatia (+385)</option>
+<option value="CU">Cuba (+53)</option>
+<option value="CW">Curacao (+599)</option>
+<option value="CY">Cyprus (+357)</option>
+<option value="CZ">Czech Republic (+420)</option>
+<option value="CD">Democratic Republic of the Congo (+243)</option>
+<option value="DK">Denmark (+45)</option>
+<option value="DJ">Djibouti (+253)</option>
+<option value="DM">Dominica (+1-767)</option>
+<option value="DO">Dominican Republic (+1-809 and 1-829)</option>
+<option value="TL">East Timor (+670)</option>
+<option value="EC">Ecuador (+593)</option>
+<option value="EG">Egypt (+20)</option>
+<option value="SV">El Salvador (+503)</option>
+<option value="GQ">Equatorial Guinea (+240)</option>
+<option value="ER">Eritrea (+291)</option>
+<option value="EE">Estonia (+372)</option>
+<option value="ET">Ethiopia (+251)</option>
+<option value="FK">Falkland Islands (+500)</option>
+<option value="FO">Faroe Islands (+298)</option>
+<option value="FJ">Fiji (+679)</option>
+<option value="FI">Finland (+358)</option>
+<option value="FR">France (+33)</option>
+<option value="GF">French Guiana (+594)</option>
+<option value="PF">French Polynesia (+689)</option>
+<option value="GA">Gabon (+241)</option>
+<option value="GM">Gambia (+220)</option>
+<option value="GE">Georgia (+995)</option>
+<option value="DE">Germany (+49)</option>
+<option value="GH">Ghana (+233)</option>
+<option value="GI">Gibraltar (+350)</option>
+<option value="GR">Greece (+30)</option>
+<option value="GL">Greenland (+299)</option>
+<option value="GD">Grenada (+1-473)</option>
+<option value="GP">Guadeloupe (+590)</option>
+<option value="GU">Guam (+1-671)</option>
+<option value="GT">Guatemala (+502)</option>
+<option value="GG">Guernsey (+44-1481)</option>
+<option value="GN">Guinea (+224)</option>
+<option value="GW">Guinea-Bissau (+245)</option>
+<option value="GY">Guyana (+592)</option>
+<option value="HT">Haiti (+509)</option>
+<option value="HN">Honduras (+504)</option>
+<option value="HK">Hong Kong (+852)</option>
+<option value="HU">Hungary (+36)</option>
+<option value="IS">Iceland (+354)</option>
+<option value="IN">India (+91)</option>
+<option value="ID">Indonesia (+62)</option>
+<option value="IR">Iran (+98)</option>
+<option value="IQ">Iraq (+964)</option>
+<option value="IE">Ireland (+353)</option>
+<option value="IM">Isle of Man (+44-1624)</option>
+<option value="IL">Israel (+972)</option>
+<option value="IT">Italy (+39)</option>
+<option value="CI">Ivory Coast (+225)</option>
+<option value="JM">Jamaica (+1-876)</option>
+<option value="JP">Japan (+81)</option>
+<option value="JE">Jersey (+44-1534)</option>
+<option value="JO">Jordan (+962)</option>
+<option value="KZ">Kazakhstan (+7)</option>
+<option value="KE">Kenya (+254)</option>
+<option value="KI">Kiribati (+686)</option>
+<option value="KW">Kuwait (+965)</option>
+<option value="KG">Kyrgyzstan (+996)</option>
+<option value="LA">Laos (+856)</option>
+<option value="LV">Latvia (+371)</option>
+<option value="LB">Lebanon (+961)</option>
+<option value="LS">Lesotho (+266)</option>
+<option value="LR">Liberia (+231)</option>
+<option value="LY">Libya (+218)</option>
+<option value="LI">Liechtenstein (+423)</option>
+<option value="LT">Lithuania (+370)</option>
+<option value="LU">Luxembourg (+352)</option>
+<option value="MO">Macao (+853)</option>
+<option value="MK">Macedonia (+389)</option>
+<option value="MG">Madagascar (+261)</option>
+<option value="MW">Malawi (+265)</option>
+<option value="MY">Malaysia (+60)</option>
+<option value="MV">Maldives (+960)</option>
+<option value="ML">Mali (+223)</option>
+<option value="MT">Malta (+356)</option>
+<option value="MH">Marshall Islands (+692)</option>
+<option value="MQ">Martinique (+596)</option>
+<option value="MR">Mauritania (+222)</option>
+<option value="MU">Mauritius (+230)</option>
+<option value="YT">Mayotte (+262)</option>
+<option value="MX">Mexico (+52)</option>
+<option value="FM">Micronesia (+691)</option>
+<option value="MD">Moldova (+373)</option>
+<option value="MC">Monaco (+377)</option>
+<option value="MN">Mongolia (+976)</option>
+<option value="ME">Montenegro (+382)</option>
+<option value="MS">Montserrat (+1-664)</option>
+<option value="MA">Morocco (+212)</option>
+<option value="MZ">Mozambique (+258)</option>
+<option value="MM">Myanmar (+95)</option>
+<option value="NA">Namibia (+264)</option>
+<option value="NR">Nauru (+674)</option>
+<option value="NP">Nepal (+977)</option>
+<option value="NL">Netherlands (+31)</option>
+<option value="NC">New Caledonia (+687)</option>
+<option value="NZ">New Zealand (+64)</option>
+<option value="NI">Nicaragua (+505)</option>
+<option value="NE">Niger (+227)</option>
+<option value="NG">Nigeria (+234)</option>
+<option value="NU">Niue (+683)</option>
+<option value="NF">Norfolk Island (+672)</option>
+<option value="KP">North Korea (+850)</option>
+<option value="MP">Northern Mariana Islands (+1-670)</option>
+<option value="NO">Norway (+47)</option>
+<option value="OM">Oman (+968)</option>
+<option value="PK">Pakistan (+92)</option>
+<option value="PW">Palau (+680)</option>
+<option value="PS">Palestinian Territory (+970)</option>
+<option value="PA">Panama (+507)</option>
+<option value="PG">Papua New Guinea (+675)</option>
+<option value="PY">Paraguay (+595)</option>
+<option value="PE">Peru (+51)</option>
+<option value="PH">Philippines (+63)</option>
+<option value="PN">Pitcairn (+870)</option>
+<option value="PL">Poland (+48)</option>
+<option value="PT">Portugal (+351)</option>
+<option value="PR">Puerto Rico (+1-787 and 1-939)</option>
+<option value="QA">Qatar (+974)</option>
+<option value="CG">Republic of the Congo (+242)</option>
+<option value="RE">Reunion (+262)</option>
+<option value="RO">Romania (+40)</option>
+<option value="RU">Russia (+7)</option>
+<option value="RW">Rwanda (+250)</option>
+<option value="BL">Saint Barthelemy (+590)</option>
+<option value="SH">Saint Helena (+290)</option>
+<option value="KN">Saint Kitts and Nevis (+1-869)</option>
+<option value="LC">Saint Lucia (+1-758)</option>
+<option value="MF">Saint Martin (+590)</option>
+<option value="PM">Saint Pierre and Miquelon (+508)</option>
+<option value="VC">Saint Vincent and the Grenadines (+1-784)</option>
+<option value="WS">Samoa (+685)</option>
+<option value="SM">San Marino (+378)</option>
+<option value="ST">Sao Tome and Principe (+239)</option>
+<option value="SA">Saudi Arabia (+966)</option>
+<option value="SN">Senegal (+221)</option>
+<option value="RS">Serbia (+381)</option>
+<option value="SC">Seychelles (+248)</option>
+<option value="SL">Sierra Leone (+232)</option>
+<option value="SG">Singapore (+65)</option>
+<option value="SX">Sint Maarten (+599)</option>
+<option value="SK">Slovakia (+421)</option>
+<option value="SI">Slovenia (+386)</option>
+<option value="SB">Solomon Islands (+677)</option>
+<option value="SO">Somalia (+252)</option>
+<option value="ZA">South Africa (+27)</option>
+<option value="KR">South Korea (+82)</option>
+<option value="SS">South Sudan (+211)</option>
+<option value="ES">Spain (+34)</option>
+<option value="LK">Sri Lanka (+94)</option>
+<option value="SD">Sudan (+249)</option>
+<option value="SR">Suriname (+597)</option>
+<option value="SJ">Svalbard and Jan Mayen (+47)</option>
+<option value="SZ">Swaziland (+268)</option>
+<option value="SE">Sweden (+46)</option>
+<option value="CH">Switzerland (+41)</option>
+<option value="SY">Syria (+963)</option>
+<option value="TW">Taiwan (+886)</option>
+<option value="TJ">Tajikistan (+992)</option>
+<option value="TZ">Tanzania (+255)</option>
+<option value="TH">Thailand (+66)</option>
+<option value="TG">Togo (+228)</option>
+<option value="TK">Tokelau (+690)</option>
+<option value="TO">Tonga (+676)</option>
+<option value="TT">Trinidad and Tobago (+1-868)</option>
+<option value="TN">Tunisia (+216)</option>
+<option value="TR">Turkey (+90)</option>
+<option value="TM">Turkmenistan (+993)</option>
+<option value="TC">Turks and Caicos Islands (+1-649)</option>
+<option value="TV">Tuvalu (+688)</option>
+<option value="VI">U.S. Virgin Islands (+1-340)</option>
+<option value="UG">Uganda (+256)</option>
+<option value="UA">Ukraine (+380)</option>
+<option value="AE">United Arab Emirates (+971)</option>
+<option value="GB">United Kingdom (+44)</option>
+<option value="US">United States (+1)</option>
+<option value="UM">United States Minor Outlying Islands (+1)</option>
+<option value="UY">Uruguay (+598)</option>
+<option value="UZ">Uzbekistan (+998)</option>
+<option value="VU">Vanuatu (+678)</option>
+<option value="VA">Vatican (+379)</option>
+<option value="VE">Venezuela (+58)</option>
+<option value="VN">Vietnam (+84)</option>
+<option value="WF">Wallis and Futuna (+681)</option>
+<option value="EH">Western Sahara (+212)</option>
+<option value="YE">Yemen (+967)</option>
+<option value="ZM">Zambia (+260)</option>
+<option value="ZW">Zimbabwe (+263)</option>
+      </select>
+    </div>
+    <button ng-click="signIn.createPinRequest()"
+            ng-disabled="!signIn.phone || signIn.btnWorking">
+      Sign up or Login
+      <span class="spinner"
+            ng-if="signIn.btnWorking == 'pinRequest'"></span>
+    </button>
+
+    <div class="text-wrapper">
+      <p>
+        We will send you an access code via SMS.
+      </p>
+    </div>
+  </form>
+</div>
+
+<div>
+  <form name="signInPinForm" novalidate>
+    <div class="columns small-12 edit-area">
+      <mtn-float-label for="pin">
+      </mtn-float-label>
+      <input type="number"
+             id="pin"
+             pattern="[0-9]*"
+             name="pin"
+             placeholder="PIN"
+             ng-model="signIn.pin"
+             mtn-blur-on-event="blurInput"
+             required
+             autocapitalize="none">
+    </div>
+
+    <button ng-click="signIn.signIn()"
+            ng-disabled="!signIn.pin || signIn.btnWorking">
+      Sign in
+      <span class="spinner"
+            ng-if="signIn.btnWorking == 'signIn'"></span>
+    </button>
+  </form>
+</div>
+
+
+
+<div class="text-wrapper">
+  <h1>Styleguide</h1>
+
+  <p>This is the styleguide of the Meetings mobile app.</p>
+  <p>Here we document the usage of the project's HTML semantics and CSS styles.</p>
+</div>
+
+<div class="text-wrapper">
+  <h2>Using Web Views</h2>
+
+  <p>The common practice is to have an independent Web View for each AngularJS controller.</p>
+</div>
+
+  <button ng-click="index.openShowView()">Open a new Web View</button>
+
+<div class="text-wrapper">
+  <p>
+    You may also open content in the current Web View, should you need to make an exception and implement a Single Page App.
+    Notice how the back button behaves after you have clicked this button:
+  </p>
+</div>
+
+  <button ng-click="index.openSinglePageView()">Open Single Page view</button>
+
+<div class="text-wrapper">
+  <h2>Overlays</h2>
+</div>
+
+<button ng-click="index.toggleObtrusiveOverlayVisibility()">Toggle obtrusive overlay</button>
+
+<div class="overlay-obtrusive" ng-show="index.obtrusiveOverlayVisible">
+  This is a general overlay that can displayed on top of everything.
+  It is positioned according to the scroll position.
+  Container element below should have "disabled" class when obtrusive overlay is displayed.
+  Error message directive can be refactored to use this element.
+</div>
+
+<button ng-click="index.toggleError('Example error message. This message should be positioned according to the scroll position. This container is on top of everything and disallows clicking any elements below.')">Toggle error overlay</button>
+
+ <div class="text-wrapper styleguide-colors">
+  <h2>Colors</h2>
+  <p>These color variables should be used only within _variables.scss to define feature spesific color variables.</p>
+  <div class="styleguide-color styleguide-color1"></div>
+  <div class="styleguide-color styleguide-color2"></div>
+  <div class="styleguide-color styleguide-color3"></div>
+  <div class="styleguide-color styleguide-color4"></div>
+  <div class="styleguide-color styleguide-color5"></div>
+  <div class="styleguide-color styleguide-color6"></div>
+  <div class="styleguide-color styleguide-color7"></div>
+  <div class="styleguide-color styleguide-color8"></div>
+  <div class="styleguide-color styleguide-color9"></div>
+  <div class="styleguide-color styleguide-color10"></div>
+  <div class="styleguide-color styleguide-color11"></div>
+  <div class="styleguide-color styleguide-color12"></div>
+  <div class="styleguide-color styleguide-color13"></div>
+  <div class="styleguide-color styleguide-color14"></div>
+  <div class="styleguide-color styleguide-color15"></div>
+  <div class="styleguide-color styleguide-color16"></div>
+  <div class="styleguide-color styleguide-color17"></div>
+  <div class="styleguide-color styleguide-color18"></div>
+  <div class="styleguide-color styleguide-color19"></div>
+  <div class="styleguide-color styleguide-color20"></div>
+  <div class="styleguide-color styleguide-color21"></div>
+</div>
+
+ <div class="text-wrapper">
+  <h2>Images</h2>
+  <p>
+    Define images inside a picture element.
+    Use <code>ng-src</code> or WebView will try loading the image before Angular has updated the relevant scope variable.
+  </p>
+  <picture>
+    <img ng-src="images/mobiilisqurre.png">
+    <p>This is the image caption.</p>
+  </picture>
+</div>
+
+<div class="text-wrapper">
+  <h2>Buttons</h2>
+  <p>If you want flexible buttons without full width, add <code>.flexible</code> to <code>&lt;button&gt;</code></p>
+  <p>Note: click these buttons activates spinner to simulate sending data to api</p>
+</div>
+<button ng-click="index.btnClick('primary')"
+        ng-disabled="index.btnWorking">
+  Primary button
+  <span class="spinner"
+        ng-if="index.btnWorking == 'primary'"></span>
+</button>
+<button class="secondary"
+        ng-click="index.btnClick('secondary')"
+        ng-disabled="index.btnWorking">
+  Secondary button
+  <span class="spinner"
+        ng-if="index.btnWorking == 'secondary'"></span>
+</button>
+<button class="alert"
+        ng-click="index.btnClick('alert')"
+        ng-disabled="index.btnWorking">
+  Alert button
+  <span class="spinner"
+        ng-if="index.btnWorking == 'alert'"></span>
+</button>
+
+<div class="mtnList-header">Please set your RSVP status:</div>
+<button class="dual rsvp-yes"
+        ng-click="index.btnClick('yes')"
+        ng-disabled="index.btnWorking">
+  Attending
+  <span class="spinner"
+        ng-if="index.btnWorking == 'yes'"></span>
+</button>
+<button class="dual rsvp-no"
+        ng-click="index.btnClick('no')"
+        ng-disabled="index.btnWorking">
+  Not Attending
+  <span class="spinner"
+        ng-if="index.btnWorking == 'no'"></span>
+</button>
+
+<button class="flexible"
+        ng-click="index.btnClick('flexible')"
+        ng-disabled="index.btnWorking">
+  Flexible button
+  <span class="spinner"
+        ng-if="index.btnWorking == 'flexible'"></span>
+</button>
+
+<div class="text-wrapper">
+  <h3>Disabled buttons</h3>
+</div>
+<button disabled="disabled">Primary button</button>
+<button disabled="disabled" class="secondary">Secondary button</button>
+<button disabled="disabled" class="alert">Alert button</button>
+
+<div class="mtnList-header">Please set your RSVP status:</div>
+<button disabled="disabled" class="dual rsvp-yes">Attending</button>
+<button disabled="disabled" class="dual rsvp-no">Not Attending</button>
+
+<button disabled="disabled" class="flexible">Flexible button</button>
+
+
+<div class="text-wrapper">
+  <h3>Generic list components .mtnList</h3>
+  <p>When adding <code>ng-click</code> attributes, always add them to mtnList-item level, so that the whole row is tappable.</p>
+</div>
+
+<!-- This is a fake navigation bar, only to be used for demonstrating on styleguide -->
+<div class="htmlnav">Meeting, Organiser</div>
+
+
+<div class="mtnList">
+  <a class="mtnList-item mtnList-title mtnList-nav">The Great Pikkujoulu of Awesome 2013</a>
+  <a class="mtnList-item mtnList-nav"><i class="icon icon-calendar"></i><span class="icon-sibling">Thu Sep 26, 12&nbsp;PM &dash; 1:30&nbsp;PM &ndash; 1&nbsp;h 30&nbsp;min</span></a>
+  <a class="mtnList-item mtnList-nav"><i class="icon icon-location"></i><span class="icon-sibling">Fredrikinkatu 61 A 60, Helsinki</span></a>
+  <a class="mtnList-item mtnList-nav"><i class="icon icon-skype"></i><span class="icon-sibling">Communication on Skype</span></a>
+  <div class="mtnList-item mtnList-nav">
+
+    <div class="participant-meeting">
+      <ul class="participant-list-container">
+        <li class="avatar participant-list-item">
+          <span class="avatar-initials">
+            <span ng-hide="participant.image" ng-bind="participant.initials" class="ng-binding ng-hide">AV</span>
+          </span>
+          <img class="avatar-img" src="https://dev.meetin.gs/networking_raw/image/0/3028/64/64/portrait.png">
+          <span class="avatar-rsvp-overlay rsvp-yes" ng-class="{'rsvp-yes' : participant.rsvp_status === 'yes','rsvp-maybe' : participant.rsvp_status === '','rsvp-maybe' : !participant.rsvp_status,'rsvp-no' : participant.rsvp_status === 'no'}">
+          </span>
+        </li>
+        <li class="avatar participant-list-item">
+          <span class="avatar-initials">
+            <span ng-hide="participant.image" ng-bind="participant.initials" class="ng-binding ng-hide">TA</span>
+          </span>
+          <img class="avatar-img" src="https://dev.meetin.gs/networking_raw/image/0/5091/64/64/portrait.png">
+          <span class="avatar-rsvp-overlay rsvp-yes" ng-class="{'rsvp-yes' : participant.rsvp_status === 'yes','rsvp-maybe' : participant.rsvp_status === '','rsvp-maybe' : !participant.rsvp_status,'rsvp-no' : participant.rsvp_status === 'no'}">
+          </span>
+        </li>
+        <li class="avatar participant-list-item">
+          <span class="avatar-initials">
+            <span ng-hide="participant.image" ng-bind="participant.initials" class="ng-binding ng-hide">DE</span>
+          </span>
+          <img class="avatar-img" src="https://dev.meetin.gs/networking_raw/image/0/4633/64/64/portrait.png">
+          <span class="avatar-rsvp-overlay rsvp-yes" ng-class="{'rsvp-yes' : participant.rsvp_status === 'yes','rsvp-maybe' : participant.rsvp_status === '','rsvp-maybe' : !participant.rsvp_status,'rsvp-no' : participant.rsvp_status === 'no'}">
+          </span>
+        </li>
+        <li class="avatar participant-list-item">
+          <span class="avatar-initials">
+            <span ng-hide="participant.image" ng-bind="participant.initials" class="ng-binding ng-hide">MD</span>
+          </span>
+          <img class="avatar-img" src="https://dev.meetin.gs/networking_raw/image/0/4986/64/64/portrait.png">
+          <span class="avatar-rsvp-overlay rsvp-maybe" ng-class="{'rsvp-yes' : participant.rsvp_status === 'yes','rsvp-maybe' : participant.rsvp_status === '','rsvp-maybe' : !participant.rsvp_status,'rsvp-no' : participant.rsvp_status === 'no'}">
+          </span>
+        </li>
+        <li class="avatar participant-list-item">
+          <span class="avatar-initials">TA</span>
+          <span class="avatar-rsvp-overlay rsvp-no" ng-class="{'rsvp-yes' : participant.rsvp_status === 'yes','rsvp-maybe' : participant.rsvp_status === '','rsvp-maybe' : !participant.rsvp_status,'rsvp-no' : participant.rsvp_status === 'no'}">
+          </span>
+        </li>
+        <li class="avatar participant-list-item">
+          <span class="avatar-initials">MM</span>
+          <span class="avatar-rsvp-overlay rsvp-no" ng-class="{'rsvp-yes' : participant.rsvp_status === 'yes','rsvp-maybe' : participant.rsvp_status === '','rsvp-maybe' : !participant.rsvp_status,'rsvp-no' : participant.rsvp_status === 'no'}">
+          </span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="mtnList-item mtnList-nav">
+
+    <div class="participant-meeting">
+      <div class="participant-summary">
+        <span class="participant-summary-yes"><span class="rsvp-bullet rsvp-yes"></span>4 attending,</span>
+        <span class="participant-summary-maybe"><span class="rsvp-bullet rsvp-maybe"></span>1 unknown,</span>
+        <span class="participant-summary-no"><span class="rsvp-bullet rsvp-no"></span>0 declined</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="meetingProgress">
+  <progress max="350" value="280"></progress>
+  <p>Time left: <em>1 h 10 min</em></p>
+</div>
+
+<!-- <button>Set title</button> -->
+
+<div class="mtnList-header">Please set your RSVP status:</div>
+<button class="dual rsvp-yes">Attending</button>
+<button class="dual rsvp-no">Not Attending</button>
+
+<!-- <div class="mtnList-header">You will be able to join in 3 h 15 min.</div>
+<button>Join Skype conference</button> -->
+
+
+<div class="mtnList">
+  <div class="mtnList-item mtnList-toggle">
+    <input type="checkbox" name="toggleTest" value="3" id="toggleTest" class="ios7toggle">
+    <label for="toggleTest"></label>
+    <label for="toggleTest" class="mtnList-toggle-label">Require RSVP</label>
+  </div>
+</div>
+
+<div class="mtnList">
+  <a class="mtnList-item mtnList-nav">
+    <span class="material-wrapper">
+      <i class="icon icon-material_editabledocument"></i>
+      <span class="icon-sibling material-title">Agenda</span>
+    </span>
+    <span class="comment-count">99</span>
+  </a>
+  <a class="mtnList-item mtnList-nav">
+    <span class="material-wrapper">
+      <i class="icon icon-material_editabledocument"></i>
+      <span class="icon-sibling material-title">Action points</span>
+    </span>
+  </a>
+</div>
+
+<div class="mtnList">
+  <a class="mtnList-item mtnList-nav">
+    <span class="material-wrapper">
+      <i class="icon icon-material_image"></i>
+      <span class="icon-sibling material-title">Screenshot with a really long filename.png</span>
+    </span>
+    <span class="comment-count">3</span>
+  </a>
+  <a class="mtnList-item mtnList-nav">
+    <span class="material-wrapper">
+      <i class="icon icon-material_presentation"></i>
+      <span class="icon-sibling material-title">Presentation.pptx</span>
+    </span>
+  </a>
+</div>
+
+<button><i class="icon icon-add"></i><span class="icon-sibling">Add photo</span></button>
+
+
+
+<div class="text-wrapper">
+  <h3>Floating labels</h3>
+</div>
+
+<form>
+  <div class="row">
+    <div class="columns small-12 edit-area">
+
+    <mtn-float-label for="sample"
+           ng-show="index.sample_value.length">
+      Meeting sample
+    </mtn-float-label>
+    <input type="text"
+           id="sample"
+           placeholder="Meeting sample"
+           ng-model="index.sample_value">
+
+
+      <mtn-float-label for="title"
+             ng-show="index.title_value.length">
+        Meeting title
+      </mtn-float-label>
+      <textarea id="title"
+                placeholder="Meeting title"
+                rows="4"
+                ng-model="index.title_value"></textarea>
+    </div>
+  </div>
+  <div class="row">
+    <div class="columns small-12 edit-area">
+
+      <mtn-float-label  for="location"
+              ng-show="index.location_value.length">
+        Meeting location
+      </mtn-float-label>
+      <input  type="text"
+              id="location"
+              placeholder="Meeting location"
+              rows="4"
+              ng-model="index.location_value">
+
+    </div>
+  </div>
+</form>
+
+
+<div class="htmlnav">Notifications</div>
+
+<div class="notifications">
+
+  <div class="notification notification-new">
+    <i class="icon icon-comment"></i>
+    <span class="notification-text"><strong>Antero Aalto</strong> commented <strong>Joulupukki.jpg</strong> in <strong>The Great Pikkujoulu of Awesome 2013</strong></span>
+    <span class="notification-time">Today at 8:15 AM</span>
+  </div>
+
+  <div class="notification notification-new">
+    <i class="icon icon-time"></i>
+    <span class="notification-text">Meeting time was changed to <strong>Thu Jan&nbsp;30, 2014 at 9:00&nbsp;am - 5&nbsp;pm</strong> for <strong>The meeting in far future event</strong></span>
+    <span class="notification-time">Today at 8:15 AM</span>
+  </div>
+
+  <div class="notification">
+    <i class="icon icon-edit"></i>
+    <span class="notification-text"><strong>Antero Aalto</strong> changed the title of <strong>Pikkujoulut</strong> to <strong>The Great Pikkujoulu of Fantastically Awesome Year 2013 Together With ALL the Ugly Guys and Pretty Gals</strong></span>
+    <span class="notification-time">Today at 8:15 AM</span>
+  </div>
+
+  <div class="notification">
+    <i class="icon icon-location"></i>
+    <span class="notification-text">Meeting location changed to <strong>Cafe Lasipalatsi</strong> for <strong>The Great Pikkujoulu of Awesome 2013</strong></span>
+    <span class="notification-time">Today at 8:15 AM</span>
+  </div>
+
+</div>
+
+<div class="htmlnav">Edit profile</div>
+<div class="profile-basic-info">
+
+
+<picture class="avatar participant-avatar"
+       ng-click="index.toggleUpload()">
+
+<span class="avatar-initials">
+  <span ng-hide="index.participant.image || index.uploadProgress"
+        ng-bind="index.participant.initials"></span>
+</span>
+
+<img ng-src="{{index.participant.image}}"
+     ng-hide="!index.participant.image|| index.uploadProgress">
+
+<div ng-show="index.uploadProgress">
+  <mtn-upload-progress class="meetingProgress"
+                       max="index.uploadProgress.total"
+                       value="index.uploadProgress.loaded">
+  </mtn-upload-progress>
+</div>
+
+</picture>
+
+<div class="profile-edit">
+<div class="edit-area">
+
+  <mtn-float-label for="first_name"
+          ng-show="index.participant.first_name">
+    First name
+  </mtn-float-label>
+  <input type="text"
+         ng-model="index.participant.first_name"
+         id="first_name"
+         placeholder="First name">
+</div>
+<div class="edit-area">
+  <mtn-float-label for="last_name"
+          ng-show="index.participant.last_name">
+    Last name
+  </mtn-float-label>
+  <input type="text"
+         ng-model="index.participant.last_name"
+         id="last_name"
+         placeholder="Last name">
+</div>
+</div>
+</div>
+
+<div class="profile-edit">
+<div class="edit-area">
+<mtn-float-label for="organization_title"
+        ng-show="index.participant.organization_title">
+  Title
+</mtn-float-label>
+<input type="text"
+       ng-model="index.participant.organization_title"
+       id="organization_title"
+       placeholder="Title">
+</div>
+<div class="edit-area">
+
+<mtn-float-label for="organization"
+        ng-show="index.participant.organization">
+  Organization
+</mtn-float-label>
+<input type="text"
+       ng-model="index.participant.organization"
+       id="organization"
+       placeholder="Organization">
+</div>
+</div>
+
+<div class="profile-edit">
+<div class="edit-area">
+<mtn-float-label for="phone"
+        ng-show="index.participant.phone">
+  Phone
+</mtn-float-label>
+<input type="tel"
+       ng-model="index.participant.phone"
+       id="phone"
+       placeholder="Phone">
+</div>
+<div class="edit-area">
+
+<mtn-float-label for="skype"
+        ng-show="index.participant.skype">
+  Skype
+</mtn-float-label>
+<input type="text"
+       ng-model="index.participant.skype"
+       id="skype"
+       placeholder="Skype">
+</div>
+<div class="edit-area">
+
+<mtn-float-label ng-class="{ 'input-error': !profile.linkedin.$valid }"
+                 ng-show="index.participant.linkedin"
+                 for="linkedin">
+  LinkedIn profile
+</mtn-float-label>
+<input type="url"
+       name="linkedin"
+       ng-model="index.participant.linkedin"
+       id="linkedin"
+       placeholder="LinkedIn profile">
+</div>
+</div>
+
+<div class="text-wrapper">
+<h3>Participants list</h3>
+</div>
+<!-- This is a fake navigation bar, only to be used for demonstrating on styleguide -->
+<div class="htmlnav">Participants</div>
+<div class="breadcrumb">The Great Pikkujoulu of Awesome 2013</div>
+<div class="participants-header">Organisers</div>
+<div class="participants">
+<div class="participant">
+<picture class="avatar participant-avatar">
+
+  <span class="avatar-initials">
+    <span ng-hide="index.participant.image"
+          ng-bind="index.participant.initials"></span>
+  </span>
+
+  <img ng-src="{{ index.participant.image }}"
+       ng-show="index.participant.image"
+       class="avatar-img"
+       title="{{index.participant.name}}"
+       alt="{{index.participant.name}}"/>
+
+  <span class="avatar-rsvp-overlay"
+        ng-class="{'rsvp-yes' : index.participant.rsvp_status === 'yes',
+                   'rsvp-maybe' : index.participant.rsvp_status === '',
+                   'rsvp-maybe' : !index.participant.rsvp_status,
+                   'rsvp-no' : index.participant.rsvp_status === 'no'}">
+  </span>
+
+</picture>
+
+<span class="participant-name" ng-bind="index.participant.name"></span>
+<span class="participant-org">
+  {{ index.participant.organization_title }}<span ng-show="index.participant.organization.length && index.participant.organization_title.length">, </span>{{ index.participant.organization }}
+</span>
+<span class="participant-status"
+        ng-class="{'rsvp-yes' : index.participant.rsvp_status === 'yes',
+                   'rsvp-maybe' : index.participant.rsvp_status === '',
+                   'rsvp-maybe' : !index.participant.rsvp_status,
+                   'rsvp-no' : index.participant.rsvp_status === 'no'}">
+  {{ index.participant.rsvp_string }}
+</span>
+</div>
+</div>
+<div class="participants-header">Guests</div>
+<div class="participants">
+<div class="participant">
+<picture class="avatar participant-avatar">
+ <!--  <span class="avatar-initials">
+    <span ng-hide="true"
+          ng-bind="index.participant.initials">AV</span>
+  </span> -->
+
+  <img src="https://dev.meetin.gs/networking_raw/image/0/3028/120/120/portrait.png"
+       ng-show="true"
+       class="avatar-img"
+       alt="Antti Vähäkotamäki"
+       title="Antti Vähäkotamäki"/>
+
+  <span class="avatar-rsvp-overlay rsvp-maybe">
+  </span>
+</picture>
+<span class="participant-name">Antti Vähäkotamäki</span>
+<span class="participant-org"></span>
+<span class="participant-status rsvp-maybe">Unanswered</span>
+</div>
+
+<div class="participant">
+<picture class="avatar participant-avatar">
+  <!-- <span class="avatar-initials">
+    <span ng-hide="true"
+          ng-bind="index.participant.initials">AV</span>
+  </span> -->
+
+  <img src="https://dev.meetin.gs/networking_raw/image/0/3028/120/120/portrait.png"
+       ng-show="true"
+       class="avatar-img"
+       alt="Antti Vähäkotamäki"
+       title="Antti Vähäkotamäki"/>
+
+  <span class="avatar-rsvp-overlay rsvp-no">
+  </span>
+</picture>
+<span class="participant-name">Antti Vähäkotamäki</span>
+<span class="participant-org">CTO, Meetin.gs</span>
+<span class="participant-status rsvp-no">Not attending</span>
+</div>
+</div>
+
+
+<div class="participant">
+
+<picture class="avatar participant-avatar">
+
+  <span class="avatar-initials">
+    <span ng-hide="index.participant.image"
+          ng-bind="index.participant.initials"></span>
+  </span>
+
+  <img ng-src="{{ index.participant.image }}"
+       ng-show="index.participant.image"
+       class="avatar-img"
+       title="{{index.participant.name}}"
+       alt="{{index.participant.name}}"/>
+
+  <span class="avatar-rsvp-overlay"
+        ng-class="{'rsvp-yes' : index.participant.rsvp_status === 'yes',
+                   'rsvp-maybe' : index.participant.rsvp_status === '',
+                   'rsvp-maybe' : !index.participant.rsvp_status,
+                   'rsvp-no' : index.participant.rsvp_status === 'no'}">
+  </span>
+
+</picture>
+
+<span class="participant-name" ng-bind="index.participant.name"></span>
+<span class="participant-org">
+  {{ index.participant.organization_title }}<span ng-show="index.participant.organization.length && index.participant.organization_title.length">, </span>{{ index.participant.organization }}
+</span>
+<span class="participant-status"
+        ng-class="{'rsvp-yes' : index.participant.rsvp_status === 'yes',
+                   'rsvp-maybe' : index.participant.rsvp_status === '',
+                   'rsvp-maybe' : !index.participant.rsvp_status,
+                   'rsvp-no' : index.participant.rsvp_status === 'no'}">
+  {{ index.participant.rsvp_string }}
+</span>
+
+<span class="participant-contacts">
+
+  <span class="participant-contact participant-contact-mobile">
+    <span class="participant-contact-label">mobile</span>
+    <span class="participant-contact-data">+358 01234567</span>
+    <span class="participant-contact-buttons">
+      <span class="participant-contact-button"><i class="icon icon-comment_hollow"></i></span>
+      <span class="participant-contact-button"><i class="icon icon-phone_hollow"></i></span>
+    </span>
+  </span>
+
+  <span class="participant-contact">
+    <span class="participant-contact-label">email</span>
+    <span class="participant-contact-data">antti@dicole.com</span>
+    <span class="participant-contact-buttons">
+      <span class="participant-contact-button"><i class="icon icon-mail_hollow"></i></span>
+    </span>
+  </span>
+
+  <span class="participant-contact">
+    <span class="participant-contact-label">Skype</span>
+    <span class="participant-contact-data">vahakota</span>
+    <span class="participant-contact-buttons">
+      <span class="participant-contact-button"><i class="icon icon-skype"></i></span>
+    </span>
+  </span>
+
+  <span class="participant-contact">
+    <span class="participant-contact-label">LinkedIn</span>
+    <span class="participant-contact-data">Antti's LinkedIn Profile</span>
+    <span class="participant-contact-buttons">
+      <span class="participant-contact-button"><i class="icon mtn-icon-linkedin"></i></span>
+    </span>
+  </span>
+
+</span>
+</div>
+
+<div class="text-wrapper">
+<h3>Material with comments</h3>
+</div>
+
+<div class="breadcrumb">The Great Pikkujoulu of Awesome 2013</div>
+
+<div class="material-container">
+<h1 class="material-title">Agenda</h1>
+<div class="material-area">
+  <span>
+    <a href="https://dev.meetin.gs/meetings_raw/prese_download/0/3493/1182/4633_d-uLuYoJ9IiOJu-qc8yR4bNsw5Y"><img src="http://imgv2-2.scribdassets.com/img/word_document/199561567/408x228/2ec2f025e4/1389695049"></a>
+  </span>
+</div>
+</div>
+
+<div ng-show="show.loading" class="ng-hide">LOADING COMMENTS</div>
+
+<div class="material-comments">
+
+<div class="comment">
+  <div class="comment-timestamp">
+    15 Jan at 4:04 PM
+  </div>
+  <div class="comment-wrapper">
+    <picture class="avatar participant-avatar">
+
+      <span class="avatar-initials">
+        <span ng-hide="index.participant.image"
+              ng-bind="index.participant.initials"></span>
+      </span>
+
+      <img ng-src="{{ index.participant.image }}"
+           ng-show="index.participant.image"
+           class="avatar-img"
+           title="{{index.participant.name}}"
+           alt="{{index.participant.name}}"/>
+
+      <span class="avatar-rsvp-overlay"
+            ng-class="{'rsvp-yes' : index.participant.rsvp_status === 'yes',
+                       'rsvp-maybe' : index.participant.rsvp_status === '',
+                       'rsvp-maybe' : !index.participant.rsvp_status,
+                       'rsvp-no' : index.participant.rsvp_status === 'no'}">
+      </span>
+
+    </picture>
+
+    <div class="comment-area">
+      <div class="comment-message">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, eos deleniti inventore sed ipsam. Voluptas, perferendis, excepturi non qui sint natus vero aliquid dolore architecto consequuntur omnis voluptatem animi est.
+      </div>
+      <div class="comment-author">
+        {{index.participant.name}}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="comment">
+  <div class="comment-timestamp">
+    15 Jan at 4:04 PM
+  </div>
+  <div class="comment-wrapper">
+    <picture class="avatar participant-avatar">
+
+      <span class="avatar-initials">
+        <span ng-hide="index.participant2.image"
+              ng-bind="index.participant2.initials"></span>
+      </span>
+
+      <img ng-src="{{ index.participant2.image }}"
+           ng-show="index.participant2.image"
+           class="avatar-img"
+           title="{{index.participant2.name}}"
+           alt="{{index.participant2.name}}"/>
+
+      <span class="avatar-rsvp-overlay"
+            ng-class="{'rsvp-yes' : index.participant2.rsvp_status === 'yes',
+                       'rsvp-maybe' : index.participant2.rsvp_status === '',
+                       'rsvp-maybe' : !index.participant2.rsvp_status,
+                       'rsvp-no' : index.participant2.rsvp_status === 'no'}">
+      </span>
+
+    </picture>
+
+    <div class="comment-area">
+      <div class="comment-message">
+        Sounds like ponies &amp; kittens!
+      </div>
+      <div class="comment-author">
+        {{index.participant.name}}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+<div class="material-comment-new">
+
+<input type="text"
+       placeholder="Tap to comment"
+       ng-model="index.newComment"
+       class="ng-valid ng-dirty">
+
+<button class="comment-new"
+        ng-click="index.btnClick('materialComment')"
+        ng-disabled="!index.newComment || index.btnWorking">
+  Send
+  <span class="spinner"
+        ng-if="index.btnWorking == 'materialComment'"></span>
+</button>
+
+</div>
+
+
+
+
+<div class="text-wrapper">
+
+<h3>Available icons</h3>
+<p>When using icons, always remember to wrap the following text inside <code>&lt;span&gt; tags.</code></p>
+<style type="text/css">.iconlist .icon+span{margin-left:10px;display:inline-block; max-width:calc(100% - 30px);vertical-align: baseline;}</style>
+<ul style="list-style:none;margin:0;padding:4px; font-size:18px;" class="iconlist">
+
+<li><i class="icon icon-add"></i><span class="icon-sibling">.icon-add</span></li>
+<li><i class="icon icon-add_hollow"></i><span class="icon-sibling">.icon-add_hollow</span></li>
+<li><i class="icon icon-addressbook"></i><span class="icon-sibling">.icon-addressbook</span></li>
+<li><i class="icon icon-addressbook_detailed"></i><span class="icon-sibling">.icon-addressbook_detailed</span></li>
+<li><i class="icon icon-back"></i><span class="icon-sibling">.icon-back</span></li>
+<li><i class="icon icon-back_hollow"></i><span class="icon-sibling">.icon-back_hollow</span></li>
+<li><i class="icon icon-blank"></i><span class="icon-sibling">.icon-blank</span></li>
+<li><i class="icon icon-brush"></i><span class="icon-sibling">.icon-brush</span></li>
+<li><i class="icon icon-calendar"></i><span class="icon-sibling">.icon-calendar</span></li>
+<li><i class="icon icon-calendar_hollow"></i><span class="icon-sibling">.icon-calendar_hollow</span></li>
+<li><i class="icon icon-calendars"></i><span class="icon-sibling">.icon-calendars</span></li>
+<li><i class="icon icon-call"></i><span class="icon-sibling">.icon-call</span></li>
+<li><i class="icon icon-check"></i><span class="icon-sibling">.icon-check</span></li>
+<li><i class="icon icon-check_thin"></i><span class="icon-sibling">.icon-check_thin</span></li>
+<li><i class="icon icon-coffee"></i><span class="icon-sibling">.icon-coffee</span></li>
+<li><i class="icon icon-comment"></i><span class="icon-sibling">.icon-comment</span></li>
+<li><i class="icon icon-comment_hollow"></i><span class="icon-sibling">.icon-comment_hollow</span></li>
+<li><i class="icon icon-connect"></i><span class="icon-sibling">.icon-connect</span></li>
+<li><i class="icon icon-construction"></i><span class="icon-sibling">.icon-construction</span></li>
+<li><i class="icon icon-cross"></i><span class="icon-sibling">.icon-cross</span></li>
+<li><i class="icon icon-custom"></i><span class="icon-sibling">.icon-custom</span></li>
+<li><i class="icon icon-delete"></i><span class="icon-sibling">.icon-delete</span></li>
+<li><i class="icon icon-dinner"></i><span class="icon-sibling">.icon-dinner</span></li>
+<li><i class="icon icon-down1"></i><span class="icon-sibling">.icon-down1</span></li>
+<li><i class="icon icon-down2"></i><span class="icon-sibling">.icon-down2</span></li>
+<li><i class="icon icon-download"></i><span class="icon-sibling">.icon-download</span></li>
+<li><i class="icon icon-drinks"></i><span class="icon-sibling">.icon-drinks</span></li>
+<li><i class="icon icon-dropbox"></i><span class="icon-sibling">.icon-dropbox</span></li>
+<li><i class="icon icon-edit"></i><span class="icon-sibling">.icon-edit</span></li>
+<li><i class="icon icon-emblem"></i><span class="icon-sibling">.icon-emblem</span></li>
+<li><i class="icon icon-error"></i><span class="icon-sibling">.icon-error</span></li>
+<li><i class="icon mtn-icon-facebook"></i><span class="icon-sibling">.mtn-icon-facebook</span></li>
+<li><i class="icon icon-forward"></i><span class="icon-sibling">.icon-forward</span></li>
+<li><i class="icon icon-forward_small"></i><span class="icon-sibling">.icon-forward_small</span></li>
+<li><i class="icon mtn-icon-google"></i><span class="icon-sibling">.mtn-icon-google</span></li>
+<li><i class="icon icon-handshake"></i><span class="icon-sibling">.icon-handshake</span></li>
+<li><i class="icon icon-hangout"></i><span class="icon-sibling">.icon-hangout</span></li>
+<li><i class="icon icon-idea"></i><span class="icon-sibling">.icon-idea</span></li>
+<li><i class="icon icon-info"></i><span class="icon-sibling">.icon-info</span></li>
+<li><i class="icon icon-language"></i><span class="icon-sibling">.icon-language</span></li>
+<li><i class="icon icon-leftarrow"></i><span class="icon-sibling">.icon-leftarrow</span></li>
+<li><i class="icon icon-like"></i><span class="icon-sibling">.icon-like</span></li>
+<li><i class="icon mtn-icon-linkedin"></i><span class="icon-sibling">.mtn-icon-linkedin</span></li>
+<li><i class="icon icon-location"></i><span class="icon-sibling">.icon-location</span></li>
+<li><i class="icon icon-lock"></i><span class="icon-sibling">.icon-lock</span></li>
+<li><i class="icon icon-logout"></i><span class="icon-sibling">.icon-logout</span></li>
+<li><i class="icon icon-lync"></i><span class="icon-sibling">.icon-lync</span></li>
+<li><i class="icon icon-mail"></i><span class="icon-sibling">.icon-mail</span></li>
+<li><i class="icon icon-mail_hollow"></i><span class="icon-sibling">.icon-mail_hollow</span></li>
+<li><i class="icon icon-material_document"></i><span class="icon-sibling">.icon-material_document</span></li>
+<li><i class="icon icon-material_editabledocument"></i><span class="icon-sibling">.icon-material_editabledocument</span></li>
+<li><i class="icon icon-material_embed"></i><span class="icon-sibling">.icon-material_embed</span></li>
+<li><i class="icon icon-material_excel"></i><span class="icon-sibling">.icon-material_excel</span></li>
+<li><i class="icon icon-material_image"></i><span class="icon-sibling">.icon-material_image</span></li>
+<li><i class="icon icon-material_music"></i><span class="icon-sibling">.icon-material_music</span></li>
+<li><i class="icon icon-material_other"></i><span class="icon-sibling">.icon-material_other</span></li>
+<li><i class="icon icon-material_presentation"></i><span class="icon-sibling">.icon-material_presentation</span></li>
+<li><i class="icon icon-material_upload"></i><span class="icon-sibling">.icon-material_upload</span></li>
+<li><i class="icon icon-material_video"></i><span class="icon-sibling">.icon-material_video</span></li>
+<li><i class="icon icon-meetings"></i><span class="icon-sibling">.icon-meetings</span></li>
+<li><i class="icon icon-mobile"></i><span class="icon-sibling">.icon-mobile</span></li>
+<li><i class="icon icon-note"></i><span class="icon-sibling">.icon-note</span></li>
+<li><i class="icon icon-notification"></i><span class="icon-sibling">.icon-notification</span></li>
+<li><i class="icon icon-onlineconf"></i><span class="icon-sibling">.icon-onlineconf</span></li>
+<li><i class="icon icon-openinnew"></i><span class="icon-sibling">.icon-openinnew</span></li>
+<li><i class="icon icon-password"></i><span class="icon-sibling">.icon-password</span></li>
+<li><i class="icon icon-phone_hollow"></i><span class="icon-sibling">.icon-phone_hollow</span></li>
+<li><i class="icon icon-print"></i><span class="icon-sibling">.icon-print</span></li>
+<li><i class="icon icon-pro"></i><span class="icon-sibling">.icon-pro</span></li>
+<li><i class="icon icon-profile"></i><span class="icon-sibling">.icon-profile</span></li>
+<li><i class="icon icon-question"></i><span class="icon-sibling">.icon-question</span></li>
+<li><i class="icon icon-refresh_hollow"></i><span class="icon-sibling">.icon-refresh_hollow</span></li>
+<li><i class="icon icon-remove"></i><span class="icon-sibling">.icon-remove</span></li>
+<li><i class="icon icon-rename"></i><span class="icon-sibling">.icon-rename</span></li>
+<li><i class="icon icon-replace"></i><span class="icon-sibling">.icon-replace</span></li>
+<li><i class="icon icon-rightarrow"></i><span class="icon-sibling">.icon-rightarrow</span></li>
+<li><i class="icon icon-schedule"></i><span class="icon-sibling">.icon-schedule</span></li>
+<li><i class="icon icon-search"></i><span class="icon-sibling">.icon-search</span></li>
+<li><i class="icon icon-search_hollow"></i><span class="icon-sibling">.icon-search_hollow</span></li>
+<li><i class="icon icon-send"></i><span class="icon-sibling">.icon-send</span></li>
+<li><i class="icon icon-settings"></i><span class="icon-sibling">.icon-settings</span></li>
+<li><i class="icon icon-settings_hollow"></i><span class="icon-sibling">.icon-settings_hollow</span></li>
+<li><i class="icon icon-share"></i><span class="icon-sibling">.icon-share</span></li>
+<li><i class="icon icon-sidepanel"></i><span class="icon-sibling">.icon-sidepanel</span></li>
+<li><i class="icon icon-skype"></i><span class="icon-sibling">.icon-skype</span></li>
+<li><i class="icon icon-spinner"></i><span class="icon-sibling">.icon-spinner</span></li>
+<li><i class="icon icon-sports"></i><span class="icon-sibling">.icon-sports</span></li>
+<li><i class="icon icon-star"></i><span class="icon-sibling">.icon-star</span></li>
+<li><i class="icon icon-swipe"></i><span class="icon-sibling">.icon-swipe</span></li>
+<li><i class="icon icon-swipe_larger"></i><span class="icon-sibling">.icon-swipe_larger</span></li>
+<li><i class="icon icon-tablet"></i><span class="icon-sibling">.icon-tablet</span></li>
+<li><i class="icon icon-team"></i><span class="icon-sibling">.icon-team</span></li>
+<li><i class="icon icon-teleconf"></i><span class="icon-sibling">.icon-teleconf</span></li>
+<li><i class="icon icon-time"></i><span class="icon-sibling">.icon-time</span></li>
+<li><i class="icon icon-timeline"></i><span class="icon-sibling">.icon-timeline</span></li>
+<li><i class="icon mtn-icon-twitter"></i><span class="icon-sibling">.mtn-icon-twitter</span></li>
+<li><i class="icon icon-up"></i><span class="icon-sibling">.icon-up</span></li>
+<li><i class="icon icon-workshop"></i><span class="icon-sibling">.icon-workshop</span></li>
+
+</ul>
+</div>
+
+
+
+<div style="background: #67cfe9;">
+<div class="htmlnav">
+<span class="htmlnav-back" ng-click="signIn.setLocation('/timeline')"><i class="icon icon-back"></i></span>
+<span class="htmlnav-title">Meetin.gs</span>
+</div>
+<div class="loginpage-wrapper">
+<div class="logo">
+  <img ng-src="project/logo.png" width="237" height="98" alt="">
+</div>
+
+<button ng-click="signIn.setLocation('/session/signUp')" class="secondary">
+  Sign up
+</button>
+
+<button ng-click="signIn.setLocation('/session/signIn')" class="secondary">
+  Already a user? Sign in here
+</button>
+</div>
+</div>
+<div class="htmlnav">
+<span class="htmlnav-back" ng-click="signIn.setLocation('/timeline')"><i class="icon icon-back"></i></span>
+<span class="htmlnav-title">Meetin.gs</span>
+</div>
+<div class="loginpage-wrapper">
+<button class="google">
+<i class="icon mtn-icon-google" aria-hidden="true"></i>
+Sign in using Google
+</button>
+
+<div class="form-choise">or</div>
+
+<div class="edit-area">
+<mtn-float-label for="example"
+                 ng-show="signIn.session.example != ''">
+  Enter your email address
+</mtn-float-label>
+<input type="email"
+       id="example"
+       placeholder="Enter your example address"
+       ng-model="signIn.session.example"
+       required>
+</div>
+
+<button>
+Sign in
+</button>
+</div>
+
+
+<div class="text-wrapper">
+<p><strong>Ability to Enter into this Agreement</strong></p>
+
+<p>In order to enter into this Agreement, you must have reached the legal age of majority in your jurisdiction of residence or otherwise be legally eligible to be bound by this Agreement (e.g., by being an emancipated minor), and you must be fully able and competent to enter into the terms, conditions, obligations, affirmations, representations and warranties set forth in this Agreement, and to abide by and comply with this Agreement. It is your responsibility to ensure that you are legally eligible to enter into this Agreement under any laws applicable to you in your jurisdiction of residence or otherwise. If you accept this Agreement, you represent that you have the capacity to be bound by it.  If you are not of the age of majority or otherwise legally eligible to be bound by this Agreement, you may not use the Site or the Services.</p>
+</div>
+
+<div class="radio-area">
+<div class="radio-area-header">Select one the options below to activate Lync for this meeting.</div>
+<ul class="radio-list">
+<li>
+  <input type="radio" name="radio_a" value="radio_2" id="radio_2" class="ios7radio" checked>
+  <label for="radio_2"></label>
+  <label for="radio_2" class="radio-list-label">
+    Paste your Lync invitation
+  </label>
+</li>
+<li>
+  <input type="radio" name="radio_a" value="radio_1" id="radio_1" class="ios7radio">
+  <label for="radio_1"></label>
+  <label for="radio_1" class="radio-list-label">
+    Use Lync address (SIP)
+  </label>
+</li>
+</ul>
+</div>
+<br>
+<div class="row edit-area">
+<div class="columns small-12">
+
+<mtn-float-label for="lync_sip">
+</mtn-float-label>
+<input type="email"
+       id="lync_sip"
+       placeholder="Lync address (SIP)"
+       ng-model="show.meeting.online_conferencing_data.lync_sip"
+       mtn-blur-on-event="blurInput">
+
+</div>
+</div>
+<div class="row edit-area edit-multipart-form">
+<div class="columns small-12">
+
+<mtn-float-label for="lync_copypaste">
+</mtn-float-label>
+<textarea id="lync_copypaste"
+          placeholder="Copy &amp; Paste your Lync invitation here."
+          rows="12"
+          ng-model="show.meeting.online_conferencing_data.lync_copypaste"
+          mtn-blur-on-event="blurInput">
+</textarea>
+
+</div>
+</div>
+<div class="text-wrapper text-note">
+<p>To get the invitation:</p>
+<p>Office 365 user: Create a new meeting in the Web scheduler.</p>
+<p>Desktop user: Press "New Lync Meeting" in your Outlook Calendar.</p>
+</div>
+
+  <div class="htmlnav">Start trial</div>
+  <div class="text-wrapper">
+    <p>Google Hangouts, Microsoft Lync and custom options are PRO features.</p>
+    <div class="pro_badge"><span><strong>Free</strong> 30 day trial</span></div>
+
+    <p>We offer you a <strong>free 30 day trial</strong> including all live communication tools and other great PRO features.</p>
+
+    <p>Benefits for upgrading:</p>
+    <ul>
+      <li>Unlimited meeting schedulers</li>
+      <li>Expanded live communication tools</li>
+      <li>Visual customization and branding</li>
+      <li>Unlimited meeting participants</li>
+      <li>Unlimited meeting materials</li>
+      <li>Backup to Dropbox</li>
+    </ul>
+
+    <p>Would you like to start your free trial now?</p>
+  </div>
+  <button class="dual">
+    Start trial
+  </button>
+  <button class="dual secondary">
+    Cancel
+  </button>
+  <div class="clearfix"></div>
+  <div class="htmlnav">Trial expired</div>
+  <div class="text-wrapper">
+    <p>Google Hangouts, Microsoft Lync and custom options are PRO features.</p>
+    <div class="pro_badge"><span><br><strong>PRO</span></div>
+
+    <p>Benefits for upgrading:</p>
+    <ul>
+      <li>Unlimited meeting schedulers</li>
+      <li>Expanded live communication tools</li>
+      <li>Visual customization and branding</li>
+      <li>Unlimited meeting participants</li>
+      <li>Unlimited meeting materials</li>
+      <li>Backup to Dropbox</li>
+    </ul>
+
+    <p>You can manage your subscription on our website http://meetin.gs</p>
+
+    <p>Would you like to get a reminder about this to your email?</p>
+  </div>
+  <button class="dual">
+    Remind me
+  </button>
+  <button class="dual secondary">
+    Cancel
+  </button>
+
+</div>
+
+</page-wrapper>

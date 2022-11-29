@@ -1,0 +1,6 @@
+//fix tappable area size in tinymce
+html,
+body{
+  height:100%;
+  -webkit-tap-highlight-color: transparent;
+}

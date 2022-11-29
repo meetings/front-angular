@@ -1,0 +1,81 @@
+<page-wrapper ng-model="index" class="page-background-white">
+
+<div ng-if="index.deviceUtils.platform() == 'web'">
+
+  <div class="page-icon"><i class="icon icon-calendar"></i></div>
+
+  <mtn-application-promo>
+
+    <div class="show-on-ios show-on-android text-wrapper">
+    <p>
+      Connect your calendar to get relevant suggestions based on your own availability.
+    </p>
+     <p>
+      Download the <strong>free application</strong> now to get the most out of SwipeToMeet.
+     </p>
+     <ul>
+       <li>Schedule your own events</li>
+       <li>Connect your calendar</li>
+       <li>Modify your notification settings</li>
+     </ul>
+    </div>
+
+    <div class="show-on show-on-unknown text-wrapper">
+      <h2>Sorry</h2>
+      <p>
+        Unfortunately SwipeToMeet application is only available for iOS and Android devices at the moment.
+      </p>
+    </div>
+
+  </mtn-application-promo>
+
+</div>
+
+<!-- Hide calendar connection buttons in web -->
+<div ng-if="index.deviceUtils.platform() != 'web'">
+
+  <div class="page-icon"><i class="icon icon-calendar"></i></div>
+
+  <div class="text-wrapper">
+    <p>Connect your calendar for better and smarter suggestions</p>
+
+    <p class="last-sync"
+       ng-show="!index.connectCalendarButtonVisible">Last sync: {{ index.lastSyncOnCurrentDevice }}</p>
+  </div>
+
+  <div ng-if="!index.loading">
+
+    <button ng-click="index.connectDeviceCalendar()"
+            ng-hide="!index.connectCalendarButtonVisible"
+            ng-disabled="index.btnWorking">
+      Connect this device
+      <span class="spinner"
+            ng-if="index.btnWorking == 'connect'"></span>
+    </button>
+
+    <button ng-click="index.syncCalendars('syncnow')"
+            ng-show="!index.connectCalendarButtonVisible"
+            ng-disabled="index.btnWorking">
+      Sync now
+      <span class="spinner"
+            ng-if="index.btnWorking == 'syncnow'"></span>
+    </button>
+
+    <button class="secondary"
+            ng-click="index.confirmCalendarDisconnect(index.currentDeviceContainerName, index.currentDeviceContainerId, true)"
+            ng-show="!index.connectCalendarButtonVisible"
+            ng-disabled="index.btnWorking">
+      Disconnect this device
+      <span class="spinner"
+            ng-if="index.btnWorking == index.currentDeviceContainerName"></span>
+    </button>
+
+    <div class="text-wrapper"
+         ng-show="index.sources">
+      <p class="other-devices">Your other devices</p>
+    </div>
+
+  </div>
+</div>
+
+</page-wrapper>

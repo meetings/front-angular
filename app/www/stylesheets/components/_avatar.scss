@@ -1,0 +1,122 @@
+
+.avatar{
+  float: left;
+  border-radius: 100%;
+  overflow:hidden;
+  background:$body-background;
+  position: relative;
+  border:1px solid $avatar-border-color;
+  -webkit-mask-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==);
+
+  .avatar-initials{
+    display:block;
+    text-align: center;
+  }
+  .avatar-initials span,
+  .avatar-initials{
+    margin-top:0;
+    font-size: 16px;
+    line-height: 31px;
+    font-weight: 300;
+  }
+  .avatar-img{
+    background-color:$avatar-bg-color;
+  }
+  .avatar-rsvp-overlay {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    &.rsvp-yes {
+      background: $rsvp-yes;
+    }
+    &.rsvp-maybe {
+      background: $rsvp-maybe;
+    }
+    &.rsvp-no {
+      background: $rsvp-no;
+    }
+  }
+}
+
+@mixin avatar($size) {
+  $base: $size / 100;
+
+  height: ($size * 1px + 2px);
+  width: ($size * 1px + 2px);
+  background-size: ($base * 80px);
+  background-position: 50% ($base * 16px);
+
+  &.scheduling-disabled{
+    width: ($size * 1px + 2px);
+    height: ($size * 1px + 2px);
+  }
+
+  .avatar-initials span,
+  .avatar-initials{
+    font-size: ($size * 0.4px);
+    line-height: ($size - 1px);
+  }
+
+  .avatar-img {
+    width: ($size * 1px);
+    height: ($size * 1px);
+  }
+
+  .avatar-rsvp-overlay {
+    height: ($base * 10px);
+  }
+
+}
+
+.avatar.avatar-small{
+  @include avatar(32);
+}
+.avatar.avatar-medium{
+  @include avatar(60);
+}
+.avatar.avatar-large{
+  @include avatar(100);
+}
+
+.scheduling-disabled{
+  // &:before{
+  //   content: "";
+  //   position:absolute;
+  //   width:100%;
+  //   height:100%;
+  //   border:4px dotted $accent-red;
+  //   border-radius: 50%;
+  // }
+  .avatar-initials{
+    opacity: 0.4;
+  }
+  .avatar-img{
+    opacity: 0.5;
+  }
+}
+
+.avatar--organizer{
+  &:before{
+    content: "";
+    width:100%;
+    height:100%;
+    position:absolute;
+    border-radius: 50%;
+    border: 4px solid $accent-green;
+  }
+}
+
+// Initials only-background colors, calculated based on md5.
+// Remember to change bgColorCount to match color count in utils.coffee
+.avatar-bg-0{ background-color: #e3f7e3; }
+.avatar-bg-1{ background-color: #ecf6d5; }
+.avatar-bg-2{ background-color: #f7f1d2; }
+.avatar-bg-3{ background-color: #f9ebdd; }
+.avatar-bg-4{ background-color: #f9dee0; }
+.avatar-bg-5{ background-color: #f6defa; }
+.avatar-bg-6{ background-color: #e5dcf9; }
+.avatar-bg-7{ background-color: #e0eafa; }
+.avatar-bg-8{ background-color: #e0f5f9; }
+.avatar-bg-9{ background-color: #f0f0f0; }

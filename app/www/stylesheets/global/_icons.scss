@@ -1,0 +1,389 @@
+
+
+// CORE
+.icon{
+  display: inline-block;
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Fixed Width Icons
+// -------------------------
+.icon-fw {
+  width: (18em / 14);
+  text-align: center;
+}
+
+.icon-large {
+  font-size: 3rem;
+}
+
+.icon-medium {
+  font-size: 1.5rem;
+}
+@-webkit-keyframes icon-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@keyframes icon-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+.icon-spin{
+  -webkit-animation: icon-spin 1s infinite linear;
+  animation: icon-spin 1s infinite linear;
+}
+
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+// [data-icon]:before {
+//   font-family: 'icomoon';
+//   content: attr(data-icon);
+//   speak: none;
+//   font-weight: normal;
+//   font-variant: normal;
+//   text-transform: none;
+//   line-height: 1;
+//   -webkit-font-smoothing: antialiased;
+//   -moz-osx-font-smoothing: grayscale;
+// }
+
+/* Use the following CSS code if you want to have a class per icon */
+/*
+Instead of a list of all class selectors,
+you can use the generic selector below, but it's slower:
+[class*="icon-"] {
+*/
+// .icon-spinner, .icon-lock, .icon-coffee, .icon-workshop, .icon-team, .icon-sports, .icon-idea, .icon-drinks, .icon-dinner, .icon-date_picker, .icon-construction, .icon-twitter, .icon-meetings, .icon-logout, .icon-like, .icon-skype, .icon-down2, .icon-down1, .icon-sidepanel, .icon-back, .icon-delete, .icon-material_video, .icon-material_upload, .icon-material_presentation, .icon-material_other, .icon-material_music, .icon-material_image, .icon-material_excel, .icon-material_embed, .icon-material_editabledocument, .icon-material_document, .icon-openinnew, .icon-error, .icon-check, .icon-linkedin, .icon-leftarrow, .icon-google, .icon-facebook, .icon-rightarrow, .icon-rename, .icon-emblem, .icon-cross, .icon-time, .icon-teleconf, .icon-settings, .icon-search, .icon-schedule, .icon-replace, .icon-question, .icon-profile, .icon-print, .icon-note, .icon-mobile, .icon-mail, .icon-location, .icon-edit, .icon-download, .icon-comment, .icon-calendar, .icon-addressbook, .icon-add, .icon-tablet, .icon-onlineconf, .icon-call, .icon-handshake, .icon-timeline, .icon-share, .icon-hangout, .icon-custom, .icon-lync, .icon-star, .icon-up {
+//   font-family: 'icomoon';
+//   speak: none;
+//   font-style: normal;
+//   font-weight: normal;
+//   font-variant: normal;
+//   text-transform: none;
+//   line-height: 1;
+//   -webkit-font-smoothing: antialiased;
+// }
+
+
+.icon-add:before {
+  content: "\e609";
+}
+.icon-add_hollow:before {
+  content: "\e605";
+}
+.icon-addressbook:before {
+  content: "\e60b";
+}
+.icon-addressbook_detailed:before {
+  content: "\e60a";
+}
+.icon-back:before {
+  content: "\e60c";
+}
+.icon-back_hollow:before {
+  content: "\e606";
+}
+.icon-blank:before {
+  content: "\e60d";
+}
+.icon-brush:before {
+  content: "\e60e";
+}
+.icon-calendar:before {
+  content: "\e60f";
+}
+.icon-calendar_hollow:before {
+  content: "\e607";
+}
+.icon-calendars:before {
+  content: "\e610";
+}
+.icon-call:before {
+  content: "\e611";
+}
+.icon-check:before {
+  content: "\e613";
+}
+.icon-check_thin:before {
+  content: "\e612";
+}
+.icon-coffee:before {
+  content: "\e614";
+}
+.icon-comment:before {
+  content: "\e615";
+}
+.icon-comment_hollow:before {
+  content: "\e608";
+}
+.icon-connect:before {
+  content: "\e616";
+}
+.icon-construction:before {
+  content: "\e617";
+}
+.icon-cross:before {
+  content: "\e618";
+}
+.icon-custom:before {
+  content: "\e619";
+}
+.icon-delete:before {
+  content: "\e61a";
+}
+.icon-dinner:before {
+  content: "\e61b";
+}
+.icon-down1:before {
+  content: "\e61c";
+}
+.icon-down2:before {
+  content: "\e61d";
+}
+.icon-download:before {
+  content: "\e61e";
+}
+.icon-drinks:before {
+  content: "\e61f";
+}
+.icon-dropbox:before {
+  content: "\e620";
+}
+.icon-edit:before {
+  content: "\e621";
+}
+.icon-emblem:before {
+  content: "\e622";
+}
+.icon-error:before {
+  content: "\e623";
+}
+.icon-facebook:before {
+  content: "\e624";
+}
+.icon-forward:before {
+  content: "\e626";
+}
+.icon-forward_small:before {
+  content: "\e625";
+}
+.icon-google:before {
+  content: "\e627";
+}
+.icon-handshake:before {
+  content: "\e628";
+}
+.icon-hangout:before {
+  content: "\e629";
+}
+.icon-idea:before {
+  content: "\e62a";
+}
+.icon-info:before {
+  content: "\e62b";
+}
+.icon-language:before {
+  content: "\e62c";
+}
+.icon-leftarrow:before {
+  content: "\e62d";
+}
+.icon-like:before {
+  content: "\e62e";
+}
+.icon-linkedin:before {
+  content: "\e62f";
+}
+.icon-location:before {
+  content: "\e630";
+}
+.icon-lock:before {
+  content: "\e631";
+}
+.icon-logout:before {
+  content: "\e632";
+}
+.icon-lync:before {
+  content: "\e633";
+}
+.icon-mail:before {
+  content: "\e634";
+}
+.icon-mail_hollow:before {
+  content: "\e600";
+}
+.icon-material_document:before {
+  content: "\e635";
+}
+.icon-material_editabledocument:before {
+  content: "\e636";
+}
+.icon-material_embed:before {
+  content: "\e637";
+}
+.icon-material_excel:before {
+  content: "\e638";
+}
+.icon-material_image:before {
+  content: "\e639";
+}
+.icon-material_music:before {
+  content: "\e63a";
+}
+.icon-material_other:before {
+  content: "\e63b";
+}
+.icon-material_presentation:before {
+  content: "\e63c";
+}
+.icon-material_upload:before {
+  content: "\e63d";
+}
+.icon-material_video:before {
+  content: "\e63e";
+}
+.icon-meetings:before {
+  content: "\e63f";
+}
+.icon-mobile:before {
+  content: "\e640";
+}
+.icon-note:before {
+  content: "\e641";
+}
+.icon-notification:before {
+  content: "\e642";
+}
+.icon-onlineconf:before {
+  content: "\e643";
+}
+.icon-openinnew:before {
+  content: "\e644";
+}
+.icon-password:before {
+  content: "\e645";
+}
+.icon-phone_hollow:before {
+  content: "\e601";
+}
+.icon-print:before {
+  content: "\e646";
+}
+.icon-pro:before {
+  content: "\e647";
+}
+.icon-profile:before {
+  content: "\e648";
+}
+.icon-question:before {
+  content: "\e649";
+}
+.icon-refresh_hollow:before {
+  content: "\e602";
+}
+.icon-remove:before {
+  content: "\e64a";
+}
+.icon-rename:before {
+  content: "\e64b";
+}
+.icon-replace:before {
+  content: "\e64c";
+}
+.icon-rightarrow:before {
+  content: "\e64d";
+}
+.icon-schedule:before {
+  content: "\e64e";
+}
+.icon-search:before {
+  content: "\e64f";
+}
+.icon-search_hollow:before {
+  content: "\e603";
+}
+.icon-send:before {
+  content: "\e661";
+}
+.icon-settings:before {
+  content: "\e650";
+}
+.icon-settings_hollow:before {
+  content: "\e604";
+}
+.icon-share:before {
+  content: "\e651";
+}
+.icon-sidepanel:before {
+  content: "\e652";
+}
+.icon-skype:before {
+  content: "\e653";
+}
+.icon-spinner:before {
+  content: "\e654";
+}
+.icon-sports:before {
+  content: "\e655";
+}
+.icon-star:before {
+  content: "\e656";
+}
+.icon-swipe:before {
+  content: "\e658";
+}
+.icon-swipe_larger:before {
+  content: "\e657";
+}
+.icon-tablet:before {
+  content: "\e659";
+}
+.icon-team:before {
+  content: "\e65a";
+}
+.icon-teleconf:before {
+  content: "\e65b";
+}
+.icon-time:before {
+  content: "\e65c";
+}
+.icon-timeline:before {
+  content: "\e65d";
+}
+.icon-twitter:before {
+  content: "\e65e";
+}
+.icon-up:before {
+  content: "\e65f";
+}
+.icon-workshop:before {
+  content: "\e660";
+}
+
+
+
+//-----------------
+// Bypass adblock
+.mtn-icon-facebook { @extend .icon-facebook; }
+.mtn-icon-google   { @extend .icon-google;   }
+.mtn-icon-linkedin { @extend .icon-linkedin; }
+.mtn-icon-twitter  { @extend .icon-twitter;  }

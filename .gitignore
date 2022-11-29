@@ -1,0 +1,44 @@
+# built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+
+# NPM libraries
+/node_modules/*
+
+# Bower libraries
+/app/www/components/*
+
+
+# Project configuration
+/config/cloud.json
+/config/environment.js
+
+
+# Gulp generated files
+/build/*
+/cordova/www/
+/cordova/config.xml
+/cordova/plugins/android.json
+/cordova/plugins/ios.json
+/.sass-cache/
+
+# Cordova generated files
+/cordova/platforms/android/*
+/cordova/platforms/ios/*
+
+/apple_watch/cordova/*
+/apple_watch/CordovaLib/*
+/apple_watch/platform_www/*
+/apple_watch/Pods/*
+/apple_watch/www/*
+/apple_watch/Podfile.lock
+/apple_watch/SwipeToMeet.xcworkspace/xcuserdata/*
+/apple_watch/SwipeToMeet.xcodeproj/xcuserdata/*
+/apple_watch/SwipeToMeet.xcodeproj/project.xcworkspace/xcuserdata/*

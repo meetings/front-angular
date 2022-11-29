@@ -1,0 +1,46 @@
+.pro_badge{
+  background: transparent url(https://meetin.gs/images/meetings/pro_badge_notext.png) center center no-repeat;
+  background-size: 141px 122px;
+  width: 141px;
+  height: 122px;
+  padding: 15px 4px 0px 77px;
+  text-align: center;
+  color:#ffffff;
+  font-size: 12px;
+  margin: 0 auto;
+  text-shadow: 0px 0px 4px #f27d00,
+              0px 0px 4px #f27d00,
+              0px 0px 4px #f27d00,
+              0px 0px 4px #f27d00,
+              0px 0px 4px #f27d00,
+              0px 0px 4px #f27d00,
+              0px 0px 4px #f27d00,
+              0px 0px 4px #f27d00,
+              0px 0px 4px #f27d00,
+              0px 0px 4px #f27d00;
+}
+.pro_badge strong{
+  font-size: 13px;
+  display: block;
+  padding-bottom:2px;
+}
+.trial{
+  ul{
+    padding-left:20px;
+  }
+  li{
+    font-weight: normal;
+  }
+}
+
+.edit-communication-tool-container .edit-communication-tool-option.pro-feature{
+  background:$not-pro-bg url(../images/pro_badge.png) top left no-repeat;
+  background-size:29px;
+  color:$not-pro-text;
+  pointer-events: none;
+  &.pro{
+    background:$edit-communication-tool-bg;
+    pointer-events:auto;
+    color:$edit-communication-tool-text;
+  }
+}

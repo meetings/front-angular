@@ -1,0 +1,283 @@
+[
+  {
+    "created_at": "1435088181",
+    "created_epoch": 1435088181,
+    "data": {
+      "icon": "meetings",
+      "icon_color": "normal",
+      "template": "New participant: <b>Sample notification</b> in notification center.",
+      "html_notification_content": "asdf",
+      "author_id": "4633",
+      "meeting_id": "4620",
+      "user_id": "5752",
+      "author": {
+        "email": "",
+        "first_name": "Demo",
+        "free_trial_has_expired": 0,
+        "id": "4633",
+        "image": "",
+        "initials": "DP",
+        "is_pro": 1,
+        "last_name": "Pitkänen",
+        "linkedin": "http://test.fi <script>alert(\"7\");</script>",
+        "meetme_background_theme": "4",
+        "meetme_description": "<script>alert(\"kuvaus!\")</script>",
+        "meetme_order": [
+          "336",
+          "237",
+          "279",
+          "260"
+        ],
+        "name": "Demo Pitkänen",
+        "organization": "Greenpeace",
+        "organization_title": "TestaajaTestaaja",
+        "phone": "1234558  <script>alert(\"5\");</script>",
+        "skype": "Echo123  <script>alert(\"6\");</script>",
+        "user_id": "4633",
+        "user_id_md5": "96c974552b3f2839fcc751e7f12679ce"
+      },
+      "user": {
+        "email": "",
+        "first_name": "",
+        "free_trial_has_expired": 0,
+        "id": "5752",
+        "image": "",
+        "initials": "T2",
+        "is_pro": 0,
+        "last_name": "",
+        "linkedin": "",
+        "meetme_background_theme": "",
+        "meetme_description": "",
+        "meetme_order": [],
+        "name": "t2antti@meetingstest.local",
+        "organization": "",
+        "organization_title": "",
+        "phone": "",
+        "skype": "",
+        "user_id": "5752",
+        "user_id_md5": "c7b3f097f4810cbb3c4b18c09ab893bc"
+      },
+      "meeting": {
+        "begin_date": "",
+        "begin_epoch": 0,
+        "begin_time": "",
+        "created_date_string": "Tuesday June 23rd",
+        "created_epoch": 1435088125,
+        "created_from_matchmaker_id": 0,
+        "creator_id": "4633",
+        "current_scheduling_id": 0,
+        "date_string": "",
+        "desktop_calendar": {
+          "day": "?",
+          "hm": "",
+          "month": "",
+          "status": "unknown"
+        },
+        "end_date": "",
+        "end_epoch": 0,
+        "end_time": "",
+        "enter_url": "/meetings/enter_meeting/1962/4620/6e889ddb8e",
+        "ics_url": "",
+        "id": "4620",
+        "is_draft": 0,
+        "location": "Location not known",
+        "location_string": "Location not known",
+        "location_value": "",
+        "matchmaking_accepted": 1,
+        "matchmaking_event_name": "",
+        "matchmaking_requester_comment": "",
+        "matchmaking_requester_company": "",
+        "matchmaking_requester_name": "",
+        "meeting_type": null,
+        "online_conferencing_data": null,
+        "online_conferencing_option": null,
+        "physical_location_string": "Location not known",
+        "removed_epoch": 0,
+        "settings": {
+          "add_material": 1,
+          "edit_material": 1,
+          "invite": 1,
+          "participant_digest": 1,
+          "participant_digest_comments": 1,
+          "participant_digest_material": 1,
+          "participant_digest_new_participant": 1,
+          "start_reminder": 1
+        },
+        "skype_account": null,
+        "skype_url": null,
+        "teleconf_url": null,
+        "time_string": "",
+        "timezone_string": null,
+        "title": "Untitled meeting",
+        "title_string": "Untitled meeting",
+        "title_value": "Untitled meeting",
+        "virtual_location_string": "Tool not set"
+      }
+    },
+    "id": "3186",
+    "is_read": 0,
+    "is_seen": 1,
+    "type": "new_participant",
+    "action_type": "meeting"
+  },
+  {
+    "created_at": "1432416892",
+    "created_epoch": 1432416892,
+    "data": {
+      "icon": "time",
+      "icon_color": "success",
+      "template": "Time found for <b>notification</b>.",
+      "html_notification_content": "asdf",
+      "author_id": "4633",
+      "meeting_id": "4549",
+      "scheduling_id": "521",
+      "author": {
+        "email": "",
+        "first_name": "Demo",
+        "free_trial_has_expired": 0,
+        "id": "4633",
+        "image": "",
+        "initials": "DP",
+        "is_pro": 1,
+        "last_name": "Pitkänen",
+        "linkedin": "http://test.fi <script>alert(\"7\");</script>",
+        "meetme_background_theme": "4",
+        "meetme_description": "<script>alert(\"kuvaus!\")</script>",
+        "meetme_order": [
+          "336",
+          "237",
+          "279",
+          "260"
+        ],
+        "name": "Demo Pitkänen",
+        "organization": "Greenpeace",
+        "organization_title": "TestaajaTestaaja",
+        "phone": "1234558  <script>alert(\"5\");</script>",
+        "skype": "Echo123  <script>alert(\"6\");</script>",
+        "user_id": "4633",
+        "user_id_md5": "96c974552b3f2839fcc751e7f12679ce"
+      },
+      "meeting": {
+        "begin_date": "2015-05-26",
+        "begin_epoch": 1432627200,
+        "begin_time": "11:00",
+        "created_date_string": "Friday May 22nd",
+        "created_epoch": 1432299928,
+        "created_from_matchmaker_id": 0,
+        "creator_id": "4633",
+        "current_scheduling_id": 0,
+        "date_string": "Tuesday May 26th",
+        "desktop_calendar": {
+          "day": 26,
+          "hm": "11 AM",
+          "month": "May",
+          "status": "after",
+          "weekday": "Tue"
+        },
+        "end_date": "2015-05-26",
+        "end_epoch": 1432630800,
+        "end_time": "12:00",
+        "enter_url": "/meetings/enter_meeting/1962/4549/9292f121f0",
+        "ics_url": "https://dev.meetin.gs/meetings_raw/ics/1962/4549/4633/K1DDOxMLyoWtuCferGVEG9FwbDs/meeting.ics",
+        "id": "4549",
+        "is_draft": 0,
+        "location": "Location not known",
+        "location_string": "Location not known",
+        "location_value": "",
+        "matchmaking_accepted": 1,
+        "matchmaking_event_name": "",
+        "matchmaking_requester_comment": "",
+        "matchmaking_requester_company": "",
+        "matchmaking_requester_name": "",
+        "meeting_type": null,
+        "online_conferencing_data": null,
+        "online_conferencing_option": null,
+        "physical_location_string": "Location not known",
+        "removed_epoch": 0,
+        "settings": {
+          "add_material": 1,
+          "edit_material": 1,
+          "invite": 1,
+          "participant_digest": 1,
+          "participant_digest_comments": 1,
+          "participant_digest_material": 1,
+          "participant_digest_new_participant": 1,
+          "start_reminder": 1
+        },
+        "skype_account": null,
+        "skype_url": null,
+        "teleconf_url": null,
+        "time_string": "11 AM-12 PM",
+        "timezone_string": "UTC+3",
+        "title": "scheduling test 3",
+        "title_string": "scheduling test 3",
+        "title_value": "scheduling test 3",
+        "virtual_location_string": "Tool not set"
+      },
+      "scheduling": {
+        "available_timespans": [
+          {
+            "end": null,
+            "start": "1432371600"
+          }
+        ],
+        "buffer": 30,
+        "cancelled_epoch": 0,
+        "completed_epoch": 1432416892,
+        "confirm_automatically": null,
+        "created_epoch": 1432299973,
+        "creator_id": "4633",
+        "duration": 60,
+        "failed_epoch": 0,
+        "from_matchmaker_id": null,
+        "id": "521",
+        "meeting_id": "4549",
+        "online_conferencing_data": {},
+        "online_conferencing_option": null,
+        "planning_buffer": 1800,
+        "slots": [
+          {
+            "begin_second": 39600,
+            "end_second": 46800,
+            "weekday": 0
+          },
+          {
+            "begin_second": 39600,
+            "end_second": 46800,
+            "weekday": 1
+          },
+          {
+            "begin_second": 39600,
+            "end_second": 46800,
+            "weekday": 2
+          },
+          {
+            "begin_second": 39600,
+            "end_second": 46800,
+            "weekday": 3
+          },
+          {
+            "begin_second": 39600,
+            "end_second": 46800,
+            "weekday": 4
+          }
+        ],
+        "source_settings": {
+          "disabled": {
+            "phone:12ae3ceaccb798e0:Suomen juhlapyhät": 1,
+            "phone:12ae3ceaccb798e0:Viikkonumerot": 1,
+            "phone:12ae3ceaccb798e0:Weather": 1
+          },
+          "enabled": {}
+        },
+        "started_epoch": 1432299973,
+        "time_zone": "Europe/Helsinki"
+      }
+    },
+    "id": "2973",
+    "is_read": 1,
+    "is_seen": 1,
+    "type": "scheduling_date_found",
+    "action_type": "meeting"
+  }
+]

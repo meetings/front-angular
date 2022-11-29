@@ -1,0 +1,74 @@
+<page-wrapper ng-model="calendarConnect"
+              ng-class="{'page-background-white': calendarConnect.connectionStep != 'sourceSelection'}">
+
+<div ng-show="calendarConnect.connectionStep == 'askPermission'">
+
+  <div class="page-icon"><i class="icon icon-calendar"></i></div>
+
+  <div class="text-wrapper">
+    <p>Next we will ask for a permission to access your calendar.</p>
+    <p>We use it to check your availability. Details will never be shared with anyone.</p>
+  </div>
+
+  <button ng-disabled="calendarConnect.btnWorking"
+          ng-click="calendarConnect.connectDeviceCalendar()">OK</button>
+
+  <button class="link"
+          ng-disabled="calendarConnect.btnWorking"
+          ng-click="calendarConnect.skip()">Skip</button>
+</div>
+
+<div ng-show="!calendarConnect.loading && calendarConnect.connectionStep == 'calendarConnect'">
+
+  <div class="page-icon"><i class="icon icon-calendar"></i></div>
+
+  <div class="text-wrapper">
+    <p>Connect your calendar to allow the service to determine your availability. Your calendar details are never shared with anyone.</p>
+  </div>
+
+  <button ng-disabled="calendarConnect.btnWorking"
+          ng-click="calendarConnect.connectDeviceCalendar()">
+    Connect calendar
+    <span class="spinner"
+          ng-if="calendarConnect.btnWorking == 'fetchingSources'"></span>
+  </button>
+  <button class="link"
+          ng-disabled="calendarConnect.btnWorking"
+          ng-click="calendarConnect.skip()">Skip</button>
+</div>
+
+<div ng-show="!calendarConnect.loading && calendarConnect.connectionStep == 'sourceSelection'">
+
+  <div class="text-wrapper text-starter">
+    <p>Select the calendars the service will use to determine your availability. Your calendar details are never shared with anyone.</p>
+  </div>
+
+  <div ng-repeat="sources in calendarConnect.sources">
+    <p class="text-wrapper">
+      {{ sources[0].provider }}<span ng-show="sources[0].container_id == calendarConnect.deviceId"> (This device)</span>
+    </p>
+
+
+    <div class="mtnList">
+
+      <div class="mtnList-item mtnList-toggle"
+           ng-repeat="source in sources">
+
+        <mtn-checkbox ng-model="source.selected_by_default"
+                      name="{{ 'cb_' + $parent.$index + '_' + $index }}"
+                      mtn-click="calendarConnect.toggleSourceValue($parent.$index, $index)"
+                      mtn-swipe-left="calendarConnect.setSourceValue($parent.$index, $index, false)"
+                      mtn-swipe-right="calendarConnect.setSourceValue($parent.$index, $index, true)"
+                      mtn-show-spinner="source.saving">
+          {{ source.name }}
+        </mtn-checkbox>
+      </div>
+
+    </div>
+
+  </div>
+
+  <button ng-click="calendarConnect.suggestionSourcesSelected()">Done</button>
+</div>
+
+</page-wrapper>

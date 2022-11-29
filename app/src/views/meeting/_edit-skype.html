@@ -1,0 +1,23 @@
+<div class="text-wrapper">
+
+  <p>Type in the Skype account that will be used to receive the calls from the participants.</p>
+
+</div>
+
+<div class="row edit-area">
+  <div class="columns small-12">
+
+    <mtn-float-label for="skype_account">
+    </mtn-float-label>
+    <input type="text"
+           id="skype_account"
+           placeholder="Skype account name"
+           ng-model="show.meeting.online_conferencing_data.skype_account"
+           mtn-blur-on-event="blurInput">
+
+  </div>
+</div>
+
+<div class="text-wrapper text-note">
+  <p>NOTE: If you are not connected with the participants in Skype, remember to allow incoming calls from anyone using Skype privacy settings.</p>
+</div>

@@ -1,0 +1,35 @@
+.profile-basic-info {
+  padding-top: rem-calc(14px);
+  padding-left: rem-calc(14px);
+  @include vendor-prefix-attr(display, flex);
+
+  .participant-avatar{
+    @include avatar(100);
+    border: rem-calc(3px) solid $profile-edit-avatar-border;
+  }
+
+  .profile-edit {
+    @include vendor-prefix(flex, 1);
+  }
+}
+
+.profile-edit {
+  margin-bottom: rem-calc(22px);
+  padding-left: rem-calc(14px);
+  padding-right: rem-calc(14px);
+  background: $profile-edit-bg;
+
+  .edit-area {
+    & + .edit-area {
+      border-top: rem-calc(1px) solid $profile-edit-hr-color;
+    }
+  }
+}
+
+.profile-currentuser {
+  margin-bottom: rem-calc(7px);
+  padding-left: rem-calc(15px);
+  padding-right: rem-calc(7px);
+  font-size:$profile-currentuser--font-size;
+  color:$profile-currentuser-color;
+}

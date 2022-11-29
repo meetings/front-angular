@@ -1,0 +1,47 @@
+<div class="text-wrapper">
+  Enter a link with instructions for joining the meeting with your custom tool.
+</div>
+
+<div class="row edit-area">
+  <div class="columns small-12">
+
+    <mtn-float-label for="custom_uri">
+    </mtn-float-label>
+    <input type="url"
+           id="custom_uri"
+           placeholder="Web address (URL)"
+           ng-model="show.meeting.online_conferencing_data.custom_uri"
+           mtn-blur-on-event="blurInput">
+
+  </div>
+</div>
+
+<div class="row edit-area edit-multipart-form">
+  <div class="columns small-12">
+
+    <mtn-float-label for="custom_name">
+    </mtn-float-label>
+    <input type="text"
+           id="custom_name"
+           placeholder="Name of the tool"
+           ng-model="show.meeting.online_conferencing_data.custom_name"
+           mtn-blur-on-event="blurInput">
+
+  </div>
+</div>
+
+<div class="row edit-area edit-multipart-form">
+  <div class="columns small-12">
+
+    <mtn-float-label for="custom_description">
+    </mtn-float-label>
+    <textarea id="custom_description"
+              placeholder="Tool instructions for participants"
+              rows="12"
+              ng-model="show.meeting.online_conferencing_data.custom_description"
+              mtn-blur-on-event="blurInput">
+    </textarea>
+
+  </div>
+
+</div>

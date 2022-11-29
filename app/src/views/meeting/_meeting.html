@@ -1,0 +1,350 @@
+<page-wrapper ng-model="show" ng-cloak>
+
+  <div class="text-wrapper"
+       ng-if="show.meeting && show.meeting.removed_epoch">
+
+    <div class="page-icon"><i class="icon icon-error"></i></div>
+
+    <h2>This meeting has been removed by the organizer.</h2>
+  </div>
+
+  <div ng-if="show.meeting.removed_epoch == 0">
+
+    <div class="meeting-container" ng-if="!show.meetmeState">
+
+      <div class="mtnList">
+
+        <div class="meeting-theme"
+             ng-if="show.getBackgroundImageUrl(show.meeting) != ''"
+             ng-style="{backgroundImage:'url('+show.getBackgroundImageUrl(show.meeting)+')'}"></div>
+
+        <h2 ng-model="show.meeting.title_value"
+            ng-bind="show.meeting.title_value"
+            ng-click="show.edit('title')"
+            ng-if="show.meeting.title_value"
+            class="mtnList-item mtnList-title"
+            ng-class="{'mtnList-nav' : show.isManager, 'copyable' : !show.isManager}">
+        </h2>
+
+        <h2 class="mtnList-item mtnList-title"
+            ng-class="{'mtnList-nav' : show.isManager}"
+            ng-if="!show.meeting.title_value"
+            ng-click="show.edit('title')">
+          Untitled meeting
+        </h2>
+
+        <div class="mtnList-item"
+             ng-class="{'mtnList-nav' : show.isManager,
+                        'copyable' : !show.isManager,
+                        'mtn-datetime': show.meeting.begin_epoch != 0}"
+             ng-click="show.edit('date')">
+
+          <i class="icon icon-calendar icon-fw"></i>
+
+          <span class="icon-sibling"
+                ng-if="(!show.meeting.begin_epoch || show.meeting.begin_epoch == 0) && !show.schedulingStarted">
+            <span ng-if="show.isManager">Set date</span>
+            <span ng-if="!show.isManager">Date is not set</span>
+          </span>
+
+          <span class="icon-sibling"
+                ng-if="show.meeting.begin_epoch != 0 && !show.schedulingStarted">
+
+            <span ng-model="show.meeting.begin_epoch"
+                  ng-cloak
+                  epoch-model
+                  epoch-format="{{ show.dateHelper.formatDayDate }}">
+            </span><span class="date-separator-comma">,</span>
+
+            <br class="date-separator-newline">
+
+            <span ng-model="show.meeting.begin_epoch"
+                  ng-cloak
+                  epoch-model
+                  epoch-format="{{ show.dateHelper.formatTime }}">
+            </span>
+
+            &dash;
+
+            <span ng-model="show.meeting.end_epoch"
+                  ng-cloak
+                  epoch-model
+                  epoch-format="{{ show.dateHelper.formatTime }}">
+            </span>
+
+            &ndash;
+
+            <duration>
+              <begin ng-model="show.meeting.begin_epoch"></begin>
+              <end ng-model="show.meeting.end_epoch"></end>
+            </duration>
+          </span>
+
+          <span class="icon-sibling"
+                ng-if="show.meeting.begin_epoch == 0 && show.schedulingStarted">Scheduling</span>
+
+        </div>
+
+        <div class="mtnList-item"
+             ng-class="{'mtnList-nav' : show.isManager,
+                        'copyable' : !show.isManager}"
+             ng-click="show.edit('location')">
+
+          <i class="icon icon-location icon-fw"></i>
+
+          <span class="icon-sibling"
+                ng-model="show.meeting.location_value"
+                ng-bind="show.meeting.location_value"
+                ng-if="show.meeting.location_value">
+          </span>
+
+          <span ng-if="!show.meeting.location_value"
+                class="icon-sibling">
+            <span ng-if="show.isManager">Set location</span>
+            <span ng-if="!show.isManager">Location is undecided</span>
+          </span>
+
+        </div>
+
+        <div class="mtnList-item"
+             ng-if="show.meeting.online_conferencing_option || show.isManager"
+             ng-class="{'mtnList-nav' : show.isManager,
+                        'copyable' : !show.isManager}"
+             ng-click="show.edit('communicationtool')">
+
+          <span ng-switch="show.meeting.online_conferencing_option">
+
+            <span ng-switch-when="hangout">
+               <i class="icon icon-hangout icon-fw"></i>
+               <span class="icon-sibling">On Hangout</span>
+             </span>
+
+            <span ng-switch-when="skype">
+               <i class="icon icon-skype icon-fw"></i>
+               <span class="icon-sibling">On Skype<span ng-if="show.meeting.online_conferencing_data.skype_account">:</span>&#32;<span class="onlineDetails">{{ show.meeting.online_conferencing_data.skype_account }}</span></span>
+            </span>
+
+            <span ng-switch-when="lync">
+               <i class="icon icon-lync icon-fw"></i>
+               <span class="icon-sibling">On Lync</span>
+            </span>
+
+            <span ng-switch-when="teleconf">
+               <i class="icon icon-onlineconf icon-fw"></i>
+               <span class="icon-sibling">
+                On the phone<span ng-if="show.meeting.online_conferencing_data.teleconf_number">:</span>
+                <div class="onlineDetails">
+                  {{ show.meeting.online_conferencing_data.teleconf_number }}
+
+                  <span ng-if="show.meeting.online_conferencing_data.teleconf_pin.length">
+                  &nbsp;PIN: {{ show.meeting.online_conferencing_data.teleconf_pin }}
+                  </span>
+                </div>
+              </span>
+            </span>
+
+            <span ng-switch-when="custom">
+               <i class="icon icon-custom icon-fw"></i>
+               <span class="icon-sibling">On a custom tool</span>
+            </span>
+
+            <span ng-switch-default>
+              <i class="icon icon-custom icon-teleconf"></i>
+              <span class="icon-sibling">
+                Set meeting tool
+              </span>
+            </span>
+
+          </span>
+
+        </div>
+
+        <div ng-click="show.openParticipants()"
+             class="mtnList-item mtnList-nav"
+             ng-class="{'mtnList-participantsSummary' : show.meeting.participants.length > show.participantMaxCountBeforeSummary}">
+
+          <div class="participant-meeting">
+            <participantlist participants="show.meeting.participants"
+                             rsvp-property-name="{{ show.rsvpPropertyName }}"
+                             show-rsvp="{{ !show.schedulingStarted || show.schedulingFailed }}"
+                             ng-hide="show.meeting.participants.length > show.participantMaxCountBeforeSummary">
+            </participantlist>
+
+            <participantsummary participants="show.meeting.participants"
+                                rsvp-property-name="{{ show.rsvpPropertyName }}"
+                                short-summary="{{ show.schedulingStarted }}"
+                                ng-show="show.meeting.participants.length > show.participantMaxCountBeforeSummary">
+            </participantsummary>
+          </div>
+
+        </div>
+      </div>
+
+      <div ng-if="show.meetingLoaded && show.schedulingStarted && show.schedulingFailed && show.isManager">
+
+        <span class="button-helptext">{{ show.meeting.current_scheduling.failed_message }}</span>
+
+        <button ng-click="show.openScheduling()">Reschedule</button>
+
+      </div>
+
+      <div ng-if="show.meetingLoaded && show.isRsvpRequired && !show.schedulingStarted && !show.schedulingFailed">
+
+        <div class="mtnList-header">Please set your RSVP status:</div>
+
+        <button class="dual rsvp-yes"
+                ng-click="show.updateRsvpStatus('yes')"
+                ng-class="{'working' : show.rsvpBtnWorking }"
+                ng-disabled="show.rsvpBtnWorking">
+          Attending
+          <span class="spinner"
+                ng-if="show.rsvpBtnWorking == 'yes'"></span>
+        </button>
+
+        <button class="dual rsvp-no"
+                ng-click="show.updateRsvpStatus('no')"
+                ng-class="{'working' : show.rsvpBtnWorking }"
+                ng-disabled="show.rsvpBtnWorking">
+          Not Attending
+          <span class="spinner"
+                ng-if="show.rsvpBtnWorking == 'no'"></span>
+        </button>
+
+      </div>
+
+      <div ng-if="show.meetingLoaded && show.meeting.online_conferencing_option && !show.sendInvitationsButtonVisible">
+
+        <!-- <div class="mtnList-header">You will be able to join in now.</div> -->
+
+        <span ng-switch="show.meeting.online_conferencing_option">
+
+          <a ng-switch-when="hangout"
+             class="button"
+             ng-click="show.openUrl(show.meeting.hangout_organizer_uri)">
+            Join Hangout conference
+          </a>
+
+          <a ng-switch-when="skype"
+             class="button"
+             ng-click="show.openUrl(show.meeting.skype_uri, 'skype')">
+            Join Skype conference
+          </a>
+
+          <a ng-switch-when="lync"
+             class="button"
+             ng-click="show.openUrl(show.meeting.lync_uri)">
+            Join Lync conference
+          </a>
+
+          <a ng-switch-when="teleconf"
+             class="button"
+             href="{{ show.meeting.teleconf_uri }}">
+            Join the teleconference
+          </a>
+
+          <span ng-switch-when="custom">
+            <span class="button-helptext">{{ show.meeting.online_conferencing_data.custom_description }}</span>
+            <a class="button"
+               ng-click="show.openUrl(show.meeting.online_conferencing_data.custom_uri)">
+              Join {{ show.meeting.online_conferencing_data.custom_name }}
+            </a>
+          </span>
+
+
+        </span>
+
+      </div>
+
+      <div ng-if="show.meetingLoaded && show.sendInvitationsButtonVisible">
+
+        <span class="button-helptext">Participants have not yet been invited</span>
+
+        <button ng-click="show.sendInvitations()"
+                ng-disabled="show.btnWorking">
+          Send invitations
+          <span ng-class="{ 'spinner' : show.btnWorking == 'sendInvitations' }"></span>
+        </button>
+
+      </div>
+
+      <div ng-show="show.meetingLoaded && show.schedulingStarted && !show.schedulingFailed && !show.hasLeftScheduling && !show.isManager">
+
+        <button ng-click="show.openSwipeToMeet()">Provide availability now</button>
+
+      </div>
+
+      <div ng-if="show.meetingLoaded && show.schedulingStarted && !show.schedulingFailed && show.isManager">
+
+        <button ng-click="show.openSchedulingLog()">Scheduling progress</button>
+
+      </div>
+
+      <div class="mtnList"
+           ng-if="show.meetingLoaded && !show.error">
+
+        <div class="mtnList-item mtnList-nav"
+            ng-click="show.openMaterial(material)"
+            ng-repeat="material in show.meeting.materials | filterMaterials">
+
+            <span class="material-wrapper">
+              <i class="icon icon-material_{{ material.type_class }}"></i>
+
+              <span ng-switch="show.isMaterialEmpty(material.material_class)">
+                <span ng-switch-when="true"
+                      class="icon-sibling material-title">
+                  Write {{ material.title.toLowerCase() }}
+                </span>
+
+                <span ng-switch-when="false"
+                      class="icon-sibling material-title">
+                  {{ material.title }}
+                </span>
+              </span>
+            </span>
+            <span class="comment-count" ng-bind="material.comment_count" ng-if="material.comment_count > 0"></span>
+        </div>
+
+      </div>
+
+
+      <div ng-if="show.meetingLoaded && !show.error && (show.meeting.materials | filterAttachments | difference:show.removedMaterials).length != 0">
+
+        <div class="mtnList-header">Attachments</div>
+        <div class="mtnList">
+
+          <div class="swipe-wrapper mtnList-item-wrapper"
+               ng-class="{ 'animate-remove' : show.selectedIndex == $index }"
+               ng-repeat="material in show.meeting.materials | filterAttachments | difference:show.removedMaterials">
+
+            <div class="swipe-actions swipe-remove-btn"
+                 id="remove-btn"
+                 ng-click="show.removeMaterial(material)">
+              Remove
+            </div>
+
+            <div class="mtnList-item mtnList-nav swipe-drawer"
+                 ng-click="show.openMaterial(material)"
+                 mtn-swipe-to-reveal="remove-btn"
+                 mtn-swipe-to-reveal-enabled="show.removeMaterialEnabled(material)"
+                 mtn-on-reveal-actions="show.setSelectedIndex($index)"
+                 mtn-on-hide-actions="show.setSelectedIndex(null)">
+
+                <span class="material-wrapper">
+                <i class="icon icon-material_{{ material.type_class }}"></i>
+                  <span class="icon-sibling material-title" ng-bind="material.title"></span>
+                </span>
+                <span class="comment-count" ng-bind="material.comment_count" ng-if="material.comment_count > 0"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="meeting-container"
+         ng-if="show.meetmeState"
+         ng-include="'/views/meeting/_meetmerequest.html'">
+
+    </div>
+  </div>
+
+</page-wrapper>

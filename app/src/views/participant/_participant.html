@@ -1,0 +1,27 @@
+<mtn-avatar class="participant-avatar"
+            ng-model="participant"
+            show-rsvp="showRsvp">
+</mtn-avatar>
+
+<div ng-class="{'participant-scheduling-disabled':participant.scheduling_disabled}">
+  <span class="participant-name" ng-bind="participant.name"></span>
+
+  <span class="participant-org">
+    {{ participant.organization_title }}<span ng-show="participant.organization.length && participant.organization_title.length">, </span>{{ participant.organization }}
+  </span>
+
+  <span class="participant-status"
+        ng-if="showRsvp"
+        ng-class="{'rsvp-yes' : participant.rsvp_status === 'yes',
+                   'rsvp-maybe' : participant.rsvp_status === '',
+                   'rsvp-maybe' : !participant.rsvp_status,
+                   'rsvp-no' : participant.rsvp_status === 'no'}">
+    {{ participant.rsvp_string }}
+  </span>
+
+  <span class="participant-scheduling-disabled-text"
+        ng-if="participant.scheduling_disabled">
+    Not included in scheduling
+  </span>
+
+</div>

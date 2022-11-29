@@ -1,0 +1,42 @@
+<page-wrapper ng-model="index">
+
+<div ng-show="index.s2m.sources.length == 0">
+  <div class="text-wrapper">
+    <h2>No calendars connected</h2>
+    <p>
+      Connect calendars to get suggestions based on your availability.
+    </p>
+  </div>
+  <button ng-click="index.openAccountSettings()">
+    Yes, let's do it now
+  </button>
+</div>
+
+<div ng-repeat="sources in index.s2m.sources">
+  <div class="text-wrapper">
+    <p>
+      {{ sources[0].provider }}<span ng-show="sources[0].container_id == index.deviceId"> (This device)</span>
+    </p>
+  </div>
+
+
+  <div class="mtnList">
+
+    <div class="mtnList-item mtnList-toggle"
+         ng-repeat="source in sources">
+
+      <mtn-checkbox ng-model="source.selected_by_default"
+                    name="{{ 'cb_' + $parent.$index + '_' + $index }}"
+                    mtn-click="index.toggleSuggestionSourceValue($parent.$index, $index)"
+                    mtn-swipe-left="index.setSuggestionSourceValue($parent.$index, $index, false)"
+                    mtn-swipe-right="index.setSuggestionSourceValue($parent.$index, $index, true)"
+                    mtn-show-spinner="source.saving">
+        {{ source.name }}
+      </mtn-checkbox>
+    </div>
+
+  </div>
+
+</div>
+
+</page-wrapper>

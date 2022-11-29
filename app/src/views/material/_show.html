@@ -1,0 +1,116 @@
+<page-wrapper ng-model="show">
+
+<div class="breadcrumb"
+     ng-bind="show.breadcrumb.title"
+     ng-class="{ 'clickable' : show.breadcrumb.clickable }"
+     ng-click="show.openMeeting()"></div>
+
+<div class="material-container copyable">
+  <div class="material-area">
+    <textarea class="input"
+              ng-show="show.isEditable"
+              auto-grow
+              ng-click="show.editMaterial()"
+              mtn-focus-on-event="focusInput"
+              mtn-blur-on-event="blurInput"
+              ng-model="show.material.content"
+              ng-change="show.materialChanged()"
+              mtn-move-cursor-to-end
+              placeholder="{{show.materialPlaceholder}}">
+    </textarea>
+
+    <div ng-show="!show.isEditable && show.material.thumbnail_url && !show.loading">
+      <img ng-src="{{ show.material.thumbnail_url }}"
+           ng-click="show.confirmOpen()">
+    </div>
+
+    <div ng-show="!show.isEditable && !show.material.thumbnail_url && !show.loading">
+      <div ng-click="show.confirmOpen()" class="button link">
+        View this material..
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div ng-show="show.deviceUtils.platform() != 'ios' && show.wasEdited"
+     class="save-button-wrapper">
+  <button class="dual"
+          ng-click="show.done()"
+          ng-disabled="show.loading">
+    Save
+  </button>
+
+  <button ng-click="show.confirmCancel()"
+          ng-disabled="show.loading"
+          class="dual secondary">
+    Cancel
+  </button>
+</div>
+
+<!-- TODO: should this be a partial? -->
+<div class="material-comments" ng-if="show.showComments">
+
+  <div class="swipe-wrapper"
+       ng-class="{ 'animate-remove' : show.selectedIndex == $index }"
+       ng-repeat="comment in show.comments | orderBy: 'date_epoch'" >
+
+    <div class="swipe-actions swipe-remove-btn"
+         ng-show="show.removeCommentAllowed(comment)"
+         id="remove-btn"
+         ng-click="show.removeComment(comment)">
+      Remove
+    </div>
+
+    <div class="comment swipe-drawer"
+         mtn-swipe-to-reveal="remove-btn"
+         mtn-swipe-to-reveal-enabled="true"
+         mtn-on-reveal-actions="show.setSelectedIndex($index)"
+         mtn-on-hide-actions="show.setSelectedIndex(null)">
+
+      <div class="comment-timestamp"
+           epoch-model
+           ng-model="comment.published"
+           epoch-format="{{ show.dateHelper.formatTimeDayDate }}">>
+      </div>
+
+    <div class="comment-wrapper copyable">
+
+        <mtn-avatar class="participant-avatar"
+                    ng-model="comment.user">
+        </mtn-avatar>
+
+        <div class="comment-area">
+          <div class="comment-message"
+               ng-bind-html="comment.content">
+          </div>
+
+          <div class="comment-author"
+               ng-bind="comment.user_name">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TODO: should this be a partial? -->
+<div class="material-comment-new" ng-if="show.showComments">
+  <input type="text"
+         placeholder="Tap to comment"
+         mtn-blur-on-event="blurInput"
+         ng-model="show.newComment"
+         autocapitalize="sentences">
+
+  <button class="comment-new"
+          ng-click="show.createComment(show.newComment)"
+          ng-disabled="!show.newComment || show.commentBtnWorking">
+    Send
+    <span class="spinner"
+          ng-if="show.commentBtnWorking"></span>
+
+  </button>
+</div>
+
+</page-wrapper>

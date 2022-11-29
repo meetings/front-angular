@@ -1,0 +1,173 @@
+<div class="breadcrumb"
+     ng-bind="show.meeting.title_value"></div>
+
+<div class="edit-communication-tool">
+  <div ng-if="show.toolSelectVisible">
+
+
+    <div class="text-wrapper centered">
+      <h3>Remote meeting tools</h3>
+
+      <p>Choose an optional remote meeting tool for this meeting.</p>
+    </div>
+
+    <div class="row edit-communication-tool-container">
+
+      <div class="columns small-6 edit-communication-tool-option"
+           ng-class="{ 'selected-option' : show.meeting.online_conferencing_option == 'skype' }"
+           ng-click="show.selectCommunicationToolType('skype')">
+        <i class="icon icon-skype icon-medium"></i>
+        <br>
+        <span>On Skype</span>
+      </div>
+
+      <div class="columns small-6 edit-communication-tool-option"
+           ng-class="{ 'selected-option' : show.meeting.online_conferencing_option == 'teleconf' }"
+           ng-click="show.selectCommunicationToolType('teleconf')">
+        <i class="icon icon-onlineconf icon-medium"></i>
+        <br>
+        <span>On the phone</span>
+      </div>
+
+    </div>
+
+    <div class="row edit-communication-tool-container">
+
+      <div class="columns small-6 edit-communication-tool-option pro-feature"
+           ng-click="show.selectCommunicationToolType('hangout')"
+           ng-class="{ 'selected-option' : show.meeting.online_conferencing_option == 'hangout',
+                       'pro'             : show.isPro() }">
+          <i class="icon icon-hangout icon-medium"></i>
+          <br>
+          <span>On Hangout</span>
+      </div>
+
+      <div class="columns small-6 edit-communication-tool-option pro-feature"
+           ng-click="show.selectCommunicationToolType('lync')"
+           ng-class="{ 'selected-option' : show.meeting.online_conferencing_option == 'lync',
+                       'pro'             : show.isPro() }">
+          <i class="icon icon-lync icon-medium"></i>
+          <br>
+          <span>On Lync</span>
+      </div>
+
+    </div>
+
+    <div class="row edit-communication-tool-container">
+
+      <div class="columns small-6 edit-communication-tool-option pro-feature"
+           ng-click="show.selectCommunicationToolType('custom')"
+           ng-class="{ 'selected-option' : show.meeting.online_conferencing_option == 'custom',
+                       'pro'             : show.isPro() }">
+          <i class="icon icon-custom icon-medium"></i>
+          <br>
+          <span>On a custom tool</span>
+      </div>
+
+      <div class="columns small-6 edit-communication-tool-option"
+           ng-class="{ 'selected-option' : show.meeting.online_conferencing_option == '' || show.meeting.online_conferencing_option == null }"
+           ng-click="show.selectCommunicationToolType('')">
+        <i class="icon icon-remove icon-medium"></i>
+        <br>
+        <span>Disable</span>
+      </div>
+
+    </div>
+
+    <div class="banner-wrapper">
+      <div class="banner"
+           ng-hide="show.isPro()"
+           ng-click="show.openStartTrialModal()">
+        Want to access PRO features?
+        <br>
+        <a class="text-link">
+           Read more..
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="mtnList"
+       ng-if="!show.toolSelectVisible">
+
+    <div class="mtnList-item mtnList-nav"
+         ng-click="show.editCommunicationToolType()">
+
+      <span ng-switch="show.meeting.online_conferencing_option">
+
+        <span ng-switch-when="hangout">
+          <i class="icon icon-hangout icon-fw"></i>
+          <span class="icon-sibling">On Hangout</span>
+         </span>
+
+        <span ng-switch-when="skype">
+          <i class="icon icon-skype icon-fw"></i>
+          <span class="icon-sibling">On Skype</span>
+        </span>
+
+        <span ng-switch-when="lync">
+          <i class="icon icon-lync icon-fw"></i>
+          <span class="icon-sibling">On Lync</span>
+        </span>
+
+        <span ng-switch-when="teleconf">
+          <i class="icon icon-onlineconf icon-fw"></i>
+          <span class="icon-sibling">On the phone</span>
+        </span>
+
+        <span ng-switch-when="custom">
+          <i class="icon icon-custom icon-fw"></i>
+          <span class="icon-sibling">On a custom tool</span>
+        </span>
+
+        <span ng-switch-default>
+          Set remote meeting tool (optional)
+        </span>
+
+      </span>
+
+    </div>
+  </div>
+
+  <form ng-switch="show.meeting.online_conferencing_option"
+        ng-hide="show.toolSelectVisible"
+        ng-class="{ 'mtnList' : show.deviceUtils.platform() != 'ios' }"
+        name="show.communicationtool">
+
+    <span ng-switch-when="hangout">
+       <span ng-include="'/views/meeting/_edit-hangout.html'"></span>
+     </span>
+
+    <span ng-switch-when="skype">
+      <span ng-include="'/views/meeting/_edit-skype.html'"></span>
+    </span>
+
+    <span ng-switch-when="lync">
+      <span ng-if="!show.toolSelectVisible" ng-include="'/views/meeting/_edit-lync.html'"></span>
+    </span>
+
+    <span ng-switch-when="teleconf">
+      <span ng-include="'/views/meeting/_edit-teleconf.html'"></span>
+    </span>
+
+    <span ng-switch-when="custom">
+      <span ng-include="'/views/meeting/_edit-custom.html'"></span>
+    </span>
+
+  </form>
+
+  <div ng-if="show.deviceUtils.platform() != 'ios' && !show.toolSelectVisible">
+    <button class="dual"
+            ng-click="show.confirmEdit()"
+            ng-disabled="show.loading">
+      Save
+    </button>
+
+    <button ng-click="show.cancelEdit()"
+            ng-disabled="show.loading"
+            class="dual secondary">
+      Cancel
+    </button>
+  </div>
+</div>

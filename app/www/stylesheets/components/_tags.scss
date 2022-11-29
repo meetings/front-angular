@@ -1,0 +1,140 @@
+mtn-tag-input {
+  *,
+  *:before,
+  *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  .tags {
+    padding: 8px 14px;
+    overflow: hidden;
+    word-wrap: break-word;
+    cursor: text;
+    background-color: $mtn-tag-input-tags-bg;
+  }
+
+  .tags .tag-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  .tags .label,
+  .tags .tag-item,
+  .tags .input,
+  .tags input[type="text"] {
+    margin: 2px 0;
+    padding: 0 2px 0 4px;
+    display: inline-block;
+    float: left;
+    font-weight: normal;
+    font-size: 16px;
+    height: 25px;
+    line-height: 25px;
+  }
+
+  .tags .label{
+    padding: 0;
+    margin: 2px 0;
+    pointer-events: none;
+  }
+
+  .tags .tag-item {
+    border-radius: 3px;
+    color: $mtn-tag-input-item-color;
+    &:after {
+      content: ',';
+      color: $mtn-tag-input-item-comma-color;
+    }
+    &.selected {
+      background: $mtn-tag-input-item-selected-bg;
+      color: $mtn-tag-input-item-selected-color;
+      &:after {
+        visibility: hidden;
+      }
+    }
+  }
+
+  .tags .input,
+  .tags input[type="text"] {
+    border: 0;
+    outline: none;
+    min-width:44px;
+    max-width: 100%;
+    height: auto;
+    min-height: 25px;
+    @include vendor-prefix(user-select, text);
+    &.invalid-tag {
+      color: red;
+    }
+    &::-ms-clear {
+      display: none;
+    }
+  }
+}
+
+
+mtn-tag-input.autocompleteOpen .tags{
+  border-bottom: 1px solid $mtn-tag-input-autocompleteOpen-border;
+}
+
+//When pickContact button is added to the first row
+mtn-tag-input.withPickContact .tags{
+  $rightPadding: 14px;
+  $pickContactWidth: 22px;
+  padding-right: ($rightPadding + $pickContactWidth);
+}
+
+//--------------------------------------------------------------------------------------------------
+//TODO Remove below when ngTags is no longer in use.
+//
+
+tags-input.ng-invalid .tags {
+  -webkit-box-shadow: 0 0 3px 1px rgba(255, 0, 0, 0.6);
+  -moz-box-shadow: 0 0 3px 1px rgba(255, 0, 0, 0.6);
+  box-shadow: 0 0 3px 1px rgba(255, 0, 0, 0.6);
+}
+tags-input .tags {
+  border: 0 none;
+  box-shadow: none;
+  -webkit-appearance: none;
+}
+tags-input .tags.focused {
+  outline: none;
+  @include vendor-prefix(box-shadow, none);
+}
+tags-input .tags .tag-item {
+  position: relative;
+  background: transparent;
+  border: 0 none;
+  color: $text-link;
+  padding: 0;
+
+  :after {
+    content: ', ';
+  }
+}
+tags-input .tags .tag-item.selected {
+  background: $text-link;
+  color: $white;
+}
+tags-input .tags .input {
+  padding-left: 0;
+}
+tags-input .tags .tag-item .remove-button {
+  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+tags-input .tags .tag-item .remove-button:active {
+  background-color: rgba(255,0,0,0.2);
+}
+tags-input .tags .tag-item .remove-button,
+tags-input .tags .tag-item .remove-button:active {
+  color: rgba(0,0,0,0);
+}

@@ -1,0 +1,117 @@
+//Set $max-width to false if you want to set your own width.
+@mixin truncate-text($max-width:100%) {
+  @if $max-width {
+    max-width: $max-width;
+  }
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+// @MIXIN
+//
+// Copied from Foundation. Needed to change &:hover, &:focus to &:active to fix problem with buttons staying selected after click
+//
+// We use this mixin to add button color styles
+//
+// $bg - Primary color set in settings file. Default: $primary-color.
+// $radius - If true, set to button radius which is $global-radius || explicitly set radius amount in px (ex. $radius:10px). Default: false
+// $disabled - We can set $disabled:true to create a disabled transparent button. Default: false
+@mixin button-style(
+    $bg:$button-bg-color,
+    $radius:false,
+    $disabled:false,
+    $bg-hover:null,
+    $border-color:null
+  ) {
+  // We control which background styles are used,
+  // these can be removed by setting $bg:false
+  @if $bg {
+    // This find the lightness percentage of the background color.
+    $bg-lightness: lightness($bg);
+
+    background-color: $bg;
+    border-color: scale-color($bg, $lightness: $button-function-factor);
+    &:active { background-color: scale-color($bg, $lightness: $button-function-factor); }
+
+    // We control the text color for you based on the background color.
+    @if $bg-lightness > 70% {
+      color: $button-font-color-alt;
+
+      &:active { color: $button-font-color-alt; }
+    }
+    @else {
+      color: $button-font-color;
+
+      &:active { color: $button-font-color; }
+    }
+  }
+
+  // We can set $disabled:true to create a disabled transparent button.
+  @if $disabled {
+    cursor: $cursor-default-value;
+    opacity: $button-disabled-opacity;
+    box-shadow: none;
+    &:active { background-color: $bg; }
+  }
+
+  // We can control how much button radius us used.
+  @if $radius == true { @include radius($button-radius); }
+  @else if $radius { @include radius($radius); }
+
+}
+
+@mixin vendor-prefix($name, $argument) {
+  -webkit-#{$name}: #{$argument};
+  -khtml-#{$name}: #{$argument};
+  -moz-#{$name}: #{$argument};
+  -ms-#{$name}: #{$argument};
+  -o-#{$name}: #{$argument};
+  #{$name}: #{$argument};
+}
+
+@mixin vendor-prefix-attr($name, $argument){
+  #{$name}: -webkit-#{$argument};
+  #{$name}: -khtml-#{$argument};
+  #{$name}: -moz-#{$argument};
+  #{$name}: -ms-#{$argument};
+  #{$name}: -o-#{$argument};
+  #{$name}: #{$argument};
+}
+
+@mixin vendor-prefix-transition($argument) {
+  -webkit-transition: -webkit-#{$argument};
+  -webkit-transition: #{$argument};
+  -khtml-transition: -khtml-#{$argument};
+  -khtml-transition: #{$argument};
+  -moz-transition: -moz-#{$argument};
+  -moz-transition: #{$argument};
+  -ms-transition: -ms-#{$argument};
+  -ms-transition: #{$argument};
+  -o-transition: -o-#{$argument};
+  -o-transition: #{$argument};
+  transition: #{$argument};
+}
+
+@mixin vendor-prefix-opacity($trans){
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$trans * 100})";
+  -moz-opacity: $trans;
+  -khtml-opacity: $trans;
+  opacity: $trans;
+}
+
+@mixin keyframes($animationName) {
+  @-webkit-keyframes #{$animationName} {
+    @content;
+  }
+  @-moz-keyframes #{$animationName} {
+    @content;
+  }
+  @-o-keyframes #{$animationName} {
+    @content;
+  }
+  @keyframes #{$animationName} {
+    @content;
+  }
+}

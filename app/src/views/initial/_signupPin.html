@@ -1,0 +1,47 @@
+<page-wrapper ng-model="signUp">
+
+<form name="signUpPinForm" novalidate>
+
+  <div class="text-wrapper text-starter">
+    <p>
+      Existing account found with email address:<br>
+      <strong ng-bind="signUp.email"></strong>
+    </p>
+    <p>
+      We need to verify that you are the account holder.
+      Please enter the PIN code sent to the email address:
+    </p>
+  </div>
+  <div class="mtn-inputgroup signingroup row">
+    <div class="columns small-12 edit-area">
+      <mtn-float-label for="pin">
+      </mtn-float-label>
+      <input type="number"
+             id="pin"
+             pattern="[0-9]*"
+             name="pin"
+             placeholder="PIN"
+             ng-model="signUp.pin"
+             mtn-blur-on-event="blurInput"
+             required
+             autocapitalize="none">
+    </div>
+  </div>
+
+  <button ng-click="signUp.verifyPin()"
+          ng-disabled="!signUp.pin || signUp.btnWorking">
+    Continue
+    <span class="spinner"
+          ng-if="signUp.btnWorking == 'signUp'"></span>
+  </button>
+
+  <button ng-click="signUp.resendPin()" class="link">Resend the PIN code</button>
+  <div class="text-wrapper"
+       ng-if="signUp.pinReRequested">
+    <p>
+      A new PIN code has been sent to your email address.
+    </p>
+  </div>
+</form>
+
+</page-wrapper>

@@ -1,0 +1,18 @@
+<div class="participant-summary" ng-if="!shortSummary">
+  <span class="participant-summary-yes">
+    <span class="rsvp-bullet rsvp-yes"></span>
+    {{ attending }} attending,
+  </span>
+  <span class="participant-summary-maybe">
+    <span class="rsvp-bullet rsvp-maybe"></span>
+    {{ pending }} unknown</span><span ng-hide="hideZeroDeclined == 'true' && declined == 0">
+,   <span class="participant-summary-no">
+      <span class="rsvp-bullet rsvp-no"></span>
+      {{ declined }} declined
+    </span>
+  </span>
+</div>
+
+<div class="participant-summary" ng-if="shortSummary">
+  {{ participants.length }} participants
+</div>

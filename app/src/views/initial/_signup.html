@@ -1,0 +1,73 @@
+<page-wrapper ng-model="signUp">
+
+<form name="signUp.registrationForm"
+      class="signUpRegistrationForm">
+  <div class="columns small-12 edit-area">
+
+    <mtn-float-label for="email">
+    </mtn-float-label>
+    <input type="email"
+           id="email"
+           name="email"
+           placeholder="Email"
+           ng-model="signUp.user.primary_email"
+           required
+           mtn-blur-on-event="blurInput">
+
+    <mtn-float-label for="first_name">
+    </mtn-float-label>
+    <input type="text"
+           id="first_name"
+           name="first_name"
+           placeholder="First name"
+           ng-model="signUp.user.first_name"
+           mtn-blur-on-event="blurInput"
+           required
+           autocapitalize="words">
+
+    <mtn-float-label for="last_name">
+    </mtn-float-label>
+    <input type="text"
+           id="last_name"
+           name="last_name"
+           placeholder="Last name"
+           ng-model="signUp.user.last_name"
+           mtn-blur-on-event="blurInput"
+           required
+           autocapitalize="words">
+
+    <mtn-float-label for="organization">
+    </mtn-float-label>
+    <input type="text"
+           id="organization"
+           name="organization"
+           placeholder="Organization"
+           ng-model="signUp.user.organization"
+           mtn-blur-on-event="blurInput"
+           autocapitalize="words">
+
+  </div>
+
+  <button ng-click="signUp.signUp()"
+          ng-disabled="signUp.disableSignUpButton()">
+    <span ng-if="!signUp.disableSignUpButton()">That's me</span>
+    <span ng-if="signUp.disableSignUpButton()">Fill the form</span>
+    <span class="spinner"
+          ng-if="signUp.btnWorking == 'signUp'"></span>
+  </button>
+
+
+  <div class="text-wrapper" ng-if="signUp.appConfig.appBrand != signUp.appConfig.appBrands.CMEET">
+    <p>
+      By submitting this form, I accept the <a class="text-link" ng-click="signUp.toggleTOS()">Terms of Service</a>.
+    </p>
+  </div>
+
+
+  <div ng-show="signUp.TOSVisible"
+       ng-include="'/views/initial/_termsOfService.html'"
+       ng-click="signUp.toggleTOS()">
+  </div>
+</form>
+
+</page-wrapper>

@@ -1,0 +1,53 @@
+<page-wrapper ng-model="index"
+              mtn-pull-to-refresh-enabled="true"
+              mtn-pull-to-refresh-callback="index.ptrCallback()">
+
+<div>
+  <div class="timeline"
+       ng-cloak
+       ng-class=" index.error ? 'disabled' : '' ">
+
+    <button ng-if="index.newSuggestionsButtonVisible"
+         ng-click="index.groupMeetings()"
+         class="timeline-tab full-width sticky success">
+      <i class="icon icon-schedule"></i> New items available. Tap to refresh.
+    </button>
+
+    <react-component id="reactComponentParent"
+                     name="Timeline"
+                     props="{ allMeetings: index.meetings,
+                              openOrSuggest: index.openOrSuggest,
+                              createSuggested: index.createSuggested,
+                              confirmHideSuggested: index.confirmHideSuggested,
+                              switchTab: index.switchTab
+                            }"
+                     watch-depth="reference">
+    </react-component>
+
+    <div ng-if="index.showUpcoming && !index.loading && !index.hasUpcomingMeetings()"
+         class="timeline-empty">
+      <div class="bubble">Welcome to {{ index.appConfig.appName }}!</div>
+      <img ng-src="images/mobiilisqurre.png"
+           class="squirrel">
+    </div>
+
+    <div ng-if="!index.showUpcoming && !index.loading && !index.hasPastMeetings()"
+         class="timeline-empty">
+      <div class="bubble">This is where your past meetings will be archived.</div>
+      <img ng-src="images/mobiilisqurre.png"
+           class="squirrel">
+    </div>
+
+    <button class="secondary"
+            ng-click="index.fetchMoreMeetings()"
+            ng-if="!index.loading && (
+                   (index.showUpcoming && index.upcomingInfiniteSrcollEnabled && index.hasUpcomingMeetings()) ||
+                   (!index.showUpcoming && index.pastInfiniteSrcollEnabled && index.hasPastMeetings()))"
+            ng-disabled="index.fetchingMore">
+      Show more
+      <span ng-class="{ 'spinner' : index.fetchingMore }"></span>
+    </button>
+  </div>
+</div>
+
+</page-wrapper>

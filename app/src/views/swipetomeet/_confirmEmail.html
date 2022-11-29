@@ -1,0 +1,44 @@
+<page-wrapper ng-model="show">
+
+  <form name="show.pinForm" novalidate>
+
+    <div class="text-wrapper">
+      <p>
+        Looks like the email address you entered is already associated with another user account.<br>
+        You will now receive an access code via email to authenticate this email address:
+      </p>
+      <p ng-bind="show.pinRequestFor"></p>
+    </div>
+    <div class="mtn-inputgroup signingroup row">
+      <div class="columns small-12 edit-area">
+        <mtn-float-label for="pin">
+        </mtn-float-label>
+        <input type="number"
+               id="pin"
+               pattern="[0-9]*"
+               name="pin"
+               placeholder="PIN"
+               ng-model="show.pin"
+               mtn-blur-on-event="blurInput"
+               required
+               autocapitalize="none">
+      </div>
+    </div>
+
+    <button ng-click="show.verifyPin()"
+            ng-disabled="!show.pin || show.btnWorking">
+      Continue
+      <span class="spinner"
+            ng-if="show.btnWorking == 'verifyPin'"></span>
+    </button>
+
+    <button ng-click="show.resendPin()" class="link">Resend the PIN code</button>
+    <div class="text-wrapper"
+         ng-if="show.pinReRequested">
+      <p>
+        A new PIN code has been sent to your email address.
+      </p>
+    </div>
+  </form>
+
+</page-wrapper>

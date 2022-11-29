@@ -1,0 +1,51 @@
+/* Meetin.gs App Environment
+ *
+ * Select which application configuration should be used in a build.
+ *
+ * This file is applied only if it is renamed to "config/environment.js"
+ * which is ignored in the repository. Purpose of this configuration
+ * is to be able to create builds and save their setup without having
+ * uncommitted changes in the repository.
+ *
+ * Usage:
+ *    Copy config/environment.js.example -> config/environment.js
+ *
+ * See /app/src/config/appEnvironments.coffee for defaults and other
+ * setup which are used if "config/environment.js" does not exist.
+ *
+ */
+var appBrands = {
+  MEETINGS: 0,
+  SWIPETOMEET: 1,
+  CMEET: 2
+};
+var mtnApp = {
+  version: "3.4.2", // using semantic versioning (semver.org) or "dev" for development
+  androidVersionCode: 3, // Integer that should be increased every time Android is released in store
+
+  // appBrand: appBrands.MEETINGS,
+  appBrand: appBrands.SWIPETOMEET,
+  // appBrand: appBrands.CMEET,
+
+  // fake_platform: "android", fake_connectivity: "online", // Cordova android faking
+  // fake_platform: "ios", fake_connectivity: "online",// Cordova ios faking
+
+  config: {
+
+    // // Development settings
+    // mode:           "development",
+    // environment:    "staging",
+    // appId:          "gs.meetin.debug.scanner"
+
+    // // Beta environment
+    // mode:           "production",
+    // environment:    "beta",
+    // appId:          "com.swipetomeet.mobile"
+
+    // Live environment
+    mode:           "production",
+    environment:    "live",
+    appId:          "com.swipetomeet.mobile"
+
+  }
+};

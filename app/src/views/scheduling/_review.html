@@ -1,0 +1,305 @@
+<page-wrapper ng-model="index">
+
+<div class="schedule-btns tapToSchedule">
+  <div class="schedule-btn">
+    <div class="schedule-btn--container"
+         ng-style="{backgroundImage:'url('+index.getBackgroundImageUrl(index.s2m.scheduling)+')'}">
+      <button class="schedule-btn-round"
+              ng-click="index.onScheduleMeeting()">
+        <div class="schedule-btn-round--container">
+          <div class="schedule-btn-round--content">
+            <div class="schedule-btn-round--icon">
+              <i class="icon icon-send"></i>
+            </div>
+            <span>Start scheduling</span>
+          </div>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div>
+
+  <div class="mtnList">
+
+    <h2 ng-model="index.meeting.title_value"
+        ng-bind="index.meeting.title_value"
+        ng-click="index.openMeetingEdit('title')"
+        ng-show="index.meeting.title_value"
+        class="mtnList-item mtnList-title mtnList-nav">
+    </h2>
+
+    <h2 class="mtnList-item mtnList-title mtnList-nav"
+        ng-hide="index.meeting.title_value"
+        ng-click="index.openMeetingEdit('title')">
+      Untitled meeting
+    </h2>
+
+    <div class="mtnList-item mtnList-nav"
+         ng-click="index.openMeetingEdit('location')">
+
+      <i class="icon icon-location icon-fw"></i>
+
+      <span ng-model="index.meeting.location_value"
+            ng-bind="index.meeting.location_value"
+            ng-show="index.meeting.location_value"
+            class="icon-sibling">
+      </span>
+
+      <span ng-hide="index.meeting.location_value"
+            class="icon-sibling">Set location</span>
+
+    </div>
+
+    <div class="mtnList-item mtnList-nav"
+         ng-click="index.openMeetingEdit('communicationtool')">
+
+      <span ng-switch="index.meeting.online_conferencing_option">
+
+        <span ng-switch-when="hangout">
+           <i class="icon icon-hangout icon-fw"></i>
+           <span class="icon-sibling">On Hangout</span>
+         </span>
+
+        <span ng-switch-when="skype">
+           <i class="icon icon-skype icon-fw"></i>
+           <span class="icon-sibling">On Skype<span ng-if="index.meeting.online_conferencing_data.skype_account">:</span>&#32;<span class="onlineDetails">{{ index.meeting.online_conferencing_data.skype_account }}</span></span>
+        </span>
+
+        <span ng-switch-when="lync">
+           <i class="icon icon-lync icon-fw"></i>
+           <span class="icon-sibling">On Lync</span>
+        </span>
+
+        <span ng-switch-when="teleconf">
+           <i class="icon icon-onlineconf icon-fw"></i>
+           <span class="icon-sibling">
+            On the phone<span ng-if="index.meeting.online_conferencing_data.teleconf_number">:</span>
+
+            <div class="onlineDetails">
+              {{ index.meeting.online_conferencing_data.teleconf_number }}
+
+              <span ng-show="index.meeting.online_conferencing_data.teleconf_pin.length">
+                &nbsp;PIN: {{ index.meeting.online_conferencing_data.teleconf_pin }}
+              </span>
+            </div>
+          </span>
+        </span>
+
+        <span ng-switch-when="custom">
+           <i class="icon icon-custom icon-fw"></i>
+           <span class="icon-sibling">On a custom tool</span>
+        </span>
+
+        <span ng-switch-default>
+          <i class="icon icon-custom icon-teleconf"></i>
+          <span class="icon-sibling">Set remote meeting tool</span>
+        </span>
+
+      </span>
+
+    </div>
+
+    <div ng-click="index.openParticipants()"
+         class="mtnList-item mtnList-nav"
+         ng-class="{'mtnList-participantsSummary' : index.s2m.participants.length > index.participantMaxCountBeforeSummary}">
+
+      <div class="participant-meeting">
+        <participantlist participants="index.s2m.participants"
+                         ng-hide="index.s2m.participants.length > index.participantMaxCountBeforeSummary"
+                         show-rsvp="false"
+                         disabled-property-name="scheduling_disabled">
+        </participantlist>
+
+        <participantsummary participants="index.s2m.participants"
+                            ng-show="index.s2m.participants.length > index.participantMaxCountBeforeSummary">
+        </participantsummary>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="mtnList">
+
+    <div class="mtnList-item mtnList-nav"
+        ng-click="index.openAgenda()">
+
+        <span class="material-wrapper">
+          <span ng-switch="index.meeting.initial_agenda != null">
+            <span ng-switch-when="false"
+                  class="material-title">
+              Write agenda
+            </span>
+
+            <span ng-switch-when="true"
+                  class="material-title">
+              Agenda
+            </span>
+          </span>
+
+        </span>
+        <span class="comment-count" ng-bind="index.agenda.comment_count" ng-show="index.agenda.comment_count > 0"></span>
+    </div>
+
+  </div>
+
+
+  <div class="mtnList">
+
+    <div class="mtnList-item"
+         ng-class="{ 'mtnList-nav' : index.s2m.scheduling.is_scheduling_template }">
+
+      <div ng-if="!index.s2m.scheduling.is_scheduling_template">
+        <span class="mtnList-item-label"
+              ng-class="{ 'input-error':
+                            index.formError['invalidDuration'] ||
+                            index.formError['invalidTime'] }">
+          Days &amp; time:
+        </span>
+
+        <span>Custom</span>
+      </div>
+
+      <div class="mtnList-item-dualrow"
+           ng-click="index.openTimeEdit('review')"
+           ng-if="index.s2m.scheduling.is_scheduling_template">
+
+        <span class="mtnList-item-label"
+              ng-class="{ 'input-error':
+                            index.formError['invalidDuration'] ||
+                            index.formError['invalidTime'] }">
+          Days & time:
+        </span>
+
+        <div class="timeframe-content">
+          <span class="timeframe-days">
+            <span ng-repeat="day in index.s2m.selectedDays">
+              <span mtn-format-unit-to-moment="{{ index.dateHelper.formatDayOfWeekShortest }}"
+                    value="{{ day + 1 }}"
+                    unit="day">
+              </span><span ng-hide="$last">,&nbsp;</span>
+            </span>
+          </span>
+
+          <span ng-model="index.s2m.scheduling.slots[0].begin_second"
+                ng-cloak
+                epoch-model
+                epoch-format="{{ index.dateHelper.formatTime }}"
+                UTC="true">
+          </span>
+
+          &dash;
+
+          <span ng-model="index.s2m.scheduling.slots[0].end_second"
+                ng-cloak
+                epoch-model
+                epoch-format="{{ index.dateHelper.formatTime }}"
+                UTC="true">
+          </span>
+        </div>
+      </div>
+    </div>
+    <!-- /days & time -->
+
+    <div class="mtnList-item"
+         ng-if="!index.s2m.scheduling.is_scheduling_template">
+
+      <span class="mtnList-item-label"
+            ng-class="{ 'input-error': index.formError['invalidDuration'] }">
+        Duration:
+      </span>
+
+      <span ng-bind="index.s2m.humanizedDuration">
+      </span>
+    </div>
+
+    <div class="mtnList-item mtnList-nav"
+         ng-click="index.openDurationEdit('review')"
+         ng-if="index.s2m.scheduling.is_scheduling_template">
+
+      <span class="mtnList-item-label"
+            ng-class="{ 'input-error': index.formError['invalidDuration'] }">
+        Duration:
+      </span>
+
+      <span ng-bind="index.s2m.humanizedDuration">
+      </span>
+    </div>
+    <!-- /duration -->
+
+    <div class="mtnList-item mtnList-nav"
+         ng-click="index.openSourceEdit()">
+
+      <span class="mtnList-item-label">Calendars:</span>
+
+      <span ng-if="index.s2m.totalCalendarsCount">
+        {{ index.s2m.enabledCalendarsCount }} calendars of {{ index.s2m.totalCalendarsCount }}
+      </span>
+      <span ng-if="!index.s2m.totalCalendarsCount">
+        Not connected
+      </span>
+
+    </div>
+    <!-- /calendars -->
+
+    <div class="mtnList-item mtnList-nav"
+         ng-click="index.openTimespanEdit('start')">
+
+      <span class="mtnList-item-label"
+            ng-class="{ 'input-error': index.formError['invalidTimespan'] }">
+        Earliest date:
+      </span>
+
+      <span epoch-model
+            ng-model="index.s2m.availableTimespans.start"
+            epoch-format="{{ index.dateHelper.formatDateYear }}">
+      </span>
+    </div>
+    <!-- /start date -->
+
+    <div class="mtnList-item mtnList-nav"
+         ng-click="index.openTimespanEdit('end')">
+
+      <span class="mtnList-item-label"
+            ng-class="{ 'input-error':
+                          index.formError['invalidTimespan'] ||
+                          index.formError['invalidTimespanEnd'] }">
+        Latest date:
+      </span>
+
+      <span ng-show="index.s2m.availableTimespans.end"
+            epoch-model
+            ng-model="index.s2m.availableTimespans.end"
+            epoch-format="{{ index.dateHelper.formatDateYear }}">
+      </span>
+
+      <span ng-hide="index.s2m.availableTimespans.end">-
+      </span>
+    </div>
+    <!-- /end date -->
+
+    <div class="mtnList-item mtnList-toggle">
+
+      <mtn-checkbox ng-model="index.s2m.scheduling.organizer_swiping_required"
+                    name="organizerSwipingRequired"
+                    mtn-invert-value="true"
+                    mtn-click="index.toggleOrganizerSwipingRequired()"
+                    mtn-swipe-left="index.setOrganizerSwipingRequired(false)"
+                    mtn-swipe-right="index.setOrganizerSwipingRequired(true)">
+        Auto-pick time for me:
+      </mtn-checkbox>
+    </div>
+
+  </div>
+</div>
+
+<div class="input-hint-animated" ng-if="!index.s2m.scheduling.organizer_swiping_required">
+  <p>When enabled, you don't need to swipe. The app will automatically pick a suitable time based on your calendar.</p>
+</div>
+
+<div class="text-wrapper">
+  <p>{{ index.appConfig.appName }} eliminates unsuitable times based on your availability. Make sure your calendars are up to date to ensure smooth scheduling. Everyone will be notified once the suitable time is found.</p>
+</div>
+
+</page-wrapper>

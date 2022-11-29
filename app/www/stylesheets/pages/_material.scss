@@ -1,0 +1,99 @@
+.material-container{
+  background:$material-bg;
+  padding:rem-calc(14px) rem-calc(25px) rem-calc(14px) rem-calc(25px);
+  margin-bottom: rem-calc(10px);
+}
+.material-title{
+  margin:0;
+  font-size: $material-title--font-size;
+  margin-bottom: rem-calc(14px);
+}
+.material-container .input {
+  min-height: 4rem;
+}
+
+// Participant list spesific settings
+.material-comments{
+  .comment{
+    margin-bottom:rem-calc(10px);
+    overflow: hidden;
+    background: $body-background;
+  }
+  .comment-timestamp{
+    text-align: right;
+    font-size: $material-comments--comment-timestamp--font-size;
+    padding:0 rem-calc(25px);
+    color:$material-help-color;
+  }
+
+  .comment-wrapper{
+    margin-left:rem-calc(14px);
+    margin-right:rem-calc(25px);
+    @include clearfix;
+  }
+
+  $avatar-position:rem-calc(8px);
+  .participant-avatar {
+    @include avatar(32);
+    margin-top:$avatar-position;
+    margin-right:rem-calc(10px);
+    margin-bottom:0;
+  }
+  .comment-area{
+    background-color: $material-comment-bg;
+    display: block;
+    float:left;
+    width: (100% - 100% * (34 + 10)/(320 - 14 - 25) );
+    width: calc(100% - #{rem-calc(34px)} - #{rem-calc(10px)});
+    padding:rem-calc(10px);
+
+    position: relative;
+
+    &:after {
+      $arrow-width:rem-calc(5px);
+      $arrow-height:rem-calc(10px);
+      content:"";
+      position:absolute;
+      border-style:solid;
+      display:block;
+      width:0;
+      top:($avatar-position + rem-calc(15px)); /* controls vertical position */
+      left:-$arrow-width; /* value = - border-left-width - border-right-width */
+      bottom:auto;
+      border-width:$arrow-height/2 $arrow-width $arrow-height/2 0;
+      border-color:transparent $material-comment-bg;
+    }
+  }
+  .comment-message{
+    color:$material-comment-color;
+    font-weight:300;
+  }
+  .comment-author{
+    color:$material-help-color;
+    font-size:$material-comments--comment-author--font-size;
+    margin-top: rem-calc(10px);
+  }
+
+
+}
+
+.material-comment-new{
+  overflow: hidden;
+  padding:rem-calc(2px) rem-calc(14px);
+  background:$comment-wrapper-bg;
+  margin-bottom:1em;
+  @include vendor-prefix-attr(display, flex);
+
+  input[type="text"]{
+    min-height: rem-calc(44px);
+    float:left;
+    padding-left:rem-calc(5px);
+    padding-right:rem-calc(5px);
+    font-size: $material-new-comment--input--font-size;
+    @include vendor-prefix(flex, 1);
+  }
+}
+
+.save-button-wrapper{
+  overflow:hidden;
+}

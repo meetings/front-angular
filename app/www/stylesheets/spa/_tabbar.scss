@@ -1,0 +1,50 @@
+.tab-bar {
+  .left-small {
+    text-align: center;
+    width: auto;
+    a{
+      display: inline-block;
+      width: 100%;
+      padding-left:8px;
+      white-space: nowrap;
+    }
+  }
+  .right-small {
+    text-align: center;
+    a{
+      display: inline-block;
+      width: 100%;
+      padding-right:8px;
+    }
+  }
+}
+
+.tab-bar-back,
+.tab-bar-add,
+.tab-bar-add-text {
+  line-height: 44px;
+  color: $tab-bar-add-color;
+  font-weight:normal;
+  font-size: 17px;
+}
+.tab-bar-back{
+  margin-left:-6px;
+}
+.tab-bar-add-text{
+  margin-left:-6px;
+}
+
+.tab-bar-add {
+  height: 22px;
+  margin-bottom: 4px;
+}
+
+html .tab-bar{
+  position:absolute;
+  top:0;
+  width:100%;
+  z-index:$tab-bar-zindex;
+  h1,h2,h3,h4,h5,h6{
+    text-align: center;
+  }
+}

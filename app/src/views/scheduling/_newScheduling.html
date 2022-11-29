@@ -1,0 +1,157 @@
+<page-wrapper ng-model="index"
+              ng-class="{
+                'page-background-white':index.appConfig.appBrand != index.appConfig.appBrands.MEETINGS,
+                'meetings-scheduling-bg':index.appConfig.appBrand == index.appConfig.appBrands.MEETINGS
+              }">
+<div ng-if="index.appConfig.appBrand == index.appConfig.appBrands.MEETINGS"
+     class="meetings-scheduling">
+  <div class="text-wrapper">
+
+    <div class="logo-img">
+      <img src="/images/logo.png" alt="SwipeToMeet" width="249" height="150">
+    </div>
+
+    <p><strong>Feature not available in Meetin.gs app:</strong></p>
+
+    <p>Switch to our new free SwipeToMeet app to access the improved social scheduling functionalities.</p>
+
+  </div>
+
+  <mtn-a class="button"
+         href="{{ index.appConfig.appStoreUrls.ios }}"
+         alt-href="{{ index.appConfig.appStoreUrls.ios }}"
+         target="_blank">
+    Download SwipeToMeet
+  </mtn-a>
+
+  <div class="text-wrapper">
+
+    <p><strong>SwipeToMeet &amp; Meetin.gs:</strong></p>
+    <ul>
+      <li>All Meetin.gs features included</li>
+      <li>Works with your Meetin.gs account</li>
+      <li>Actively developed</li>
+    </ul>
+
+    <p><strong>Why SwipeToMeet?</strong></p>
+    <ul>
+      <li>Scheduling with a group is easy, especially on the move.</li>
+      <li>Invite participants with phone number or email.</li>
+      <li>Automated time suggestions save everyone's time.</li>
+      <li>Follow scheduling progress in real time.</li>
+      <li>No app installation or registration required from participants.</li>
+    </ul>
+  </div>
+  &nbsp;
+</div>
+
+<div ng-if="index.appConfig.appBrand != index.appConfig.appBrands.MEETINGS">
+  <div class="intro-wrapper"
+       ng-show="index.carouselVisible && index.deviceUtils.platform() != 'web'"
+       mtn-carousel
+       mtn-after-last-slide="index.onCarouselComplete()">
+    <div class="intro-slide">
+      <div class="intro-centered">
+        <img ng-src="images/intro1.png" alt="Connect calendar and address book" width="274" height="221">
+        <h2>Get started</h2>
+        <p class="intro-text">Connect calendar &amp; address book for your availability and contacts</p>
+        <ul class="pagination">
+          <li class="selected">&nbsp;</li>
+          <li>&nbsp;</li>
+          <li>&nbsp;</li>
+          <li>&nbsp;</li>
+        </ul>
+      </div>
+    </div>
+    <div class="intro-slide">
+
+      <div class="intro-centered">
+        <img ng-src="images/intro2.png" alt="Super easy setup" width="274" height="221">
+        <h2>Super easy setup</h2>
+        <p class="intro-text">Answer three simple questions, select participants and send. Your setup is complete.</p>
+        <ul class="pagination">
+          <li>&nbsp;</li>
+          <li class="selected">&nbsp;</li>
+          <li>&nbsp;</li>
+          <li>&nbsp;</li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="intro-slide">
+
+      <div class="intro-centered">
+        <img ng-src="images/intro3.png" alt="Let the swiping commence" width="274" height="221">
+        <h2>Let the swiping commence</h2>
+        <p class="intro-text">Participants answer our smart suggestions based on everyones availability.</p>
+        <ul class="pagination">
+          <li>&nbsp;</li>
+          <li>&nbsp;</li>
+          <li class="selected">&nbsp;</li>
+          <li>&nbsp;</li>
+        </ul>
+      </div>
+    </div>
+    <div class="intro-slide">
+
+      <div class="intro-centered">
+        <img ng-src="images/intro4.png" alt="Scheduling magic is complete" width="274" height="221">
+        <h2>Scheduling magic is complete</h2>
+        <p class="intro-text">Everyone will be notified when a suitable time has been found.</p>
+        <ul class="pagination">
+          <li>&nbsp;</li>
+          <li>&nbsp;</li>
+          <li>&nbsp;</li>
+          <li class="selected">&nbsp;</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="schedule-btns scheduling-tab"
+       ng-hide="index.loading">
+    <div class="schedule-btns--container">
+      <div class="schedule-btn">
+        <div class="schedule-btn--container schedule-btn--theme-14">
+          <button class="schedule-btn-round"
+               ng-click="index.startNewScheduling()">
+            <div class="schedule-btn-round--container">
+              <div class="schedule-btn-round--content">
+                <div class="schedule-btn-round--icon">
+                  <i class="icon icon-swipe"></i>
+                </div>
+                <span>Any meeting</span>
+              </div>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <div class="schedule-btn"
+           ng-repeat="matchmaker in index.matchmakers">
+        <div class="schedule-btn--container"
+             ng-style="{backgroundImage:'url('+index.getBackgroundImageUrl(matchmaker)+')'}">
+          <button class="schedule-btn-round"
+               ng-click="index.selectTemplate(matchmaker)">
+            <div class="schedule-btn-round--container">
+              <div class="schedule-btn-round--content">
+                <div class="schedule-btn-round--icon lunch">
+                  <i class="icon {{index.getTypeIconClass(matchmaker)}}"></i>
+                </div>
+                <span>{{ matchmaker.name }}</span>
+              </div>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <div class="schedule-btn">
+        <div class="schedule-btn--container schedule-btn--theme-6">
+          <div class="schedule-btn--custom">Custom templates coming soon</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</page-wrapper>

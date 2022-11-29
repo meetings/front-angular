@@ -1,0 +1,41 @@
+<page-wrapper ng-model="signIn">
+  <form name="signInPinForm" novalidate>
+
+    <div class="text-wrapper text-starter">
+      <p>
+        You will now receive an access code via SMS to authenticate this number:<br>
+        <strong ng-bind="signIn.internationalFormat"></strong>
+      </p>
+    </div>
+    <div class="mtn-inputgroup signingroup row">
+      <div class="columns small-12 edit-area">
+        <mtn-float-label for="pin">
+        </mtn-float-label>
+        <input type="number"
+               id="pin"
+               pattern="[0-9]*"
+               name="pin"
+               placeholder="PIN"
+               ng-model="signIn.pin"
+               mtn-blur-on-event="blurInput"
+               required
+               autocapitalize="none">
+      </div>
+    </div>
+
+    <button ng-click="signIn.signIn(signIn.pin)"
+            ng-disabled="!signIn.pin || signIn.btnWorking">
+      Sign in
+      <span class="spinner"
+            ng-if="signIn.btnWorking == 'signIn'"></span>
+    </button>
+
+    <button ng-click="signIn.resendPin()" class="link">Resend the SMS</button>
+    <div class="text-wrapper"
+         ng-if="signIn.pinReRequested">
+      <p>
+        A new PIN code has been sent to your phone number.
+      </p>
+    </div>
+  </form>
+</page-wrapper>

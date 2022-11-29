@@ -1,0 +1,47 @@
+<page-wrapper ng-model="show">
+
+<form name="confirmPhoneForm" novalidate>
+
+  <div class="text-wrapper text-starter">
+    <p>
+      Existing account found with phone number:<br>
+      <strong ng-bind="show.phone"></strong>
+    </p>
+    <p>
+      We need to verify that you are the account holder.
+      Please enter the PIN code sent to the phone number:
+    </p>
+  </div>
+  <div class="mtn-inputgroup signingroup row">
+    <div class="columns small-12 edit-area">
+      <mtn-float-label for="pin">
+      </mtn-float-label>
+      <input type="number"
+             id="pin"
+             pattern="[0-9]*"
+             name="pin"
+             placeholder="PIN"
+             ng-model="show.pin"
+             mtn-blur-on-event="blurInput"
+             required
+             autocapitalize="none">
+    </div>
+  </div>
+
+  <button ng-click="show.verifyPin()"
+          ng-disabled="!show.pin || show.btnWorking">
+    Continue
+    <span class="spinner"
+          ng-if="show.btnWorking == 'show'"></span>
+  </button>
+
+  <button ng-click="show.resendPin()" class="link">Resend the PIN code</button>
+  <div class="text-wrapper"
+       ng-if="show.pinReRequested">
+    <p>
+      A new PIN code has been sent to your phone number.
+    </p>
+  </div>
+</form>
+
+</page-wrapper>

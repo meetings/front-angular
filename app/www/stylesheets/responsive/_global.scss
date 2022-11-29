@@ -1,0 +1,38 @@
+@media all and (min-width: 770px){
+
+  .date-separator-newline{
+    visibility: hidden;
+    display: none;
+  }
+  .date-separator-comma{
+    visibility: visible;
+    display: inline;
+  }
+
+  .notification{
+    height: 60px;
+    .icon{
+      margin-top:4px;
+    }
+  }
+  .notification-text {
+    -webkit-line-clamp: 1;
+  }
+  .loginpage-wrapper{
+    .edit-area,
+    .text-wrapper{
+      width:50%;
+      margin-left:auto;
+      margin-right:auto;
+      border-radius:4px;
+    }
+  }
+  .logo{
+    margin-top:300px;
+  }
+  .page-wrapper-scroller{
+    max-width:770px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+}

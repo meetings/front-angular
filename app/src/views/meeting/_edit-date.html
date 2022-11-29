@@ -1,0 +1,111 @@
+<div class="breadcrumb"
+     ng-bind="show.meeting.title_value"></div>
+
+<div class="text-wrapper text-starter"
+     ng-if="show.meeting.current_scheduling_id != 0">
+  <p>Any progress with the current scheduling will be discarded.</p>
+</div>
+
+<div ng-if="show.appConfig.appBrand != show.appConfig.appBrands.MEETINGS">
+  <div class="text-wrapper text-starter"
+       ng-if="show.meeting.current_scheduling_id == 0">
+    <p>You can use the scheduling feature to easily find a time that suits everyone or set the time manually.</p>
+  </div>
+
+  <div class="mtnList">
+
+    <button ng-click="show.openScheduling()"
+            ng-if="show.dateUnset && show.meeting.current_scheduling_id == 0"
+            class="button">
+      Find a suitable time
+    </button>
+
+    <button ng-click="show.openScheduling()"
+            ng-if="!(show.dateUnset && show.meeting.current_scheduling_id == 0)"
+            class="button">
+      Reschedule the meeting
+    </button>
+
+    <p class="divider"><span>OR</span></p>
+    <p class="text-wrapper">Set time manually</p>
+  </div>
+</div>
+
+<form class="row edit-date-container edit-area mtnList">
+
+  <div class="columns small-8 edit-date">
+    <div class="row date-row date-start">
+      <div class="columns small-12">
+
+        <mtn-float-label for="meeting-start">
+        </mtn-float-label>
+
+        <mtn-datetime-input id="meeting-start"
+                     class="input-epoch"
+                     placeholder="Starts"
+                     ng-model="show.meeting.begin_epoch"
+                     mtn-blur-on-event="blurInput"
+                     mtn-model-begin="show.meeting.begin_epoch"
+                     mtn-model-end="show.meeting.end_epoch"
+                     mtn-autofocus>
+        </mtn-datetime-input>
+
+      </div>
+    </div>
+
+    <div class="row date-row">
+      <div class="columns small-12">
+
+        <mtn-float-label for="meeting-end">
+        </mtn-float-label>
+        <mtn-datetime-input id="meeting-end"
+                     class="input-epoch"
+                     placeholder="Ends"
+                     ng-model="show.meeting.end_epoch"
+                     mtn-blur-on-event="blurInput"
+                     mtn-preserve-duration
+                     mtn-ensure-min-duration
+                     mtn-model-begin="show.meeting.begin_epoch"
+                     mtn-model-end="show.meeting.end_epoch">
+        </mtn-datetime-input>
+
+      </div>
+    </div>
+  </div>
+  <div class="columns small-4 date-duration">
+    <div class="edit-duration">
+
+      <label for="meeting-end" class="float-label">Duration</label>
+
+      <duration>
+        <begin ng-model="show.meeting.begin_epoch"></begin>
+        <end ng-model="show.meeting.end_epoch"></end>
+      </duration>
+
+    </div>
+  </div>
+</form>
+
+<div class="mtnList"
+     ng-if="show.isDevelopmentMode">
+
+  <button ng-repeat="scheduling_id in show.meeting.scheduling_ids"
+          ng-click="show.openSchedulingWebDiagram(scheduling_id)">
+    Scheduling {{ scheduling_id}}
+  </button>
+
+</div>
+
+<div ng-if="show.deviceUtils.platform() != 'ios'">
+  <button class="dual"
+          ng-click="show.confirmEdit()"
+          ng-disabled="show.loading">
+    Save
+  </button>
+
+  <button ng-click="show.cancelEdit()"
+          ng-disabled="show.loading"
+          class="dual secondary">
+    Cancel
+  </button>
+</div>

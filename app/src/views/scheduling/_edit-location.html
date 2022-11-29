@@ -1,0 +1,20 @@
+<page-wrapper ng-model="index">
+
+<form class="row">
+
+  <div class="columns small-12 edit-area">
+
+    <mtn-float-label for="location">
+    </mtn-float-label>
+    <input type="text"
+           id="location"
+           placeholder="Meeting location"
+           ng-model="index.meeting.location_value"
+           mtn-blur-on-event="blurInput"
+           mtn-autofocus
+           autocapitalize="sentences">
+
+  </div>
+</form>
+
+</page-wrapper>

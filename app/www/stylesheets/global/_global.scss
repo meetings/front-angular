@@ -1,0 +1,166 @@
+html, body {
+  height: 100%;
+  min-height: 100%;
+  background: $body-background;
+}
+
+body{
+  max-height: 90000%;
+  min-height: 100%;
+  height:auto;
+  // padding-bottom:1px;
+  color:$body-font-color;
+}
+
+* {
+  /* Disable selection/copy of elements when tapping for a long time */
+  @include vendor-prefix(user-select, none);
+  -webkit-touch-callout: none; /* Disable touch callouts */
+  -webkit-tap-highlight-color: transparent;
+}
+
+input,
+textarea,
+.copyable,
+.copyable *{
+  /* Allow selection for input elements */
+  @include vendor-prefix(user-select, text);
+
+}
+
+.content-padded {
+  padding: 10px;
+}
+
+.spacer {
+  margin-bottom: rem-calc(7px);
+}
+
+.text-hilighted{
+  text-align: center;
+}
+.text-starter{
+  margin-top: $mtn-gutter;
+}
+.text-wrapper {
+  margin-left: $mtn-gutter;
+  margin-right: $mtn-gutter;
+  margin-bottom: $mtn-gutter/2;
+}
+
+.centered {
+  text-align: center;
+}
+
+.overlay-obtrusive {
+  height: rem-calc(200px);
+  width: rem-calc(200px);
+  position: absolute;
+  background: red;
+
+  z-index: $overlay-obtrusive-zindex;
+  top: 10%;
+  left: 10%;
+}
+
+.disabled {
+  background: $disabled-primary-color;
+  @include vendor-prefix-opacity(0.5);
+  pointer-events: none;
+}
+
+.text-link {
+  @include link-colors($text-link, $text-link, darken($text-link, 20%), $text-link, darken($text-link, 20%))
+}
+
+
+.tip{
+  color:$tip-color;
+}
+
+.intro-wrapper {
+  overflow: hidden;
+  width: 400%;
+  height: 100%;
+  background: $intro-wrapper-color;
+
+  position: absolute;
+  z-index: 1000;
+
+  &.static {
+    $transition: transform ease-in 0.15s;
+    @include vendor-prefix-transition($transition);
+  }
+
+  .intro-slide {
+    float:left;
+    width:25%;
+    height: 100%;
+    position: relative;
+    text-align: center;
+
+    .intro-centered {
+      margin: 0;
+      position: relative;
+      top: 50%;
+      @include vendor-prefix(transform, translatey(-50%) );
+      margin: auto 14px;
+
+
+      h2 {
+        color: #67cfe9;
+        font-weight: 900;
+        margin: 22px 0;
+        font-size: $intro-slide-header--font-size;
+      }
+
+      .intro-text {
+        font-size: $intro-slide-body--font-size;
+        min-height: 3*1.6em;
+      }
+
+      .pagination {
+        list-style: none;
+        margin: 0 auto;
+        padding: 14px 0 60px;
+        overflow: hidden;
+        display: inline-block;
+
+        li {
+          width: 10px;
+          height: 10px;
+          margin: 0 16px;
+          background: #e7e7e7;
+          float: left;
+          border-radius: 100%;
+
+        }
+
+        li.selected {
+          background: #67cfe9;
+        }
+      }
+    }
+  }
+}
+
+.no-internet{
+  line-height: 32px;
+  text-align: center;
+  background-color: #404040;
+  color: white;
+  font-weight: normal;
+}
+
+.page-icon{
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  border: 2px solid $meetings-blue;
+  text-align: center;
+  line-height: 65px;
+  font-size:30px;
+  color: $meetings-blue;
+  margin: 28px auto 14px;
+  background-color: $white;
+}

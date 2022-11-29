@@ -1,0 +1,82 @@
+<page-wrapper ng-model="controls" class="page-background-white">
+  <div class="breadcrumb"
+       ng-bind="controls.meeting.title_value"></div>
+
+  <div class="page-icon"><i class="icon icon-workshop"></i></div>
+
+  <div class="text-wrapper meeting-wisdom">
+
+    <p ng-if="controls.wisdom == 0">
+      Statistically you are more likely to find “the golden nugget” from a large variety of uncensored ideas rather than amongst just a few well formulated thoughts.
+    </p>
+
+    <p ng-if="controls.wisdom == 1">
+      One big creativity killer in meetings is that most of the talking is done by only a handful of the participants.
+    </p>
+
+    <p ng-if="controls.wisdom == 2">
+      If you want to have a productive meeting, don't forget the desired outcome. Write an agenda and stick to it. This will help everyone keep their focus.
+    </p>
+
+    <p ng-if="controls.wisdom == 3">
+      Rembember a one-hour-meeting of 10 people is actually a 10-hour-meeting.
+    </p>
+
+    <p ng-if="controls.wisdom == 4">
+      Have you already tried standing meetings? I hear they work well for keeping meetings effective.
+    </p>
+
+    <p ng-if="controls.wisdom == 5">
+      Make sure you have plenty of time to get where you need to be. If you end up being early, get a chai latte while waiting.
+    </p>
+
+    <p ng-if="controls.wisdom == 6">
+      Worse than being  busy? Not being busy.
+    </p>
+
+  </div>
+
+<!-- Common -->
+<mtn-upload-progress
+  class="uploadProgress"
+  max="controls.uploadProgress.total"
+  value="controls.uploadProgress.loaded">
+</mtn-upload-progress>
+
+<button ng-click="controls.addPhoto()"
+        ng-if="controls.deviceUtils.platform() != 'web'">
+  Add photo
+</button>
+
+<!-- Admin -->
+<div ng-if="!controls.loading && controls.isManager">
+  <button ng-click="controls.confirmRemoveMeeting()"
+          class="alert">
+    Remove meeting
+    <span ng-class="{ 'spinner' : index.btnWorking == 'removingMeeting' }"></span>
+  </button>
+</div>
+
+<!-- Participant -->
+<div ng-if="!controls.loading && !controls.isManager">
+  <button ng-click="controls.leaveScheduling()"
+          ng-if="controls.meeting.current_scheduling_id != 0 && !controls.hasLeftScheduling">
+    Leave scheduling
+  </button>
+  <button ng-click="controls.confirmLeaveMeeting()"
+          ng-if="controls.meeting.current_scheduling_id == 0 || controls.hasLeftScheduling"
+          class="alert">
+    Leave meeting
+    <span ng-class="{ 'spinner' : controls.btnWorking == 'removingParticipant' }"></span>
+  </button>
+</div>
+
+<!-- <div class="text-wrapper">
+  <p>this is controls.</p>
+  <p>meetingId: {{ controls.meetingId }}</p>
+  <p>scheduling: {{ controls.meeting.current_scheduling_id }}</p>
+  <p>user: {{ controls.user.id }}</p>
+  <p>manger: {{ controls.isManager }}</p>
+</div> -->
+
+</page-wrapper>

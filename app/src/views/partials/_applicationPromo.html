@@ -1,0 +1,42 @@
+<div  ng-class="{'is-ios':isIos, 'is-android':isAndroid, 'is-unknown':isUnknown}"
+      ng-transclude></div>
+
+<div ng-if="isIos && !(phoneform == 'true')">
+  <mtn-a class="button"
+         href="{{iosStoreUrl}}"
+         target="_blank">
+    Get the iOS application
+  </mtn-a>
+  <mtn-a class="button link"
+         href="{{androidStoreUrl}}"
+         target="_blank">
+    Get the Android application
+  </mtn-a>
+</div>
+
+<div ng-if="isAndroid && !(phoneform == 'true')">
+  <mtn-a class="button"
+         href="{{androidStoreUrl}}"
+         target="_blank">
+    Get the Android application
+  </mtn-a>
+  <mtn-a class="button link"
+         href="{{iosStoreUrl}}"
+         target="_blank">
+    Get the iOS application
+  </mtn-a>
+</div>
+
+<div ng-if="isUnknown || phoneform == 'true'">
+  <mtn-a class="button link"
+         href="{{iosStoreUrl}}"
+         target="_blank">
+    Get the iOS application
+  </mtn-a>
+  <mtn-a class="button link"
+         href="{{androidStoreUrl}}"
+         target="_blank">
+    Get the Android application
+  </mtn-a>
+</div>
+

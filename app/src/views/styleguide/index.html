@@ -1,0 +1,98 @@
+<div ng-app="styleguideApp" ng-controller="IndexCtrl as index">
+  <div ng-include="'_index.html'">
+
+<!-- ng-show="index.swipeToMeetWizard == 'selectParticipants'" -->
+<div class="contactlistWrapper">
+  <div class="contactlistSearch"
+       ng-class="{'active':( index.contactFilter && index.contactFilter.length>0 ) || index.searchFocus}">
+       <!-- ng-class="{'active':}"> -->
+    <input type="search"
+           ng-model="index.contactFilter"
+           ng-focus="index.searchFocus=true"
+           ng-blur="index.searchFocus=false"
+           placeholder="Search"
+           id="contactlistSearch"
+           required>
+    <i class="icon icon-search_hollow"></i>
+    <div class="searchCancel" ng-click="index.contactFilter=''">Cancel</div>
+  </div>
+  <div class="contactlist"
+       ng-repeat="contacts in index.contacts | orderBy:'value[0].name.formatted' | filter:index.contactFilter">
+    <div class="letter"><span>{{ contacts.key }}</span></div>
+    <div class="contactlistItems"
+         ng-repeat="contact in contacts.value | filter:index.contactFilter">
+
+
+      <!-- Show if contact has only one phonenumber -->
+      <div ng-if="contact.phoneNumbers.length == 1"
+           class="contactlistItem">
+        <input type="checkbox"
+               name="contact-{{contact.id}}"
+               id="contact-{{contact.id}}"
+               ng-model="contact[contact.phoneNumbers[0].id]"
+               class="ios7check">
+        <label for="contact-{{contact.id}}"></label>
+        <label for="contact-{{contact.id}}" class="contactlistItem-label">
+          {{ contact.name.formatted }}
+        </label>
+      </div>
+
+      <!-- Show if contact has more than one phonenumbers -->
+      <div ng-if="contact.phoneNumbers.length >= 2"
+           class="contactlistItem contactlistItem-multiple" ng-class="{'open':contact.phoneNumbersVisible}">
+
+        <input type="checkbox"
+               name="contact-{{contact.id}}"
+               id="contact-{{contact.id}}"
+               ng-model="contact[contact.phoneNumbers[0].id]"
+               class="ios7check">
+        <label for="contact-{{contact.id}}"></label>
+
+        <div ng-click="index.togglePhoneNumbers(contact)"
+             class="contactlistItem-label">
+          {{ contact.name.formatted }}
+        </div>
+
+        <div class="cli-table" ng-class="'contacts-'+contact.phoneNumbers.length">
+          <table>
+            <tr ng-repeat="number in contact.phoneNumbers">
+              <td class="cli-multiple-radio">
+                <input type="radio"
+                     name="number-{{contact.id}}"
+                     id="number-{{contact.id}}-{{$index}}"
+                     value="number_{{number.id}}"
+                     ng-model="contact.selected"
+                     class="ios7radio">
+                <label for="number-{{contact.id}}-{{$index}}"></label>
+              </td>
+              <td class="cli-multiple-type">
+                <label for="number-{{contact.id}}-{{$index}}">{{ number.type }}</label>
+              </td>
+              <td class="cli-multiple-number">
+                <label for="number-{{contact.id}}-{{$index}}">{{ number.value }}</label>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <!--
+        <ul ng-show="contact.phoneNumbersVisible">
+          <li ng-repeat="number in contact.phoneNumbers">
+            <input type="radio"
+                   name="number-{{number.value}}"
+                   value="number-{{number.value}}"
+                   ng-model="contact.selected">
+            <label for="number-{{number.value}}">{{ number.type }}: {{ number.value }}</label>
+          </li>
+        </ul>
+        -->
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+  </div>
+</div>

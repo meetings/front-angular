@@ -1,0 +1,28 @@
+.other-devices {
+  font-weight: bold;
+}
+
+.last-sync {
+  font-style: italic
+}
+
+.source-wrapper {
+  margin-top: 16px;
+  margin-bottom: 16px;
+
+  .text-wrapper {
+    border-top: 1px solid $hr-color;
+  }
+
+  button {
+    margin-bottom: 0;
+  }
+}
+
+.appVersion{
+  text-align: center;
+  color:$appVersionColor;
+  font-weight: normal;
+  font-size:14px;
+  padding: 0.5em 0;
+}

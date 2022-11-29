@@ -1,0 +1,132 @@
+<div ng-show="show.meetmeState == 'initial'">
+  <div class="mtnList">
+
+    <h2 class="mtnList-item mtnList-title">
+      You have received a meeting request.
+    </h2>
+
+    <div class="mtnList-item">
+      <div class="suggested-agenda-desc">
+        {{ show.meeting.matchmaking_requester_name }}
+        <span ng-show="show.meeting.matchmaking_requester_company">(from {{ show.meeting.matchmaking_requester_company }})</span>
+        would like to meet you and suggests the following agenda:
+      </div>
+      <div class="suggested-agenda"
+           ng-hide="!show.meeting.matchmaking_requester_comment.length"
+           ng-bind-html="show.meeting.matchmaking_requester_comment"></div>
+
+    </div>
+
+    <div class="mtnList-item">
+
+      <div class="suggested-title" ng-bind="show.meeting.title_value"></div>
+      <div class="suggested-location" ng-bind="show.meeting.location_value"></div>
+
+      <div>
+        <span ng-hide="show.meeting.begin_epoch == 0" class="suggested-date">
+          <span ng-model="show.meeting.begin_epoch"
+                ng-cloak
+                epoch-model
+                epoch-format="{{ show.dateHelper.formatDayDate }}">
+          </span>,
+
+          <span ng-model="show.meeting.begin_epoch"
+                ng-cloak
+                epoch-model
+                epoch-format="{{ show.dateHelper.formatTime }}">
+          </span>
+
+          &dash;
+
+          <span ng-model="show.meeting.end_epoch"
+                ng-cloak
+                epoch-model
+                epoch-format="{{ show.dateHelper.formatTime }}">
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div ng-hide="!show.meetingLoaded">
+
+    <button class="dual rsvp-yes"
+            ng-click="show.acceptMeetmeRequest()">
+      Accept
+    </button>
+
+    <button class="dual rsvp-no"
+            ng-click="show.declineMeetmerequest()">
+      Decline
+    </button>
+
+  </div>
+</div>
+
+<div ng-show="show.meetmeState == 'accept'">
+
+  <div class="mtnList">
+    <div class="mtnList-item">
+      <p>Before sending a confirmation and sharing the meeting with {{ show.meeting.matchmaking_requester_name }}, you could take a moment to prepare it first.</p>
+
+      <p class="tip">E.g. Finalize the agenda, add materials and participants.</p>
+    </div>
+  </div>
+
+  <div ng-hide="!show.meetingLoaded">
+
+    <button class="dual secondary"
+            ng-click="show.sendMeetmeConfirmation()"
+            ng-disabled="show.meetMeBtnWorking">
+      Send now
+      <span class="spinner"
+            ng-if="show.meetMeBtnWorking == 'send'"></span>
+    </button>
+
+    <button class="dual"
+            ng-click="show.editMeetmeRequest()"
+            ng-disabled="show.meetMeBtnWorking">
+      Edit meeting
+      <span class="spinner"
+            ng-if="show.meetMeBtnWorking == 'edit'"></span>
+    </button>
+
+  </div>
+
+</div>
+
+<div ng-show="show.meetmeState == 'decline'">
+  <div class="mtnList">
+    <div class="mtnList-item">
+      <p>You are about to decline a meeting request. A notification will be sent to {{ show.meeting.matchmaking_requester_name }}.</p>
+
+      <p>Leave a short personal message on why you declined (optional):</p>
+    </div>
+
+    <div class="row decline-message">
+      <div class="columns small-12 edit-area">
+
+        <mtn-float-label for="title">
+        </mtn-float-label>
+        <textarea id="title"
+                  placeholder="Your message"
+                  rows="4"
+                  ng-model="show.meetmeDeclination"
+                  mtn-blur-on-event="blurInput">
+        </textarea>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <button class=""
+          ng-click="show.sendMeetmeDeclination()"
+          ng-disabled="show.meetMeBtnWorking">
+    Send decline
+    <span class="spinner"
+          ng-if="show.meetMeBtnWorking == 'decline'"></span>
+  </button>
+
+</div>

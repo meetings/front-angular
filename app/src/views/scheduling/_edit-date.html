@@ -1,0 +1,32 @@
+<page-wrapper ng-model="index">
+
+<div class="columns small-12 edit-date date-row"
+     ng-show="index.s2m.dateEditing == 'start'">
+
+  <mtn-float-label for="timespan-start">
+  </mtn-float-label>
+
+  <mtn-date-input id="timespan-start"
+                  class="input-epoch"
+                  placeholder="Earliest date"
+                  ng-model="index.s2m.availableTimespans.start"
+                  mtn-blur-on-event="blurInput"
+                  mtn-autofocus>
+  </mtn-date-input>
+</div>
+
+<div class="columns small-12 edit-date date-row"
+     ng-show="index.s2m.dateEditing == 'end'">
+
+  <mtn-float-label for="timespan-end">
+  </mtn-float-label>
+
+  <mtn-date-input id="timespan-end"
+                  class="input-epoch"
+                  placeholder="Latest date"
+                  ng-model="index.s2m.availableTimespans.end"
+                  mtn-blur-on-event="blurInput">
+  </mtn-date-input>
+</div>
+
+</page-wrapper>

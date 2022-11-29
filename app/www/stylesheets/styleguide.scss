@@ -1,0 +1,61 @@
+@import "global/variables";
+
+.styleguide-colors{
+  overflow:hidden;
+}
+
+.styleguide-color{
+  margin-bottom:30px;
+  margin-left:1px;
+  margin-right:1px;
+  width:70px;
+  height:40px;
+  float:left;
+  display: none;
+  &:before{
+    content:"blaa";
+    display: block;
+    font-size: 12px;
+    margin-top:40px;
+  }
+}
+
+$colors:
+  "white" $white,
+  "light-grey1" $light-grey1,
+  "light-grey2" $light-grey2,
+  "medium-grey1" $medium-grey1,
+  "medium-grey2" $medium-grey2,
+  "dark-grey1" $dark-grey1,
+
+  "meetings-blue" $meetings-blue,
+  "accent-green" $accent-green,
+  "accent-yellow" $accent-yellow,
+  "accent-orange1" $accent-orange1,
+  "accent-orange2" $accent-orange2,
+  "accent-red" $accent-red,
+  "accent-pink" $accent-pink,
+
+  "google-blue" $google-blue,
+  "facebook-blue" $facebook-blue,
+  "twitter-blue" $twitter-blue,
+  "linkedin-blue" $linkedin-blue,
+  "yammer-blue" $yammer-blue,
+  "email-shade" $email-shade,
+  "meetings-logo-blue" $meetings-logo-blue;
+
+
+%styleguide-color-active{
+  display: block;
+}
+$i:1;
+@each $color in $colors {
+  .styleguide-color#{$i}{
+    @extend %styleguide-color-active;
+    background-color:nth($color, 2);
+    &:before{
+      content:nth($color, 1);
+    }
+  }
+  $i:$i+1;
+}

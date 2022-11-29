@@ -1,0 +1,45 @@
+<page-wrapper ng-model="show" class="page-background-white">
+
+<div ng-hide="show.loading">
+  <div class="swipe-card-container">
+    <mtn-swipe-card ng-repeat="card in show.cards"
+                    mtn-swipe-on-accept="show.accept()"
+                    mtn-swipe-on-reject="show.reject()"
+                    mtn-swipe-enabled="$first"
+                    mtn-swipe-on-element-yes="show.setActiveOption('yes_option')"
+                    mtn-swipe-on-element-no="show.setActiveOption('no_option')"
+                    mtn-swipe-data="card"
+                    mtn-is-first-swipe-action="show.isFirstSwipeAction"
+                    mtn-first-swipe-dialog="show.showFirstSwipeDialog"
+                    class="swipe-card static card-{{$index}}"
+                    id="{{card.yes_option.id}}">
+
+      <mtn-swipe-card-option ng-model="card.yes_option"
+                             parent="show"
+                             ng-class="{'option-enabled': (show.activeOption == 'yes_option' && !$first) || ( show.lastSelectedOption == 'yes_option' && $first)}">
+      </mtn-swipe-card-option>
+      <mtn-swipe-card-option ng-model="card.no_option"
+                             parent="show"
+                             ng-class="{'option-enabled': (show.activeOption == 'no_option' && !$first) || ( show.lastSelectedOption == 'no_option' && $first)}">
+      </mtn-swipe-card-option>
+
+    </mtn-swipe-card>
+  </div>
+
+  <div class="swipe-buttons">
+    <button class="swipe-button swipe-no"
+            ng-click="show.rejectBtn()">
+      <i class="icon icon-cross"></i>
+    </button>
+    <button class="swipe-button swipe-info"
+            ng-click="show.openInfo()">
+      <i class="icon icon-info"></i>
+    </button>
+    <button class="swipe-button swipe-yes"
+            ng-click="show.acceptBtn()">
+      <i class="icon icon-check"></i>
+    </button>
+  </div>
+</div>
+
+</page-wrapper>

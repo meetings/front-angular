@@ -1,0 +1,20 @@
+<page-wrapper ng-model="index"
+              mtn-pull-to-refresh-enabled="true"
+              mtn-pull-to-refresh-callback="index.ptrCallback()">
+
+<div>
+
+  <div ng-if="index.notifications.length == 0 && !index.error && !index.loading" class="notifications-empty">
+    <div class="bubble">You don't have any notifications.</div>
+    <img ng-src="images/mobiilisqurre.png" class="squirrel">
+  </div>
+
+  <react-component id="reactComponentParent"
+                   name="NotificationList"
+                   props="{ notifications: index.notifications, open: index.open }"
+                   watch-depth="reference">
+  </react-component>
+
+</div>
+
+</page-wrapper>

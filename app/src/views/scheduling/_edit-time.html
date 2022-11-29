@@ -1,0 +1,54 @@
+<page-wrapper ng-model="index">
+
+<form name="schedulerForm">
+
+  <div class="mtnList-header informative">Schedule the meeting during</div>
+  <div class="mtnList-group">
+    <div class="mtnList-dual-wrapper">
+      <div class="mtnList-dual">
+
+        <mtn-time-input id="scheduling-start"
+               class="input-epoch"
+               ng-model="index.s2m.scheduling.slots[0].begin_second"
+               mtn-model-begin="index.s2m.scheduling.slots[0].begin_second"
+               mtn-model-end="index.s2m.scheduling.slots[0].end_second"
+               mtn-blur-on-event="blurInput">
+        </mtn-time-input>
+      </div>
+      <div class="mtnList-dual-between">
+        -
+      </div>
+      <div class="mtnList-dual">
+        <mtn-time-input id="scheduling-end"
+               class="input-epoch"
+               ng-model="index.s2m.scheduling.slots[0].end_second"
+               mtn-ensure-min-duration
+               mtn-model-begin="index.s2m.scheduling.slots[0].begin_second"
+               mtn-model-end="index.s2m.scheduling.slots[0].end_second"
+               mtn-blur-on-event="blurInput">
+        </mtn-time-input>
+      </div>
+    </div>
+    <div class="mtnList-dual-info">{{ index.formatTimezone(index.s2m.scheduling.time_zone) }} {{ index.s2m.scheduling.time_zone }}</div>
+  </div>
+
+  <div class="mtnList-group">
+    <div class="mtnList-item mtnList-toggle"
+         ng-repeat="day in index.s2m.days track by $index">
+      <mtn-checkbox ng-model="day"
+                    name="day-{{ $index }}"
+                    mtn-click="index.toggleDayValue($index)"
+                    mtn-swipe-left="index.setDayValue($index, false)"
+                    mtn-swipe-right="index.setDayValue($index, true)">
+
+         <span mtn-format-unit-to-moment="{{ index.dateHelper.formatDayOfWeek }}"
+               value="{{ $index + 1 }}"
+               unit="day">
+         </span>
+
+      </mtn-checkbox>
+    </div>
+  </div>
+</form>
+
+</page-wrapper>

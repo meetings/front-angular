@@ -1,0 +1,75 @@
+<page-wrapper ng-model="index">
+
+<div ng-if="index.visibleSettings == 'askPermission'">
+  <div class="text-wrapper text-starter">
+
+    <p>Would you like to receive push notifications regarding your meetings such as time and location changes?</p>
+  </div>
+
+  <button ng-disabled="index.btnWorking"
+          ng-click="index.initPushNotifications()">
+    OK
+    <span ng-class="{'spinner' : index.btnWorking == 'initPushNotifications'"></span>
+  </button>
+</div>
+
+<div ng-if="index.visibleSettings == 'notificationSettings'">
+
+  <div ng-repeat="settings in index.settings">
+
+    <div class="text-wrapper text-starter">
+      <p ng-bind="settings[0].header">
+      </p>
+    </div>
+
+    <div class="mtnList">
+
+      <div class="mtnList-item mtnList-toggle"
+           ng-repeat="notificationSetting in settings">
+
+        <mtn-checkbox ng-model="notificationSetting.value"
+                      name="{{ 'cb_' + $parent.$index + '_' + $index }}"
+                      mtn-click="index.toggleNotificationValue($parent.$index, $index)"
+                      mtn-swipe-left="index.setNotificationValue($parent.$index, $index, false)"
+                      mtn-swipe-right="index.setNotificationValue($parent.$index, $index, true)"
+                      mtn-show-spinner="notificationSetting.saving">
+          {{ notificationSetting.title }}
+        </mtn-checkbox>
+      </div>
+
+    </div>
+  </div>
+
+  <div ng-if="index.pushTestButtonVisible && index.deviceUtils.platform() != 'web'">
+
+
+    <p class="text-wrapper text-starter">Having trouble with mobile push notifications?</p>
+
+    <button ng-disabled="index.btnWorking"
+            ng-click="index.testPushNotifications()">
+      Test notifications
+      <span ng-class="{ 'spinner' : index.btnWorking == 'testPushNotifications' }"></span>
+    </button>
+
+    <div class="text-wrapper text-hilighted">
+      <p ng-if="index.pushNotificationsEnabled">
+        Congratulations! It seems your notifications are working.
+      </p>
+      <p ng-if="!index.pushNotificationsEnabled">
+        We are having trouble delivering the notifications.
+
+        <span ng-if="index.deviceUtils.platform() == 'ios'">
+          Check that you have given the permission to send push notifications.
+        </span>
+      </p>
+    </div>
+
+    <button ng-if="index.openAppSettingsVisible && !index.pushNotificationsEnabled"
+            ng-click="index.openAppSettings()">
+      Open app permissions
+    </button>
+
+  </div>
+
+</div>
+</page-wrapper>

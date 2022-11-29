@@ -1,0 +1,88 @@
+.content {
+  $transition: all 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940), max-height 0s;
+  @include vendor-prefix-transition($transition);
+}
+.popup-overlay {
+  $transition: opacity 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+  @include vendor-prefix-transition($transition);
+}
+.dialog-container, .error-container {
+  @include vendor-prefix(transform-origin, 50% 50%);
+
+  $transition: all 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+  @include vendor-prefix-transition($transition);
+}
+
+.popup-overlay {
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 0;
+  left: 0;
+  z-index: $popup-overlay-zindex;
+  @include vendor-prefix-opacity(0);
+  background: rgba( 0, 0, 0, 0.5 );
+}
+
+.dialog-container,
+.error-container {
+  width:80%;
+  top:50%;
+  $transform: translateY(-50%) scale(0.8);
+  @include vendor-prefix(transform, $transform);
+  left:10%;
+  position:fixed;
+
+  z-index: $dialog-and-error-container-zindex;
+  padding:0px;
+  border-radius: 8px;
+  background: #ffffff;
+
+  /* Hidden */
+  @include vendor-prefix-opacity(0);
+  visibility: hidden;
+  pointer-events: none;
+
+  h1 {
+    font-size:$error-container-title--font-size;
+    margin-top:0;
+    padding: 14px;
+    padding-bottom: 0;
+  }
+
+  p {
+    padding: 0 14px;
+    max-height: 300px;
+    max-height:calc(100vh - 150px);
+    .spa &{
+      max-height:calc(100vh - 194px); //SPA viewport is 44px higher, but viewable area is not
+    }
+    overflow:auto;
+  }
+}
+
+.popup-active {
+
+  .popup-overlay {
+    visibility: visible;
+    @include vendor-prefix-opacity(1);
+    width: 100%;
+    height: 100%;
+  }
+
+  .dialog-container, .error-container {
+    $transform: translateY(-50%) scale(1);
+    @include vendor-prefix(transform, $transform);
+    @include vendor-prefix-opacity(1);
+    visibility: visible;
+
+    /* Clickable */
+    pointer-events: auto;
+  }
+
+  .content {
+    /* Blur and de-color */
+    $filter: blur(2px) unquote("grayscale(50%)");
+    @include vendor-prefix(filter,$filter);
+  }
+}

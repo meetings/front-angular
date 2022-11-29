@@ -1,0 +1,152 @@
+
+.log-instruction{
+  margin:1em 24px;
+  line-height: 1.6em;
+  text-align: center;
+  font-weight: bold;
+}
+
+
+.log-user-state{
+  margin:0 13px 0 24px;
+  min-height: (16px + 60px);
+  margin-bottom:1em;
+}
+.log-user-state--not-yet-answered,
+.log-user-state--availability-needed,
+.log-user-state--common-time-found {
+  font-weight: normal;
+  &:before{
+    content:"";
+    display: inline-block;
+    background: red;
+    width: 1em;
+    height: 1em;
+    margin-bottom:-2px;
+    margin-right: 0.3em;
+    border-radius: 100%;
+  }
+}
+.log-user-state--not-yet-answered:before{
+  background-color: $accent-red;
+}
+.log-user-state--availability-needed:before{
+  background-color: $accent-yellow;
+}
+.log-user-state--common-time-found:before{
+  background-color: $accent-green;
+}
+
+.user-state--user{
+  display: inline-block;
+}
+.user-state__avatar{
+  @include avatar(60);
+  display: inline-block;
+  float: none;
+  margin-top:2px;
+  margin-right:8px;
+}
+
+
+.log-user-state--empty{
+  line-height: 2em;
+  display: inline-block;
+  margin-left: 2px;
+  color: $medium-grey1;
+}
+
+.log-title{
+  margin:0 24px 6px;
+  font-weight: normal;
+}
+.log-wrapper{
+  height:(19px * 6.5 + 4px + 0.5px);
+  overflow:hidden;
+  margin:0 14px 1em;
+  background-color: $light-grey1;
+  position: relative;
+  &.full{
+    height:auto;
+    padding:4px 0;
+    .log-table-wrapper{
+      position: initial;
+      bottom: initial;
+    }
+  }
+}
+.log-table-wrapper{
+  min-height:(19px * 6.5 + 4px);
+  position: absolute;
+  bottom:4px;
+  padding:4px 0;
+}
+.log-table{
+  display: table;
+  width:100%;
+  &.longlist{
+    .avatar{
+      //Position relative and the -webkit-mask-image were causing the images to show trough
+      position:static;
+      -webkit-mask-image: none;
+    }
+  }
+  &.longlist:before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 124px;
+    position: absolute;
+    bottom: 0;
+
+    background: -webkit-linear-gradient(bottom, rgba(242,242,242,0) 0%, rgba(242,242,242,0) 80%, $light-grey1 95%);
+    background:         linear-gradient(to top, rgba(242,242,242,0) 0%, rgba(242,242,242,0) 80%, $light-grey1 95%);
+
+    .full &{
+      visibility: hidden;
+      display: none;
+    }
+  }
+}
+.log-row{
+  line-height: 18px;
+  font-size: 14px;
+  display: table-row;
+}
+.log-row__timestamp{
+  display: table-cell;
+  color: $medium-grey1;
+  padding-right: 0.35em;
+  padding-left:10px;
+  font-size:12px;
+}
+.log-row__data{
+  display: table-cell;
+  padding-right:10px;
+  padding-left:20px;
+  font-weight: normal;
+  .icon{
+    font-size: 16px;
+    color:$meetings-blue;
+  }
+  .avatar:first-child{
+    margin-left:-20px;
+  }
+  .icon:first-child{
+
+    margin-left:-19px;
+  }
+}
+.log-avatar {
+  @include avatar(18);
+  display: inline-block;
+  vertical-align: text-bottom;
+  float: none;
+  .avatar-img{
+    vertical-align: top;
+  }
+  .avatar-initials{
+    font-weight: 500;
+  }
+}
+

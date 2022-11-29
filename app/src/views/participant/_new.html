@@ -1,0 +1,34 @@
+<page-wrapper ng-model="new">
+
+<div class="breadcrumb"
+     ng-bind="new.breadcrumb.title"></div>
+
+<div ng-if="index.contactPermissionTextVisible">
+  <div class="page-icon"><i class="icon icon-addressbook_detailed"></i></div>
+
+  <div class="text-wrapper">
+    <p>Next we will ask for a permission to access your contacts. We need this permission to send scheduling invites to selected participants.</p>
+    <p>Your address book will never be shared with anyone.</p>
+  </div>
+
+  <button ng-click="index.initContactPlugin()">OK</button>
+</div>
+
+<div ng-class="{ 'mtnList' : new.deviceUtils.platform() != 'ios'  }" >
+
+  <div class="text-wrapper text-starter">
+    <p>Add invitees</p>
+  </div>
+
+
+  <mtn-contact-picker participants="new.participants"
+                      latest-contacts="new.latestContacts"
+                      mtn-on-add-participant="new.onAddParticipant(participant, type)"
+                      mtn-on-remove-participant="new.onRemoveParticipant(participant)"
+                      mtn-error-model="new.error">
+  </mtn-contact-picker>
+
+</div>
+
+
+</page-wrapper>

@@ -1,0 +1,171 @@
+.float-label {
+  $transition: transform linear 0.15s, opacity linear 0.15s;
+  @include vendor-prefix-transition($transition);
+  @include vendor-prefix-opacity(1);
+  @include vendor-prefix(transform, translatey(0%) );
+  display: block !important
+}
+
+.float-label.ng-hide {
+  @include vendor-prefix-opacity(0);
+  @include vendor-prefix(transform, translatey(60%) );
+}
+
+.infinite-scroll.spinner.ng-hide-add,
+.infinite-scroll.spinner.ng-hide-remove {
+  display:block!important;
+}
+
+.infinite-scroll.spinner.ng-hide {
+  @include vendor-prefix-opacity(0);
+  display:block!important;
+}
+
+.view-animate-container {
+  position:relative;
+  overflow:hidden;
+  min-height:600px;
+}
+
+.view-animate.ng-leave {
+  $transition: opacity cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.1s;
+  @include vendor-prefix-transition($transition);
+
+  display:block;
+  width:100%;
+
+  @include vendor-prefix-opacity(1);
+
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+}
+
+.view-animate.ng-leave.ng-leave-active {
+  @include vendor-prefix-opacity(0);
+}
+
+.swipe-wrapper.animate-remove.ng-leave.ng-leave-active {
+  max-height: 0px;
+}
+
+.swipe-wrapper.animate-remove.ng-leave {
+  max-height:500px;
+}
+
+.swipe-wrapper.animate-remove.ng-leave,
+.swipe-wrapper.animate-remove.ng-leave.ng-leave-active{
+  $transition: max-height ease-in 0.5s;
+  @include vendor-prefix-transition($transition);
+}
+
+
+.swipe-card.static {
+  $transition: transform ease 0.07s, opacity ease-in .025s;
+  @include vendor-prefix-transition($transition);
+}
+
+.swipe-card.static.ng-enter {
+  transform: translateY(36px) scale(0.85, 0.85);
+  opacity: 0;
+}
+
+.swipe-card.static.ng-enter.ng-enter-active {
+  transform: translateY(24px) scale(0.9, 0.9);
+  opacity: 1;
+}
+
+.swipe-card.static.ng-leave {
+  $transition: transform ease-in 0.15s;
+  @include vendor-prefix-transition($transition);
+  @include vendor-prefix(transform, rotate(0deg));
+  z-index: $swipe-card-static-leave-zindex;
+}
+
+
+$pageTransitionDuration: 400ms;
+$pageTransitionShadow: 0 0 12px rgba(0,0,0,.4);
+
+.spa-page {
+  width: 100%;
+  min-height:100%;
+  // min-height:100vh;
+  background:inherit;
+  opacity: 1;
+  top:0;
+  @include vendor-prefix(transform, translate3d(0,0,0));
+  @include vendor-prefix(box-shadow, none);
+}
+
+
+.is-animated{
+
+  @include vendor-prefix(transition-duration, $pageTransitionDuration);
+  position:absolute;
+
+  //From right to center
+  &.spa-page-forward.ng-enter{
+    visibility: hidden;
+    @include vendor-prefix(transform, translate3d(100%,0,0));
+    @include vendor-prefix(box-shadow, none);
+
+    &.ng-enter-active {
+      visibility: visible;
+      @include vendor-prefix(transform, translate3d(0,0,0));
+      @include vendor-prefix(box-shadow, $pageTransitionShadow);
+    }
+  }
+
+  //From center to right
+  &.spa-page-back.ng-leave{
+    z-index: 1000; //Safari requires this
+    @include vendor-prefix(transform, translate3d(0,0,0));
+    @include vendor-prefix(box-shadow, $pageTransitionShadow);
+
+    &.ng-leave-active {
+      @include vendor-prefix(transform, translate3d(100%,0,0));
+      @include vendor-prefix(box-shadow, none);
+    }
+  }
+
+  //From center to left
+  &.spa-page-forward.ng-leave{
+    opacity: 1;
+    @include vendor-prefix(transform, translate3d(0,0,0));
+    @include vendor-prefix(box-shadow, $pageTransitionShadow);
+
+    &.ng-leave-active {
+      opacity: .9;
+      @include vendor-prefix(transform, translate3d(-20%,0,0));
+      @include vendor-prefix(box-shadow, $pageTransitionShadow);
+    }
+  }
+
+  //From left to center
+  &.spa-page-back.ng-enter{
+    opacity: .9;
+    @include vendor-prefix(transform, translate3d(-20%,0,0));
+    @include vendor-prefix(box-shadow, $pageTransitionShadow);
+
+    &.ng-enter-active {
+      opacity: 1;
+      @include vendor-prefix(transform, translate3d(0,0,0));
+      @include vendor-prefix(box-shadow, $pageTransitionShadow);
+    }
+  }
+
+}
+
+.pull-to-refresh-slider {
+  $transition: transform ease-in-out 0.25s;
+  @include vendor-prefix-transition($transition);
+
+  &.ptr-active {
+    position: absolute;
+    width: 100%;
+    $transition: none;
+    @include vendor-prefix-transition($transition);
+  }
+}

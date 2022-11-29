@@ -1,0 +1,258 @@
+
+// Default styles applied outside of media query
+button, .button {
+  @include button-base;
+  @include button-size($padding:null);
+  @include button-style($radius:true);
+
+  @include single-transition(background-color);
+  @include button-size($padding:$button-med, $full-width:false);
+  padding-left:$button-med;
+  padding-right:$button-med;
+
+  //Band-aid for old browsers not supporting calc()
+  $mtn-gutter-percent: 100% * ( $mtn-gutter / 320px );
+  width: 100% - (2 * $mtn-gutter-percent);//91.25%
+  width: calc(100% - #{2*$mtn-gutter});
+  margin-left: $mtn-gutter-percent;
+  margin-left:calc(#{$mtn-gutter} * 1);
+
+  margin-bottom: $mtn-button-spacing;
+  overflow: hidden;
+  position: relative;
+  background-image:none;
+
+  &.secondary {
+    @include button-style($bg:$secondary-color);
+    border: 1px $button-secondary-border solid;
+    // border: 10px solid red;
+  }
+  &.video {
+    @include button-style($bg:$video-color);
+    border: 1px $button-video-border solid;
+    &,
+    &:active {
+      color:$white;
+    }
+  }
+
+  //Blurred background for the video button.
+  @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+      &.video,
+      &.video:active {
+          -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+      }
+  }
+
+  &.success   { @include button-style($bg:$success-color); }
+  &.alert     { @include button-style($bg:$alert-color); }
+  &.rsvp-yes  { @include button-style($bg:$button-rsvp-yes); }
+  &.rsvp-no   { @include button-style($bg:$button-rsvp-no); }
+  &.dual{
+    float:left;
+    width: (50% - 1.5 * $mtn-gutter-percent);
+    width: calc(50% - #{1.5*$mtn-gutter});
+  }
+  &.google    { @include button-style($bg:$google-blue); }
+  &.facebook  { @include button-style($bg:$facebook-blue); }
+  &.twitter   { @include button-style($bg:$twitter-blue); }
+  &.linkedin  { @include button-style($bg:$linkedin-blue); }
+  &.yammer    { @include button-style($bg:$yammer-blue); }
+  &.email     { @include button-style($bg:$email-shade); }
+  &.link     {
+    @include button-style($bg:rgba(255, 255, 255, 0), $bg-hover:transparent);
+    text-decoration: underline;
+    font-weight: normal;
+    &,
+    &:active {
+      color:$text-link;
+    }
+  }
+
+  &.google,
+  &.facebook,
+  &.twitter,
+  &.linkedin,
+  &.yammer,
+  &.email{
+    .icon{
+      float:left;
+      margin-left:10px;
+      width:20px;
+      margin-right: -30px;
+      text-align: center;
+      display: inline-block;
+    }
+  }
+
+  &.comment-new {
+    @include button-style($bg:$comment-button-bg);
+    color: $comment-button-color;
+    width: auto;
+    float: left;
+    margin: 0 0 0 rem-calc(14px);
+    padding-top: rem-calc(12px);
+    padding-bottom: rem-calc(12px);
+    font-size: $material-new-comment--button--font-size;
+  }
+
+  // &.large  { @include button-size($padding:$button-lrg); }
+  // &.small  { @include button-size($padding:$button-sml); }
+  // &.tiny   { @include button-size($padding:$button-tny); }
+  // &.expand { @include button-size($padding:null,$full-width:true); }
+  &.flexible {
+    @include button-size;
+    width:auto;
+  }
+
+  &.left-align  { text-align: left; text-indent: rem-calc(12); }
+  &.right-align { text-align: right; padding-right: rem-calc(12); }
+
+  // &.radius { @include button-style($bg:false, $radius:true); }
+  &.round  { @include button-style($bg:false, $radius:$button-round); }
+
+  &.disabled,
+  &[disabled] { @include button-style($bg:$disabled-primary-color, $disabled:true);
+    &.secondary { @include button-style($bg:$disabled-secondary-color, $disabled:true); border:0 none;}
+    &.success { @include button-style($bg:$disabled-success-color, $disabled:true); }
+    &.alert { @include button-style($bg:$disabled-alert-color, $disabled:true); }
+    &.rsvp-yes { @include button-style($bg:$disabled-button-rsvp-yes, $disabled:true); }
+    &.rsvp-no { @include button-style($bg:$disabled-button-rsvp-no, $disabled:true); }
+    &.google { @include button-style($bg:$disabled-google-blue, $disabled:true); }
+    &.comment-new {
+      @include button-style($bg:$disabled-comment-button-bg-disabled, $disabled:true);
+      color:$comment-button-color-disabled;
+    }
+    &.link{
+      background-color: transparent;
+      text-decoration: none;
+    }
+  }
+
+  & + button,
+  & + .button{
+    margin-top:-0.5*$mtn-button-spacing;
+  }
+  &.dual{
+    margin-top:0;
+  }
+  .icon{
+    margin-right:7px;
+  }
+
+  .spinner {
+    @include vendor-prefix-opacity(1);
+    @include vendor-prefix(transition-delay, 0s);
+  }
+}
+
+.button-helptext{
+  display:block;
+  margin-left: $mtn-gutter;
+  margin-right: $mtn-gutter;
+  margin-bottom: $mtn-gutter/2;
+  p{
+    font-size:15px;
+  }
+}
+
+@media #{$medium-up} {
+  button, .button {
+    @include button-base($style:false, $display:inline-block);
+    @include button-size($padding:false, $full-width:false);
+  }
+}
+
+
+.ringButtonArea{
+  background:$ringButtonAreaBg;
+  margin:0 0 10px 0;
+  padding:20px 0;
+  border:0 none;
+  width:100%;
+  overflow: hidden;
+}
+.ringButtonArea button{
+  background:transparent;
+  margin:0;
+  padding:0;
+  width:160px;
+  height:160px;
+  left:50%;
+  position:relative;
+  margin-left:-80px;
+  border-radius: 100%;
+
+  $attr:
+    0px 0px 0px 100px $ringButtonAreaBg
+    ,0px 0px 0px 150px $ringButtonAreaBg
+    ;
+  @include vendor-prefix(box-shadow, $attr);
+  &:active{
+    $attr:
+      0px 0px 0px -20px $ringButtonAreaBg
+      ,0px 0px 0px -10px $ringButtonEffectColor
+      ;
+    @include vendor-prefix(box-shadow, $attr);
+  }
+  &:focus{
+    outline: 0 none;
+  }
+}
+.ring1{
+  width:160px;
+  height:160px;
+  padding: 20px 0 0 20px;
+  border-radius:100%;
+  background: $ringAreaRing1Bg;
+
+  $attr:inset 0px 3px 2px 0px rgba(0,0,0,0.10);
+  @include vendor-prefix(box-shadow, $attr);
+}
+
+.ring2{
+  color:$ringAreaRing2Color;
+  width:120px;
+  height:120px;
+  border-radius:100%;
+  background: $ringAreaRing2bg;
+  padding:10px;
+  @include vendor-prefix(box-shadow, 0px 2px 4px 0px rgba(0,0,0,0.10));
+}
+
+button:active .ring1{
+  background: $ringButtonEffectColor;
+  .ring2{
+    @include vendor-prefix(box-shadow, none);
+  }
+}
+
+.ringButtonArea .icon{
+  color:$ringButtonIconColor;
+  display: block;
+  font-size:40px;
+  margin:6px 0 6px 30px;
+  width:40px;
+}
+.tapToSchedule .icon-send{
+  font-size:48px;
+  margin-top:-5px;
+  margin-left:-8px;
+}
+.scheduleMeeting{
+  margin-bottom:14px;
+}
+
+.tappedScheduleBg {
+  margin: 0 20px;
+  text-align: center;
+}
+
+.tappedSchedule {
+  padding-top: 128px;
+  width: 100px;
+  height: 204px;
+  display: inline-block;
+  text-align: center;
+}

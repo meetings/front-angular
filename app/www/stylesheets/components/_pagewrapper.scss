@@ -1,0 +1,46 @@
+body,
+.main-section,
+.main-section-wrapper,
+page-wrapper,
+.page-wrapper-container{
+  height:100%;
+}
+
+.main-section{
+  display:block;
+}
+.main-section-wrapper{
+  height:100%;
+  display:block;
+  min-height:initial;
+}
+page-wrapper{
+  display: block;
+  .spa &{
+    padding-top:44px;
+  }
+  .spa .no-navbar &{
+    padding-top: 0;
+  }
+}
+.page-wrapper-container{
+  overflow-y: auto;
+  &.ios{
+    overflow-y: scroll; // on ios has to be scroll, not auto
+  }
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+.page-wrapper-scroller{
+  min-height: 100%;
+  .ios &{
+    min-height:calc(100% + 3px); // on ios lets rubberband scroll always
+  }
+  background: $scroll-area-bg;
+  .page-background-white &{
+    background: $white;
+  }
+  border-top: transparent 1px solid;
+  border-bottom: transparent 1px solid;
+  margin:-1px 0;
+}

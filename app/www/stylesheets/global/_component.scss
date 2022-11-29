@@ -1,0 +1,526 @@
+.mtnList{
+  margin-bottom:rem-calc(15px);
+}
+.mtnList-header{
+  padding-left:rem-calc(25px);
+  margin-bottom:rem-calc(7px);
+  &.informative{
+    font-size:12px;
+    color:$informativeColor;
+    margin-bottom:3px;
+  }
+}
+.mtnList-item-wrapper {
+  background-color: $mtnList-item-wrapper-background;
+}
+.mtnList-item{
+  width:100%;
+  padding:rem-calc(14px) rem-calc(25px) rem-calc(14px) rem-calc(25px);
+  display:block;
+  font-size:$mtnList-item--font-size;
+  font-weight: 500;
+  min-height: rem-calc(44px);
+
+  background-color: $mtnList-item-background;
+  color: $mtnList-text;
+
+  overflow:hidden;
+  word-wrap:break-word;
+}
+h2.mtnList-item{
+  margin-top:0;
+  margin-bottom:0;
+}
+.mtnList-item + .mtnList-item{
+  margin-top:rem-calc(1px);
+}
+.mtnList-nav{
+  background: $mtnList-item-background url($arrow-right) (100% - (100% * 15 / 320)) 50% no-repeat;
+  background: $mtnList-item-background url($arrow-right) calc(100% - 15px) 50% no-repeat;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+  word-wrap:break-word;
+  padding-right: rem-calc(30px);
+}
+
+.mtnList-title{
+  text-overflow: initial;
+  overflow:auto;
+  white-space: normal;
+
+  padding-top:rem-calc(20px);
+  padding-bottom: rem-calc(20px);
+
+  font-size:$mtnList-title--font-size;
+  font-weight: 300;
+  line-height: 1.1em;
+  color: $mtnList-title-text;
+}
+
+$icon-width:rem-calc(20px);
+.mtnList-item{
+  .icon{
+    color:$mtnList-icon;
+    width: $icon-width;
+    margin-right: -$icon-width;
+    text-align: center;
+    float:left;
+  }
+  .icon-sibling{
+    display:inline-block;
+    margin-left:($icon-width + rem-calc(7px));
+    &.comment-count{
+      margin-left:0;
+    }
+  }
+}
+
+.mtnList-nav {
+  .icon{
+    margin-right: rem-calc(7px);
+    float: none;
+  }
+  .icon-sibling{
+    display:inline;
+    margin-left:0;
+  }
+}
+
+.mtnList-nav.mtn-datetime {
+  .icon{
+    margin-right: -$icon-width;
+    float:left;
+  }
+  .icon-sibling{
+    display:inline-block;
+    margin-left:($icon-width + rem-calc(7px));
+  }
+}
+
+.mtnList-toggle{
+  padding:0;
+  position: relative;
+}
+
+.mtnList-toggle-label{
+  line-height: 44px;
+  display: block;
+  padding-left: 25px;
+  padding-right: 14px;
+}
+
+
+.meetingProgress{
+  margin-top:rem-calc(-15px);
+  text-align: center;
+  font-size: $meeting-progress--font-size;
+  margin-bottom: rem-calc(15px);
+
+  progress[value] {
+    //Reset the default looks
+     @include vendor-prefix(appearance, none);
+
+    display:block;
+    width: 100%;
+    height: rem-calc(7px);
+  }
+}
+
+.uploadProgress{
+  text-align: center;
+  font-size: $upload-progress--font-size;
+  margin: 0 rem-calc(15px) rem-calc(15px) rem-calc(15px);
+
+  progress[value] {
+    //Reset the default looks
+    @include vendor-prefix(appearance, none);
+
+    display:block;
+    width: 100%;
+    height: rem-calc(7px);
+    margin-top: rem-calc(4px);
+  }
+}
+
+.meetingProgress progress[value]::-webkit-progress-bar,
+.uploadProgress progress[value]::-webkit-progress-bar {
+  background-color: $meeting-progress-bg;
+}
+.meetingProgress progress[value]::-webkit-progress-value,
+.uploadProgress progress[value]::-webkit-progress-value {
+  background-color: $meeting-progress-bar;
+}
+
+.mtnList-item .participant-list-container{
+  margin-top:rem-calc(-3px);
+  margin-bottom:rem-calc(-3px);
+}
+.participant-meeting .participant-summary{
+  font-size: $participant-meeting--participant-summary--font-size;
+  & .rsvp-bullet{
+    top:0;
+  }
+  & .participant-summary-yes,
+  & .participant-summary-maybe{
+    display: block;
+  }
+}
+
+.comment-count{
+  float: right;
+  margin-right: rem-calc(7px);
+  color:$mtnList-comment-text;
+  width:rem-calc(20px);
+  text-align: center;
+  display: block;
+  font-size:$comment-count--font-size;
+  line-height: rem-calc(16px);
+  &:before{
+    @extend .icon-comment:before;
+
+    display: inline-block;
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: rem-calc(16px);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+
+    font-size:$comment-count--icon--font-size;
+    // margin-top: rem-calc(12px);
+    color:$mtnList-comment-icon;
+    width:0;
+    overflow:visible;
+    float:left;
+  }
+}
+
+
+.material-wrapper{
+  width: (100% - (100% * 30 / (320 - 25 - 30) ));
+  width:calc(100% - #{rem-calc(30px)});
+  display: block;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  height:rem-calc(19px);
+  float:left;
+}
+
+.breadcrumb {
+  line-height: rem-calc(22px);
+  text-align: center;
+  font-size:$breadcrumb--font-size;
+  padding:0 rem-calc(25px);
+  color:$breadcrumb-color;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  background-color: $breadcrumb-bg-color;
+
+  &.clickable {
+    line-height: rem-calc(44px);
+    height:      rem-calc(44px);
+  }
+}
+
+.banner-wrapper{
+  padding-bottom: 1px;
+}
+
+.banner {
+  margin: 14px;
+  padding: 8px 14px;
+  border: 1px solid $banner-border-color;
+}
+
+.mtnList-dual-wrapper{
+  overflow:hidden;
+
+  div.mtnList-dual{
+    background:$white;
+    float:left;
+    width:calc(50% - #{$mtn-gutter/2});
+  }
+  div.mtnList-dual-between{
+    width:$mtn-gutter;
+    line-height: 46px;
+    min-height: 46px;
+    text-align: center;
+    float:left;
+  }
+  input[type="time"]{
+    display:inline-block;
+    min-height: 44px;
+    line-height: 44px;
+    padding: 0 8px;
+    text-align: center;
+    font-weight: bold;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    &::-webkit-clear-button,
+    &::-webkit-inner-spin-button{   // select all "X" buttons in search inputs
+      -webkit-appearance: none;      // hide the default "X" button
+      display: none;
+    }
+  }
+
+  select{
+    background: rgba(255,0,0,0.2);
+    border: 0 none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding:0 8px;
+    height:44px;
+    opacity: 0;
+    display: inline-block;
+    &:focus + label{
+      color:$meetings-blue;
+    }
+  }
+  label{
+    margin-top:-44px;
+    padding: 0 8px;
+    line-height: 44px;
+    text-align: center;
+    display: block;
+  }
+}
+.mtnList-dual-info{
+  text-align: center;
+  font-size:12px;
+  color:$informativeColor;
+  margin-top:4px;
+}
+
+
+.mtnList-group{
+  margin-bottom:14px;
+}
+
+.mtnList-item-label{
+  font-weight: normal;
+  width:95px;
+  display: inline-block;
+}
+
+.mtnList-item-dualrow{
+  line-height: 20px;
+  .mtnList-item-label{
+    margin-right: 5px;
+  }
+}
+
+
+.swipeInfoBlock{
+  h2{
+    color:$swipeInfoBlock-header-color;
+    background:$swipeInfoBlock-header-bg;
+    padding:0 14px;
+    font-size:16px;
+    line-height: 24px;
+    margin:0;
+  }
+  .tz,
+  .day,
+  .options{
+    padding:14px 0;
+  }
+  .tz{
+    text-align: center;
+    font-weight: normal;
+    line-height: 1.4em;
+    background:$swipeInfoBlock-tz-bg;
+  }
+  .tz-their-label{
+    margin-top:1em;
+  }
+  .tz-my-label,
+  .tz-their-label,
+  .tz-my-tz,
+  .tz-their-tz{
+    font-size:14px;
+    color:$swipeInfoBlock-tz-label-color;
+  }
+  .tz-my-day{
+    font-size: 28px;
+    color:$swipeInfoBlock-tz-time-color;
+  }
+  .tz-their-day,
+  .tz-my-time,
+  .tz-their-time{
+    font-size: 18px;
+    color:$swipeInfoBlock-tz-time-color;
+  }
+
+  .day{
+    table,
+    tbody{
+      display: block;
+    }
+
+    tr{
+      display: block;
+      clear:left;
+      overflow: hidden;
+      border-bottom:1px solid $swipeInfoBlock-day-borders;
+      width:100%;
+    }
+    .suggested-event{
+      background-color:$swipeInfoBlock-day-suggested-bg;
+    }
+    td{
+      display: block;
+      width:calc(100% - 75px);
+      float:left;
+
+
+      font-size: 14px;
+      padding: 6px 0;
+      &.time{
+        width:75px;
+        white-space: nowrap;
+        font-size: 12px;
+        font-weight: bold;
+        padding-left:14px;
+        span{
+          display: block;
+          @include truncate-text(61px);
+        }
+        .duration{
+          font-weight: normal;
+          color:$swipeInfoBlock-day-duration;
+        }
+        .ends-title{
+          color:$swipeInfoBlock-day-endTitle;
+        }
+        .allday{
+          padding-top:1px;
+        }
+        .ends-title,
+        .allday{
+          text-transform: uppercase;
+        }
+      }
+      &.event{
+        vertical-align: top;
+        padding-right: 14px;
+        padding-left: 2px;
+        padding-top:7px;
+        span{
+          display: block;
+          font-weight: normal;
+          @include truncate-text();
+        }
+        .title{
+          font-size: 15px;
+        }
+        .location{
+          font-size: 12px;
+          color:$swipeInfoBlock-day-location;
+        }
+      }
+    }
+    .calendars{
+      text-align: center;
+      padding:14px;
+      font-size:15px;
+      text-decoration: underline;
+    }
+
+  }
+
+  .options{
+    .label,
+    .data{
+      margin:0;
+      padding:0 14px;
+    }
+    .data{
+      padding-left: 40px;
+      margin-bottom:20px;
+    }
+
+  }
+}
+.text-help{
+  display:block;
+  margin-left: $mtn-gutter;
+  margin-right: $mtn-gutter;
+  margin-bottom: $mtn-gutter/2;
+}
+.text-help-short{
+  text-align: center;
+}
+
+.input-hint-animated{
+  padding-bottom:7px;
+  padding-left:14px;
+  padding-right:14px;
+  padding-top:10px;
+  margin-top:-15px;
+  margin-bottom:14px;
+  background: $input-background;
+  overflow:hidden;
+  //Size = 4 rows * rowheight + padding below
+  $size: -(4 * 1.6em + 1.25em);
+  p{
+    margin-top:0;
+    margin-bottom:0;
+  }
+  &.ng-enter,
+  &.ng-leave{
+    transition:all linear 0.2s;
+    p{
+      transition:all linear 0.2s;
+    }
+  }
+  &.ng-enter{
+    opacity:0;
+    p{
+      margin-top:$size;
+    }
+  }
+  &.ng-enter-active{
+    opacity:1;
+    p{
+      margin-top:0;
+    }
+  }
+  &.ng-leave{
+    opacity:1;
+    p{
+      margin-top:0;
+    }
+  }
+  &.ng-leave-active{
+    opacity:0;
+    p{
+      margin-top:$size;
+    }
+  }
+}
+
+ul{
+  font-weight: normal;
+}
+
+// App selling page
+.show-on-ios,
+.show-on-android,
+.show-on-unknown{
+  display: none;
+}
+.is-ios .show-on-ios,
+.is-android .show-on-android,
+.is-unknown .show-on-unknown{
+  display: block;
+}

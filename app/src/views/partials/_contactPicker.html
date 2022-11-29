@@ -1,0 +1,187 @@
+<div class="contactlistWrapper mtnList">
+
+  <div class="pickContact"
+       ng-click="contactPicker.pickContact()"
+       ng-if="contactPicker.deviceUtils.platform() != 'web'">
+    <i class="icon icon-add_hollow icon-fw"></i>
+  </div>
+
+  <mtn-tag-input ng-model="contactPicker.participants"
+                 input-model="contactPicker.inputModel"
+                 mtn-display-property="name"
+                 mtn-tag-filter="contactPicker.hideDisabled(tag)"
+                 mtn-on-add-tag="contactPicker.onAddTag()"
+                 mtn-on-remove-tag="contactPicker.onRemoveTag(tag)"
+                 class="withPickContact"
+                 mtn-focus-on-event="focusInput"
+                 mtn-focus-on-event-query-selector=".input"
+                 mtn-blur-on-event="blurInput"
+                 mtn-blur-on-event-query-selector=".withPickContact .input"
+                 ng-class="{autocompleteOpen:contactPicker.contacts != null && contactPicker.contacts.length > 0}"
+                 label="Invite:">
+  </mtn-tag-input>
+
+  <div class="contactlist">
+    <div class="contactlistName"
+         ng-repeat="contact in contactPicker.contacts"
+         ng-hide="contacts.length == 0">
+
+      <!-- Show if contact has at least one phonenumber -->
+      <div ng-if="contact.phoneNumbers.length >= 1"
+           class="contactlistItem"
+           ng-repeat="number in contact.phoneNumbers"
+           ng-click="contactPicker.addParticipantPhone(contact.name, number.value)">
+
+        <label class="contactlistItem-label">
+          {{ contact.name.formatted }}
+        </label>
+
+        <label class="contactlistItem-type">
+          {{ number.type }}&nbsp;
+        </label>
+
+        <label class="contactlistItem-number">
+          {{ number.value }}
+        </label>
+      </div>
+
+      <!-- Show if contact has at least one email -->
+      <div ng-if="contact.emails.length >= 1"
+           class="contactlistItem"
+           ng-repeat="email in contact.emails"
+           ng-click="contactPicker.addParticipantEmail(contact.name, email.value)">
+
+        <label class="contactlistItem-label">
+          {{ contact.name.formatted }}
+        </label>
+
+        <label class="contactlistItem-type">
+          {{ email.type }}&nbsp;
+        </label>
+
+        <label class="contactlistItem-number">
+          {{ email.value }}
+        </label>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div ng-if="!contactPicker.contacts || contactPicker.contacts.length == 0">
+  <div class="text-help"
+       ng-if="!contactPicker.customVisible">
+    <p>
+      Add contact <a ng-click="contactPicker.showCustom()">manually</a>.
+    </p>
+  </div>
+
+  <div class="customContactForm"
+       ng-if="contactPicker.customVisible">
+
+    <div class="mtnList-header informative">
+      Invite participant:
+    </div>
+
+    <form class="row mtnList"
+          name="contactPicker.customParticipantForm">
+
+      <div class="columns small-12 edit-area">
+        <mtn-float-label for="customName"
+                         ng-class="{ 'input-error': !contactPicker.customParticipantForm.customName.$valid }">
+        </mtn-float-label>
+
+        <input type="text"
+               id="customName"
+               name="customName"
+               placeholder="Name"
+               ng-model="contactPicker.customName"
+               mtn-blur-on-event="blurInput"
+               required
+               autocapitalize="words"
+               autocomplete="off"
+               autocorrect="off">
+      </div>
+
+      <div class="columns small-12 edit-area"
+           ng-if="contactPicker.customType == 'phone'">
+        <mtn-float-label for="customPhonenumber"
+                         ng-class="{ 'input-error': !contactPicker.customParticipantForm.customPhonenumber.$valid }">
+        </mtn-float-label>
+
+        <input type="tel"
+               class="required"
+               id="customPhonenumber"
+               name="customPhonenumber"
+               placeholder="Phone number"
+               ng-model="contactPicker.customPhonenumber"
+               mtn-blur-on-event="blurInput"
+               autocapitalize="sentences"
+               autocomplete="off"
+               autocorrect="off">
+      </div>
+
+      <div class="columns small-12 edit-area"
+           ng-if="contactPicker.customType == 'email'">
+        <mtn-float-label for="customEmail"
+                         ng-class="{ 'input-error': !contactPicker.customParticipantForm.customEmail.$valid }">
+        </mtn-float-label>
+
+        <input type="email"
+               class="required"
+               id="customEmail"
+               name="customEmail"
+               placeholder="Email"
+               ng-model="contactPicker.customEmail"
+               mtn-blur-on-event="blurInput"
+               autocomplete="off"
+               autocorrect="off">
+      </div>
+    </form>
+
+    <button ng-click="contactPicker.toggleCustomType()" class="link">
+      Invite using
+      <span ng-if="contactPicker.customType == 'phone'">email address</span>
+      <span ng-if="contactPicker.customType == 'email'">phone number</span>
+      instead
+      </button>
+
+    <button ng-click="contactPicker.addCustomParticipant(contactPicker.customName, contactPicker.customPhonenumber, contactPicker.customEmail)"
+            ng-disabled="contactPicker.disableCustomAdd()">
+      Add
+    </button>
+  </div>
+
+  <div class="recentContactlistWrapper"
+       ng-if="contactPicker.latestContacts">
+
+    <div class="mtnList-header informative">Recent contacts: </div>
+
+    <div ng-repeat="latestContact in contactPicker.latestContacts track by $index"
+         class="contactlistItem">
+
+      <div ng-if="latestContact.phone"
+           ng-click="contactPicker.addParticipantPhone({ formatted: latestContact.name }, latestContact.phone)">
+        <label class="contactlistItem-label">
+          {{ latestContact.name }}
+        </label>
+
+        <label class="contactlistItem-number">
+          {{ latestContact.phone }}
+        </label>
+      </div>
+
+      <div ng-if="latestContact.email && !latestContact.phone"
+           ng-click="contactPicker.addParticipantEmail({ formatted: latestContact.name }, latestContact.email)">
+        <label class="contactlistItem-label">
+          {{ latestContact.name }}
+        </label>
+
+        <label class="contactlistItem-number">
+          {{ latestContact.email }}
+        </label>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,167 @@
+
+.swipe-calltoaction{
+  padding:14px 14px 0;
+  text-align: center;
+  font-weight: normal;
+}
+
+
+.swipe-meeting-details{
+  background: $mtnList-item-background;
+  padding:8px 25px 0;
+  margin:14px 0;
+}
+.swipe-meeting-title{
+   margin:10px 0;
+  font-size:24px;
+  line-height: 1.2em;
+  font-weight:normal;
+}
+.swipe-meeting-location{
+  font-size:14px;
+  font-weight:normal;
+  padding-bottom:10px;
+}
+
+.swipe-meeting-details-block{
+  border-top:    1px solid #ECECEC;
+  background: $mtnList-item-background;
+  h2{
+    margin-top:14px;
+  }
+  .participant-name,
+  .participant-org{
+    @include truncate-text();
+  }
+}
+
+.swipe-inviter-profile{
+
+  overflow: hidden;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+  .participant-name{
+    margin-top:10px;
+  }
+}
+
+.landing-avatar{
+  @include avatar(60);
+}
+
+$animTime: 0.3s;
+//Size of items, avatar + gap
+$itemWidth: 60px + 10px;
+$itemHeight: $itemWidth;
+
+.swipe-inviter-profile{
+
+  height:$itemHeight;
+
+  .avatar{
+    margin-right:14px;
+    margin-top:5px;
+  }
+  .participant-details{
+    margin-left:70px;
+  }
+  .participant-name,
+  .participant-org,
+  .participant-status{
+    max-width: none;
+    opacity: 1;
+    transition: all $animTime ease-out;
+  }
+}
+
+.swipe-participant-list{
+  position: relative;
+  transition: all $animTime ease-out;
+  overflow: hidden;
+  border-top:0 none;
+  .swipe-participant-list-item{
+    &:first-of-type{
+      border-top:0 none;
+    }
+    .avatar{
+      margin-right:14px;
+      margin-top:5px;
+    }
+    .participant-details{
+      min-width:200px;
+      margin-left:70px;
+    }
+    .participant-name{
+      margin-top:13px;
+    }
+    .participant-name,
+    .participant-org,
+    .participant-status{
+      max-width: none;
+      opacity: 1;
+      transition: all $animTime ease-out;
+    }
+    width: 100%;
+    height:$itemHeight;
+    overflow: hidden;
+    float:left;
+    border-top: 1px solid rgba(0,0,0,0.07);
+
+    transition: all $animTime ease-out;
+
+  }
+}
+.swipe-participant-list-closed{
+  margin-right:-10px;
+  .swipe-participant-list-item{
+    width:$itemWidth;
+    border-top: 1px solid rgba(0,0,0,0);
+    .participant-name,
+    .participant-org{
+      opacity:0;
+      transition: all $animTime ease-out;
+    }
+  }
+}
+
+.swipe-agenda{
+  opacity: 1;
+  overflow: hidden;
+  max-height: none;
+  transition: all $animTime ease-out;
+}
+.swipe-agenda-closed{
+  opacity: 0;
+  max-height: 0px;
+}
+
+.swipe-see-details{
+  line-height: 44px;
+  text-align: center;
+  color: $text-link;
+  text-decoration: underline;
+}
+
+// Participant list spesific settings
+.participants {
+  margin-bottom: 7px;
+
+  .participant {
+    background: $participants-bg url($arrow-right) (100% - 100% * 15 / 320) 50% no-repeat;
+    background: $participants-bg url($arrow-right) calc(100% - 15px) 50% no-repeat;
+    padding: 10px 30px 10px 25px;
+    min-height: (60px + 10px * 2);
+    margin-bottom: 1px;
+  }
+  .participant-avatar {
+    margin-right: 11px;
+    @include avatar(60);
+  }
+
+  .participant-name{
+    margin-top:9px;
+  }
+  .participant-org{
+    font-size: $participants--participant-org--font-size;
+    line-height: 20px;
+  }
+}

@@ -1,0 +1,210 @@
+<page-wrapper ng-model="info">
+
+<div ng-hide="info.loading">
+  <div class="swipeInfoBlock">
+    <h2>Timezone</h2>
+    <div class="tz">
+
+      <div class="tz-my-label">
+        On <strong>your</strong> timezone
+      </div>
+
+      <div class="tz-my-day"
+           ng-model="info.option.begin_epoch"
+           epoch-model
+           epoch-format="{{ info.dateHelper.formatDayDate }}">
+      </div>
+
+      <div class="tz-my-time">
+        <span ng-model="info.option.begin_epoch"
+              epoch-model
+              epoch-format="{{ info.dateHelper.formatTime }}">
+        </span>
+
+        &dash;
+
+        <span ng-model="info.option.end_epoch"
+              epoch-model
+              epoch-format="{{ info.dateHelper.formatTime }}">
+        </span>
+      </div>
+
+      <div class="tz-my-tz">
+        {{ info.formatTimezone(info.userTimezone) }} {{ info.userTimezone }}
+      </div>
+
+      <div ng-if="info.userTimezone != info.organizerTimezone">
+        <div class="tz-their-label">On <strong>{{ info.manager.name }}</strong>'s timezone</div>
+        <div class="tz-their-day"
+             ng-model="info.option.begin_epoch"
+             epoch-model
+             epoch-format="{{ info.dateHelper.formatDayDate }}">
+        </div>
+
+        <div class="tz-their-time">
+          <span ng-model="info.option.begin_epoch"
+                epoch-model
+                epoch-format="{{ info.dateHelper.formatTime }}">
+          </span>
+
+          &dash;
+
+          <span ng-model="info.option.end_epoch"
+                epoch-model
+                epoch-format="{{ info.dateHelper.formatTime }}">
+          </span>
+        </div>
+        <div class="tz-their-tz">
+          {{ info.formatTimezone(info.organizerTimezone) }} {{ info.organizerTimezone }}
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="swipeInfoBlock">
+    <h2>Your day <span ng-model="info.option.begin_epoch"
+                       epoch-model
+                       epoch-format="{{ info.dateHelper.formatDayDate }}">
+    </h2>
+    <div class="day">
+
+      <table>
+        <tr ng-repeat="calendarEntry in info.option.user_calendar_entries.before">
+          <td class="time">
+            <span ng-model="calendarEntry.begin_epoch"
+                  epoch-model
+                  epoch-format="{{ info.dateHelper.formatTime }}"
+                  class="begin">
+            </span>
+            <span class="duration">
+              <duration>
+                <begin ng-model="calendarEntry.begin_epoch"></begin>
+                <end ng-model="calendarEntry.end_epoch"></end>
+              </duration>
+            </span>
+          </td>
+          <td class="event">
+            <span class="title"
+                  ng-bind="calendarEntry.title"></span>
+            <span class="location"
+                  ng-bind="calendarEntry.location"></span>
+          </td>
+        </tr>
+        <!-- previous calendar entries -->
+
+        <tr class="suggested-event">
+          <td class="time">
+            <span ng-model="info.option.begin_epoch"
+                  epoch-model
+                  epoch-format="{{ info.dateHelper.formatTime }}"
+                  class="begin">
+            </span>
+            <span class="duration">
+              <duration>
+                <begin ng-model="info.option.begin_epoch"></begin>
+                <end ng-model="info.option.end_epoch"></end>
+              </duration>
+            </span>
+          </td>
+          <td class="event">
+            <span class="title"
+                  ng-bind="info.meeting.title_value"></span>
+            <span class="location"
+                  ng-bind="info.meeting.location_value"></span>
+          </td>
+        </tr>
+        <!-- suggested time -->
+
+        <tr ng-repeat="calendarEntry in info.option.user_calendar_entries.after">
+          <td class="time">
+            <span ng-model="calendarEntry.begin_epoch"
+                  epoch-model
+                  epoch-format="{{ info.dateHelper.formatTime }}"
+                  class="begin">
+            </span>
+            <span class="duration">
+              <duration>
+                <begin ng-model="calendarEntry.begin_epoch"></begin>
+                <end ng-model="calendarEntry.end_epoch"></end>
+              </duration>
+            </span>
+          </td>
+          <td class="event">
+            <span class="title"
+                  ng-bind="calendarEntry.title"></span>
+            <span class="location"
+                  ng-bind="calendarEntry.location"></span>
+          </td>
+        </tr>
+        <!-- following calendar entries -->
+
+      </table>
+      <p class="calendars"
+         ng-click="info.openCalendarSetting()">Select calendars for scheduling ({{ info.enabledCalendarsCount }} of {{ info.totalCalendarsCount }}).</p>
+    </div>
+
+  </div>
+
+  <div class="swipeInfoBlock">
+    <h2>Scheduling based on</h2>
+    <div class="options">
+
+      <div ng-if="!info.oneDaySpan">
+        <p class="label">Scheduling times between</p>
+        <p class="data">
+          <span ng-model="info.scheduling.available_timespans[0].start"
+                epoch-model
+                epoch-format="{{ info.dateHelper.formatDayDate }}"></span>
+
+          &dash;
+
+          <span ng-model="info.timespanEnd"
+                ng-show="info.timespanEnd"
+                epoch-model
+                epoch-format="{{ info.dateHelper.formatDayDate }}"></span>
+        </p>
+      </div>
+
+      <div ng-if="info.oneDaySpan">
+        <p class="label">Scheduling times for</p>
+        <p class="data">
+          <span ng-model="info.scheduling.available_timespans[0].start"
+                epoch-model
+                epoch-format="{{ info.dateHelper.formatDayDate }}"></span>
+        </p>
+      </div>
+
+      <p class="label">On weekdays</p>
+      <p class="data">
+        <span ng-repeat="slot in info.scheduling.slots">
+          <span mtn-format-unit-to-moment="{{ info.dateHelper.formatDayOfWeekShort }}"
+                value="{{ slot.weekday + 1 }}"
+                unit="day">
+          </span><span ng-hide="$last">,&nbsp;</span>
+        </span>
+      </p>
+
+      <p class="label">Between</p>
+      <p class="data">
+        <span ng-model="info.scheduling.slots[0].begin_second"
+              ng-cloak
+              epoch-model
+              epoch-format="{{ info.dateHelper.formatTime }}"
+              UTC="true">
+        </span>
+
+        &dash;
+
+        <span ng-model="info.scheduling.slots[0].end_second"
+              ng-cloak
+              epoch-model
+              epoch-format="{{ info.dateHelper.formatTime }}"
+              UTC="true">
+      </p>
+    </div>
+
+  </div>
+</div>
+
+</page-wrapper>

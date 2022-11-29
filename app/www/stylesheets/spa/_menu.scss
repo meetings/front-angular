@@ -1,0 +1,147 @@
+
+.notification-badge {
+  background: $notification-badge-bg;
+  color: $notification-badge-color;
+  position: absolute;
+  margin-top: -42px;
+  margin-left: 25px;
+  height: 18px;
+  min-width: 18px;
+  border-radius: 9px;
+  display: inline-block;
+  text-align: center;
+  line-height: 18px;
+  font-size: 12px;
+  font-weight: normal;
+  padding:0 4px;
+
+  .off-canvas-list & {
+    margin-top:-7px;
+    margin-left:-6px;
+    z-index: $notification-badge-off-canvas-list;
+  }
+}
+
+//Fix scrollbars behind content for chrome ≤ 36
+html .off-canvas-wrap,
+html .inner-wrap{
+  -webkit-backface-visibility: visible;
+}
+
+.off-canvas-list-bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.off-canvas-list li.active a {
+  background: $navi-active-background;
+}
+html .off-canvas-list li a,
+html .off-canvas-list li.active a,
+html ul.off-canvas-list li a:hover{
+  background: $spa-menu-item-bg;
+}
+html .off-canvas-list li.active a{
+  color: $spa-menu-item-active-color;
+}
+html ul.off-canvas-list li a:hover{
+  color: $spa-menu-item-active-color;
+}
+.off-canvas-list .icon{
+  margin-right:4px;
+}
+html .off-canvas-list .off-canvas-list-spacer a{
+  background: transparent;
+  line-height: 0px;
+}
+
+.logged-in-as-label,
+.logged-in-as-value{
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size:$profile-currentuser--font-size;
+  color:$profile-currentuser-color;
+  padding:0 $mtn-gutter;
+}
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Hide and show links based on viewport height in menu and settings.
+//
+.spa .settings-link{
+  visibility: hidden;
+  display: none;
+}
+
+$menuAreaHeight1: 280px + 44px; //Normal minimum height + menu repositioning
+$menuAreaHeight2: $menuAreaHeight1 + 20px; // Spacer height
+$menuAreaHeight3: $menuAreaHeight2 + 50px; // Button height
+$menuAreaHeight4: $menuAreaHeight3 + 50px; // Button height
+
+//Hide all extra menu links and spacer, show them on settings
+@media all and (max-height: $menuAreaHeight1) {
+  .off-canvas-list-spacer,
+  .spa .menu-link{
+    visibility: hidden;
+    display: none;
+  }
+  .spa .settings-link{
+    visibility: visible;
+    display: block;
+  }
+}
+//Hide spacer and last two links, show them on settings
+@media all and (min-height: $menuAreaHeight1 + 1px) and (max-height: $menuAreaHeight2) {
+  .off-canvas-list-spacer,
+  .spa .menu-link + .menu-link{
+    visibility: hidden;
+    display: none;
+  }
+  .spa .settings-link + .settings-link{
+    visibility: visible;
+    display: block;
+  }
+}
+//Hide last two links, show them on settings
+@media all and (min-height: $menuAreaHeight2 + 1px) and (max-height: $menuAreaHeight3) {
+  .spa .menu-link + .menu-link{
+    visibility: hidden;
+    display: none;
+  }
+  .spa .settings-link + .settings-link{
+    visibility: visible;
+    display: block;
+  }
+}
+//Hide last link, show it on settings
+@media all and (min-height: $menuAreaHeight3 + 1px) and (max-height: $menuAreaHeight4) {
+  .spa .menu-link + .menu-link + .menu-link{
+    visibility: hidden;
+    display: none;
+  }
+  .spa .settings-link + .settings-link + .settings-link{
+    visibility: visible;
+    display: block;
+  }
+  .spa .settings-link + .settings-link + .settings-link{
+    visibility: visible;
+    display: block;
+  }
+}
+// Show all menu links
+@media all and (min-height: $menuAreaHeight4 + 1px) {
+  .spa .settings-link{
+    visibility: hidden;
+    display: none;
+  }
+}
+
+//Since android runs on cordova and does not have the menu, show the settings-links always
+.spa .build-platform-ios .settings-link,
+.spa .build-platform-android .settings-link{
+  visibility: visible;
+  display: block;
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

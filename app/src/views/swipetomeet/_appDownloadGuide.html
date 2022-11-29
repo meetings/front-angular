@@ -1,0 +1,17 @@
+<page-wrapper ng-model="index" class="page-background-white">
+    <div class="text-wrapper text-starter">
+      <h2> Great!</h2>
+
+      <p>
+        We just sent you a text to {{ index.phone }}. You should receive the download link right about now. Check your messages to proceed.
+      </p>
+    </div>
+
+    <button ng-click="index.resendSms()" class="link">Resend the SMS</button>
+    <div class="text-wrapper"
+         ng-if="index.smsReRequested">
+      <p>
+        A new sms has been sent to your phone number.
+      </p>
+    </div>
+</page-wrapper>

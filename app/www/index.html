@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html ng-controller="MainCtrl as main" class="spa">
+<head>
+  <meta charset="utf8">
+  <title ng-bind-template="{{ main.pageTitle }} - {{ main.appConfig.appName }}"></title>
+
+  <meta name="theme-color" content="#67cfe9">
+
+  <meta name="format-detection" content="telephone=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="shortcut icon" href="project/web/favicon.ico">
+  <link rel="apple-touch-icon" sizes="57x57" href="project/web/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="project/web/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="project/web/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="project/web/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="project/web/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="project/web/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="project/web/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="project/web/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="project/web/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="project/web/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="project/web/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="project/web/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="project/web/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#67cfe9">
+  <meta name="msapplication-TileImage" content="project/web/mstile-144x144.png">
+  <meta name="msapplication-config" content="project/web/browserconfig.xml">
+  <link rel="apple-touch-startup-image" href="project/splashscreens/iphone5.png">
+
+  <link rel="stylesheet" href="stylesheets/application.css" />
+
+  <!-- Inject cordova with gulp, do not touch below line -->
+  <!-- INJECT CORDOVA -->
+
+  <script src="config.js"></script>
+  <script src="app/lib.js"></script>
+  <script src="app/app.js"></script>
+  <script src="controllers/controllers.js"></script>
+  <script src="views/templates.js"></script>
+
+  <script src="vendor/tinymce/tinymce.min.js"></script>
+
+  <!-- start Segment -->
+  <script type="text/javascript">
+    !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","group","track","ready","alias","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="3.0.1";
+      analytics.load(appEnvironment.analytics.segment.token);
+    }}();
+  </script>
+  <!-- end Segment -->
+
+  <script>
+    if(appEnvironment.sentry.enabled){
+      Raven.config('https://' + appEnvironment.sentry.token + '@app.getsentry.com/' + appEnvironment.sentry.projectId, {
+          // we highly recommend restricting exceptions to a domain in order to filter out clutter
+          whitelistUrls: appEnvironment.sentry.whitelistUrls
+      }).install();
+    }
+  </script>
+
+</head>
+<body ng-controller="NavigationCtrl as nav"
+      class="browser build-platform-{{nav.platform}}">
+
+  <noscript>Sorry, this website requires javascript.</noscript>
+
+  <!-- Google Tag Manager -->
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-T76Z2C"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-T76Z2C');</script>
+  <!-- End Google Tag Manager -->
+
+  <div class="off-canvas-wrap" data-offcanvas>
+    <div class="inner-wrap"
+         ng-class="{'no-navbar': !nav.navBarVisible}"
+         mtn-full-height>
+      <nav class="tab-bar"
+           ng-if="nav.navBarVisible"
+           mtn-disable-scroll>
+        <div class="left" ng-if="nav.menuVisible && nav.platform == 'web'">
+          <a href=""
+             class="left-off-canvas-toggle menu-icon"
+             ng-click="nav.toggleOffcanvas()">
+            <span></span>
+          </a>
+
+          <span class="notification-badge"
+                ng-if="nav.notificationBadge"
+                ng-click="nav.toggleOffcanvas()"
+                ng-cloak>
+            {{ nav.notificationBadge }}
+          </span>
+        </div>
+
+        <section class="left-small" ng-if="nav.leftButtonVisible">
+          <a href="" ng-click="nav.leftButton.onClick()">
+            <span class="tab-bar-back"
+                  ng-if="nav.leftButton.title.length">
+              <i class="icon icon-back_hollow"></i><span class="icon-sibling">{{ nav.leftButton.title }}</span>
+            </span>
+            <img class="tab-bar-add"
+                 ng-if="nav.leftButton.imagePath.length"
+                 ng-src="{{ nav.leftButton.imagePath }}" width="22" height="22">
+          </a>
+        </section>
+
+        <section class="middle tab-bar-section">
+              <h1 class="title">{{ main.pageTitle }}</h1>
+        </section>
+
+        <section class="right-small" ng-if="nav.rightButtonVisible">
+          <a href=""
+             ng-click="nav.rightButton.onClick()"
+             ng-class="{ 'disabled' : nav.rightButton.disabled }">
+            <span class="tab-bar-add-text"
+                  ng-if="nav.rightButton.title.length">
+              {{ nav.rightButton.title }}
+            </span>
+            <img class="tab-bar-add"
+                 ng-if="nav.rightButton.imagePath.length"
+                 ng-src="{{ nav.rightButton.imagePath }}" width="22" height="22">
+          </a>
+        </section>
+
+      </nav>
+
+      <nav class="tab-bar-native"
+           ng-if="nav.menuVisible && nav.platform != 'web'"
+           mtn-disable-scroll>
+        <ul class="tabs">
+          <li ng-if="nav.platform != 'web'"
+              ng-class="{ 'active' : nav.activeTab == '/scheduling' }">
+            <a href=""
+               ng-click="nav.path('/scheduling')">
+               <i class="icon icon-swipe"></i> Schedule
+             </a>
+          </li>
+
+          <li ng-class="{ 'active' : nav.activeTab == '/timeline' }">
+            <a href=""
+               ng-click="nav.path('/timeline')">
+               <i class="icon icon-timeline"></i> Timeline
+             </a>
+          </li>
+
+          <li ng-class="{ 'active' : nav.activeTab == '/notifications' }">
+            <a href=""
+               ng-click="nav.path('/notifications')">
+              <span class="notification-badge"
+                    ng-if="nav.notificationBadge">
+                {{ nav.notificationBadge }}
+              </span>
+              <i class="icon icon-notification"></i>
+              Notifications
+            </a>
+          </li>
+
+          <li ng-class="{ 'active' : nav.activeTab == '/settings' }">
+            <a href=""
+               ng-click="nav.path('/settings')">
+               <i class="icon icon-settings"></i> Settings
+            </a>
+          </li>
+
+        </ul>
+      </nav>
+
+      <!-- Off Canvas Menu -->
+      <aside class="left-off-canvas-menu" ng-if="nav.platform == 'web'">
+        <!-- whatever you want goes here -->
+        <ul class="off-canvas-list">
+          <li ng-if="nav.platform != 'web'"
+              ng-class="{ 'active' : nav.activeTab == '/scheduling' }">
+            <a href=""
+               ng-click="nav.path('/scheduling')">
+               <i class="icon icon-swipe"></i> Schedule
+             </a>
+          </li>
+
+          <li ng-class="{ 'active' : nav.activeTab == '/timeline' }">
+            <a href=""
+               ng-click="nav.path('/timeline')">
+               <i class="icon icon-timeline"></i> Timeline
+             </a>
+          </li>
+
+          <li ng-class="{ 'active' : nav.activeTab == '/notifications' }">
+            <a href=""
+               ng-click="nav.path('/notifications')">
+              <span class="notification-badge"
+                    ng-if="nav.notificationBadge">
+                {{ nav.notificationBadge }}
+              </span>
+              <i class="icon icon-notification"></i>
+              Notifications
+            </a>
+          </li>
+
+          <li ng-class="{ 'active' : nav.activeTab == '/settings' }">
+            <a href=""
+               ng-click="nav.path('/settings')">
+               <i class="icon icon-settings"></i> Settings
+            </a>
+          </li>
+
+          <li class="off-canvas-list-spacer"><a>&nbsp;</a></li>
+
+          <li class="menu-link">
+            <a href="{{ nav.appConfig.supportLinks.support.alternativeUrl }}" target="_blank">
+               <i class="icon icon-question"></i> {{ nav.appConfig.supportLinks.support.linkText }}
+            </a>
+          </li>
+
+          <li class="menu-link">
+            <a href="{{ nav.appConfig.supportLinks.facebook.alternativeUrl }}" target="_blank">
+               <i class="icon mtn-icon-facebook"></i> {{ nav.appConfig.supportLinks.facebook.linkText }}
+            </a>
+          </li>
+
+          <li class="menu-link">
+            <a href="{{ nav.appConfig.supportLinks.twitter.alternativeUrl }}" target="_blank">
+               <i class="icon mtn-icon-twitter"></i> {{ nav.appConfig.supportLinks.twitter.linkText }}
+            </a>
+          </li>
+        </ul>
+        <ul class="off-canvas-list off-canvas-list-bottom">
+          <li class="logged-in-as-label">
+               Logged in as:
+          </li>
+          <li class="logged-in-as-value">
+               {{ nav.user.email }}
+          </li>
+          <li>
+            <a href="" class="button secondary"
+               ng-click="nav.signOut()">
+               Sign out
+            </a>
+          </li>
+        </ul>
+      </aside>
+
+      <section class="pull-to-refresh-wrapper">
+        <div id="pull-to-refresh">
+          <div id="ptr-pull">
+            <i class="icon icon-down1"></i>
+          </div>
+          <div id="ptr-release">
+            <i class="icon icon-spinner icon-spin"></i>
+          </div>
+        </div>
+      </section>
+
+      <!-- main content -->
+      <section class="main-section" id="main-section">
+        <div ng-view=""
+             class="main-section-wrapper spa-page spa-page-forward"
+             ng-class="{
+              'is-animated': !disableViewAnimation,
+              'native-tabbar-visible': nav.menuVisible && nav.platform != 'web'
+              }"></div>
+      </section>
+
+      <!-- close the off-canvas menu -->
+      <a class="exit-off-canvas" ng-click="nav.closeNav()" ng-if="nav.platform == 'web'"></a>
+
+    </div>
+  </div>
+
+   <script>
+    angular.element(document).ready(function() {
+     if (typeof cordova !== "undefined" && cordova !== null) {
+      document.addEventListener("deviceready", function() {
+          angular.bootstrap(document, ["mainApp"]);
+        });
+      } else {
+        angular.element(document).ready(function() {
+          angular.bootstrap(document, ["mainApp"]);
+        });
+      }
+  });
+  </script>
+</body>
+</html>

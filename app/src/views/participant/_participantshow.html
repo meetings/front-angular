@@ -1,0 +1,226 @@
+<page-wrapper ng-model="show">
+
+<div class="breadcrumb"
+     ng-bind="show.breadcrumb.title"
+     ng-class="{ 'clickable' : show.breadcrumb.clickable }"></div>
+
+<div ng-hide="show.loading">
+  <div class="mtnList participant rsvp_{{ show.participant.rsvp_status }}">
+
+    <participant ng-model="show.participant"
+                 show-rsvp="{{ show.meeting.current_scheduling_id == 0 }}">
+    </participant>
+
+    <div class="participant-contacts">
+      <span class="participant-contact participant-contact-mobile"
+            ng-show="show.participant.phone">
+
+        <mtn-a class="participant-contact-label"
+               href="tel:{{show.participant.phone}}"
+               alt-href="tel:{{show.participant.phone}}">
+          Mobile
+        </mtn-a>
+
+        <mtn-a class="participant-contact-data copyable"
+               href="tel:{{show.participant.phone}}"
+               alt-href="tel:{{show.participant.phone}}"
+               ng-bind="show.participant.phone">
+        </mtn-a>
+
+        <span class="participant-contact-buttons">
+
+          <mtn-a class="participant-contact-button"
+                 href="sms:{{show.participant.phone}}"
+                 alt-href="sms:{{show.participant.phone}}">
+            <i class="icon icon-comment_hollow"></i>
+          </mtn-a>
+
+          <mtn-a class="participant-contact-button"
+                 href="tel:{{show.participant.phone}}"
+                 alt-href="tel:{{show.participant.phone}}">
+            <i class="icon icon-phone_hollow"></i>
+          </mtn-a>
+
+        </span>
+      </span>
+
+      <span class="participant-contact"
+            ng-show="show.participant.email">
+
+        <mtn-a class="participant-contact-label"
+               href="mailto:{{show.participant.email}}"
+               alt-href="mailto:{{show.participant.email}}">
+          Email
+        </mtn-a>
+
+        <mtn-a class="participant-contact-data copyable"
+               href="mailto:{{show.participant.email}}"
+               alt-href="mailto:{{show.participant.email}}"
+               ng-bind="show.participant.email">
+        </mtn-a>
+
+        <span class="participant-contact-buttons">
+
+          <mtn-a class="participant-contact-button"
+                href="mailto:{{show.participant.email}}"
+                alt-href="mailto:{{show.participant.email}}">
+            <i class="icon icon-mail_hollow"></i>
+          </mtn-a>
+
+        </span>
+      </span>
+
+      <span class="participant-contact"
+            ng-show="show.participant.skype">
+
+        <mtn-a class="participant-contact-label"
+               href="skype:{{show.participant.skype}}?chat"
+               alt-href="skype:{{show.participant.skype}}?chat">
+          Skype
+        </mtn-a>
+
+        <mtn-a class="participant-contact-data copyable"
+               href="skype:{{show.participant.skype}}?chat"
+               alt-href="skype:{{show.participant.skype}}?chat"
+               ng-bind="show.participant.skype">
+        </mtn-a>
+
+        <span class="participant-contact-buttons">
+
+          <mtn-a class="participant-contact-button"
+                 href="skype:{{show.participant.skype}}?chat"
+                 alt-href="skype:{{show.participant.skype}}?chat">
+            <i class="icon icon-skype"></i>
+          </mtn-a>
+
+        </span>
+      </span>
+
+      <span class="participant-contact"
+            ng-show="show.participant.linkedin">
+
+        <mtn-a class="participant-contact-label"
+               href="{{show.participant.linkedin}}"
+               alt-href="{{show.participant.linkedin}}"
+               target="_blank">
+          LinkedIn
+        </mtn-a>
+
+        <mtn-a class="participant-contact-data copyable"
+               href="{{show.participant.linkedin}}"
+               alt-href="{{show.participant.linkedin}}"
+               ng-bind="show.participant.linkedin"
+               target="_blank">
+        </mtn-a>
+
+        <span class="participant-contact-buttons">
+
+          <mtn-a class="participant-contact-button"
+                 href="{{show.participant.linkedin}}"
+                 alt-href="{{show.participant.linkedin}}"
+                 target="_blank">
+            <i class="icon mtn-icon-linkedin"></i>
+          </mtn-a>
+
+        </span>
+      </span>
+    </div>
+  </div>
+
+  <!-- Participant actions -->
+  <div ng-if="!show.isManager && show.isParticipantCurrentUser">
+    <div ng-if="show.schedulingEnabled">
+      <button ng-disabled="show.btnWorking || show.participant.scheduling_disabled"
+              ng-click="show.disableScheduling()">
+        I'm not participating
+        <span class="spinner"
+              ng-if="show.btnWorking == 'disableScheduling'"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Manager actions -->
+  <div ng-if="show.isManager">
+
+    <!-- Scheudling on, not draft -->
+    <div ng-if="!show.isDraft && show.isSchedulingActive">
+      <div ng-if="!show.isParticipantCurrentUser">
+        <div class="mtnList-toggle">
+          <mtn-checkbox ng-model="show.schedulingEnabled"
+                        name="setSchedulingEnabled"
+                        mtn-click="show.toggleSchedulingEnabled()"
+                        mtn-swipe-left="show.setSchedulingEnabled(false)"
+                        mtn-swipe-right="show.setSchedulingEnabled(true)"
+                        mtn-show-spinner="show.btnWorking">
+          Included in scheduling
+          </mtn-checkbox>
+        </div>
+
+        <button ng-disabled="show.btnWorking || show.invitationSent || !show.schedulingEnabled"
+                ng-click="show.resendSchedulingInvitation()">
+          Invite again
+          <span class="spinner"
+                ng-if="show.btnWorking == 'resendingInvitation'"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Scheudling on, not draft -->
+    <div ng-if="!show.isDraft && show.isSchedulingActive">
+      <div class="log-title">
+        Scheduling progress
+      </div>
+
+      <div class="log-wrapper"
+           ng-class="{ full: show.fullLog }"
+           ng-click="show.toggleLogSize()">
+
+        <div class="log-table-wrapper">
+          <div class="log-table"
+               ng-class="{ longlist: show.eventLog.length > 6 }">
+
+            <div ng-repeat="item in show.eventLog"
+                 class="log-row">
+
+              <div ng-model="item.timestamp"
+                   ng-cloak
+                   epoch-model
+                   epoch-format="{{ show.dateHelper.formatTime }}"
+                   class="log-row__timestamp">
+              </div>
+
+              <div ng-bind-html="item.formattedMsg"
+                   class="log-row__data">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <!-- Scheudling off, not draft -->
+    <div ng-if="!show.isDraft && !show.isSchedulingActive && show.participant.is_creator != 1">
+      <button ng-disabled="show.btnWorking || show.invitationSent"
+              ng-if="show.participant.email"
+              ng-click="show.resendSchedulingInvitation()">
+        Invite again to meeting
+        <span class="spinner"
+              ng-if="show.btnWorking == 'resendingInvitation'"></span>
+      </button>
+    </div>
+
+    <!-- Always possible to remove participant -->
+    <div ng-if="!show.isParticipantManager">
+      <button class="btn alert"
+              ng-disabled="show.btnWorking"
+              ng-click="show.removeParticipant()">
+        Remove from meeting
+        <span class="spinner"
+              ng-if="show.btnWorking == 'removingParticipant'"></span>
+      </button>
+    </div>
+
+  </div>
+</div>
+
+</page-wrapper>

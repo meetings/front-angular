@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html ng-app="mainApp" ng-controller="NavigationCtrl as nav" class="spa">
+<head>
+  <meta charset="utf8">
+  <title>Browser error</title>
+
+  <meta name="format-detection" content="telephone=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="shortcut icon" href="/project/web/favicon.ico">
+  <link rel="apple-touch-icon" sizes="57x57" href="/project/web/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/project/web/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/project/web/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/project/web/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/project/web/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/project/web/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/project/web/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/project/web/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/project/web/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/project/web/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/project/web/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/project/web/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/project/web/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#67cfe9">
+  <meta name="msapplication-TileImage" content="/project/web/mstile-144x144.png">
+  <meta name="msapplication-config" content="/project/web/browserconfig.xml">
+  <link rel="apple-touch-startup-image" href="/project/splashscreens/iphone5.png">
+
+  <link rel="stylesheet" href="/stylesheets/application.css" />
+  <style>
+    .ios{
+      display: none;
+    }
+
+    .isIos .nonIos{
+      display: none;
+    }
+    .isIos .ios{
+      display: block;
+    }
+
+    .header{
+      text-align: center;
+      line-height: 44px;
+      background: #67cfe9;
+      color: #ffffff;
+    }
+    #iosToggle{
+      padding:14px;
+    }
+    p{
+      line-height: 1.2em;
+    }
+    h3{
+      font-size: 18px;
+    }
+  </style>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-50042813-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+</head>
+<body class="browser">
+  <div class="header">
+    Browser error
+  </div>
+  <div id="iosToggle">
+
+    <div class="nonIos">
+      <p>SwipeToMeet can't access all the browser features. </p>
+    </div>
+
+    <div class="ios">
+      <p>SwipeToMeet can not be used in private browsing mode.</p>
+
+      <p>Please disable "Private" mode and try the original link again.</p>
+
+      <h3>Instructions:</h3>
+      <ol>
+        <li>Tap the bottom right <img src="/images/ios8_pages_icon.png" alt="pages" width="16" height="16" title="pages">-button</li>
+        <li>Tap the bottom left "Private"-button</li>
+        <li>Reopen the original link (from SMS)</li>
+      </ol>
+    </div>
+  </div>
+
+  <script>
+    var isIos = (window.location.search.split('ios=')[1]||'').split('&')[0] == "true"
+    if (isIos) {
+      document.getElementById("iosToggle").className = "isIos";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+
+.tab-bar-native{
+  height:44px;
+  background:$tab-bar-native-bg;
+  position: absolute;
+  top:44px;
+  width:100%;
+  z-index:1000;
+  border-bottom:1px solid $tab-bar-native-border;
+  .tabs{
+    list-style: none;
+    margin:0;
+    padding:0;
+
+    display: flex;
+    display: -webkit-flex;
+    display: -webkit-box;
+    display: -webkit-flexbox;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+
+    li{
+      margin:0;
+      padding:0;
+      display: inline-block;
+      display:block;
+
+      flex-grow: 1;
+      -webkit-flex-grow: 1;
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+
+      text-align: center;
+      line-height: 44px;
+      font-size:14px;
+      a{
+        display: block;
+        color:$tab-bar-native-link;
+        position:relative;
+        i{
+          display: none;
+        }
+        .notification-badge{
+          margin-top:2px;
+          margin-left:0;
+          right:0;
+        }
+      }
+      &.active a:after{
+        content:"";
+        display: block;
+        margin-top:-4px;
+        height:4px;
+        border-radius: 4px;
+        background-color:$tab-bar-native--active-indicator;
+      }
+    }
+  }
+}
+.build-platform-android .native-tabbar-visible page-wrapper{
+  padding-top:88px;
+}
+
+// Prepared mockup for iOS Cordova tabbar reusing the android tabbar
+.build-platform-ios{
+  $tab-bar-height: 50px;
+  .tab-bar-native{
+    height: $tab-bar-height;
+    top:initial;
+    bottom:0;
+    border-bottom:0 none;
+    border-top:1px solid $tab-bar-native-border-ios;
+    .tabs{
+      max-width: 414px;
+      margin-left:auto;
+      margin-right:auto;
+      li{
+        a{
+          padding-top:7px;
+          display: inline-block;
+          line-height: 1.4em;
+          color: #929292;
+          i{
+            display: block;
+            font-size: 24px;
+          }
+          .notification-badge{
+            margin-top: -5px;
+          }
+          font-size: 11px;
+        }
+        &.active a{
+          color:$meetings-blue;
+          &:after{
+            content:initial;
+          }
+        }
+      }
+    }
+  }
+  .native-tabbar-visible page-wrapper{
+    padding-bottom: $tab-bar-height;
+  }
+}
+
+//This makes tapping long buttons in titlebar possible.
+.tab-bar-section.middle{
+  pointer-events:none;
+}

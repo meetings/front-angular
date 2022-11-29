@@ -1,0 +1,120 @@
+.feelgood-wrapper{
+  $feelGoodBg: #f2f2f2;
+  background:  $feelGoodBg url("../images/feel_good_bg.jpg") center center no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+.feelgood{
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  @include vendor-prefix(transform, translateY(-50%));
+}
+.feelgood-img{
+  max-width: 332px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-bottom: 50px;
+}
+.feelgood-btn-wrapper{
+  position: absolute;
+  bottom: 14px;
+  width: 100%;
+}
+
+
+.logo {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.htmlnav{
+  height:44px;
+  line-height:44px;
+  background-color:$htmlnav-bg-color;
+  color:#ffffff;
+  text-align: center;
+
+  @include vendor-prefix-attr(position, sticky);
+  top:0;
+  z-index:$htmlnav-zindex;
+
+  /*This is a bubblegum fix for the wrongly positioned titlebar with operator, clock on ios*/
+  top:-20px;
+  height:64px;
+  padding-top:20px;
+  /*fix end*/
+}
+.htmlnav-back{
+  position:absolute;
+  display: block;
+  width:44px;
+  height: 44px;
+  line-height: 44px;
+}
+.htmlnav-title{
+  display: block;
+}
+
+
+
+.loginpage-wrapper{
+  min-height: 100%;
+  padding-top:20px;
+  color:$signin-base-text-color;
+
+  .text-link {
+    @include link-colors($signup-text-link, $signup-text-link, darken($signup-text-link, 20%), $signup-text-link, darken($signup-text-link, 20%));
+    text-decoration: underline;
+  }
+  button.secondary{
+    border:0 none;
+  }
+}
+
+.signUpRegistrationForm .edit-area,
+.loginpage-wrapper .edit-area{
+  margin-bottom:14px;
+  padding-left: 14px;
+  padding-right: 14px;
+  padding-bottom: 7px;
+}
+
+.form-choise{
+  text-align: center;
+  margin: 10px 0;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+hr.dev{
+  margin-top:60px;
+}
+
+.resendsms{
+  text-align: center;
+}
+
+.signin-avatar-wrapper {
+  overflow: hidden;
+  text-align: center;
+}
+.signin-avatar-wrapper .avatar {
+  float: none;
+  border: 2px solid white;
+  display: inline-block;
+}
+
+.signin-wrapper{
+  h1,
+  .text-wrapper{
+    text-align: center;
+  }
+  h1{
+    font-size: 27px;
+    margin-top:1em;
+    margin-bottom:0em;
+  }
+}

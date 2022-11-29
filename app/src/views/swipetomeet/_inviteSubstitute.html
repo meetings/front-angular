@@ -1,0 +1,32 @@
+<page-wrapper ng-model="index" ng-class="{ 'page-background-white' : index.contactPermissionTextVisible }">
+
+<div ng-if="!index.loading && index.hasLeftScheduling"
+     class="text-wrapper">
+  <div class="page-icon"><i class="icon icon-error"></i></div>
+  <p>You are no longer participating to this scheduling.<p>
+</div>
+
+<div ng-if="!index.loading && !index.hasLeftScheduling">
+
+  <div ng-if="index.contactPermissionTextVisible">
+    <div class="page-icon"><i class="icon icon-addressbook_detailed"></i></div>
+
+    <div class="text-wrapper">
+      <p>Next we will ask for a permission to access your contacts. We need this permission to send scheduling invites to selected participants.</p>
+      <p>Your address book will never be shared with anyone.</p>
+    </div>
+
+    <button ng-click="index.initContactPlugin()">OK</button>
+  </div>
+
+  <div ng-if="!index.contactPermissionTextVisible">
+    <mtn-contact-picker participants="index.participants"
+                        latest-contacts="index.latestContacts"
+                        mtn-on-add-participant="index.onAddParticipant(participant, type)"
+                        mtn-on-remove-participant="index.onRemoveParticipant(participant)"
+                        mtn-error-model="index.error">
+    </mtn-contact-picker>
+  </div>
+</div>
+
+</page-wrapper>

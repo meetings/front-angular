@@ -1,0 +1,99 @@
+@-webkit-keyframes rotate {
+  0%   { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+@-moz-keyframes rotate {
+  0%   { -moz-transform: rotate(0deg); }
+  100% { -moz-transform: rotate(360deg); }
+}
+@-o-keyframes rotate {
+  0%   { -o-transform: rotate(0deg); }
+  100% { -o-transform: rotate(360deg); }
+}
+@keyframes rotate {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.spinner-overlay {
+  width:100%;
+  height:100%;
+  left: 0;
+  top: 0;
+  background: rgba(0,0,0,0);
+
+  @include vendor-prefix-opacity(1);
+  z-index: $spinner-overlay-zindex;
+  position: absolute;
+}
+
+.spinner-background {
+  width:80px;
+  height:80px;
+  border-radius:100%;
+  left:50%;
+  top:50%;
+  margin-left:-40px;
+  margin-top:-40px;
+  background:rgba(180,180,180,1);
+
+  @include vendor-prefix-opacity(0);
+  z-index: $spinner-background-zindex;
+  position: absolute;
+  @include vendor-prefix(transition-delay, 1s);
+  @include vendor-prefix(transition-duration, 0.5s);
+  @include vendor-prefix(transition-property, opacity);
+
+  &.visible {
+    @include vendor-prefix-opacity(1);
+  }
+}
+.spinner {
+  width: rem-calc(36px);
+  height: rem-calc(36px);
+  background: transparent url("../images/spinner.svg") 50% 50% no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: $spinner-zindex;
+  top: 16px;
+  top: calc(50% - #{rem-calc(18px)});
+  left: 16px;
+  left: calc(50% - #{rem-calc(18px)});
+
+  @include vendor-prefix(animation-name, rotate);
+  @include vendor-prefix(animation-duration, 1s);
+  @include vendor-prefix(animation-iteration-count, infinite);
+  @include vendor-prefix(animation-timing-function, linear);
+
+  @include vendor-prefix(transition-delay, 1s);
+  @include vendor-prefix(transition-duration, 0.5s);
+  @include vendor-prefix(transition-property, opacity);
+
+  @include vendor-prefix-opacity(0);
+  &.visible {
+    @include vendor-prefix-opacity(1);
+  }
+}
+
+.spinner-background.no-delay,
+.spinner.no-delay {
+  @include vendor-prefix(transition-delay, 0s);
+  @include vendor-prefix(transition-duration, 0.25s);
+}
+
+.mtnList-toggle .spinner {
+  pointer-events: none;
+  top: 247.5px;
+  top: calc(50% - 7px);
+  left: 263px;
+  left: calc(100% - 57px);
+  height: 16px;
+  width: 16px;
+  -webkit-transition-delay: 0s;
+  @include vendor-prefix(transition-delay, 0s);
+  @include vendor-prefix(transition, 0.25s ease-in-out);
+}
+.mtnList-toggle input.ios7toggle:checked ~ .spinner {
+  left: 283px;
+  left: calc(100% - 37px);
+}

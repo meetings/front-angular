@@ -1,0 +1,374 @@
+input[type="text"],
+input[type="tel"],
+input[type="number"],
+input[type="url"],
+input[type="email"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="time"],
+select,
+textarea {
+  @include border-radius(0);
+  -webkit-appearance: none;
+  font-size: $input--text-size;
+  background: $input-background;
+  color: $input-color;
+  border: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+input[type="datetime-local"],
+input[type="time"] {
+  font-size: $input-datetime--font-size;
+  background: none;
+}
+
+//This handles all placeholder&label required *-symbols
+@mixin input-placeholder-required() {
+  content: "*";
+  color: $float-label-required-mark-color;
+  font-size: 0.7em;
+  vertical-align: super;
+}
+
+.float-label {
+  font-size: $label-font-size;
+  line-height: $label-line-height;
+  color: $float-label-color;
+
+  &.hasFocus{
+    color:$float-label-focused;
+  }
+  &.required:after{
+    @include input-placeholder-required();
+  }
+
+}
+input:focus{
+  outline: 0 none;
+}
+//Hide firefox invalid-field color.
+:-moz-ui-invalid:not(output){
+  box-shadow:none;
+}
+
+// These need to be on separate rows because:
+// Browsers disable whole selector if the do not understand one part of it.
+[required]::-webkit-input-placeholder:after { @include input-placeholder-required(); }
+[required]::-moz-placeholder:after { @include input-placeholder-required(); }
+[required]:-ms-input-placeholder:after { @include input-placeholder-required(); }
+[required]:-moz-placeholder:after { @include input-placeholder-required(); }
+input.required::-webkit-input-placeholder:after { @include input-placeholder-required(); }
+input.required::-moz-placeholder:after { @include input-placeholder-required(); }
+input.required:-ms-input-placeholder:after { @include input-placeholder-required(); }
+input.required:-moz-placeholder:after { @include input-placeholder-required(); }
+
+
+//This fixes the issue where label scrolled offscreen on smaller devices.
+//It applies it to all input-field types (not checkboxes or radios, etc)
+.float-label + input:not([type]),
+.float-label + input[type="text"],
+.float-label + input[type="password"],
+.float-label + input[type="search"],
+.float-label + input[type="email"],
+.float-label + input[type="url"],
+.float-label + input[type="tel"],
+.float-label + input[type="number"],
+.float-label + input[type="range"],
+.float-label + input[type="date"],
+.float-label + input[type="month"],
+.float-label + input[type="week"],
+.float-label + input[type="time"],
+.float-label + input[type="datetime"],
+.float-label + input[type="datetime-local"],
+.float-label + input[type="time"],
+.float-label + input[type="color"],
+.float-label + select,
+.float-label + textarea{
+  border-top:rem-calc(20px) solid transparent;
+  margin-top:rem-calc(-20px);
+}
+
+.float-label + textarea{
+  background: transparent;
+}
+
+.float-label + input{
+  white-space: nowrap;
+  text-overflow:ellipsis;
+}
+
+//Select elements may have a placeholder option
+option[disabled].placeholder{
+  display:none;
+}
+
+select.labelmode{
+  color: $float-label-color;
+}
+
+.mtn-inputgroup{
+  .edit-area + .edit-area{
+    $shadowAttr: 14px -1px 0 0 $profile-edit-hr-color;
+    @include vendor-prefix(box-shadow, $shadowAttr);
+  }
+}
+
+.signingroup{
+  margin-bottom: 20px;
+}
+
+.input-error {
+  color: $input-error
+}
+
+.edit-area {
+  background: $edit-background;
+  min-height: rem-calc(60px);
+}
+.edit-area textarea{
+  margin-bottom:rem-calc(14px);
+}
+
+
+
+.edit-date {
+  border-right: 1px solid $edit-date-border;
+  background: $edit-background;
+}
+
+.date-row {
+  padding-bottom: rem-calc(14px);
+}
+
+.date-start {
+  border-bottom: 1px solid $edit-date-border;
+}
+
+.edit-duration{
+  margin-top:rem-calc(35px);
+  label{
+    display: block;
+  }
+  duration {
+    color: $float-label-color;
+  }
+}
+
+.edit-communication-tool {
+  margin-top: 16px;
+}
+.edit-communication-tool-container {
+  border-bottom: 1px solid $edit-communication-tool-border;
+  border-top: 1px solid $edit-communication-tool-border;
+
+  + .edit-communication-tool-container {
+    border-top: none;
+  }
+
+  .edit-communication-tool-option {
+      text-align: center;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: $edit-communication-tool-bg;
+
+    .icon-medium{
+      line-height: 2em;
+    }
+
+
+    + .edit-communication-tool-option {
+      border-left: 1px solid $edit-communication-tool-border;
+    }
+
+    &.selected-option {
+      background: $edit-communication-tool-selected-bg;
+    }
+  }
+}
+
+.edit-multipart-form{
+  border-top:1px solid $multipart-form-border-color;
+}
+
+input.ios7toggle {
+  max-height: 0;
+  max-width: 0;
+  @include vendor-prefix-opacity(0);
+  position: absolute;
+}
+input.ios7toggle + label {
+  display: block;
+  position: relative;
+  box-shadow: inset 0 0 0px 1px #d5d5d5;
+  text-indent: -5000px;
+  height: 30px;
+  width: 50px;
+  border-radius: 15px;
+  float:right;
+  margin-top:8px;
+  margin-right:14px;
+}
+
+input.ios7toggle + label:before {
+  content: "";
+  position: absolute;
+  display: block;
+  height: 30px;
+  width: 30px;
+  top: 0;
+  left: 0;
+  border-radius: 15px;
+  background: rgba($ios7toggleEnabled,0);
+
+  @include vendor-prefix(transition, .25s ease-in-out)
+}
+
+input.ios7toggle + label:after {
+  content: "";
+  position: absolute;
+  display: block;
+  height: 30px;
+  width: 30px;
+  top: 0;
+  left: 0px;
+  border-radius: 15px;
+  background: white;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.2), 0 2px 4px rgba(0,0,0,.2);
+  @include vendor-prefix(transition, .25s ease-in-out)
+}
+input.ios7toggle:checked + label:before {
+  width: 50px;
+  background: rgba($ios7toggleEnabled,1);
+}
+
+input.ios7toggle:checked + label:after {
+  left: 20px;
+  $box-shadow: inset 0 0 0 1px rgba($ios7toggleEnabled,1), 0 2px 4px rgba(0,0,0,.2);
+  @include vendor-prefix(box-shadow, $box-shadow);
+}
+
+
+.radio-area-header{
+  margin:0 14px;
+}
+
+.radio-list{
+  list-style: none;
+  margin:0;
+  padding:0;
+  //padding-left:rem-calc(8px + 72px);
+  padding-left:(14px + 20px + 8px);
+  background:$radio-list-bg;
+  li{
+    min-height: rem-calc(44px);
+    padding-top: rem-calc(8px);
+    padding-right: rem-calc(14px);
+    .radio-list-label{
+      line-height:rem-calc(44 - (2 * 8px));
+    }
+  }
+  li + li{
+    border-top:1px solid $radio-list-border;
+  }
+}
+
+// .icon-check_thin { &:before{ content: "\e650"; } }
+input.ios7check,
+input.ios7radio {
+  @include vendor-prefix-opacity(0);
+  position: absolute;
+  pointer-events:none;
+  & + label{
+    border:1px solid $ios7radio-bg;
+    display: block;
+    height: rem-calc(22px);
+    width: rem-calc(22px);
+    border-radius:(100%);
+    & + label{
+      display:block;
+    }
+  }
+  &:checked + label{
+    background: $ios7radio-bg;
+    &:before{
+      @extend .icon;
+      @extend .icon-check_thin:before;
+      text-align: center;
+      width: rem-calc(20px);
+      height: rem-calc(20px);
+      line-height: rem-calc(20px);
+      font-size: rem-calc(12px);
+      display: block;
+      color:$ios7radio-icon;
+    }
+  }
+}
+
+.radio-list input.ios7radio + label{
+  margin-left:rem-calc(14px - (14px + 20px + 8px));
+  margin-top: rem-calc(2px);
+  position: absolute;
+}
+
+.contact-avatar {
+  $participant-size:32px;
+  @include avatar(32);
+  @include border-radius(100%);
+  margin-right: rem-calc(8px);
+  margin-top: rem-calc(2px);
+  .avatar-img{
+    vertical-align: initial;
+  }
+}
+.contact{
+  .participant-org-separator{
+    visibility: hidden;
+    display: none;
+  }
+  .participant-name,
+  .participant-org{
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    display:block;
+    overflow:hidden;
+    margin-top:0;
+  }
+}
+
+@media all and (min-width: 700px){
+  .radio-list{
+    li{
+      min-height: rem-calc(44px);
+      padding-top: rem-calc(4px);
+    }
+  }
+  .contact{
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    .participant-org-separator{
+      visibility: visible;
+      display: inline;
+    }
+    .participant-name,
+    .participant-org{
+      display: inline;
+      overflow:auto;
+      white-space:auto;
+      line-height: rem-calc(40px);
+    }
+  }
+}
+
+.edit-date-container{
+  border-top: 1px solid $date-container-border;
+  border-bottom: 1px solid $date-container-border;
+  background:$date-duration-bg;
+}
+.date-duration{
+  min-height:109px;
+  background:$date-duration-bg;
+}

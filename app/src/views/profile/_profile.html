@@ -1,0 +1,145 @@
+<page-wrapper ng-model="edit">
+
+<form name="edit.profile">
+
+  <div class="profile-basic-info"
+       ng-cloak>
+
+    <picture class="avatar participant-avatar"
+             ng-click="edit.addPhoto()">
+
+
+      <span class="avatar-initials">
+        <span ng-hide="edit.profileImageUrl || edit.uploadProgress"
+              ng-bind="edit.user.initials"></span>
+      </span>
+
+      <img ng-src="{{ edit.profileImageUrl }}"
+           ng-hide="!edit.profileImageUrl || edit.uploadProgress">
+
+      <div ng-show="edit.uploadProgress">
+        <mtn-upload-progress class="meetingProgress"
+                             max="edit.uploadProgress.total"
+                             value="edit.uploadProgress.loaded">
+        </mtn-upload-progress>
+      </div>
+
+    </picture>
+
+    <div class="profile-edit">
+      <div class="edit-area">
+
+        <mtn-float-label for="first_name">
+        </mtn-float-label>
+        <input type="text"
+               ng-model="edit.user.first_name"
+               id="first_name"
+               placeholder="First name"
+               mtn-blur-on-event="blurInput"
+               autocapitalize="words">
+      </div>
+
+      <div class="edit-area">
+
+        <mtn-float-label for="last_name">
+        </mtn-float-label>
+        <input type="text"
+               ng-model="edit.user.last_name"
+               id="last_name"
+               placeholder="Last name"
+               mtn-blur-on-event="blurInput"
+               autocapitalize="words">
+      </div>
+    </div>
+  </div>
+
+  <div class="profile-edit">
+
+    <div class="edit-area">
+      <mtn-float-label for="organization_title">
+      </mtn-float-label>
+      <input type="text"
+             ng-model="edit.user.organization_title"
+             id="organization_title"
+             placeholder="Title"
+             mtn-blur-on-event="blurInput"
+             autocapitalize="words">
+    </div>
+
+    <div class="edit-area">
+      <mtn-float-label for="organization">
+      </mtn-float-label>
+      <input type="text"
+             ng-model="edit.user.organization"
+             id="organization"
+             placeholder="Organization"
+             mtn-blur-on-event="blurInput"
+             autocapitalize="words">
+    </div>
+
+  </div>
+  <div class="profile-edit">
+
+    <div class="edit-area">
+      <mtn-float-label for="phone">
+      </mtn-float-label>
+      <input type="tel"
+             ng-model="edit.user.phone"
+             id="phone"
+             placeholder="Phone"
+             mtn-blur-on-event="blurInput">
+   </div>
+
+    <div class="edit-area">
+      <mtn-float-label for="skype">
+      </mtn-float-label>
+      <input type="text"
+             ng-model="edit.user.skype"
+             id="skype"
+             placeholder="Skype"
+             mtn-blur-on-event="blurInput"
+             autocapitalize="none">
+   </div>
+
+    <div class="edit-area">
+      <mtn-float-label ng-class="{ 'input-error': !edit.profile.linkedin.$valid }"
+                       for="linkedin">
+      </mtn-float-label>
+      <input type="url"
+             name="linkedin"
+             ng-model="edit.user.linkedin"
+             id="linkedin"
+             placeholder="LinkedIn profile"
+             mtn-blur-on-event="blurInput"
+             autocapitalize="none">
+    </div>
+
+  </div>
+
+  <div class="profile-currentuser copyable">
+    Logged in as: {{ edit.user.email }}
+  </div>
+
+  <button ng-click="edit.removePhoto()"
+          ng-disabled="edit.loading"
+          ng-if="edit.isDevelopmentMode">
+    Remove photo
+  </button>
+
+<div ng-if="edit.deviceUtils.platform() != 'ios'">
+  <button class="dual"
+          ng-click="edit.update()"
+          ng-disabled="edit.loading">
+    Save
+  </button>
+
+  <button ng-click="edit.cancelEdit()"
+          ng-disabled="edit.loading"
+          class="dual secondary">
+    Cancel
+  </button>
+</div>
+
+</form>
+
+</page-wrapper>

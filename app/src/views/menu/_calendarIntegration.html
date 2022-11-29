@@ -1,0 +1,100 @@
+<page-wrapper ng-model="index" class="page-background-white">
+
+<div class="text-wrapper" ng-if="index.deviceUtils.platform() != 'web'">
+
+  <div class="page-icon"><i class="icon icon-calendar"></i></div>
+
+  <p>Manage and connect the calendars on your devices. Connected calendars are used to determine your availability in scheduling.</p>
+
+  <p>Your calendar details are never shared with anyone.</p>
+
+  <p class="last-sync"
+     ng-if="!index.connectCalendarButtonVisible">Last sync: {{ index.lastSyncOnCurrentDevice }}</p>
+</div>
+
+<div ng-hide="index.loading">
+
+  <div ng-if="index.deviceUtils.platform() == 'web'">
+
+    <div class="page-icon"><i class="icon icon-calendar"></i></div>
+
+  <mtn-application-promo>
+
+    <div class="show-on-ios show-on-android text-wrapper">
+    <p>
+      Connect your calendar to get relevant suggestions based on your own availability.
+    </p>
+     <p>
+      Download the <strong>free application</strong> now to get the most out of SwipeToMeet.
+     </p>
+     <ul>
+       <li>Schedule your own events</li>
+       <li>Connect your calendar</li>
+       <li>Modify your notification settings</li>
+     </ul>
+    </div>
+
+    <div class="show-on show-on-unknown text-wrapper">
+      <h2>Sorry</h2>
+      <p>
+        Unfortunately SwipeToMeet application is only available for iOS and Android devices at the moment.
+      </p>
+    </div>
+
+  </mtn-application-promo>
+
+  </div>
+
+  <!-- Hide current device buttons in SPA -->
+  <div ng-if="index.deviceUtils.platform() != 'web'">
+
+    <button ng-click="index.connectDeviceCalendar()"
+            ng-hide="!index.connectCalendarButtonVisible"
+            ng-disabled="index.btnWorking">
+      Connect this device
+      <span class="spinner"
+            ng-if="index.btnWorking == 'connect'"></span>
+    </button>
+
+    <button ng-click="index.syncCalendars('syncnow')"
+            ng-show="!index.connectCalendarButtonVisible"
+            ng-disabled="index.btnWorking">
+      Sync now
+      <span class="spinner"
+            ng-if="index.btnWorking == 'syncnow'"></span>
+    </button>
+
+    <button class="secondary"
+            ng-click="index.confirmCalendarDisconnect(index.currentDeviceContainerName, index.currentDeviceContainerId, true)"
+            ng-show="!index.connectCalendarButtonVisible"
+            ng-disabled="index.btnWorking">
+      Disconnect this device
+      <span class="spinner"
+            ng-if="index.btnWorking == index.currentDeviceContainerName"></span>
+    </button>
+
+    <div class="text-wrapper"
+         ng-show="index.sources">
+      <p class="other-devices">Your other devices</p>
+    </div>
+
+  </div>
+
+  <div ng-repeat="sources in index.sources" class="source-wrapper">
+
+    <div class="text-wrapper">
+      <p>{{ sources[0].provider }}</p>
+      <p class="last-sync">Last sync: {{ index.getLastSync(sources[0].container_id) }}</p>
+    </div>
+
+    <button class="secondary"
+            ng-click="index.removeSync(sources)"
+            ng-disabled="index.btnWorking">
+      Disconnect {{ sources[0].provider }} <span ng-show="sources[0].container_id == index.deviceId">(This device)</span>
+      <span class="spinner"
+            ng-if="index.btnWorking == sources[0].container_name"></span>
+    </button>
+  </div>
+</div>
+
+</page-wrapper>

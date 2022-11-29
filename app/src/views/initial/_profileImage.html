@@ -1,0 +1,60 @@
+<page-wrapper ng-model="profile" class="page-background-white">
+
+<div class="signin-wrapper">
+  <h1>Hello {{ profile.user.first_name }}!</h1>
+
+  <div class="text-wrapper">
+    <p>
+      This is what your profile looks like.
+    </p>
+  </div>
+
+  <div class="signin-avatar-wrapper">
+    <picture class="avatar participant-avatar"
+             ng-click="profile.addPhoto()">
+
+      <span class="avatar-initials">
+        <span ng-hide="profile.profileImageUrl || profile.uploadProgress"
+              ng-bind="profile.user.initials"></span>
+      </span>
+
+      <img ng-src="{{ profile.profileImageUrl }}"
+           ng-hide="!profile.profileImageUrl || profile.uploadProgress">
+
+      <div ng-show="profile.uploadProgress">
+        <mtn-upload-progress class="meetingProgress"
+                             max="profile.uploadProgress.total"
+                             value="profile.uploadProgress.loaded">
+        </mtn-upload-progress>
+      </div>
+
+    </picture>
+<!-- TODO: Figure out a way to replace above with code below
+    <mtn-avatar class="participant-avatar"
+                user="profile.user"
+                ng-click="profile.addPhoto()"
+                uploadProgress="profile.uploadProgress"
+                profile-image-url="profile.profileImageUrl">
+    </mtn-avatar>
+ -->
+  </div>
+
+  <div class="text-wrapper">
+    <p>
+      That's a bit boring, eh?
+    </p>
+  </div>
+
+  <button ng-click="profile.addPhoto()"
+          ng-disabled="profile.btnWorking">
+    Add your photo
+    <span class="spinner"
+          ng-if="profile.btnWorking == 'uploading'"></span>
+  </button>
+
+  <button class="link"
+          ng-click="profile.skip()">Skip</button>
+
+</div>
+
+</page-wrapper>

@@ -1,0 +1,19 @@
+<page-wrapper ng-model="index" class="page-background-white">
+
+<div>
+  <div class="wizard-option">
+    <div class="wizard-option-img wizard-option-img-where"></div>
+    <h1><strong>Where</strong> are you meeting?</h1>
+  </div>
+
+  <button ng-click="index.selectLocation(1)">At my office</button>
+
+  <button ng-click="index.selectLocation(2)">Online or on the phone</button>
+
+  <button ng-click="index.selectLocation()">Undecided</button>
+
+  <button class="link"
+          ng-click="index.openLocationEdit()">Other</button>
+</div>
+
+</page-wrapper>

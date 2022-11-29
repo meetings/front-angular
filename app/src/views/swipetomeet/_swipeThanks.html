@@ -1,0 +1,151 @@
+<page-wrapper ng-model="show"
+              ng-class="{'page-background-white':!(show.deviceUtils.platform() == 'web' && show.emailParticipant)}"
+              mtn-show-notification="show.showNotification">
+
+<div ng-hide="show.loading">
+  <div ng-if="show.thanksMsg == 1">
+
+    <div class="thanks-1">
+      <img ng-src="images/swipe-avatar-happy.png" alt="Happy" width="65" height="65">
+      <h2>Awesome!</h2>
+
+      <p>
+        We'll notify you when the time is found <br>
+        or if we need more input from you.
+      </p>
+
+    </div>
+  </div>
+
+  <div ng-if="show.thanksMsg == 2">
+
+    <div class="timefound thanks-2">
+      <h1>Awesome!</h1>
+
+      <p class="tight">Time found for
+        <span class="meetingtitle"
+              ng-bind="show.meeting.title"></span>
+      </p>
+
+      <div class="timefound-bg"
+         mtn-animation-reset
+         background-image="images/fireworks.gif"
+         background-size="211px 211px">
+        <div class="timefound-wrapper">
+          <div ng-model="show.meeting.begin_epoch"
+                epoch-model
+                epoch-format="{{ show.dateHelper.formatDayDate }}"
+                class="timefound-date"></div>
+
+          <div class="timefound-time">
+            <span ng-model="show.meeting.begin_epoch"
+                  epoch-model
+                  epoch-format="{{ show.dateHelper.formatTime }}"></span>
+            -
+            <span ng-model="show.meeting.end_epoch"
+                  epoch-model
+                  epoch-format="{{ show.dateHelper.formatTime }}"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div ng-if="show.thanksMsg == 3 && !show.isManager">
+    <div class="apocalypse thanks-3">
+      <img ng-src="images/swipe-avatar-surprised.png" alt="Surprised" width="65" height="65">
+      <h2>We've reached a dead end</h2>
+
+      <p>You have answered all the suggestions. No suitable time could be found. We will let the organizer know.</p>
+
+    </div>
+  </div>
+
+  <div ng-if="show.thanksMsg == 3 && show.isManager">
+    <div class="apocalypse thanks-3">
+      <img ng-src="images/swipe-avatar-surprised.png" alt="Surprised" width="65" height="65">
+      <h2>We've reached a dead end</h2>
+
+      <p ng-if="!show.isManager">You have answered all the suggestions. No suitable time could be found. We will let the organizer know.</p>
+
+      <p>You have answered all the suggestions. No suitable time could be found. Please see scheduling progress for solutions.</p>
+
+    </div>
+
+    <button ng-click="show.openSchedulingLog()">Scheduling progress</button>
+  </div>
+
+  <div ng-if="show.thanksMsg == 4">
+    <div class="swipeNotActive thanks-4">
+      <img ng-src="images/swipe-avatar-surprised.png" alt="Surprised" width="65" height="65">
+      <h2>Scheduling cancelled</h2>
+
+      <p>This meeting request was withdrawn and it may have a new scheduling active.</p>
+    </div>
+  </div>
+
+  <div ng-if="show.thanksMsg == 5">
+    <div class="swipeNotActive thanks-5">
+      <img ng-src="images/swipe-avatar-happy.png" alt="Happy" width="65" height="65">
+      <h2>Scheduling cancelled</h2>
+
+      <p>Time was manually selected by organiser for {{ show.meeting.title }}.</p>
+    </div>
+  </div>
+
+  <div ng-if="!show.newUser && !(show.thanksMsg == 3 && show.isManager)">
+    <button ng-click="show.openMeeting()">See meeting details</button>
+  </div>
+
+  <div ng-if="show.deviceUtils.platform() == 'web'">
+    <mtn-application-promo class="thanks-promo"
+                           phoneform="{{show.deviceUtils.platform() == 'web' && show.emailParticipant}}">
+
+      <div class="show-on-ios show-on-android text-wrapper">
+        <p>
+          Download the <strong>free application</strong> now to get the most out of SwipeToMeet.
+        </p>
+      </div>
+      <div class="show-on-unknown text-wrapper">
+        <p>
+          With the <strong>free application</strong> you can get the most out of SwipeToMeet.
+        </p>
+      </div>
+      <div class="text-wrapper">
+        <ul>
+           <li>Schedule your own events</li>
+           <li>Connect your calendar</li>
+           <li>Modify your notification settings</li>
+        </ul>
+      </div>
+
+      <form name="show.phoneForm" ng-if="show.deviceUtils.platform() == 'web' && show.emailParticipant">
+        <p class="text-wrapper">
+          Keep things simple and have us send you the download link via SMS.
+        </p>
+        <div class="mtnList row">
+          <div class="columns small-12 edit-area">
+
+            <mtn-float-label for="phone">
+            </mtn-float-label>
+            <input type="tel"
+                   id="phone"
+                   name="phone"
+                   placeholder="Phone number"
+                   ng-model="show.user.primary_phone"
+                   mtn-blur-on-event="blurInput">
+          </div>
+        </div>
+
+        <button ng-click="show.checkPhone()"
+                ng-disabled="!show.phoneForm.$valid || show.btnWorking">
+          Send download link
+          <span ng-class="{ 'spinner' : show.btnWorking == 'sending'}"></span>
+        </button>
+      </form>
+
+    </mtn-application-promo>
+  </div>
+</div>
+
+</page-wrapper>

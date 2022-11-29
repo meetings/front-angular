@@ -1,0 +1,450 @@
+// Typography
+$em-base: 16px;
+$label-font-size: 14px;
+$label-line-height: 1.5em;
+$body-font-family: "Museo Sans", Helvetica, Arial, sans-serif;
+
+// Images
+$arrow-up: "../images/arrow_up_13x13.svg";
+$arrow-right: "../images/arrow_right_13x13.svg";
+$arrow-down: "../images/arrow_down_13x13.svg";
+$arrow-left: "../images/arrow_left_13x13.svg";
+
+//Gutter
+$mtn-gutter: 14px;
+
+//--------------------------------------------------------------------------------------------------
+// z-index
+
+$timeline-tab-sticky-zindex:               10000; // pages/_meeting.scss
+$offcanvas-overlap-left-off-canvas-menu:   6001;  // spa/_global_scrolling.scss
+$offcanvas-overlap-exit-off-canvas-zindex: 6000;  // spa/_global_scrolling.scss
+$swipe-card-static-leave-zindex:           5000;  // components/_animations.scss
+$filter-zindex:                            5000;  // pages/_meeting.scss
+$dialog-and-error-container-zindex:        3000;  // components/_dialogs.scss
+$popup-overlay-zindex:                     2000;  // components/_dialogs.scss
+$swipe-card-container-zindex:              1500;  // components/_swipecard.scss
+$spinner-zindex:                           1001;  // components/_spinner.scss
+$tab-bar-zindex:                           1001;  // spa/_tabbar.scss
+$spinner-background-zindex:                1000;  // components/_spinner.scss
+$overlay-obtrusive-zindex:                 1000;  // global/_global.scss
+$timeline-list-date-zindex:                1000;  // pages/_meeting.scss
+$participants-header-zindex:               1000;  // pages/_participants.scss
+$htmlnav-zindex:                           1000;  // pages/_signin.scss
+$spinner-overlay-zindex:                   999;   // components/_spinner.scss
+//NOTICE: tags-input .autocomplete{z-index:999}   // /vendor/ng-tags-input/_ng-tags-input.scss
+$timeline-zindex:                          10;    // pages/_meeting.scss
+$meeting-container-zindex:                 10;    // pages/_meetingshow.scss
+$schedulers-after-zindex:                  1;     // pages/_meetme.scss
+$notification-badge-off-canvas-list:       1;     // spa/_menu.scss
+$pull-to-refresh-zindex:                   0;    // spa/_global_scrolling.scss
+
+//--------------------------------------------------------------------------------------------------
+
+// Colors
+$white:         #ffffff;
+$light-grey1:   #f2f2f2;//bg
+$light-grey2:   #e7e7e7;//bg
+$medium-grey1:  #c3c3c3;//lines
+$medium-grey2:  #959595;//light text
+$dark-grey1:    #585858;//Basic text
+$meetings-blue: #67cfe9;
+$meetings-logo-blue: #00a0cd; //Used for text links, etc
+
+$appVersionColor: $medium-grey1;
+
+$light-blue1:    #f0fafd; //Notification bg, selected communication tool
+
+$accent-green:   #88ce45;
+$accent-yellow:  #f1d23c;
+$accent-orange1: #f3b84d;//Timeline next week
+$accent-orange2: #f69d5e;
+$accent-red:     #ea6562;
+$accent-pink:    #e370a9;
+
+$google-blue:    #5f80e0;
+$facebook-blue:  #4067a2;
+$twitter-blue:   #3ca5dc;
+$linkedin-blue:  #3485b9;
+$yammer-blue:    #3896bf;
+$email-shade:    #53bbd6;
+
+// Global colors
+$body-background: $light-grey1;
+$body-font-color: $dark-grey1;
+$input-background: $white;
+$input-color: $dark-grey1;
+$text-link: $meetings-logo-blue;
+
+$informativeColor: $medium-grey2;
+$disabled-text: $medium-grey1;
+
+$banner-border-color: $medium-grey1;
+
+$hr-color: $medium-grey1;
+
+// Foundation uses these as default colors throughout
+$primary-color: $meetings-blue;
+$secondary-color: $white;
+$video-color: rgba(255,255,255,0.3);
+$alert-color: $accent-red;
+$success-color: $accent-green;
+$warning-color: $accent-orange1;
+$info-color: $accent-orange2;
+
+// Navigation
+$navi-active-background: $meetings-blue;
+
+// Buttons
+$mtn-button-spacing: $mtn-gutter;
+$button-font-color: $white;
+$button-font-color-alt: $dark-grey1;
+$button-secondary-border: $medium-grey1;
+$button-video-border: transparent;
+$button-rsvp-yes: $accent-green;
+$button-rsvp-no: $accent-red;
+
+$disabled-primary-color: $light-grey2;
+$disabled-secondary-color: $light-grey2;
+$disabled-success-color: $light-grey2;
+$disabled-alert-color: $light-grey2;
+$disabled-button-rsvp-yes: $light-grey2;
+$disabled-button-rsvp-no: $light-grey2;
+$disabled-google-blue: $light-grey2;
+$disabled-comment-button-bg-disabled: $light-grey2;
+
+// Forms
+$input-error: $accent-red;
+$float-label-color: $medium-grey2;
+$float-label-focused: $meetings-blue;
+$float-label-required-mark-color: $accent-red;
+
+// Component
+$component-view-title-background: $light-grey1;
+$component-view-title-text-primary: $medium-grey2;
+$component-list-title-background: $light-grey2;
+$component-list-title-text-primary: $medium-grey2;
+$component-list-item-background: $white;
+$component-list-item-text-primary: $dark-grey1;
+
+// Icons
+$icon-color: $light-grey1;
+$icon-today: $accent-green;
+$icon-schedule: $meetings-blue;
+$icon-this-week: $accent-yellow;
+$icon-next-week: $accent-orange1;
+$icon-future: $accent-orange2;
+$icon-past: $dark-grey1;
+
+$avatar-border-color: $light-grey1;
+$avatar-bg-color: $white;
+
+// Rsvp
+$rsvp-yes: $accent-green;
+$rsvp-maybe: $accent-yellow;
+$rsvp-no: $accent-red;
+
+// Timeline
+$filter-background: $meetings-blue;
+$timeline-background: $light-grey1;
+$timeline-date-background: $light-grey2;
+$timeline-item-background: $white;
+$timeline-item-primary: $dark-grey1;
+$timeline-item-secondary: $dark-grey1;
+$timeline-item-border: $medium-grey1;
+$timeline-tab-border: $medium-grey1;
+$timeline-tab: $light-grey1;
+$timeline-tab-bottom-border: $medium-grey1;
+$timeline-tab-selected: $white;
+$timeline-meeting-draft: $accent-red;
+$timeline-meeting-suggested: $meetings-blue;
+$timeline-meeting-matchmaking: $meetings-blue;
+$timeline-bubble-background: $white;
+$timeline-bubble-border: $medium-grey1;
+$task: #eeee00;
+
+// meeting
+$meeting-container-background: $light-grey1;
+$meeting-title-background: $white;
+$meeting-text-primary: $dark-grey1;
+$camera-button-bg: $meetings-blue;
+$camera-button-text: $white;
+
+$edit-background: $white;
+$edit-border: $medium-grey1;
+$edit-date-border: $medium-grey1;
+$edit-communication-tool-border: $medium-grey1;
+
+//Trial
+$not-pro-bg:$light-grey1;
+$not-pro-text:$medium-grey1;
+$pro-corner-badge-bg: $accent-orange2;
+$pro-corner-badge-text: $white;
+
+$edit-communication-tool-text: $dark-grey1;
+$edit-communication-tool-bg: $white;
+$edit-communication-tool-selected-bg: $light-blue1;
+$multipart-form-border-color: $light-grey2;
+
+//Meetin.gs list components
+$page-container-background: $light-grey1;
+$mtnList-item-background: $meeting-title-background;
+$mtnList-item-wrapper-background: $light-grey2;
+$mtnList-title-text: $dark-grey1;
+$mtnList-text: $dark-grey1;
+$mtnList-icon: $medium-grey2;
+$mtnList-comment-text:$white;
+$mtnList-comment-icon:$mtnList-icon;
+
+
+$breadcrumb-color: $medium-grey2;
+$breadcrumb-bg-color: $light-grey2;
+
+//Meeting progressbar
+$meeting-progress-bg: $medium-grey2;
+$meeting-progress-bar: $meetings-blue;
+
+//Signin/up process
+$signin-base-text-color: $dark-grey1;
+$htmlnav-bg-color: rgba($meetings-blue,0.95);
+$signup-text-link: $text-link;
+
+//Notifications
+$notification-bg: $meeting-title-background;
+$notification-new-bg: $light-blue1;
+$notification-icon: $meetings-blue;
+$notification-icon-color-success: $accent-green;
+$notification-icon-color-warning: $accent-yellow;
+$notification-icon-color-error: $accent-red;
+$notification-icon-color-normal: $meetings-blue;
+$notification-time: $medium-grey2;
+$participants-text-color:$dark-grey1;
+//Notification popups
+$notification-popup-text-color:$white;
+$notification-popup-bg:rgba(0,0,0,0.75);
+
+//Participants
+$participants-header-bg: $light-grey2;
+$participants-text-color:$dark-grey1;
+$participant-header: $dark-grey1;
+$participants-bg: $white;
+$participant-contact-border: $light-grey2;
+$participant-contact-button-color: $meetings-blue;
+$participant-contact-label-color: $float-label-color;
+
+//Profile edit
+$profile-edit-bg: $white;
+$profile-edit-hr-color: $light-grey2;
+$profile-edit-avatar-border: $white;
+$profile-currentuser-color: $medium-grey2;
+
+//Meeting material and comments
+$material-bg: $white;
+$material-comment-bg: $white;
+$material-comment-color: $dark-grey1;
+$material-help-color: $medium-grey2;
+$comment-wrapper-bg: $light-grey2;
+$comment-button-color: $white;
+$comment-button-color-disabled: $material-help-color;
+$comment-button-bg: $meetings-blue;
+$comment-button-bg-disabled: $light-grey2;
+
+//Intro wrapper
+$intro-wrapper-color: $white;
+
+//Font sizes:
+//----------------------------------------------------------------------------------------------------------------------
+@function mtn-rem($size) {
+  @return $size;
+  // @return rem-calc($size);
+}
+
+//Generic
+$h2--font-size: mtn-rem(18px);
+$input--text-size: mtn-rem(20px);
+$input-datetime--font-size: mtn-rem(16px);
+
+//Global
+$breadcrumb--font-size: mtn-rem(12px);
+$profile-currentuser--font-size: mtn-rem(12px);
+
+$error-container-title--font-size: mtn-rem(24px);
+
+$mtnList-item--font-size: mtn-rem(16px);
+$mtnList-title--font-size: mtn-rem(24px);
+
+//iOS style checkbox toggle
+$ios7toggleEnabled: $accent-green; // #13bf11 is the native shade
+
+//Timeline
+//Today/Tomorrow, etc..
+$timeline-list-header--font-size:mtn-rem(16px);
+//Monday, etc..
+$timeline-list-date--font-size:mtn-rem(13px);
+//Draft meeting, invitation, etc..
+$timeline--status-subtitle--font-size:mtn-rem(12px);
+//Meeting title
+$timeline-list-title--font-size:mtn-rem(18px);
+$timeline-list-duration--font-size:mtn-rem(13px);
+$timeline-participant-summary--font-size: mtn-rem(13px);
+
+
+//Material page
+$material-comments--comment-author--font-size:mtn-rem(11px);
+$material-comments--comment-timestamp--font-size:mtn-rem(12px);
+$material-new-comment--button--font-size: mtn-rem(16px);
+$material-new-comment--input--font-size:mtn-rem(16px);
+$material-title--font-size:mtn-rem(16px);
+
+//Meeting
+$meeting-progress--font-size: mtn-rem(11px);
+$upload-progress--font-size: mtn-rem(11px);
+$comment-count--font-size: mtn-rem(11px);
+$comment-count--icon--font-size: mtn-rem(20px);
+
+//Notifications
+$notificatio--icon--font-size: mtn-rem(20px);
+$notification--font-size: mtn-rem(14px);
+$notification-popup--font-size: mtn-rem(14px);
+$notification-time--font-size: mtn-rem(11px);
+
+//Participants/Participant
+$participants-header--font-size:mtn-rem(13px);
+$participant-contact-label--font-size:mtn-rem(12px);
+$participant-meeting--participant-summary--font-size: mtn-rem(16px);
+$participant-status--font-size: mtn-rem(12px);
+$participant-mode--font-size: mtn-rem(12px);
+
+$participants-org--font-size: mtn-rem(14px);
+$participants--participant-org--font-size: mtn-rem(14px);
+
+$tip-color:$medium-grey2;
+
+//Participant invitation form
+$invitation-font-size: 16px;
+
+$intro-slide-header--font-size: 18px;
+$intro-slide-body--font-size: 18px;
+
+//Swipe buttons:
+$swipe-remove-btn-color:$white;
+$swipe-remove-btn-bg:$accent-red;
+
+$date-container-border: $medium-grey1;
+$date-duration-bg: $light-grey1;
+
+
+//--------------------------------------------------------------------------------------------------
+$spa-tabbar-bg: $meetings-blue;
+$spa-tabbar-color: $white;
+$spa-off-canvas-bg: $light-grey1;
+$spa-off-canvas-label-color: #999999;
+$spa-off-canvas-label-text-transform: uppercase;
+$spa-off-canvas-label-font-weight: normal;
+$spa-off-canvas-label-bg: $white;
+$spa-off-canvas-label-border-top: 1px solid $medium-grey1;
+$spa-off-canvas-label-border-bottom: none;
+$spa-off-canvas-label-margin:0;
+
+$spa-off-canvas-link-color: $dark-grey1;
+$spa-off-canvas-link-border-bottom: 1px solid $medium-grey1;
+
+$spa-menu-slide: "transform 300ms ease";
+
+$spa-menu-item-bg: $white;
+$spa-menu-item-active-color:$meetings-blue;
+
+$spa-pull-to-refresh-color:$medium-grey2;
+
+$scroll-area-bg: $light-grey1;
+$scroll-area-bg-outer: $light-grey2;
+
+
+$notification-badge-bg: $accent-red;
+$notification-badge-color: $white;
+
+$tab-bar-add-color: $white;
+
+$spa-tapbar-height: 43px;
+
+//--------------------------------------------------------------------------------------------------
+$login-bg-color: $meetings-blue;
+//--------------------------------------------------------------------------------------------------
+$ringButtonEffectColor:$meetings-blue;
+$ringButtonIconColor:$meetings-blue;
+$ringButtonAreaBg:$white;
+$ringAreaRing1Bg: #ececec;
+$ringAreaRing2Color: #4a4a4a;
+$ringAreaRing2bg:$ringButtonAreaBg;
+//--------------------------------------------------------------------------------------------------
+$swipe-card-border-color: $medium-grey1;
+$swipe-card-background:$white;
+$swipe-card-stamp-background: $white;
+$swipe-suggestion-calendar-suggestion-color: $meetings-logo-blue;
+$swipe-button-border-color: #d8d8d8;
+$swipe-button-border-bg:$white;
+$swipe-no-color: $accent-red;
+$swipe-yes-color: $accent-green;
+$swipe-info-color: #57dbf0;
+$swipe-suggestion-calendar-container-bg: $light-grey1;
+
+$swipe-yes-stamp: $accent-green;
+$swipe-no-stamp: $accent-red;
+
+
+$schedule-btn-round--text-color: $dark-grey1;
+$schedule-btn-round--bg-color: #ececec;
+$schedule-btn-round--active-bg: $meetings-blue;
+$schedule-btn-round--icon: $meetings-blue;
+
+// Meetin.gs app does not have normal Schedule-tab:
+$meetings-scheduling-bg: $light-grey1;
+$meetings-scheduling: $white;
+
+
+// Swipe info page colors
+//--------------------------------------------------------------------------------------------------
+$swipeInfoBlock-header-bg: $medium-grey1;
+$swipeInfoBlock-header-color: $white;
+$swipeInfoBlock-tz-bg: $white;
+$swipeInfoBlock-tz-time-color: $dark-grey1;
+$swipeInfoBlock-tz-label-color: $medium-grey2;
+$swipeInfoBlock-day-borders: $light-grey2;
+$swipeInfoBlock-day-suggested-bg: lighten($meetings-blue,25%);
+$swipeInfoBlock-day-duration: $medium-grey2;
+$swipeInfoBlock-day-endTitle: $accent-red;
+$swipeInfoBlock-day-location: $medium-grey2;
+
+
+// iOS styled radio buttons
+//--------------------------------------------------------------------------------------------------
+$radio-list-bg: $white;
+$radio-list-border: $light-grey2;
+$ios7radio-bg:$meetings-blue;
+$ios7radio-icon:$white;
+
+// Tag input
+//--------------------------------------------------------------------------------------------------
+$mtn-tag-input-tags-bg: $white;
+$mtn-tag-input-item-comma-color: $dark-grey1;
+$mtn-tag-input-item-selected-bg: $meetings-blue;
+$mtn-tag-input-item-selected-color: $white;
+$mtn-tag-input-item-color: $meetings-logo-blue;
+$pickContact-color: $meetings-logo-blue;
+$mtn-tag-input-autocompleteOpen-border: $medium-grey2;
+
+// Contact list colors
+//--------------------------------------------------------------------------------------------------
+$contactlistItemBg: $white;
+$contactlistBg: $light-grey2;//$page-container-background;
+$contactlistItem-type-color:$medium-grey2;
+$contactlistItem-number-color:$medium-grey2;
+
+
+// Tabbar
+//--------------------------------------------------------------------------------------------------
+$tab-bar-native-bg: $white;
+$tab-bar-native-border: $light-grey2;
+$tab-bar-native-border-ios: rgba(#b2b2b2, 0.5);
+$tab-bar-native-link:$dark-grey1;
+$tab-bar-native--active-indicator:$meetings-blue;
